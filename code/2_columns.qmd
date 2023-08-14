@@ -1,0 +1,209 @@
+---
+title: Change column names
+jupyter: python3
+---
+
+
+
+## Import pandas
+
+- To load the pandas package and start working with it, import the package. 
+
+
+- The community agreed alias for pandas is `pd`, so loading pandas as pd is assumed standard practice for all of the pandas documentation:
+
+```{python}
+import pandas as pd
+```
+
+## Import data
+
+```{python}
+# URL of data
+URL = "https://raw.githubusercontent.com/kirenz/datasets/master/height_unclean.csv"
+df = pd.read_csv(URL, sep=";", decimal=',')
+df
+```
+
+## Change column names
+
+Usually, we prefer to work with columns that have the following proporties:
+
+
+- no leading or trailing whitespace (`"name"` instead of `" name "`, `" name"` or `"name "`)
+
+
+- all lowercase (`"name"` instead of `"Name"`)
+
+
+- now white spaces (`"my_name"` instead of `"my name"`)
+
+### Simple rename
+
+- First, we rename columns by simply using a mapping
+- We rename `"Name"` to `"name"` (we want to display errors and don't save the changes for now).
+
+
+Hint:
+
+```python
+df = df.rename(columns={"OLD_NAME": "NEW_NAME"}, errors="raise")
+```
+
+```{python}
+#| nbgrader: {grade: false, grade_id: rename_name, locked: false, schema_version: 3, solution: true, task: false}
+### BEGIN SOLUTION
+df = df.rename(columns={"Name": "name"}, errors="raise")
+### END SOLUTION
+```
+
+```{python}
+#| nbgrader: {grade: true, grade_id: c_rename_name, locked: true, points: 2, schema_version: 3, solution: false, task: false}
+"""Check if your code returns the correct output"""
+assert df.loc[0, 'name'] == "Stefanie"
+```
+
+```{python}
+df.head(2)
+```
+
+- Let`s rename Gender to gender
+
+
+- Here, we just want to display the result (without saving it).
+
+
+- Remove the # and run the following code:
+
+```{python}
+# df.rename(columns={"Gender": "gender"}, errors="raise")
+```
+
+- This raises an error. 
+
+
+- Can you spot the problem? Take a look at the end of the error statement and describe the type of error. How could you fix the problem?
+
+- The KeyError statement tells us that `"['Gender'] not found in axis"`
+
+
+- This is because variable Gender has a white space at the beginning: `[ Gender]`
+
+
+- We could fix this problem by typing `" Gender"` instead of `"Gender"`
+
+
+- However, there are useful functions (regular expressions) to deal with this kind of problems
+
+### Trailing and leading spaces (with regex)
+
+- We use regular expressions to deal with whitespaces
+
+
+- To change multiple column names in `df` at once, we use the method `df.columns = df.columns.str___` 
+
+- To replace the spaces, we use `.replace()` with `regex=True`
+
+- In the following function, we search for leading (line start and spaces) and trailing (line end and spaces) spaces and replace them with an empty string:
+
+Hint:
+
+replace r"*this pattern*" with empty string r""
+
+
+```python
+df.columns = df.columns.str.replace(r"___ | ___", r"", regex=True)
+```
+
+Explanation for *regex* (see also [Stackoverflow](https://stackoverflow.com/a/67466222)):
+
+- we start with `r` (for raw) which tells Python to treat all following input as raw text (without interpreting it)
+- "`^`": is line start
+- " ": is a white space
+- "`+`": some following characters
+- "`|`": is or
+- "`$`": is line end
+- "": is an empty string 
+
+
+To learn more about regular expressions ("regex"), visit the following sites:
+
+- [regular expression basics](https://www.w3schools.com/python/python_regex.asp).
+- [interactive regular expressions tool](https://regex101.com/)
+
+```{python}
+#| nbgrader: {grade: false, grade_id: repl, locked: false, schema_version: 3, solution: true, task: false}
+### BEGIN SOLUTION
+df.columns = df.columns.str.replace(r"^ +| $", r"", regex=True)
+### END SOLUTION
+```
+
+```{python}
+#| nbgrader: {grade: true, grade_id: c_repl, locked: true, points: 2, schema_version: 3, solution: false, task: false}
+"""Check if your code returns the correct output"""
+assert df.columns.tolist() == ['name', 'ID%', 'Height', 'Average Height Parents', 'Gender']
+```
+
+```{python}
+df.columns
+```
+
+### Replace special characters
+
+- Again, we use regular expressions to deal with special characters (like %, &, $ etc.)
+
+Replace "%" with an empty string
+
+Hint:
+    
+```python
+df.___ = df.columns.str.___(r"___", r"", regex=True)
+```
+
+```{python}
+#| nbgrader: {grade: false, grade_id: replace_percent, locked: false, schema_version: 3, solution: true, task: false}
+### BEGIN SOLUTION
+df.columns = df.columns.str.replace(r"%", r"", regex=True)
+### END SOLUTION
+```
+
+```{python}
+#| nbgrader: {grade: true, grade_id: c_replace_percent, locked: true, points: 2, schema_version: 3, solution: false, task: false}
+"""Check if your code returns the correct output"""
+assert df.columns.tolist() == ['name', 'ID', 'Height', 'Average Height Parents', 'Gender']
+```
+
+```{python}
+df.columns
+```
+
+### Lowercase and whitespace
+
+We can use two simple methods to convert all columns to lowercase and replace white spaces with underscores ("_"):
+
+- `.str.lower()`
+
+
+- `.str.replace(' ', '_')`
+
+Hint:
+
+```python
+___.___ = ___.___.___.___().___.___(' ', '_')
+```
+
+```{python}
+#| nbgrader: {grade: false, grade_id: lower, locked: false, schema_version: 3, solution: true, task: false}
+df.columns = df.columns.str.lower().str.replace(' ', '_')
+```
+
+```{python}
+#| nbgrader: {grade: true, grade_id: c_lower, locked: true, points: 2, schema_version: 3, solution: false, task: false}
+"""Check if your code returns the correct output"""
+assert df.columns.tolist() == ['name', 'id', 'height', 'average_height_parents', 'gender']
+```
+
+```{python}
+df.columns
+```
+

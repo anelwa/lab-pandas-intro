@@ -124,5 +124,145 @@
     "title": "Slides",
     "section": "",
     "text": "This is a Quarto slidedeck."
+  },
+  {
+    "objectID": "slides/slides.html#import-pandas",
+    "href": "slides/slides.html#import-pandas",
+    "title": "Pandas",
+    "section": "Import pandas",
+    "text": "Import pandas\n\nTo load the pandas package and start working with it, import the package.\nThe community agreed alias for pandas is pd\n\n\n\nimport pandas as pd"
+  },
+  {
+    "objectID": "slides/slides.html#data-creation",
+    "href": "slides/slides.html#data-creation",
+    "title": "Pandas",
+    "section": "Data creation",
+    "text": "Data creation\n\nTo manually store data in a table, create a DataFrame:\n\n\ndf = pd.DataFrame({\n    'name': [\"Tom\", \"Lisa\", \"Peter\"],\n    'height': [1.68, 1.93, 1.72],\n    'weight': [48.4, 89.8, 84.2]\n})"
+  },
+  {
+    "objectID": "slides/slides.html#show-data",
+    "href": "slides/slides.html#show-data",
+    "title": "Pandas",
+    "section": "Show data",
+    "text": "Show data\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\n\n\n\n\n0\nTom\n1.68\n48.4\n\n\n1\nLisa\n1.93\n89.8\n\n\n2\nPeter\n1.72\n84.2"
+  },
+  {
+    "objectID": "slides/slides.html#import-data",
+    "href": "slides/slides.html#import-data",
+    "title": "Pandas",
+    "section": "Import data",
+    "text": "Import data\n\nImport data with the prefix .read_*"
+  },
+  {
+    "objectID": "slides/slides.html#import-data-1",
+    "href": "slides/slides.html#import-data-1",
+    "title": "Pandas",
+    "section": "Import data",
+    "text": "Import data\n\nImport a CSV file in a GitHub repo\n\n\n\nURL = \"https://raw.githubusercontent.com/kirenz/datasets/master/campaign.csv\"\n\ndf_github = pd.read_csv(URL, sep=\",\", decimal='.')\n\ndf_github.head()\n\n\n\n\n\n\n\n\n\n\nage\ncity\nincome\nmembership_days\ncampaign_engagement\ntarget\n\n\n\n\n0\n56\nBerlin\n136748\n837\n3\n1\n\n\n1\n46\nStuttgart\n25287\n615\n8\n0\n\n\n2\n32\nBerlin\n146593\n2100\n3\n0\n\n\n3\n60\nBerlin\n54387\n2544\n0\n0\n\n\n4\n25\nBerlin\n28512\n138\n6\n0"
+  },
+  {
+    "objectID": "slides/slides.html#import-data-2",
+    "href": "slides/slides.html#import-data-2",
+    "title": "Pandas",
+    "section": "Import data",
+    "text": "Import data\n\n# URL of data\nURL = \"https://raw.githubusercontent.com/kirenz/datasets/master/campaign.csv\"\n\ndf = pd.read_csv(URL, sep=\";\", decimal=',')\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nage,city,income,membership_days,campaign_engagement,target\n\n\n\n\n0\n56,Berlin,136748,837,3,1\n\n\n1\n46,Stuttgart,25287,615,8,0\n\n\n2\n32,Berlin,146593,2100,3,0\n\n\n3\n60,Berlin,54387,2544,0,0\n\n\n4\n25,Berlin,28512,138,6,0"
+  },
+  {
+    "objectID": "slides/slides.html#store-data",
+    "href": "slides/slides.html#store-data",
+    "title": "Pandas",
+    "section": "Store data",
+    "text": "Store data\n\nStore data with the prefix .to_*\n\n\n\ndf_github.to_csv(\"data.csv\", index=False)\n\n\nBy setting index=False the row index labels are not saved in the spreadsheet"
+  },
+  {
+    "objectID": "slides/slides.html#overview",
+    "href": "slides/slides.html#overview",
+    "title": "Pandas",
+    "section": "Overview",
+    "text": "Overview\n\ndf\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\n\n\n\n\n0\nTom\n1.68\n48.4\n\n\n1\nLisa\n1.93\n89.8\n\n\n2\nPeter\n1.72\n84.2"
+  },
+  {
+    "objectID": "slides/slides.html#head-and-tail",
+    "href": "slides/slides.html#head-and-tail",
+    "title": "Pandas",
+    "section": "Head and tail",
+    "text": "Head and tail\n\n# show first 2 rows\ndf.head(2)\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\n\n\n\n\n0\nTom\n1.68\n48.4\n\n\n1\nLisa\n1.93\n89.8\n\n\n\n\n\n\n\n\n\n# show last 2 rows\ndf.tail(2)\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\n\n\n\n\n1\nLisa\n1.93\n89.8\n\n\n2\nPeter\n1.72\n84.2"
+  },
+  {
+    "objectID": "slides/slides.html#info",
+    "href": "slides/slides.html#info",
+    "title": "Pandas",
+    "section": "Info",
+    "text": "Info\n\nThe info() method prints information about a DataFrame.\n\n\n\ndf.info()\n\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 3 entries, 0 to 2\nData columns (total 3 columns):\n #   Column  Non-Null Count  Dtype  \n---  ------  --------------  -----  \n 0   name    3 non-null      object \n 1   height  3 non-null      float64\n 2   weight  3 non-null      float64\ndtypes: float64(2), object(1)\nmemory usage: 204.0+ bytes"
+  },
+  {
+    "objectID": "slides/slides.html#column-names",
+    "href": "slides/slides.html#column-names",
+    "title": "Pandas",
+    "section": "Column names",
+    "text": "Column names\n\ndf.columns\n\n\n\nIndex(['name', 'height', 'weight'], dtype='object')"
+  },
+  {
+    "objectID": "slides/slides.html#data-type",
+    "href": "slides/slides.html#data-type",
+    "title": "Pandas",
+    "section": "Data type",
+    "text": "Data type\n\nShow data types (dtypes).\n\n\ndf.dtypes\n\n\n\nname       object\nheight    float64\nweight    float64\ndtype: object\n\n\n\nThe data types in this DataFrame are integers (int64), floats (float64) and strings (object).\n\nIndex\n\ndf.index\n\n\n\nRangeIndex(start=0, stop=3, step=1)"
+  },
+  {
+    "objectID": "slides/slides.html#column-names-1",
+    "href": "slides/slides.html#column-names-1",
+    "title": "Pandas",
+    "section": "Column names",
+    "text": "Column names\nUsually, we prefer to work with columns that have the following proporties:\n\nno leading or trailing whitespace (\"name\" instead of \" name \", \" name\" or \"name \")\nall lowercase (\"name\" instead of \"Name\")\nnow white spaces (\"my_name\" instead of \"my name\")"
+  },
+  {
+    "objectID": "slides/slides.html#simple-rename",
+    "href": "slides/slides.html#simple-rename",
+    "title": "Pandas",
+    "section": "Simple rename",
+    "text": "Simple rename\n\nFirst, we rename columns by simply using a mapping\nWe rename \"name\" to \" NAME\" (note that we include a white space)\n\n\n\ndf = df.rename(columns={\"name\": \" NEW$NAME\"}, errors=\"raise\")\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nNEW$NAME\nheight\nweight\n\n\n\n\n0\nTom\n1.68\n48.4\n\n\n1\nLisa\n1.93\n89.8\n\n\n2\nPeter\n1.72\n84.2\n\n\n\n\n\n\n\n\n\n\ndf.columns\n\n\n\nIndex([' NEW$NAME', 'height', 'weight'], dtype='object')"
+  },
+  {
+    "objectID": "slides/slides.html#trailing-and-leading-spaces-with-regex",
+    "href": "slides/slides.html#trailing-and-leading-spaces-with-regex",
+    "title": "Pandas",
+    "section": "Trailing and leading spaces (with regex)",
+    "text": "Trailing and leading spaces (with regex)\n\nWe use regular expressions to deal with whitespaces\nTo change multiple column names in df at once, we use the method df.columns = df.columns.str___\nTo replace the spaces, we use .replace() with regex=True"
+  },
+  {
+    "objectID": "slides/slides.html#regular-expressions",
+    "href": "slides/slides.html#regular-expressions",
+    "title": "Pandas",
+    "section": "Regular expressions",
+    "text": "Regular expressions\nExplanation for regex (see also Stackoverflow):\n\nwe start with r (for raw) which tells Python to treat all following input as raw text (without interpreting it)\n“^”: is line start\n” “: is a white space\n“+”: some following characters\n“|”: is or\n“$”: is line end\n““: is an empty string"
+  },
+  {
+    "objectID": "slides/slides.html#regular-expressions-1",
+    "href": "slides/slides.html#regular-expressions-1",
+    "title": "Pandas",
+    "section": "Regular expressions",
+    "text": "Regular expressions\nTo learn more about regular expressions (“regex”), visit the following sites:\n\nregular expression basics.\ninteractive regular expressions tool"
+  },
+  {
+    "objectID": "slides/slides.html#trailing-and-leading-spaces-with-regex-1",
+    "href": "slides/slides.html#trailing-and-leading-spaces-with-regex-1",
+    "title": "Pandas",
+    "section": "Trailing and leading spaces (with regex)",
+    "text": "Trailing and leading spaces (with regex)\n\nIn the following function, we search for leading spaces and replace them with an empty string:\n\n\n\ndf.columns = df.columns.str.replace(r\"^ \", r\"\", regex=True)\n\n\n\n\n\n\n\ndf.columns\n\n\n\nIndex(['NEW$NAME', 'height', 'weight'], dtype='object')"
+  },
+  {
+    "objectID": "slides/slides.html#replace-special-characters",
+    "href": "slides/slides.html#replace-special-characters",
+    "title": "Pandas",
+    "section": "Replace special characters",
+    "text": "Replace special characters\n\nAgain, we use regular expressions to deal with special characters (like %, &, $ etc.)\n\nReplace “$” with “_”\n\n\ndf.columns = df.columns.str.replace(r\"$\", r\"_\", regex=True)\n\n\n\n\n\n\n\ndf.columns\n\n\n\nIndex(['NEW_NAME', 'height', 'weight'], dtype='object')"
+  },
+  {
+    "objectID": "slides/slides.html#lowercase-and-whitespace",
+    "href": "slides/slides.html#lowercase-and-whitespace",
+    "title": "Pandas",
+    "section": "Lowercase and whitespace",
+    "text": "Lowercase and whitespace\nWe can use two simple methods to convert all columns to lowercase and replace white spaces with underscores (“_“):\n\n.str.lower()\n.str.replace(' ', '_')\n\n\n\ndf.columns = df.columns.str.lower().str.replace(' ', '_')\n\n\n\n\n\n\nJan Kirenz"
   }
 ]

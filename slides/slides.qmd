@@ -29,8 +29,7 @@ format:
     footer: Jan Kirenz
 ---
 
-# Pandas
-
+# Pandas introduction
 
 
 ## Import pandas
@@ -45,156 +44,115 @@ format:
 import pandas as pd
 ```
 
+# Create and Import Data
+
 ## Data creation
 
 - To manually store data in a table, create a DataFrame:
 
 ```{python}
-my_df = pd.DataFrame(
-    { 
-        'name': [ "Tom", "Lisa", "Peter"],
-        'height': [1.68, 1.93, 1.72],
-        'weight': [48.4, 89.8, 84.2]
-    }
+# | code-line-numbers: "|1|2|3|4|5|"
+df = pd.DataFrame({
+    'name': ["Tom", "Lisa", "Peter"],
+    'height': [1.68, 1.93, 1.72],
+    'weight': [48.4, 89.8, 84.2]
+})
 ```
 
+## Show data
+
+```{python}
+# | output-location: fragment
+df.head()
+```
 
 ## Import data
+
+- Import data with the prefix `.read_*`
 
 ![](https://pandas.pydata.org/docs/_images/02_io_readwrite.svg)
 
-- Pandas supports many file formats (csv, excel, sql, json, parquet, …). - Each of them import data with the prefix `read_*`
-
-- Next, we import data, available as a CSV file in a GitHub repo 
-  
-- The CSV file has a typical european format with 
-  - `;` as seperators between cells (instead of the Pandas default `,`) a
-  - `,` as number decimal seperator (instead of the Pandas default `.`) 
 
 ## Import data
 
-We need to take care of this issues.
+- Import a CSV file in a GitHub repo 
 
-Hint 
-
-```python
-df = pd.___(sep=';', decimal=',')
-```
+. . .
 
 ```{python}
-# URL of data
-URL = "https://raw.githubusercontent.com/kirenz/datasets/master/height_unclean.csv"
+# | output-location: fragment
+# | code-line-numbers: "|1|3|5|"
+URL = "https://raw.githubusercontent.com/kirenz/datasets/master/campaign.csv"
+
+df_github = pd.read_csv(URL, sep=",", decimal='.')
+
+df_github.head()
 ```
 
-```{python}
-#| nbgrader: {grade: false, grade_id: read_csv, locked: false, schema_version: 3, solution: true, task: false}
-### BEGIN SOLUTION
-df = pd.read_csv(URL, sep=";", decimal=',')
-### END SOLUTION
-```
-
-```{python}
-#| nbgrader: {grade: true, grade_id: c_read_csv, locked: true, points: 2, schema_version: 3, solution: false, task: false}
-"""Check that your code returns the correct output"""
-assert df.iloc[0, 0] == 'Stefanie'
-assert df.iloc[0, 3] == 161.5
-```
-
-Now we do the same import with a different approach. Use the name `df2` 
-
-
-Hint:
-
-```python
-ROOT = "https://raw.githubusercontent.com/kirenz/datasets/master/"
-DATA = "___"
-
-df2 = pd.read_csv(___ + ___, sep=";", decimal=',' )
-
-# show head of the data
-df2.head()
-```
-
-```{python}
-#| nbgrader: {grade: false, grade_id: df2, locked: false, schema_version: 3, solution: true, task: false}
-### BEGIN SOLUTION
-ROOT = "https://raw.githubusercontent.com/kirenz/datasets/master/"
-DATA = "height_unclean.csv"
-
-df2 = pd.read_csv(ROOT + DATA, sep=";", decimal=',' )
-
-df2.head()
-### END SOLUTION
-```
-
-```{python}
-#| nbgrader: {grade: true, grade_id: c_df2, locked: true, points: 2, schema_version: 3, solution: false, task: false}
-"""Check that your code returns the correct output"""
-assert df2.iloc[0, 0] == 'Stefanie'
-assert df2.iloc[0, 3] == 161.5
-```
 
 ## Store data
 
-Pandas supports many different file formats (csv, excel, sql, json, parquet, …). Each of them stores data with the prefix `to_*`
+- Store data with the prefix `.to_*`
 
-
-- The following code should save the data `df` as an Excel file in your current directory.
-
-
-- In the example here, the `sheet_name` is named `people_height` instead of the default Sheet1. 
-
-
-- By setting `index=False` the row index labels are not saved in the spreadsheet:
+. . .
 
 ```{python}
-df.to_excel("height.xlsx", sheet_name="people_height", index=False)
+df_github.to_csv("data.csv", index=False)
 ```
 
-- The equivalent read function `read_excel()` would reload the data to a DataFrame:
+- By setting `index=False` the row index labels are not saved in the spreadsheet
+
+# Viewing data
+
+## Overview
 
 ```{python}
-# load excel file
-df_xlsx = pd.read_excel("height.xlsx", sheet_name="people_height")
-```
-
-## Viewing data
-
-### Overview
-
-```{python}
-# show df
+# | output-location: fragment
 df
 ```
 
+## Head and tail
+
 ```{python}
+# | output-location: fragment
 # show first 2 rows
 df.head(2)
 ```
 
+. . .
+
 ```{python}
+# | output-location: fragment
 # show last 2 rows
 df.tail(2)
 ```
 
-- The `info()` method prints information about a DataFrame including the index dtype and columns, non-null values and memory usage:
+
+## Info
+
+- The `info()` method prints information about a DataFrame.
+
+. . .
 
 ```{python}
+# | output-location: fragment
 df.info()
 ```
 
-### Column names
+
+## Column names
 
 ```{python}
-# Show columns
+# | output-location: fragment
 df.columns
 ```
 
-### Data type
+## Data type
 
 - Show data types ([dtypes](https://pandas.pydata.org/docs/user_guide/basics.html#basics-dtypes)).
 
 ```{python}
+# | output-location: fragment
 df.dtypes
 ```
 
@@ -203,69 +161,127 @@ df.dtypes
 ### Index
 
 ```{python}
-# Only show index
+# | output-location: fragment
 df.index
 ```
 
 
 
+# Change column names
+
+## Column names
+
+Usually, we prefer to work with columns that have the following proporties:
 
 
+- no leading or trailing whitespace (`"name"` instead of `" name "`, `" name"` or `"name "`)
 
 
+- all lowercase (`"name"` instead of `"Name"`)
 
 
+- now white spaces (`"my_name"` instead of `"my name"`)
 
+## Simple rename
 
-
-
-# H1 {background-image="../images/dje.jpg"}
-
-## Text
-
-- a 🤖
-
-  - abc
+- First, we rename columns by simply using a mapping
+- We rename `"name"` to `" NAME"` (note that we include a white space)
 
 . . .
 
-- b
+```{python}
+# | output-location: fragment
+df = df.rename(columns={"name": " NEW$NAME"}, errors="raise")
 
-- c^[Russell & Norvig, 2009]  
-
-📚 Required reading: [A & B (2023)](link) 
-
-<https://arxiv.org/pdf/2303.12712.pdf> 
-
-## Image
-
-![](../images/hdm.png)
-
-
-
-## Video
-
-{{< video https://www.youtube.com/embed/KpedmJdrTpY width="1920" height="1080">}}
-
-<!-- Video about Protein -->
-
-
-## A lot of text {.smaller}
-
-Smaller heading
-
-## Background image {background-image="../images/hdm.png"}
-
-abc
-
-## Code
-
-```python
-print('Hello World')                             # <1>
-for i in LIST:                                   # <2>
-  df[i] = df[i].astype('cat')                    # <2>
+df.head()
 ```
-1. Print Hello World, and then,
-2. transform all columns in the LIST element to categorical variables
 
-## End
+. . .
+
+```{python}
+# | output-location: fragment
+df.columns
+```
+
+## Trailing and leading spaces (with regex)
+
+- We use regular expressions to deal with whitespaces
+
+- To change multiple column names in `df` at once, we use the method `df.columns = df.columns.str___` 
+
+- To replace the spaces, we use `.replace()` with `regex=True`
+
+
+## Regular expressions
+
+Explanation for *regex* (see also [Stackoverflow](https://stackoverflow.com/a/67466222)):
+
+- we start with `r` (for raw) which tells Python to treat all following input as raw text (without interpreting it)
+- "`^`": is line start
+- " ": is a white space
+- "`+`": some following characters
+- "`|`": is or
+- "`$`": is line end
+- "": is an empty string 
+
+## Regular expressions
+
+To learn more about regular expressions ("regex"), visit the following sites:
+
+- [regular expression basics](https://www.w3schools.com/python/python_regex.asp).
+- [interactive regular expressions tool](https://regex101.com/)
+
+## Trailing and leading spaces (with regex)
+
+- In the following function, we search for leading spaces and replace them with an empty string:
+
+. . .
+
+```{python}
+# | output-location: fragment
+df.columns = df.columns.str.replace(r"^ ", r"", regex=True)
+```
+
+. . .
+
+```{python}
+# | output-location: fragment
+df.columns
+```
+
+## Replace special characters
+
+- Again, we use regular expressions to deal with special characters (like %, &, $ etc.)
+
+Replace "$" with "_"
+
+. . .
+
+```{python}
+# | output-location: fragment
+df.columns = df.columns.str.replace(r"$", r"_", regex=True)
+
+```
+
+. . .
+
+```{python}
+# | output-location: fragment
+df.columns
+```
+
+## Lowercase and whitespace
+
+We can use two simple methods to convert all columns to lowercase and replace white spaces with underscores ("_"):
+
+- `.str.lower()`
+
+
+- `.str.replace(' ', '_')`
+
+. . .
+
+```{python}
+# | output-location: fragment
+df.columns = df.columns.str.lower().str.replace(' ', '_')
+```
