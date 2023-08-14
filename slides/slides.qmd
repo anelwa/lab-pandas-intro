@@ -1,7 +1,7 @@
 ---
-title: Title
+title: Pandas
 lang: en
-subtitle: Overview
+subtitle: Introduction
 author: Jan Kirenz
 execute:
   eval: true
@@ -28,6 +28,196 @@ format:
    #logo: images/logo.png
     footer: Jan Kirenz
 ---
+
+# Pandas
+
+
+
+## Import pandas
+
+- To load the pandas package and start working with it, import the package. 
+
+- The community agreed alias for pandas is `pd`
+
+. . .
+
+```{python}
+import pandas as pd
+```
+
+## Data creation
+
+- To manually store data in a table, create a DataFrame:
+
+```{python}
+my_df = pd.DataFrame(
+    { 
+        'name': [ "Tom", "Lisa", "Peter"],
+        'height': [1.68, 1.93, 1.72],
+        'weight': [48.4, 89.8, 84.2]
+    }
+```
+
+
+## Import data
+
+![](https://pandas.pydata.org/docs/_images/02_io_readwrite.svg)
+
+- Pandas supports many file formats (csv, excel, sql, json, parquet, …). - Each of them import data with the prefix `read_*`
+
+- Next, we import data, available as a CSV file in a GitHub repo 
+  
+- The CSV file has a typical european format with 
+  - `;` as seperators between cells (instead of the Pandas default `,`) a
+  - `,` as number decimal seperator (instead of the Pandas default `.`) 
+
+## Import data
+
+We need to take care of this issues.
+
+Hint 
+
+```python
+df = pd.___(sep=';', decimal=',')
+```
+
+```{python}
+# URL of data
+URL = "https://raw.githubusercontent.com/kirenz/datasets/master/height_unclean.csv"
+```
+
+```{python}
+#| nbgrader: {grade: false, grade_id: read_csv, locked: false, schema_version: 3, solution: true, task: false}
+### BEGIN SOLUTION
+df = pd.read_csv(URL, sep=";", decimal=',')
+### END SOLUTION
+```
+
+```{python}
+#| nbgrader: {grade: true, grade_id: c_read_csv, locked: true, points: 2, schema_version: 3, solution: false, task: false}
+"""Check that your code returns the correct output"""
+assert df.iloc[0, 0] == 'Stefanie'
+assert df.iloc[0, 3] == 161.5
+```
+
+Now we do the same import with a different approach. Use the name `df2` 
+
+
+Hint:
+
+```python
+ROOT = "https://raw.githubusercontent.com/kirenz/datasets/master/"
+DATA = "___"
+
+df2 = pd.read_csv(___ + ___, sep=";", decimal=',' )
+
+# show head of the data
+df2.head()
+```
+
+```{python}
+#| nbgrader: {grade: false, grade_id: df2, locked: false, schema_version: 3, solution: true, task: false}
+### BEGIN SOLUTION
+ROOT = "https://raw.githubusercontent.com/kirenz/datasets/master/"
+DATA = "height_unclean.csv"
+
+df2 = pd.read_csv(ROOT + DATA, sep=";", decimal=',' )
+
+df2.head()
+### END SOLUTION
+```
+
+```{python}
+#| nbgrader: {grade: true, grade_id: c_df2, locked: true, points: 2, schema_version: 3, solution: false, task: false}
+"""Check that your code returns the correct output"""
+assert df2.iloc[0, 0] == 'Stefanie'
+assert df2.iloc[0, 3] == 161.5
+```
+
+## Store data
+
+Pandas supports many different file formats (csv, excel, sql, json, parquet, …). Each of them stores data with the prefix `to_*`
+
+
+- The following code should save the data `df` as an Excel file in your current directory.
+
+
+- In the example here, the `sheet_name` is named `people_height` instead of the default Sheet1. 
+
+
+- By setting `index=False` the row index labels are not saved in the spreadsheet:
+
+```{python}
+df.to_excel("height.xlsx", sheet_name="people_height", index=False)
+```
+
+- The equivalent read function `read_excel()` would reload the data to a DataFrame:
+
+```{python}
+# load excel file
+df_xlsx = pd.read_excel("height.xlsx", sheet_name="people_height")
+```
+
+## Viewing data
+
+### Overview
+
+```{python}
+# show df
+df
+```
+
+```{python}
+# show first 2 rows
+df.head(2)
+```
+
+```{python}
+# show last 2 rows
+df.tail(2)
+```
+
+- The `info()` method prints information about a DataFrame including the index dtype and columns, non-null values and memory usage:
+
+```{python}
+df.info()
+```
+
+### Column names
+
+```{python}
+# Show columns
+df.columns
+```
+
+### Data type
+
+- Show data types ([dtypes](https://pandas.pydata.org/docs/user_guide/basics.html#basics-dtypes)).
+
+```{python}
+df.dtypes
+```
+
+- The data types in this DataFrame are integers (int64), floats (float64) and strings (object).
+
+### Index
+
+```{python}
+# Only show index
+df.index
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 # H1 {background-image="../images/dje.jpg"}
 
