@@ -4,9 +4,8 @@ title: "Requirements"
 
 To start this lab, you'll need the following environments:
 
-- **SQL**: MySQL, MySQL Workbench and a database called `db_data`
 - **Python**: Anaconda, Anaconda Environment `lab` and Visual Studio Code
-- **Working environment**: A folder on your machine called `competitive` and an environment file with your MySQL password
+- **Working environment**: A folder on your machine called `pandas-intro` 
 
 
 :::{.callout-important}
