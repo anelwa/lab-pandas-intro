@@ -160,7 +160,7 @@ df.dtypes
 
 - The data types in this DataFrame are integers (int64), floats (float64) and strings (object).
 
-### Index
+## Index
 
 ```{python}
 # | output-location: fragment
@@ -182,7 +182,7 @@ Usually, we prefer to work with columns that have the following proporties:
 - all lowercase (`"name"` instead of `"Name"`)
 
 
-- now white spaces (`"my_name"` instead of `"my name"`)
+- no white spaces (`"my_name"` instead of `"my name"`)
 
 ## Simple rename
 
@@ -192,11 +192,17 @@ Usually, we prefer to work with columns that have the following proporties:
 . . .
 
 ```{python}
-# | output-location: fragment
 df = df.rename(columns={"name": " MY NEW-NAME"}, errors="raise")
+```
 
+## Simple rename
+
+
+```{python}
+# | output-location: fragment
 df.head()
 ```
+
 
 . . .
 
@@ -209,7 +215,7 @@ df.columns
 
 - We use regular expressions to deal with whitespaces
 
-- To change multiple column names in `df` at once, we use the method `df.columns = df.columns.str___` 
+- To change multiple column names in `df` at once, we use the method `df.columns = df.columns.str.replace()` 
 
 - To replace the spaces, we use `.replace()` with `regex=True`
 
@@ -246,6 +252,7 @@ df.columns = df.columns.str.replace(r"^ ", r"", regex=True)
 
 . . .
 
+
 ```{python}
 # | output-location: fragment
 df.columns
@@ -253,9 +260,9 @@ df.columns
 
 ## Replace special characters
 
-- Again, we use regular expressions to deal with special characters (like %, &, $ etc.)
+- Again, we use regular expressions to deal with special characters (like `-`, `%`, `&`, `$` etc.)
 
-Replace "-" with "_"
+- Replace "`-`" with "`_`"
 
 . . .
 
@@ -274,7 +281,7 @@ df.columns
 
 ## Lowercase and whitespace
 
-We can use two simple methods to convert all columns to lowercase and replace white spaces with underscores ("_"):
+- We can use two simple methods to convert all columns to lowercase and replace white spaces with underscores ("_"):
 
 - `.str.lower()`
 
@@ -319,7 +326,7 @@ df = pd.DataFrame({
 df.dtypes
 ```
 
-. . .
+## Data Types
 
 ```{python}
 # | output-location: fragment
@@ -330,9 +337,9 @@ df.info()
 
 - There are several methods to [change data types in pandas](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.astype.html):
 
-The most common method to change the data type is:
+- The most common method to change the data type is:
 
-- `.astype()`: Convert to a specific type (like "int32", "float" or "catgeory")
+- `.astype()`: Convert to a specific type (like "`int32`", "`float`" or "`catgeory`")
 
 - `.astype(str)`: Convert to string  
   
@@ -365,6 +372,14 @@ More options:
 ```{python}
 df["name"] = df["name"].astype("category")
 ```
+
+## Change data type
+
+```{python}
+# | output-location: fragment
+df.info()
+```
+
 
 ## String data
 
@@ -424,7 +439,7 @@ df['bmi'] = round(df['weight'] / (df['height'] * df['height']), 2)
 . . .
 
 ```{python}
-# | output-location: column-fragment
+# | output-location: fragment
 df
 ```
 
@@ -436,13 +451,18 @@ df
 . . .
 
 ```{python}
-
 df["date"] = datetime.today().strftime('%Y-%m-%d')
+```
 
+. . .
+
+```{python}
+# | output-location: fragment
 df.head(3)
 ```
 
-### Dates
+
+## Dates {.smaller}
 
 | Code | Example                 | Description                                                                                                                                                                      |
 | ---- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -451,16 +471,44 @@ df.head(3)
 | %w   | 0                       | Weekday as a decimal number, where 0 is Sunday and 6 is Saturday.                                                                                                                |
 | %d   | 8                       | Day of the month as a zero-padded decimal number.                                                                                                                                |
 | %-d  | 8                       | Day of the month as a decimal number. (Platform specific)                                                                                                                        |
+
+
+
+
+## Dates {.smaller}
+
+| Code | Example                 | Description                                                                                                                                                                      |
+| ---- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
 | %b   | Sep                     | Month as locale’s abbreviated name.                                                                                                                                              |
 | %B   | September               | Month as locale’s full name.                                                                                                                                                     |
 | %m   | 9                       | Month as a zero-padded decimal number.                                                                                                                                           |
 | %-m  | 9                       | Month as a decimal number. (Platform specific)                                                                                                                                   |
+
+
+
+## Dates {.smaller}
+
+| Code | Example                 | Description                                                                                                                                                                      |
+| ---- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+
 | %y   | 13                      | Year without century as a zero-padded decimal number.                                                                                                                            |
 | %Y   | 2013                    | Year with century as a decimal number.                                                                                                                                           |
 | %H   | 7                       | Hour (24-hour clock) as a zero-padded decimal number.                                                                                                                            |
 | %-H  | 7                       | Hour (24-hour clock) as a decimal number. (Platform specific)                                                                                                                    |
 | %I   | 7                       | Hour (12-hour clock) as a zero-padded decimal number.                                                                                                                            |
 | %-I  | 7                       | Hour (12-hour clock) as a decimal number. (Platform specific)                                                                                                                    |
+
+
+
+
+## Dates {.smaller}
+
+| Code | Example                 | Description                                                                                                                                                                      |
+| ---- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+
 | %p   | AM                      | Locale’s equivalent of either AM or PM.                                                                                                                                          |
 | %M   | 6                       | Minute as a zero-padded decimal number.                                                                                                                                          |
 | %-M  | 6                       | Minute as a decimal number. (Platform specific)                                                                                                                                  |
