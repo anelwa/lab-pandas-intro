@@ -1,0 +1,168 @@
+---
+title: Import and Store data
+lang: en
+subtitle: Pandas Introduction
+author: Jan Kirenz
+execute:
+  eval: true
+  echo: true
+highlight-style: github
+format:
+  revealjs: 
+    toc: true
+    toc-depth: 1
+    embed-resources: false
+    theme: [dark, ../custom.scss]  
+    incremental: true
+    transition: slide
+    background-transition: fade
+    transition-speed: slow
+    code-copy: true
+    code-line-numbers: true
+    smaller: false
+    scrollable: true
+    slide-number: c
+    preview-links: auto
+    chalkboard: 
+      buttons: false
+   #logo: images/logo.png
+    footer: Jan Kirenz
+---
+
+
+# Import pandas
+
+- To load the pandas package and start working with it, import the package. 
+
+- The community agreed alias for pandas is `pd`
+
+. . .
+
+```{python}
+import pandas as pd
+```
+
+
+# Create Data
+
+## Data creation
+
+- To manually store data in a table, create a DataFrame:
+
+```{python}
+# | code-line-numbers: "|1|2|3|4|5|"
+df = pd.DataFrame({
+    'name': ["Tom", "Lisa", "Peter"],
+    'height': [1.68, 1.93, 1.72],
+    'weight': [48.4, 89.8, 84.2],
+    'id': [1, 2, 3],
+    'city': ['Stuttgart', 'Stuttgart', 'Berlin']
+})
+```
+
+## Show data
+
+```{python}
+# | output-location: fragment
+df.head()
+```
+
+# Import data
+
+- Import data with the prefix `.read_*`
+
+![](https://pandas.pydata.org/docs/_images/02_io_readwrite.svg)
+
+
+## Import data
+
+- Import a CSV file in a GitHub repo 
+
+. . .
+
+```{python}
+# | output-location: fragment
+# | code-line-numbers: "|1|3|5|"
+URL = "https://raw.githubusercontent.com/kirenz/datasets/master/campaign.csv"
+
+df_github = pd.read_csv(URL, sep=",", decimal='.')
+
+df_github.head()
+```
+
+
+# Store data
+
+- Store data with the prefix `.to_*`
+
+. . .
+
+```{python}
+df_github.to_csv("data.csv", index=False)
+```
+
+- By setting `index=False` the row index labels are not saved in the spreadsheet
+
+# Viewing data
+
+## Overview
+
+```{python}
+# | output-location: fragment
+df
+```
+
+## Head and tail
+
+```{python}
+# | output-location: fragment
+# show first 2 rows
+df.head(2)
+```
+
+. . .
+
+```{python}
+# | output-location: fragment
+# show last 2 rows
+df.tail(2)
+```
+
+
+## Info
+
+- The `info()` method prints information about a DataFrame.
+
+. . .
+
+```{python}
+# | output-location: fragment
+df.info()
+```
+
+
+## Column names
+
+```{python}
+# | output-location: fragment
+df.columns
+```
+
+## Data type
+
+- Show data types ([dtypes](https://pandas.pydata.org/docs/user_guide/basics.html#basics-dtypes)).
+
+```{python}
+# | output-location: fragment
+df.dtypes
+```
+
+- The data types in this DataFrame are integers (int64), floats (float64) and strings (object).
+
+## Index
+
+```{python}
+# | output-location: fragment
+df.index
+```
+
