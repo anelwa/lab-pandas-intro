@@ -1,0 +1,177 @@
+---
+title: Change data types and add columns
+jupyter: python3
+---
+
+
+
+## Import pandas
+
+```{python}
+import pandas as pd
+```
+
+## Import data
+
+```{python}
+# URL of data
+URL = "https://raw.githubusercontent.com/kirenz/datasets/master/height_clean.csv"
+df = pd.read_csv(URL)
+```
+
+```{python}
+df.dtypes
+```
+
+## Change data type
+
+- There are several methods to [change data types in pandas](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.astype.html):
+
+The most common method to change the data type is:
+
+- `.astype()`: Convert to a specific type (like "int32", "float" or "catgeory")
+- `.astype(str)`: Convert to string  
+  
+More options:  
+  
+- `to_datetime`: Convert argument to datetime.
+- `to_timedelta`: Convert argument to timedelta.
+- `to_numeric`: Convert argument to a numeric type.
+- `numpy.ndarray.astype`: Cast a numpy array to a specified type.
+
+### Categorical data
+
+- Categoricals are a pandas data type corresponding to categorical variables in statistics. 
+
+
+- A categorical variable takes on a limited, and usually fixed, number of possible values (categories). Examples are gender, social class, blood type, country affiliation, observation time or rating via Likert scales.
+
+
+- Convert variable "gender" to a category dtype:
+
+```{python}
+df["gender"] = df["gender"].astype("category")
+```
+
+### String data
+
+- In our example, `id` is not a number (we can't perform calculations with it)
+- It is just a unique identifier so we should transform it to a simple string (object)
+
+Hint:
+
+```python
+df['___'] = df['___'].___(___)
+```
+
+```{python}
+#| nbgrader: {grade: false, grade_id: id, locked: false, schema_version: 3, solution: true, task: false}
+### BEGIN SOLUTION
+df['id'] = df['id'].astype(str)
+### END SOLUTION
+```
+
+```{python}
+#| nbgrader: {grade: true, grade_id: c_id, locked: true, points: 2, schema_version: 3, solution: false, task: false}
+"""Check if your code returns the correct output"""
+assert df.select_dtypes(include=["number"]).columns.to_list() == ['height', 'average_height_parents']
+assert df.select_dtypes(include=["object"]).columns.to_list() == ['name', 'id']
+```
+
+## Add new columns
+
+### Constant
+
+- Add a new variable called "number" to df 
+- The new variable should have the number 42 in all rows
+
+Hint:
+  
+```python
+df["___"] = ___
+```
+
+```{python}
+#| nbgrader: {grade: false, grade_id: add, locked: false, schema_version: 3, solution: true, task: false}
+### BEGIN SOLUTION
+df["number"] = 42
+### END SOLUTION
+```
+
+```{python}
+#| nbgrader: {grade: true, grade_id: c_add, locked: true, points: 2, schema_version: 3, solution: false, task: false}
+"""Check if your code returns the correct output"""
+assert df.loc[[0], "number"].to_list() == [42]
+```
+
+### From existing
+
+ - Create new columns from existing columns
+
+```{python}
+# we use numpy to add some data with a nornmal distribution 
+import numpy as np
+
+# calculate height in m (from cm)
+df['height_m'] = df.height/100 
+
+# add 20 random normal distributed numbers with a mean of 45 and standard deviation of 5
+df['weight'] = round(np.random.normal(45, 5, 20) * df['height_m'],2)
+
+# calculate body mass index
+df['bmi'] = round(df.weight / (df.height_m * df.height_m),2)
+```
+
+```{python}
+df.head()
+```
+
+### Date
+
+- To add a date, we can use datetime and [strftime](https://strftime.org) (see code examples below):
+
+```{python}
+# we need datetime to add a date
+from datetime import datetime
+```
+
+```{python}
+df["date"] = datetime.today().strftime('%Y-%m-%d')
+
+df.head(3)
+```
+
+| Code | Example                 | Description                                                                                                                                                                      |
+| ---- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| %a   | Sun                     | Weekday as locale’s abbreviated name.                                                                                                                                            |
+| %A   | Sunday                  | Weekday as locale’s full name.                                                                                                                                                   |
+| %w   | 0                       | Weekday as a decimal number, where 0 is Sunday and 6 is Saturday.                                                                                                                |
+| %d   | 8                       | Day of the month as a zero-padded decimal number.                                                                                                                                |
+| %-d  | 8                       | Day of the month as a decimal number. (Platform specific)                                                                                                                        |
+| %b   | Sep                     | Month as locale’s abbreviated name.                                                                                                                                              |
+| %B   | September               | Month as locale’s full name.                                                                                                                                                     |
+| %m   | 9                       | Month as a zero-padded decimal number.                                                                                                                                           |
+| %-m  | 9                       | Month as a decimal number. (Platform specific)                                                                                                                                   |
+| %y   | 13                      | Year without century as a zero-padded decimal number.                                                                                                                            |
+| %Y   | 2013                    | Year with century as a decimal number.                                                                                                                                           |
+| %H   | 7                       | Hour (24-hour clock) as a zero-padded decimal number.                                                                                                                            |
+| %-H  | 7                       | Hour (24-hour clock) as a decimal number. (Platform specific)                                                                                                                    |
+| %I   | 7                       | Hour (12-hour clock) as a zero-padded decimal number.                                                                                                                            |
+| %-I  | 7                       | Hour (12-hour clock) as a decimal number. (Platform specific)                                                                                                                    |
+| %p   | AM                      | Locale’s equivalent of either AM or PM.                                                                                                                                          |
+| %M   | 6                       | Minute as a zero-padded decimal number.                                                                                                                                          |
+| %-M  | 6                       | Minute as a decimal number. (Platform specific)                                                                                                                                  |
+| %S   | 5                       | Second as a zero-padded decimal number.                                                                                                                                          |
+| %-S  | 5                       | Second as a decimal number. (Platform specific)                                                                                                                                  |
+| %f   | 0                       | Microsecond as a decimal number, zero-padded on the left.                                                                                                                        |
+| %z   | 0                       | UTC offset in the form ±HHMM\[SS\[.ffffff\]\] (empty string if the object is naive).                                                                                             |
+| %Z   | UTC                     | Time zone name (empty string if the object is naive).                                                                                                                            |
+| %j   | 251                     | Day of the year as a zero-padded decimal number.                                                                                                                                 |
+| %-j  | 251                     | Day of the year as a decimal number. (Platform specific)                                                                                                                         |
+| %U   | 36                      | Week number of the year (Sunday as the first day of the week) as a zero padded decimal number. All days in a new year preceding the first Sunday are considered to be in week 0. |
+| %W   | 35                      | Week number of the year (Monday as the first day of the week) as a decimal number. All days in a new year preceding the first Monday are considered to be in week 0.             |
+| %c   | Sun Sep 8 07:06:05 2013 | Locale’s appropriate date and time representation.                                                                                                                               |
+| %x   | 09.08.13                | Locale’s appropriate date representation.                                                                                                                                        |
+| %X   | 07:06:05                | Locale’s appropriate time representation.                                                                                                                                        |
+| %%   | %                       | A literal '%' character.                                                                                                                                                         |
+
