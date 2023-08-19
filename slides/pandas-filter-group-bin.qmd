@@ -1,0 +1,215 @@
+---
+title: Filter, Group and Bin Data
+lang: en
+subtitle: Pandas Introduction
+author: Jan Kirenz
+execute:
+  eval: true
+  echo: true
+highlight-style: github
+format:
+  revealjs: 
+    toc: true
+    toc-depth: 1
+    embed-resources: false
+    theme: [dark, ../custom.scss]  
+    incremental: true
+    transition: slide
+    background-transition: fade
+    transition-speed: slow
+    code-copy: true
+    code-line-numbers: true
+    smaller: false
+    scrollable: true
+    slide-number: c
+    preview-links: auto
+    chalkboard: 
+      buttons: false
+   #logo: images/logo.png
+    footer: Jan Kirenz
+---
+
+# Setup
+
+
+```{python}
+import pandas as pd
+```
+
+
+```{python}
+# | code-line-numbers: "|1|2|3|4|5|"
+df = pd.DataFrame({
+    'name': ["Tom", "Lisa", "Peter"],
+    'height': [1.68, 1.93, 1.72],
+    'weight': [48.4, 89.8, 84.2],
+    'id': [1, 2, 3],
+    'city': ['Stuttgart', 'Stuttgart', 'Berlin']
+})
+
+df['bmi'] = round(df['weight'] / (df['height'] * df['height']), 2)
+df["name"] = df["name"].astype("category")
+df['id'] = df['id'].astype(str)
+```
+
+
+# Filter 
+
+
+## Filter 
+
+- Using a single column’s values to filter data (boolean indexing).
+
+. . .
+
+```{python}
+# | output-location: fragment
+df[df["height"] >= 1.67]
+```
+
+## Filter on multiple conditions
+
+
+- Combine filtering for two columns or more with `&` (and)
+
+. . .
+
+```{python}
+df[(df["height"] >= 1.67) & (df["weight"] < 74)]
+```
+
+## Filter on multiple conditions
+
+
+- You can also combine filtering for two columns or more with `|` (or)
+
+. . .
+
+```{python}
+# | output-location: fragment
+df[(df["height"] >= 167) | (df["weight"] < 74)]
+```
+
+## isin()
+
+- Always use the [isin()](https://pandas.pydata.org/docs/reference/api/pandas.Series.isin.html#pandas.Series.isin) method if you have multiple conditions within one column:
+
+. . .
+
+```{python}
+# | output-location: fragment
+df[df["name"].isin(["Tom", "Steven"])]
+```
+
+# Grouping
+
+## Grouping
+
+- By “group by” we are referring to a process involving one or more of the following steps:
+
+- **Splitting** the data into groups based on some criteria
+
+- **Applying** a function to each group independently
+
+- **Combining** the results into a data structure
+
+## Grouping
+
+- Grouping and then applying the `mean()` function to the resulting groups. Furthermore, we round the results and transpose the data.
+
+. . .
+
+```{python}
+# | output-location: fragment
+df.groupby("city").mean(numeric_only=True).round(2).T
+```
+
+# Segment data into bins
+
+## Segment data into bins
+
+- Use the function [cut](https://pandas.pydata.org/docs/reference/api/pandas.cut.html) when you need to segment and sort data values into bins. 
+
+- This function is also useful for going from a continuous variable to a categorical variable. 
+
+## Segment data into bins {.smaller}
+
+The standard weight status categories associated with BMI ranges for adults are shown in the following table:
+
+BMI	| Weight Status
+---| ---
+Below 18.5 |	Underweight
+18.5 - 24.9 |	Normal or Healthy Weight
+25.0 - 29.9 |	Overweight
+30.0 and Above |	Obese
+
+Source: [U.S. Department of Health & Human Services](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html)
+
+
+## Segment data into bins {.smaller}
+
+
+- In our function, we discretize the variable `bmi` into four bins according to the table above:
+
+- The bins [0, 18.5, 25, 30, float('inf')] indicate (0,18.5], (18.5,25], (25,30], (30, float('inf))
+
+- `float('inf')` is used for setting  variable with an infinitely large value
+
+. . .
+
+```{python}
+df['bmi_category'] = pd.cut(df['bmi'],
+                            bins=[0, 18.5, 25, 30, float('inf')],
+                            labels=['underweight', 'normal', 'overweight', "obese"])
+```
+
+## Segment data into bins
+
+
+```{python}
+df
+```
+
+## Segment data into bins
+
+
+```{python}
+df['bmi_category']
+```
+
+## Segment data into bins
+
+
+- Example of how to discretize into four equal-sized bins:
+
+. . .
+
+```{python}
+df['bmi_category_2'] = pd.cut(df['bmi'],
+                              bins=4,
+                              labels=['group1', 'group2', 'group3', "group4"])
+```
+
+. . .
+
+```{python}
+df['bmi_category_2']
+```
+
+
+## Segment data into bins 
+
+
+Example of how to discretize into four equal-sized bins if you don't need labels
+
+```{python}
+df['bmi_category_3'] = pd.cut(df['bmi'],
+                              bins=4,
+                              labels=False)
+```
+
+. . .
+
+```{python}
+df['bmi_category_3']
+```
