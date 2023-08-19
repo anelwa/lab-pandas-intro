@@ -161,25 +161,25 @@
     "text": "To start this lab, you’ll need the following environments:\n\nPython: Anaconda, Anaconda Environment lab and Visual Studio Code\nWorking environment: 📁 A folder on your machine called pandas-intro\n\n\n\n\n\n\n\nImportant\n\n\n\nVisit the “Programming Toolkit-webpage” to learn how to set up the environments."
   },
   {
-    "objectID": "slides/pandas-filter-group-bin.html#filter-1",
-    "href": "slides/pandas-filter-group-bin.html#filter-1",
+    "objectID": "slides/pandas-filter-group-bin.html#filter-example",
+    "href": "slides/pandas-filter-group-bin.html#filter-example",
     "title": "Filter, Group and Bin Data",
-    "section": "Filter",
-    "text": "Filter\n\nUsing a single column’s values to filter data (boolean indexing).\n\n\n\ndf[df[\"height\"] &gt;= 1.67]\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nbmi\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n17.15\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n24.11\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin\n28.46"
+    "section": "Filter example",
+    "text": "Filter example\n\nUsing a single column’s values to filter data (boolean indexing).\n\n\n\ndf[df[\"height\"] &gt;= 1.67]\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nbmi\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n17.15\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n24.11\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin\n28.46"
   },
   {
-    "objectID": "slides/pandas-filter-group-bin.html#filter-on-multiple-conditions",
-    "href": "slides/pandas-filter-group-bin.html#filter-on-multiple-conditions",
+    "objectID": "slides/pandas-filter-group-bin.html#filter-with-and",
+    "href": "slides/pandas-filter-group-bin.html#filter-with-and",
     "title": "Filter, Group and Bin Data",
-    "section": "Filter on multiple conditions",
-    "text": "Filter on multiple conditions\n\nCombine filtering for two columns or more with & (and)\n\n\n\ndf[(df[\"height\"] &gt;= 1.67) & (df[\"weight\"] &lt; 74)]\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nbmi\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n17.15"
+    "section": "Filter with AND",
+    "text": "Filter with AND\n\nCombine filtering for two columns or more with & (AND)\n\n\n\ndf[(df[\"height\"] &gt;= 1.67) & (df[\"weight\"] &lt; 74)]\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nbmi\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n17.15"
   },
   {
-    "objectID": "slides/pandas-filter-group-bin.html#filter-on-multiple-conditions-1",
-    "href": "slides/pandas-filter-group-bin.html#filter-on-multiple-conditions-1",
+    "objectID": "slides/pandas-filter-group-bin.html#filter-with-or",
+    "href": "slides/pandas-filter-group-bin.html#filter-with-or",
     "title": "Filter, Group and Bin Data",
-    "section": "Filter on multiple conditions",
-    "text": "Filter on multiple conditions\n\nYou can also combine filtering for two columns or more with | (or)\n\n\n\ndf[(df[\"height\"] &gt;= 167) | (df[\"weight\"] &lt; 74)]\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nbmi\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n17.15"
+    "section": "Filter with OR",
+    "text": "Filter with OR\n\nYou can also combine filtering for two columns or more with | (OR)\n\n\n\ndf[(df[\"height\"] &gt;= 167) | (df[\"weight\"] &lt; 74)]\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nbmi\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n17.15"
   },
   {
     "objectID": "slides/pandas-filter-group-bin.html#isin",
@@ -189,67 +189,81 @@
     "text": "isin()\n\nAlways use the isin() method if you have multiple conditions within one column:\n\n\n\ndf[df[\"name\"].isin([\"Tom\", \"Steven\"])]\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nbmi\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n17.15"
   },
   {
-    "objectID": "slides/pandas-filter-group-bin.html#grouping-1",
-    "href": "slides/pandas-filter-group-bin.html#grouping-1",
+    "objectID": "slides/pandas-filter-group-bin.html#grouping-steps",
+    "href": "slides/pandas-filter-group-bin.html#grouping-steps",
     "title": "Filter, Group and Bin Data",
-    "section": "Grouping",
-    "text": "Grouping\n\nBy “group by” we are referring to a process involving one or more of the following steps:\nSplitting the data into groups based on some criteria\nApplying a function to each group independently\nCombining the results into a data structure"
+    "section": "Grouping steps",
+    "text": "Grouping steps\n\nBy “group by” we are referring to a process involving one or more of the following steps:\nSplitting the data into groups based on some criteria\nApplying a function to each group independently\nCombining the results into a data structure"
   },
   {
-    "objectID": "slides/pandas-filter-group-bin.html#grouping-2",
-    "href": "slides/pandas-filter-group-bin.html#grouping-2",
+    "objectID": "slides/pandas-filter-group-bin.html#grouping-example-with-mean",
+    "href": "slides/pandas-filter-group-bin.html#grouping-example-with-mean",
     "title": "Filter, Group and Bin Data",
-    "section": "Grouping",
-    "text": "Grouping\n\nGrouping and then applying the mean() function to the resulting groups. Furthermore, we round the results and transpose the data.\n\n\n\ndf.groupby(\"city\").mean(numeric_only=True).round(2).T\n\n\n\n\n\n\n\n\n\ncity\nBerlin\nStuttgart\n\n\n\n\nheight\n1.72\n1.80\n\n\nweight\n84.20\n69.10\n\n\nbmi\n28.46\n20.63"
+    "section": "Grouping example with mean()",
+    "text": "Grouping example with mean()\n\nGrouping and then applying the mean() function to the resulting groups. Furthermore, we round the results and transpose the data.\n\n\n\ndf.groupby(\"city\").mean(numeric_only=True).round(2).T\n\n\n\n\n\n\n\n\n\ncity\nBerlin\nStuttgart\n\n\n\n\nheight\n1.72\n1.80\n\n\nweight\n84.20\n69.10\n\n\nbmi\n28.46\n20.63"
   },
   {
-    "objectID": "slides/pandas-filter-group-bin.html#segment-data-into-bins-1",
-    "href": "slides/pandas-filter-group-bin.html#segment-data-into-bins-1",
+    "objectID": "slides/pandas-filter-group-bin.html#segment-data-with-cut",
+    "href": "slides/pandas-filter-group-bin.html#segment-data-with-cut",
     "title": "Filter, Group and Bin Data",
-    "section": "Segment data into bins",
-    "text": "Segment data into bins\n\nUse the function cut when you need to segment and sort data values into bins.\nThis function is also useful for going from a continuous variable to a categorical variable."
+    "section": "Segment data with cut()",
+    "text": "Segment data with cut()\n\nUse the function cut when you need to segment and sort data values into bins.\nThis function is also useful for going from a continuous variable to a categorical variable."
   },
   {
-    "objectID": "slides/pandas-filter-group-bin.html#segment-data-into-bins-2",
-    "href": "slides/pandas-filter-group-bin.html#segment-data-into-bins-2",
+    "objectID": "slides/pandas-filter-group-bin.html#bmi-table",
+    "href": "slides/pandas-filter-group-bin.html#bmi-table",
     "title": "Filter, Group and Bin Data",
-    "section": "Segment data into bins",
-    "text": "Segment data into bins\nThe standard weight status categories associated with BMI ranges for adults are shown in the following table:\n\n\n\nBMI\nWeight Status\n\n\n\n\nBelow 18.5\nUnderweight\n\n\n18.5 - 24.9\nNormal or Healthy Weight\n\n\n25.0 - 29.9\nOverweight\n\n\n30.0 and Above\nObese\n\n\n\nSource: U.S. Department of Health & Human Services"
+    "section": "BMI table",
+    "text": "BMI table\nThe standard weight status categories associated with BMI ranges for adults are shown in the following table:\n\n\n\nBMI\nWeight Status\n\n\n\n\nBelow 18.5\nUnderweight\n\n\n18.5 - 24.9\nNormal or Healthy Weight\n\n\n25.0 - 29.9\nOverweight\n\n\n30.0 and Above\nObese\n\n\n\nSource: U.S. Department of Health & Human Services"
   },
   {
-    "objectID": "slides/pandas-filter-group-bin.html#segment-data-into-bins-3",
-    "href": "slides/pandas-filter-group-bin.html#segment-data-into-bins-3",
+    "objectID": "slides/pandas-filter-group-bin.html#bmi-example-1",
+    "href": "slides/pandas-filter-group-bin.html#bmi-example-1",
     "title": "Filter, Group and Bin Data",
-    "section": "Segment data into bins",
-    "text": "Segment data into bins\n\nIn our function, we discretize the variable bmi into four bins according to the table above:\nThe bins [0, 18.5, 25, 30, float(‘inf’)] indicate (0,18.5], (18.5,25], (25,30], (30, float(’inf))\nfloat('inf') is used for setting variable with an infinitely large value\n\n\n\ndf['bmi_category'] = pd.cut(df['bmi'],\n                            bins=[0, 18.5, 25, 30, float('inf')],\n                            labels=['underweight', 'normal', 'overweight', \"obese\"])"
+    "section": "BMI example 1",
+    "text": "BMI example 1\n\nIn our function, we discretize the variable bmi into four bins according to the table above:\nThe bins [0, 18.5, 25, 30, float(‘inf’)] indicate (0,18.5], (18.5,25], (25,30], (30, float(’inf))\nfloat('inf') is used for setting variable with an infinitely large value"
   },
   {
-    "objectID": "slides/pandas-filter-group-bin.html#segment-data-into-bins-4",
-    "href": "slides/pandas-filter-group-bin.html#segment-data-into-bins-4",
+    "objectID": "slides/pandas-filter-group-bin.html#bmi-example-code",
+    "href": "slides/pandas-filter-group-bin.html#bmi-example-code",
     "title": "Filter, Group and Bin Data",
-    "section": "Segment data into bins",
-    "text": "Segment data into bins\n\ndf\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nbmi\nbmi_category\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n17.15\nunderweight\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n24.11\nnormal\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin\n28.46\noverweight"
+    "section": "BMI example code",
+    "text": "BMI example code\n\ndf['bmi_category'] = pd.cut(df['bmi'],\n                            bins=[0, 18.5, 25, 30, float('inf')],\n                            labels=['underweight', 'normal', 'overweight', \"obese\"])\n\n\n\ndf"
   },
   {
-    "objectID": "slides/pandas-filter-group-bin.html#segment-data-into-bins-5",
-    "href": "slides/pandas-filter-group-bin.html#segment-data-into-bins-5",
+    "objectID": "slides/pandas-filter-group-bin.html#bmi-example-code-output",
+    "href": "slides/pandas-filter-group-bin.html#bmi-example-code-output",
     "title": "Filter, Group and Bin Data",
-    "section": "Segment data into bins",
-    "text": "Segment data into bins\n\ndf['bmi_category']\n\n0    underweight\n1         normal\n2     overweight\nName: bmi_category, dtype: category\nCategories (4, object): ['underweight' &lt; 'normal' &lt; 'overweight' &lt; 'obese']"
+    "section": "BMI example code",
+    "text": "BMI example code\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nbmi\nbmi_category\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n17.15\nunderweight\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n24.11\nnormal\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin\n28.46\noverweight"
   },
   {
-    "objectID": "slides/pandas-filter-group-bin.html#segment-data-into-bins-6",
-    "href": "slides/pandas-filter-group-bin.html#segment-data-into-bins-6",
+    "objectID": "slides/pandas-filter-group-bin.html#bmi-example-with-categories",
+    "href": "slides/pandas-filter-group-bin.html#bmi-example-with-categories",
     "title": "Filter, Group and Bin Data",
-    "section": "Segment data into bins",
-    "text": "Segment data into bins\n\nExample of how to discretize into four equal-sized bins:\n\n\n\ndf['bmi_category_2'] = pd.cut(df['bmi'],\n                              bins=4,\n                              labels=['group1', 'group2', 'group3', \"group4\"])\n\n\n\n\ndf['bmi_category_2']\n\n0    group1\n1    group3\n2    group4\nName: bmi_category_2, dtype: category\nCategories (4, object): ['group1' &lt; 'group2' &lt; 'group3' &lt; 'group4']"
+    "section": "BMI example with categories",
+    "text": "BMI example with categories\n\ndf['bmi_category']\n\n0    underweight\n1         normal\n2     overweight\nName: bmi_category, dtype: category\nCategories (4, object): ['underweight' &lt; 'normal' &lt; 'overweight' &lt; 'obese']"
   },
   {
-    "objectID": "slides/pandas-filter-group-bin.html#segment-data-into-bins-7",
-    "href": "slides/pandas-filter-group-bin.html#segment-data-into-bins-7",
+    "objectID": "slides/pandas-filter-group-bin.html#four-equal-sized-bins",
+    "href": "slides/pandas-filter-group-bin.html#four-equal-sized-bins",
     "title": "Filter, Group and Bin Data",
-    "section": "Segment data into bins",
-    "text": "Segment data into bins\nExample of how to discretize into four equal-sized bins if you don’t need labels\n\ndf['bmi_category_3'] = pd.cut(df['bmi'],\n                              bins=4,\n                              labels=False)\n\n\n\ndf['bmi_category_3']\n\n0    0\n1    2\n2    3\nName: bmi_category_3, dtype: int64\n\n\n\n\nJan Kirenz"
+    "section": "Four equal-sized bins",
+    "text": "Four equal-sized bins\n\nExample of how to discretize into four equal-sized bins:\n\n\n\ndf['bmi_category_2'] = pd.cut(df['bmi'],\n                              bins=4,\n                              labels=['group1', 'group2', 'group3', \"group4\"])\n\n\n\n\ndf['bmi_category_2']\n\n\n\n0    group1\n1    group3\n2    group4\nName: bmi_category_2, dtype: category\nCategories (4, object): ['group1' &lt; 'group2' &lt; 'group3' &lt; 'group4']"
+  },
+  {
+    "objectID": "slides/pandas-filter-group-bin.html#four-equal-sized-bins-without-labels",
+    "href": "slides/pandas-filter-group-bin.html#four-equal-sized-bins-without-labels",
+    "title": "Filter, Group and Bin Data",
+    "section": "Four equal-sized bins without labels",
+    "text": "Four equal-sized bins without labels\n\nExample of how to discretize into four equal-sized bins if you don’t need labels\n\n\n\ndf['bmi_category_3'] = pd.cut(df['bmi'],\n                              bins=4,\n                              labels=False)\n\n\n\n\ndf['bmi_category_3']\n\n\n\n0    0\n1    2\n2    3\nName: bmi_category_3, dtype: int64\n\n\n\n\nJan Kirenz"
+  },
+  {
+    "objectID": "slides/pandas-select.html#getting-columns-with",
+    "href": "slides/pandas-select.html#getting-columns-with",
+    "title": "Selection",
+    "section": "Getting columns with [[]]",
+    "text": "Getting columns with [[]]\n\nSelecting a single column with [[]]:\nSelect the column city and save it as a new Pandas dataframe df_city\n\n\n\ndf_city = df[[\"city\"]]\n\n\n\n\ndf_city\n\n\n\n\n\n\n\n\n\n\ncity\n\n\n\n\n0\nStuttgart\n\n\n1\nStuttgart\n\n\n2\nBerlin"
   },
   {
     "objectID": "slides/pandas-select.html#selecting-rows-with",
@@ -259,116 +273,116 @@
     "text": "Selecting rows with []\n\nSelecting via [] slices the rows (endpoint is not included) and includes all columns:\n\n\ndf[0:2]\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nbmi\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n17.15\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n24.11"
   },
   {
-    "objectID": "slides/pandas-select.html#location",
-    "href": "slides/pandas-select.html#location",
+    "objectID": "slides/pandas-select.html#only-the-first-row",
+    "href": "slides/pandas-select.html#only-the-first-row",
     "title": "Selection",
-    "section": "Location",
-    "text": "Location\n\nThe .loc (location) attribute is the primary access method.\nFor getting only the first row:\n\n\n\ndf.loc[[0]]\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nbmi\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n17.15"
+    "section": "Only the first row",
+    "text": "Only the first row\n\ndf.loc[[0]]\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nbmi\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n17.15"
   },
   {
-    "objectID": "slides/pandas-select.html#selecting-on-a-multi-axis-by-label",
-    "href": "slides/pandas-select.html#selecting-on-a-multi-axis-by-label",
+    "objectID": "slides/pandas-select.html#one-row-and-one-column",
+    "href": "slides/pandas-select.html#one-row-and-one-column",
     "title": "Selection",
-    "section": "Selecting on a multi-axis by label",
-    "text": "Selecting on a multi-axis by label\n\nOnly select location at row 0 for column “name”\n\n\n\ndf.loc[0, 'name']\n\n\n\n'Tom'"
+    "section": "One row and one column",
+    "text": "One row and one column\n\nOnly select location at row 0 for column “name”\n\n\n\ndf.loc[0, 'name']\n\n\n\n'Tom'"
   },
   {
-    "objectID": "slides/pandas-select.html#selecting-on-a-multi-axis-by-label-1",
-    "href": "slides/pandas-select.html#selecting-on-a-multi-axis-by-label-1",
+    "objectID": "slides/pandas-select.html#multiple-rows-and-one-column",
+    "href": "slides/pandas-select.html#multiple-rows-and-one-column",
     "title": "Selection",
-    "section": "Selecting on a multi-axis by label",
-    "text": "Selecting on a multi-axis by label\n\nSelect row 2 to 4 for column “name” (when using .loc endpoints are included)\n\n\n\ndf.loc[2:4, 'name']\n\n\n\n2    Peter\nName: name, dtype: category\nCategories (3, object): ['Lisa', 'Peter', 'Tom']"
+    "section": "Multiple rows and one column",
+    "text": "Multiple rows and one column\n\nSelect row 2 to 4 for column “name” (when using .loc endpoints are included)\n\n\n\ndf.loc[2:4, 'name']\n\n\n\n2    Peter\nName: name, dtype: category\nCategories (3, object): ['Lisa', 'Peter', 'Tom']"
   },
   {
-    "objectID": "slides/pandas-select.html#selecting-on-a-multi-axis-by-label-2",
-    "href": "slides/pandas-select.html#selecting-on-a-multi-axis-by-label-2",
+    "objectID": "slides/pandas-select.html#multiple-rows-and-multiple-columns",
+    "href": "slides/pandas-select.html#multiple-rows-and-multiple-columns",
     "title": "Selection",
-    "section": "Selecting on a multi-axis by label",
-    "text": "Selecting on a multi-axis by label\n\nSelect row 2 to 4 for columns “name” and “height” (when using .loc endpoints are included)\n\n\n\ndf.loc[2:4, ['name', 'height']]\n\n\n\n\n\n\n\n\n\n\nname\nheight\n\n\n\n\n2\nPeter\n1.72"
+    "section": "Multiple rows and multiple columns",
+    "text": "Multiple rows and multiple columns\n\nSelect row 2 to 4 for columns “name” and “height” (when using .loc endpoints are included)\n\n\n\ndf.loc[2:4, ['name', 'height']]\n\n\n\n\n\n\n\n\n\n\nname\nheight\n\n\n\n\n2\nPeter\n1.72"
   },
   {
-    "objectID": "slides/pandas-select.html#selecting-on-a-multi-axis-by-label-3",
-    "href": "slides/pandas-select.html#selecting-on-a-multi-axis-by-label-3",
+    "objectID": "slides/pandas-select.html#all-rows-and-multiple-columns",
+    "href": "slides/pandas-select.html#all-rows-and-multiple-columns",
     "title": "Selection",
-    "section": "Selecting on a multi-axis by label",
-    "text": "Selecting on a multi-axis by label\n\nSelect all rows for name and height\n\n\n\ndf.loc[:, [\"name\", \"height\"]]\n\n\n\n\n\n\n\n\n\n\nname\nheight\n\n\n\n\n0\nTom\n1.68\n\n\n1\nLisa\n1.93\n\n\n2\nPeter\n1.72"
+    "section": "All rows and multiple columns",
+    "text": "All rows and multiple columns\n\nSelect all rows for name and height\n\n\n\ndf.loc[:, [\"name\", \"height\"]]\n\n\n\n\n\n\n\n\n\n\nname\nheight\n\n\n\n\n0\nTom\n1.68\n\n\n1\nLisa\n1.93\n\n\n2\nPeter\n1.72"
   },
   {
-    "objectID": "slides/pandas-select.html#getting-a-scalar-value",
-    "href": "slides/pandas-select.html#getting-a-scalar-value",
+    "objectID": "slides/pandas-select.html#scalar-value",
+    "href": "slides/pandas-select.html#scalar-value",
     "title": "Selection",
-    "section": "Getting a scalar value",
-    "text": "Getting a scalar value\n\ndf.loc[[0], \"height\"]\n\n0    1.68\nName: height, dtype: float64"
+    "section": "Scalar value",
+    "text": "Scalar value\n\ndf.loc[[0], \"height\"]\n\n0    1.68\nName: height, dtype: float64"
   },
   {
-    "objectID": "slides/pandas-select.html#integer-based-indexing-.iloc-1",
-    "href": "slides/pandas-select.html#integer-based-indexing-.iloc-1",
+    "objectID": "slides/pandas-select.html#basics",
+    "href": "slides/pandas-select.html#basics",
     "title": "Selection",
-    "section": "Integer based indexing .iloc",
-    "text": "Integer based indexing .iloc\n\nPandas provides a suite of methods in order to get purely integer based indexing.\nHere, the .iloc attribute is the primary access method.\n\n\n\ndf.iloc[0]\n\n\n\nname            Tom\nheight         1.68\nweight         48.4\nid                1\ncity      Stuttgart\nbmi           17.15\nName: 0, dtype: object"
+    "section": "Basics",
+    "text": "Basics\n\nPandas provides a suite of methods in order to get purely integer based indexing.\nHere, the .iloc attribute is the primary access method.\n\n\n\ndf.iloc[0]\n\n\n\nname            Tom\nheight         1.68\nweight         48.4\nid                1\ncity      Stuttgart\nbmi           17.15\nName: 0, dtype: object"
   },
   {
-    "objectID": "slides/pandas-select.html#by-integer-slices",
-    "href": "slides/pandas-select.html#by-integer-slices",
+    "objectID": "slides/pandas-select.html#multiple-rows-and-columns",
+    "href": "slides/pandas-select.html#multiple-rows-and-columns",
     "title": "Selection",
-    "section": "By integer slices",
-    "text": "By integer slices\n\nWhen using .iloc, endpoints are not included.\n\n\n\ndf.iloc[0:2, 0:2]\n\n\n\n\n\n\n\n\n\n\nname\nheight\n\n\n\n\n0\nTom\n1.68\n\n\n1\nLisa\n1.93"
+    "section": "Multiple rows and columns",
+    "text": "Multiple rows and columns\n\nWhen using .iloc, endpoints are not included.\n\n\n\ndf.iloc[0:2, 0:2]\n\n\n\n\n\n\n\n\n\n\nname\nheight\n\n\n\n\n0\nTom\n1.68\n\n\n1\nLisa\n1.93"
   },
   {
-    "objectID": "slides/pandas-select.html#by-lists-of-integer-position-locations",
-    "href": "slides/pandas-select.html#by-lists-of-integer-position-locations",
+    "objectID": "slides/pandas-select.html#lists-of-integer-position-locations",
+    "href": "slides/pandas-select.html#lists-of-integer-position-locations",
     "title": "Selection",
-    "section": "By lists of integer position locations",
-    "text": "By lists of integer position locations\n\ndf.iloc[[0, 2], [0, 1]]\n\n\n\n\n\n\n\n\n\n\nname\nheight\n\n\n\n\n0\nTom\n1.68\n\n\n2\nPeter\n1.72"
+    "section": "Lists of integer position locations",
+    "text": "Lists of integer position locations\n\ndf.iloc[[0, 2], [0, 1]]\n\n\n\n\n\n\n\n\n\n\nname\nheight\n\n\n\n\n0\nTom\n1.68\n\n\n2\nPeter\n1.72"
   },
   {
-    "objectID": "slides/pandas-select.html#for-slicing-rows-explicitly",
-    "href": "slides/pandas-select.html#for-slicing-rows-explicitly",
+    "objectID": "slides/pandas-select.html#slicing-rows-explicitly",
+    "href": "slides/pandas-select.html#slicing-rows-explicitly",
     "title": "Selection",
-    "section": "For slicing rows explicitly",
-    "text": "For slicing rows explicitly\n\ndf.iloc[1:3, :]\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nbmi\n\n\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n24.11\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin\n28.46"
+    "section": "Slicing rows explicitly",
+    "text": "Slicing rows explicitly\n\ndf.iloc[1:3, :]\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nbmi\n\n\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n24.11\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin\n28.46"
   },
   {
-    "objectID": "slides/pandas-select.html#for-slicing-columns-explicitly",
-    "href": "slides/pandas-select.html#for-slicing-columns-explicitly",
+    "objectID": "slides/pandas-select.html#slicing-columns-explicitly",
+    "href": "slides/pandas-select.html#slicing-columns-explicitly",
     "title": "Selection",
-    "section": "For slicing columns explicitly",
-    "text": "For slicing columns explicitly\n\ndf.iloc[:, 1:3]\n\n\n\n\n\n\n\n\n\n\nheight\nweight\n\n\n\n\n0\n1.68\n48.4\n\n\n1\n1.93\n89.8\n\n\n2\n1.72\n84.2"
+    "section": "Slicing columns explicitly",
+    "text": "Slicing columns explicitly\n\ndf.iloc[:, 1:3]\n\n\n\n\n\n\n\n\n\n\nheight\nweight\n\n\n\n\n0\n1.68\n48.4\n\n\n1\n1.93\n89.8\n\n\n2\n1.72\n84.2"
   },
   {
-    "objectID": "slides/pandas-select.html#for-getting-a-value-explicitly",
-    "href": "slides/pandas-select.html#for-getting-a-value-explicitly",
+    "objectID": "slides/pandas-select.html#getting-a-value-explicitly",
+    "href": "slides/pandas-select.html#getting-a-value-explicitly",
     "title": "Selection",
-    "section": "For getting a value explicitly",
-    "text": "For getting a value explicitly\n\ndf.iloc[0, 0]\n\n'Tom'\n\n\n\n\nJan Kirenz"
+    "section": "Getting a value explicitly",
+    "text": "Getting a value explicitly\n\ndf.iloc[0, 0]\n\n'Tom'\n\n\n\n\nJan Kirenz"
   },
   {
-    "objectID": "slides/pandas-import-store.html#data-creation",
-    "href": "slides/pandas-import-store.html#data-creation",
+    "objectID": "slides/pandas-import-store.html#create-a-dataframe",
+    "href": "slides/pandas-import-store.html#create-a-dataframe",
     "title": "Import and Store data",
-    "section": "Data creation",
-    "text": "Data creation\n\nTo manually store data in a table, create a DataFrame:\n\n\ndf = pd.DataFrame({\n    'name': [\"Tom\", \"Lisa\", \"Peter\"],\n    'height': [1.68, 1.93, 1.72],\n    'weight': [48.4, 89.8, 84.2],\n    'id': [1, 2, 3],\n    'city': ['Stuttgart', 'Stuttgart', 'Berlin']\n})"
+    "section": "Create a DataFrame",
+    "text": "Create a DataFrame\n\nTo manually store data in a table, create a DataFrame:\n\n\ndf = pd.DataFrame({\n    'name': [\"Tom\", \"Lisa\", \"Peter\"],\n    'height': [1.68, 1.93, 1.72],\n    'weight': [48.4, 89.8, 84.2],\n    'id': [1, 2, 3],\n    'city': ['Stuttgart', 'Stuttgart', 'Berlin']\n})"
   },
   {
-    "objectID": "slides/pandas-import-store.html#show-data",
-    "href": "slides/pandas-import-store.html#show-data",
+    "objectID": "slides/pandas-import-store.html#show-data-with-head",
+    "href": "slides/pandas-import-store.html#show-data-with-head",
     "title": "Import and Store data",
-    "section": "Show data",
-    "text": "Show data\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin"
+    "section": "Show data with head()",
+    "text": "Show data with head()\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin"
   },
   {
-    "objectID": "slides/pandas-import-store.html#import-data-1",
-    "href": "slides/pandas-import-store.html#import-data-1",
+    "objectID": "slides/pandas-import-store.html#import-data-from-github",
+    "href": "slides/pandas-import-store.html#import-data-from-github",
     "title": "Import and Store data",
-    "section": "Import data",
-    "text": "Import data\n\nImport a CSV file in a GitHub repo\n\n\n\nURL = \"https://raw.githubusercontent.com/kirenz/datasets/master/campaign.csv\"\n\ndf_github = pd.read_csv(URL, sep=\",\", decimal='.')\n\ndf_github.head()\n\n\n\n\n\n\n\n\n\n\nage\ncity\nincome\nmembership_days\ncampaign_engagement\ntarget\n\n\n\n\n0\n56\nBerlin\n136748\n837\n3\n1\n\n\n1\n46\nStuttgart\n25287\n615\n8\n0\n\n\n2\n32\nBerlin\n146593\n2100\n3\n0\n\n\n3\n60\nBerlin\n54387\n2544\n0\n0\n\n\n4\n25\nBerlin\n28512\n138\n6\n0"
+    "section": "Import data from GitHub",
+    "text": "Import data from GitHub\n\nImport a CSV file in a GitHub repo\n\n\n\nURL = \"https://raw.githubusercontent.com/kirenz/datasets/master/campaign.csv\"\n\ndf_github = pd.read_csv(URL, sep=\",\", decimal='.')\n\ndf_github.head()\n\n\n\n\n\n\n\n\n\n\nage\ncity\nincome\nmembership_days\ncampaign_engagement\ntarget\n\n\n\n\n0\n56\nBerlin\n136748\n837\n3\n1\n\n\n1\n46\nStuttgart\n25287\n615\n8\n0\n\n\n2\n32\nBerlin\n146593\n2100\n3\n0\n\n\n3\n60\nBerlin\n54387\n2544\n0\n0\n\n\n4\n25\nBerlin\n28512\n138\n6\n0"
   },
   {
-    "objectID": "slides/pandas-import-store.html#overview",
-    "href": "slides/pandas-import-store.html#overview",
+    "objectID": "slides/pandas-import-store.html#data-overview",
+    "href": "slides/pandas-import-store.html#data-overview",
     "title": "Import and Store data",
-    "section": "Overview",
-    "text": "Overview\n\ndf\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin"
+    "section": "Data overview",
+    "text": "Data overview\n\ndf\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin"
   },
   {
     "objectID": "slides/pandas-import-store.html#head-and-tail",
@@ -385,25 +399,25 @@
     "text": "Info\n\nThe info() method prints information about a DataFrame.\n\n\n\ndf.info()\n\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 3 entries, 0 to 2\nData columns (total 5 columns):\n #   Column  Non-Null Count  Dtype  \n---  ------  --------------  -----  \n 0   name    3 non-null      object \n 1   height  3 non-null      float64\n 2   weight  3 non-null      float64\n 3   id      3 non-null      int64  \n 4   city    3 non-null      object \ndtypes: float64(2), int64(1), object(2)\nmemory usage: 252.0+ bytes"
   },
   {
-    "objectID": "slides/pandas-import-store.html#column-names",
-    "href": "slides/pandas-import-store.html#column-names",
+    "objectID": "slides/pandas-import-store.html#show-column-names",
+    "href": "slides/pandas-import-store.html#show-column-names",
     "title": "Import and Store data",
-    "section": "Column names",
-    "text": "Column names\n\ndf.columns\n\n\n\nIndex(['name', 'height', 'weight', 'id', 'city'], dtype='object')"
+    "section": "Show column names",
+    "text": "Show column names\n\ndf.columns\n\n\n\nIndex(['name', 'height', 'weight', 'id', 'city'], dtype='object')"
   },
   {
-    "objectID": "slides/pandas-import-store.html#data-type",
-    "href": "slides/pandas-import-store.html#data-type",
+    "objectID": "slides/pandas-import-store.html#show-data-types",
+    "href": "slides/pandas-import-store.html#show-data-types",
     "title": "Import and Store data",
-    "section": "Data type",
-    "text": "Data type\n\nShow data types (dtypes).\n\n\n\ndf.dtypes\n\n\n\nname       object\nheight    float64\nweight    float64\nid          int64\ncity       object\ndtype: object\n\n\n\nThe data types in this DataFrame are integers (int64), floats (float64) and strings (object)."
+    "section": "Show data types",
+    "text": "Show data types\n\nShow data types (dtypes).\n\n\n\ndf.dtypes\n\n\n\nname       object\nheight    float64\nweight    float64\nid          int64\ncity       object\ndtype: object\n\n\n\nThe data types in this DataFrame are integers (int64), floats (float64) and strings (object)."
   },
   {
-    "objectID": "slides/pandas-import-store.html#index",
-    "href": "slides/pandas-import-store.html#index",
+    "objectID": "slides/pandas-import-store.html#show-index",
+    "href": "slides/pandas-import-store.html#show-index",
     "title": "Import and Store data",
-    "section": "Index",
-    "text": "Index\n\ndf.index\n\n\n\nRangeIndex(start=0, stop=3, step=1)\n\n\n\n\nJan Kirenz"
+    "section": "Show index",
+    "text": "Show index\n\ndf.index\n\n\n\nRangeIndex(start=0, stop=3, step=1)\n\n\n\n\nJan Kirenz"
   },
   {
     "objectID": "slide.html",
@@ -424,14 +438,14 @@
     "href": "slides/pandas-statistics.html#mean",
     "title": "Statistics and Plots",
     "section": "Mean",
-    "text": "Mean\n\nWe can calculate simple statistics like mean, median, standard deviation etc.\n\n\n\ndf['height'].mean()\n\n\n\n1.7766666666666666\n\n\n\n\n\ndf['height'].mean().round(2)\n\n\n\n1.78"
+    "text": "Mean\n\nWe can calculate simple statistics like the mean\n\n\n\ndf['height'].mean()\n\n\n\n1.7766666666666666\n\n\n\n\n\ndf['height'].mean().round(2)\n\n\n\n1.78"
   },
   {
-    "objectID": "slides/pandas-statistics.html#mean-1",
-    "href": "slides/pandas-statistics.html#mean-1",
+    "objectID": "slides/pandas-statistics.html#formatted-string-literals",
+    "href": "slides/pandas-statistics.html#formatted-string-literals",
     "title": "Statistics and Plots",
-    "section": "Mean",
-    "text": "Mean\n\nPrint the value in nice format (using formatted string literals f”…“)\n\n\n\nprint(f\"The mean of height is {df['height'].mean():.2f}\")\n\n\n\nThe mean of height is 1.78"
+    "section": "Formatted string literals",
+    "text": "Formatted string literals\n\nPrint the value in nice format (using formatted string literals f”…“)\n\n\n\nprint(f\"The mean of height is {df['height'].mean():.2f}\")\n\n\n\nThe mean of height is 1.78"
   },
   {
     "objectID": "slides/pandas-statistics.html#median-and-standard-deviation",
@@ -448,60 +462,60 @@
     "text": "Describe\n\ndescribe() shows a quick statistic summary of your numerical data.\n\n\n\ndf.describe()\n\n\n\n\n\n\n\n\n\n\nheight\nweight\nbmi\n\n\n\n\ncount\n3.000000\n3.000000\n3.000000\n\n\nmean\n1.776667\n74.133333\n23.240000\n\n\nstd\n0.134288\n22.460929\n5.704972\n\n\nmin\n1.680000\n48.400000\n17.150000\n\n\n25%\n1.700000\n66.300000\n20.630000\n\n\n50%\n1.720000\n84.200000\n24.110000\n\n\n75%\n1.825000\n87.000000\n26.285000\n\n\nmax\n1.930000\n89.800000\n28.460000"
   },
   {
-    "objectID": "slides/pandas-statistics.html#describe-1",
-    "href": "slides/pandas-statistics.html#describe-1",
+    "objectID": "slides/pandas-statistics.html#describe-with-transpose",
+    "href": "slides/pandas-statistics.html#describe-with-transpose",
     "title": "Statistics and Plots",
-    "section": "Describe",
-    "text": "Describe\n\ndf.describe().T.round(2)\n\n\n\n\n\n\n\n\n\n\ncount\nmean\nstd\nmin\n25%\n50%\n75%\nmax\n\n\n\n\nheight\n3.0\n1.78\n0.13\n1.68\n1.70\n1.72\n1.82\n1.93\n\n\nweight\n3.0\n74.13\n22.46\n48.40\n66.30\n84.20\n87.00\n89.80\n\n\nbmi\n3.0\n23.24\n5.70\n17.15\n20.63\n24.11\n26.28\n28.46"
+    "section": "Describe with transpose",
+    "text": "Describe with transpose\n\ndf.describe().T.round(2)\n\n\n\n\n\n\n\n\n\n\ncount\nmean\nstd\nmin\n25%\n50%\n75%\nmax\n\n\n\n\nheight\n3.0\n1.78\n0.13\n1.68\n1.70\n1.72\n1.82\n1.93\n\n\nweight\n3.0\n74.13\n22.46\n48.40\n66.30\n84.20\n87.00\n89.80\n\n\nbmi\n3.0\n23.24\n5.70\n17.15\n20.63\n24.11\n26.28\n28.46"
   },
   {
-    "objectID": "slides/pandas-statistics.html#describe-2",
-    "href": "slides/pandas-statistics.html#describe-2",
+    "objectID": "slides/pandas-statistics.html#describe-for-specific-columns-with-groupby",
+    "href": "slides/pandas-statistics.html#describe-for-specific-columns-with-groupby",
     "title": "Statistics and Plots",
-    "section": "Describe",
-    "text": "Describe\n\nSummary statistics for numeric variables height and bmi for different levels of the categorical variable city:\n\n\n\ndf[['height', 'city']].groupby(['city']).describe().round(2).T\n\n\n\n\n\n\n\n\n\n\ncity\nBerlin\nStuttgart\n\n\n\n\nheight\ncount\n1.00\n2.00\n\n\nmean\n1.72\n1.80\n\n\nstd\nNaN\n0.18\n\n\nmin\n1.72\n1.68\n\n\n25%\n1.72\n1.74\n\n\n50%\n1.72\n1.80\n\n\n75%\n1.72\n1.87\n\n\nmax\n1.72\n1.93"
+    "section": "Describe for specific columns with groupby",
+    "text": "Describe for specific columns with groupby\n\nSummary statistics for numeric variables height and bmi for different levels of the categorical variable city:\n\n\n\ndf[['height', 'city']].groupby(['city']).describe().round(2).T\n\n\n\n\n\n\n\n\n\n\ncity\nBerlin\nStuttgart\n\n\n\n\nheight\ncount\n1.00\n2.00\n\n\nmean\n1.72\n1.80\n\n\nstd\nNaN\n0.18\n\n\nmin\n1.72\n1.68\n\n\n25%\n1.72\n1.74\n\n\n50%\n1.72\n1.80\n\n\n75%\n1.72\n1.87\n\n\nmax\n1.72\n1.93"
   },
   {
-    "objectID": "slides/pandas-statistics.html#categorical-data-1",
-    "href": "slides/pandas-statistics.html#categorical-data-1",
+    "objectID": "slides/pandas-statistics.html#example",
+    "href": "slides/pandas-statistics.html#example",
     "title": "Statistics and Plots",
-    "section": "Categorical Data",
-    "text": "Categorical Data\n\nwe can also use describe() for categorical data\n\n\n\ndf.describe(include=\"category\").T\n\n\n\n\n\n\n\n\n\n\ncount\nunique\ntop\nfreq\n\n\n\n\nname\n3\n3\nLisa\n1"
+    "section": "Example",
+    "text": "Example\n\nwe can also use describe() for categorical data\n\n\n\ndf.describe(include=\"category\").T\n\n\n\n\n\n\n\n\n\n\ncount\nunique\ntop\nfreq\n\n\n\n\nname\n3\n3\nLisa\n1"
   },
   {
-    "objectID": "slides/pandas-statistics.html#categorical-data-2",
-    "href": "slides/pandas-statistics.html#categorical-data-2",
+    "objectID": "slides/pandas-statistics.html#show-unique-levels",
+    "href": "slides/pandas-statistics.html#show-unique-levels",
     "title": "Statistics and Plots",
-    "section": "Categorical data",
-    "text": "Categorical data\n\nShow unique levels of a categorical variable and count with value_counts()\n\n\n\ndf['city'].value_counts()\n\n\n\nStuttgart    2\nBerlin       1\nName: city, dtype: int64"
+    "section": "Show unique levels",
+    "text": "Show unique levels\n\nShow unique levels of a categorical variable and count with value_counts()\n\n\n\ndf['city'].value_counts()\n\n\n\nStuttgart    2\nBerlin       1\nName: city, dtype: int64"
   },
   {
-    "objectID": "slides/pandas-statistics.html#categorical-data-3",
-    "href": "slides/pandas-statistics.html#categorical-data-3",
+    "objectID": "slides/pandas-statistics.html#extract-specific-values",
+    "href": "slides/pandas-statistics.html#extract-specific-values",
     "title": "Statistics and Plots",
-    "section": "Categorical data",
-    "text": "Categorical data\n\nWe also can extract specific values\n\n\ndf['city'].value_counts().Stuttgart\n\n\n\n2"
+    "section": "Extract specific values",
+    "text": "Extract specific values\n\nWe also can extract specific values\n\n\ndf['city'].value_counts().Stuttgart\n\n\n\n2"
   },
   {
-    "objectID": "slides/pandas-statistics.html#categorical-data-4",
-    "href": "slides/pandas-statistics.html#categorical-data-4",
+    "objectID": "slides/pandas-statistics.html#formatted-string-literals-1",
+    "href": "slides/pandas-statistics.html#formatted-string-literals-1",
     "title": "Statistics and Plots",
-    "section": "Categorical data",
-    "text": "Categorical data\n\nPrint the value in nice format (using formatted string literals f”…“)\n\n\n\ncount_stuttgart = df['city'].value_counts().Stuttgart\n\nprint(f\"There are {count_stuttgart} people from Stuttgart in the data\")\n\n\n\nThere are 2 people from Stuttgart in the data"
+    "section": "Formatted string literals",
+    "text": "Formatted string literals\n\nPrint the value in nice format (using formatted string literals f”…“)\n\n\n\ncount_stuttgart = df['city'].value_counts().Stuttgart\n\nprint(f\"There are {count_stuttgart} people from Stuttgart in the data\")\n\n\n\nThere are 2 people from Stuttgart in the data"
   },
   {
-    "objectID": "slides/pandas-statistics.html#loop-over-list-1",
-    "href": "slides/pandas-statistics.html#loop-over-list-1",
+    "objectID": "slides/pandas-statistics.html#statistics-for-specific-columns",
+    "href": "slides/pandas-statistics.html#statistics-for-specific-columns",
     "title": "Statistics and Plots",
-    "section": "Loop over list",
-    "text": "Loop over list\n\nExample of for loop to obtain statistics for specific numerical columns\n\n\n\n# make a list of numerical columns\nlist_num = ['height', 'weight']\n\n\n\n\n# calculate median for our list and only show 4 digits, then make a new line (\\n)\nfor i in list_num:\n    print(f'Median of {i} equals {df[i].median():.4} \\n')\n\n\n\nMedian of height equals 1.72 \n\nMedian of weight equals 84.2"
+    "section": "Statistics for specific columns",
+    "text": "Statistics for specific columns\n\nExample of for loop to obtain statistics for specific numerical columns\n\n\n\n# make a list of numerical columns\nlist_num = ['height', 'weight']\n\n\n\n\n# calculate median for our list and only show 4 digits, then make a new line (\\n)\nfor i in list_num:\n    print(f'Median of {i} equals {df[i].median():.4} \\n')\n\n\n\nMedian of height equals 1.72 \n\nMedian of weight equals 84.2"
   },
   {
-    "objectID": "slides/pandas-statistics.html#loop-over-list-2",
-    "href": "slides/pandas-statistics.html#loop-over-list-2",
+    "objectID": "slides/pandas-statistics.html#summary-statistics",
+    "href": "slides/pandas-statistics.html#summary-statistics",
     "title": "Statistics and Plots",
-    "section": "Loop over list",
-    "text": "Loop over list\n\nCalculate summary statistics for our list.\n\n\nfor i in list_num:\n    print(f'Column: {i}  \\n  {df[i].describe().round(2)}   \\n')   \n\n\n\nColumn: height  \n  count    3.00\nmean     1.78\nstd      0.13\nmin      1.68\n25%      1.70\n50%      1.72\n75%      1.82\nmax      1.93\nName: height, dtype: float64   \n\nColumn: weight  \n  count     3.00\nmean     74.13\nstd      22.46\nmin      48.40\n25%      66.30\n50%      84.20\n75%      87.00\nmax      89.80\nName: weight, dtype: float64"
+    "section": "Summary statistics",
+    "text": "Summary statistics\n\nCalculate summary statistics for our list.\n\n\nfor i in list_num:\n    print(f'Column: {i}  \\n  {df[i].describe().round(2)}   \\n')   \n\n\n\nColumn: height  \n  count    3.00\nmean     1.78\nstd      0.13\nmin      1.68\n25%      1.70\n50%      1.72\n75%      1.82\nmax      1.93\nName: height, dtype: float64   \n\nColumn: weight  \n  count     3.00\nmean     74.13\nstd      22.46\nmin      48.40\n25%      66.30\n50%      84.20\n75%      87.00\nmax      89.80\nName: weight, dtype: float64"
   },
   {
     "objectID": "slides/pandas-statistics.html#setup-1",
@@ -511,25 +525,25 @@
     "text": "Setup\n\n# Pandas needs the module matplotlib to create plots\nimport matplotlib.pyplot as plt\n\n# show plot output in Jupyter Notebook\n%matplotlib inline"
   },
   {
-    "objectID": "slides/pandas-statistics.html#boxplot",
-    "href": "slides/pandas-statistics.html#boxplot",
+    "objectID": "slides/pandas-statistics.html#one-boxplot",
+    "href": "slides/pandas-statistics.html#one-boxplot",
     "title": "Statistics and Plots",
-    "section": "Boxplot",
-    "text": "Boxplot\n\ndf.boxplot(column=['weight']);"
+    "section": "One boxplot",
+    "text": "One boxplot\n\ndf.boxplot(column=['weight']);"
   },
   {
-    "objectID": "slides/pandas-statistics.html#boxplots-with-for-loop",
-    "href": "slides/pandas-statistics.html#boxplots-with-for-loop",
+    "objectID": "slides/pandas-statistics.html#multiple-boxplots-with-loop",
+    "href": "slides/pandas-statistics.html#multiple-boxplots-with-loop",
     "title": "Statistics and Plots",
-    "section": "Boxplots with for loop",
-    "text": "Boxplots with for loop\n\n# obtain plots for our list\nfor i in list_num:\n    df.boxplot(column=[i])\n    plt.title(\"Boxplot for \" + i)\n    plt.show()\n\n\n\n\n\n\n\n\n\n\n\nJan Kirenz"
+    "section": "Multiple boxplots with loop",
+    "text": "Multiple boxplots with loop\n\n# obtain plots for our list\nfor i in list_num:\n    df.boxplot(column=[i])\n    plt.title(\"Boxplot for \" + i)\n    plt.show()\n\n\n\n\n\n\n\n\n\n\n\nJan Kirenz"
   },
   {
-    "objectID": "slides/pandas-column-names.html#column-names",
-    "href": "slides/pandas-column-names.html#column-names",
+    "objectID": "slides/pandas-column-names.html#column-names-properties",
+    "href": "slides/pandas-column-names.html#column-names-properties",
     "title": "Change Column Names",
-    "section": "Column names",
-    "text": "Column names\nUsually, we prefer to work with columns that have the following proporties:\n\nno leading or trailing whitespace (\"name\" instead of \" name \", \" name\" or \"name \")\nall lowercase (\"name\" instead of \"Name\")\nno white spaces (\"my_name\" instead of \"my name\")"
+    "section": "Column names properties",
+    "text": "Column names properties\nUsually, we prefer to work with columns that have the following proporties:\n\nno leading or trailing whitespace (\"name\" instead of \" name \", \" name\" or \"name \")\nall lowercase (\"name\" instead of \"Name\")\nno white spaces (\"my_name\" instead of \"my name\")"
   },
   {
     "objectID": "slides/pandas-column-names.html#simple-rename-1",
@@ -546,18 +560,18 @@
     "text": "Trailing and leading spaces (with regex)\n\nWe use regular expressions to deal with whitespaces\nTo change multiple column names in df at once, we use the method df.columns = df.columns.str.replace()\nTo replace the spaces, we use .replace() with regex=True"
   },
   {
-    "objectID": "slides/pandas-column-names.html#regular-expressions-1",
-    "href": "slides/pandas-column-names.html#regular-expressions-1",
+    "objectID": "slides/pandas-column-names.html#regular-expressions-table",
+    "href": "slides/pandas-column-names.html#regular-expressions-table",
     "title": "Change Column Names",
-    "section": "Regular expressions",
-    "text": "Regular expressions\nExplanation for regex (see also Stackoverflow):\n\nwe start with r (for raw) which tells Python to treat all following input as raw text (without interpreting it)\n“^”: is line start\n” “: is a white space\n“+”: some following characters\n“|”: is or\n“$”: is line end\n““: is an empty string"
+    "section": "Regular expressions table",
+    "text": "Regular expressions table\nExplanation for regex (see also Stackoverflow):\n\nwe start with r (for raw) which tells Python to treat all following input as raw text (without interpreting it)\n“^”: is line start\n” “: is a white space\n“+”: some following characters\n“|”: is or\n“$”: is line end\n““: is an empty string"
   },
   {
-    "objectID": "slides/pandas-column-names.html#regular-expressions-2",
-    "href": "slides/pandas-column-names.html#regular-expressions-2",
+    "objectID": "slides/pandas-column-names.html#learn-more-about-regular-expressions",
+    "href": "slides/pandas-column-names.html#learn-more-about-regular-expressions",
     "title": "Change Column Names",
-    "section": "Regular expressions",
-    "text": "Regular expressions\nTo learn more about regular expressions (“regex”), visit the following sites:\n\nregular expression basics.\ninteractive regular expressions tool"
+    "section": "Learn more about regular expressions",
+    "text": "Learn more about regular expressions\nTo learn more about regular expressions (“regex”), visit the following sites:\n\nregular expression basics.\ninteractive regular expressions tool"
   },
   {
     "objectID": "slides/pandas-column-names.html#trailing-and-leading-spaces-with-regex-1",
@@ -581,109 +595,116 @@
     "text": "Lowercase and whitespace\n\nWe can use two simple methods to convert all columns to lowercase and replace white spaces with underscores (“_“):\n.str.lower()\n.str.replace(' ', '_')\n\n\n\ndf.columns = df.columns.str.lower().str.replace(' ', '_')\n\n\n\n\n\n\n\ndf.columns\n\n\n\nIndex(['my_new_name', 'height', 'weight', 'id', 'city'], dtype='object')\n\n\n\n\nJan Kirenz"
   },
   {
-    "objectID": "slides/pandas-data-types.html#data-types",
-    "href": "slides/pandas-data-types.html#data-types",
+    "objectID": "slides/pandas-data-types.html#data-types-with-.dtypes",
+    "href": "slides/pandas-data-types.html#data-types-with-.dtypes",
     "title": "Data Types and Adding Columns",
-    "section": "Data Types",
-    "text": "Data Types\n\ndf.dtypes\n\n\n\nname       object\nheight    float64\nweight    float64\nid          int64\ncity       object\ndtype: object"
+    "section": "Data Types with .dtypes",
+    "text": "Data Types with .dtypes\n\ndf.dtypes\n\n\n\nname       object\nheight    float64\nweight    float64\nid          int64\ncity       object\ndtype: object"
   },
   {
-    "objectID": "slides/pandas-data-types.html#data-types-1",
-    "href": "slides/pandas-data-types.html#data-types-1",
+    "objectID": "slides/pandas-data-types.html#data-types-with-.info",
+    "href": "slides/pandas-data-types.html#data-types-with-.info",
     "title": "Data Types and Adding Columns",
-    "section": "Data Types",
-    "text": "Data Types\n\ndf.info()\n\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 3 entries, 0 to 2\nData columns (total 5 columns):\n #   Column  Non-Null Count  Dtype  \n---  ------  --------------  -----  \n 0   name    3 non-null      object \n 1   height  3 non-null      float64\n 2   weight  3 non-null      float64\n 3   id      3 non-null      int64  \n 4   city    3 non-null      object \ndtypes: float64(2), int64(1), object(2)\nmemory usage: 252.0+ bytes"
+    "section": "Data Types with .info()",
+    "text": "Data Types with .info()\n\ndf.info()\n\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 3 entries, 0 to 2\nData columns (total 5 columns):\n #   Column  Non-Null Count  Dtype  \n---  ------  --------------  -----  \n 0   name    3 non-null      object \n 1   height  3 non-null      float64\n 2   weight  3 non-null      float64\n 3   id      3 non-null      int64  \n 4   city    3 non-null      object \ndtypes: float64(2), int64(1), object(2)\nmemory usage: 252.0+ bytes"
   },
   {
-    "objectID": "slides/pandas-data-types.html#change-data-types-1",
-    "href": "slides/pandas-data-types.html#change-data-types-1",
+    "objectID": "slides/pandas-data-types.html#standard-methods",
+    "href": "slides/pandas-data-types.html#standard-methods",
     "title": "Data Types and Adding Columns",
-    "section": "Change Data Types",
-    "text": "Change Data Types\n\nThere are several methods to change data types in pandas:\nThe most common method to change the data type is:\n.astype(): Convert to a specific type (like “int32”, “float” or “catgeory”)\n.astype(str): Convert to string"
+    "section": "Standard methods",
+    "text": "Standard methods\n\nThere are several methods to change data types in pandas:\nThe most common method to change the data type is:\n.astype(): Convert to a specific type (like “int32”, “float” or “catgeory”)\n.astype(str): Convert to string"
   },
   {
-    "objectID": "slides/pandas-data-types.html#change-data-type",
-    "href": "slides/pandas-data-types.html#change-data-type",
+    "objectID": "slides/pandas-data-types.html#more-options",
+    "href": "slides/pandas-data-types.html#more-options",
     "title": "Data Types and Adding Columns",
-    "section": "Change data type",
-    "text": "Change data type\nMore options:\n\nto_datetime: Convert argument to datetime.\nto_timedelta: Convert argument to timedelta.\nto_numeric: Convert argument to a numeric type."
+    "section": "More options",
+    "text": "More options\n\nto_datetime: Convert argument to datetime.\nto_timedelta: Convert argument to timedelta.\nto_numeric: Convert argument to a numeric type."
   },
   {
-    "objectID": "slides/pandas-data-types.html#categorical-data",
-    "href": "slides/pandas-data-types.html#categorical-data",
+    "objectID": "slides/pandas-data-types.html#what-is-categorical-data",
+    "href": "slides/pandas-data-types.html#what-is-categorical-data",
     "title": "Data Types and Adding Columns",
-    "section": "Categorical data",
-    "text": "Categorical data\n\nCategoricals are a pandas data type corresponding to categorical variables in statistics.\nA categorical variable takes on a limited, and usually fixed, number of possible values (categories).\nExamples are gender, social class, blood type, country affiliation, observation time or rating via Likert scales."
+    "section": "What is categorical data?",
+    "text": "What is categorical data?\n\nCategoricals are a pandas data type corresponding to categorical variables in statistics.\nA categorical variable takes on a limited, and usually fixed, number of possible values (categories).\nExamples are gender, social class, blood type, country affiliation, observation time or rating via Likert scales."
   },
   {
-    "objectID": "slides/pandas-data-types.html#categorical-data-1",
-    "href": "slides/pandas-data-types.html#categorical-data-1",
+    "objectID": "slides/pandas-data-types.html#convert-to-categorical-data",
+    "href": "slides/pandas-data-types.html#convert-to-categorical-data",
     "title": "Data Types and Adding Columns",
-    "section": "Categorical data",
-    "text": "Categorical data\n\nConvert variable “name” to a category dtype:\n\n\n\ndf[\"name\"] = df[\"name\"].astype(\"category\")"
+    "section": "Convert to categorical data",
+    "text": "Convert to categorical data\n\nConvert variable “name” to a category dtype:\n\n\n\ndf[\"name\"] = df[\"name\"].astype(\"category\")\n\n\n\n\ndf.info()"
   },
   {
-    "objectID": "slides/pandas-data-types.html#change-data-type-1",
-    "href": "slides/pandas-data-types.html#change-data-type-1",
+    "objectID": "slides/pandas-data-types.html#convert-to-categorical-data-output",
+    "href": "slides/pandas-data-types.html#convert-to-categorical-data-output",
     "title": "Data Types and Adding Columns",
-    "section": "Change data type",
-    "text": "Change data type\n\ndf.info()\n\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 3 entries, 0 to 2\nData columns (total 5 columns):\n #   Column  Non-Null Count  Dtype   \n---  ------  --------------  -----   \n 0   name    3 non-null      category\n 1   height  3 non-null      float64 \n 2   weight  3 non-null      float64 \n 3   id      3 non-null      int64   \n 4   city    3 non-null      object  \ndtypes: category(1), float64(2), int64(1), object(1)\nmemory usage: 363.0+ bytes"
+    "section": "Convert to categorical data",
+    "text": "Convert to categorical data\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 3 entries, 0 to 2\nData columns (total 5 columns):\n #   Column  Non-Null Count  Dtype   \n---  ------  --------------  -----   \n 0   name    3 non-null      category\n 1   height  3 non-null      float64 \n 2   weight  3 non-null      float64 \n 3   id      3 non-null      int64   \n 4   city    3 non-null      object  \ndtypes: category(1), float64(2), int64(1), object(1)\nmemory usage: 363.0+ bytes"
   },
   {
     "objectID": "slides/pandas-data-types.html#string-data",
     "href": "slides/pandas-data-types.html#string-data",
     "title": "Data Types and Adding Columns",
     "section": "String data",
-    "text": "String data\n\nIn our example, id is not a number (we can’t perform calculations with it)\nIt is just a unique identifier so we should transform it to a simple string (object)\n\n\n\ndf['id'] = df['id'].astype(str)"
+    "text": "String data\n\nIn our example, id is not a number (we can’t perform calculations with it)\nIt is just a unique identifier so we should transform it to a simple string (object)\n\n\n\ndf['id'] = df['id'].astype(str)\n\n\n\n\ndf.info()"
   },
   {
-    "objectID": "slides/pandas-data-types.html#change-data-type-2",
-    "href": "slides/pandas-data-types.html#change-data-type-2",
+    "objectID": "slides/pandas-data-types.html#string-data-output",
+    "href": "slides/pandas-data-types.html#string-data-output",
     "title": "Data Types and Adding Columns",
-    "section": "Change data type",
-    "text": "Change data type\n\ndf.info()\n\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 3 entries, 0 to 2\nData columns (total 5 columns):\n #   Column  Non-Null Count  Dtype   \n---  ------  --------------  -----   \n 0   name    3 non-null      category\n 1   height  3 non-null      float64 \n 2   weight  3 non-null      float64 \n 3   id      3 non-null      object  \n 4   city    3 non-null      object  \ndtypes: category(1), float64(2), object(2)\nmemory usage: 363.0+ bytes"
+    "section": "String data",
+    "text": "String data\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 3 entries, 0 to 2\nData columns (total 5 columns):\n #   Column  Non-Null Count  Dtype   \n---  ------  --------------  -----   \n 0   name    3 non-null      category\n 1   height  3 non-null      float64 \n 2   weight  3 non-null      float64 \n 3   id      3 non-null      object  \n 4   city    3 non-null      object  \ndtypes: category(1), float64(2), object(2)\nmemory usage: 363.0+ bytes"
   },
   {
-    "objectID": "slides/pandas-data-types.html#constant",
-    "href": "slides/pandas-data-types.html#constant",
+    "objectID": "slides/pandas-data-types.html#add-a-constant-number",
+    "href": "slides/pandas-data-types.html#add-a-constant-number",
     "title": "Data Types and Adding Columns",
-    "section": "Constant",
-    "text": "Constant\n\nAdd a new variable called “number” to df\nThe new variable should have the number 42 in all rows\n\n\n\ndf[\"number\"] = 42\n\n\n\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nnumber\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n42\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n42\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin\n42"
+    "section": "Add a constant number",
+    "text": "Add a constant number\n\nAdd a new variable called “number” to df\nThe new variable should have the number 42 in all rows\n\n\n\ndf[\"number\"] = 42\n\n\n\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nnumber\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n42\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n42\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin\n42"
   },
   {
-    "objectID": "slides/pandas-data-types.html#from-existing-columns",
-    "href": "slides/pandas-data-types.html#from-existing-columns",
+    "objectID": "slides/pandas-data-types.html#add-from-existing-columns",
+    "href": "slides/pandas-data-types.html#add-from-existing-columns",
     "title": "Data Types and Adding Columns",
-    "section": "From existing columns",
-    "text": "From existing columns\n\nCreate new columns from existing columns\n\n\n\n# calculate body mass index\ndf['bmi'] = round(df['weight'] / (df['height'] * df['height']), 2)\n\n\n\n\ndf\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nnumber\nbmi\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n42\n17.15\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n42\n24.11\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin\n42\n28.46"
+    "section": "Add from existing columns",
+    "text": "Add from existing columns\n\nCreate new columns from existing columns\n\n\n\n# calculate body mass index\ndf['bmi'] = round(df['weight'] / (df['height'] * df['height']), 2)\n\n\n\n\ndf\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nnumber\nbmi\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n42\n17.15\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n42\n24.11\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin\n42\n28.46"
   },
   {
-    "objectID": "slides/pandas-data-types.html#dates-1",
-    "href": "slides/pandas-data-types.html#dates-1",
+    "objectID": "slides/pandas-data-types.html#add-a-date-with-strftime",
+    "href": "slides/pandas-data-types.html#add-a-date-with-strftime",
     "title": "Data Types and Adding Columns",
-    "section": "Dates",
-    "text": "Dates\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n%a\nSun\nWeekday as locale’s abbreviated name.\n\n\n%A\nSunday\nWeekday as locale’s full name.\n\n\n%w\n0\nWeekday as a decimal number, where 0 is Sunday and 6 is Saturday.\n\n\n%d\n8\nDay of the month as a zero-padded decimal number.\n\n\n%-d\n8\nDay of the month as a decimal number. (Platform specific)"
+    "section": "Add a date with strftime",
+    "text": "Add a date with strftime\n\nTo add a date, we can use datetime and strftime (see code examples on the next slides):\n\n\n\ndf[\"date\"] = datetime.today().strftime('%Y-%m-%d')\n\n\n\n\ndf.head(3)\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nnumber\nbmi\ndate\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n42\n17.15\n2023-08-19\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n42\n24.11\n2023-08-19\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin\n42\n28.46\n2023-08-19"
   },
   {
-    "objectID": "slides/pandas-data-types.html#dates-2",
-    "href": "slides/pandas-data-types.html#dates-2",
+    "objectID": "slides/pandas-data-types.html#table-weekdays-and-day",
+    "href": "slides/pandas-data-types.html#table-weekdays-and-day",
     "title": "Data Types and Adding Columns",
-    "section": "Dates",
-    "text": "Dates\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n\n%b | Sep | Month as locale’s abbreviated name. |\n%B | September | Month as locale’s full name. |\n%m | 9 | Month as a zero-padded decimal number. |\n%-m | 9 | Month as a decimal number. (Platform specific) |"
+    "section": "Table: weekdays and day",
+    "text": "Table: weekdays and day\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n%a\nSun\nWeekday as locale’s abbreviated name.\n\n\n%A\nSunday\nWeekday as locale’s full name.\n\n\n%w\n0\nWeekday as a decimal number, where 0 is Sunday and 6 is Saturday.\n\n\n%d\n8\nDay of the month as a zero-padded decimal number.\n\n\n%-d\n8\nDay of the month as a decimal number. (Platform specific)"
   },
   {
-    "objectID": "slides/pandas-data-types.html#dates-3",
-    "href": "slides/pandas-data-types.html#dates-3",
+    "objectID": "slides/pandas-data-types.html#table-month",
+    "href": "slides/pandas-data-types.html#table-month",
     "title": "Data Types and Adding Columns",
-    "section": "Dates",
-    "text": "Dates\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n\n%y | 13 | Year without century as a zero-padded decimal number. |\n%Y | 2013 | Year with century as a decimal number. |\n%H | 7 | Hour (24-hour clock) as a zero-padded decimal number. |\n%-H | 7 | Hour (24-hour clock) as a decimal number. (Platform specific) |\n%I | 7 | Hour (12-hour clock) as a zero-padded decimal number. |\n%-I | 7 | Hour (12-hour clock) as a decimal number. (Platform specific) |"
+    "section": "Table: Month",
+    "text": "Table: Month\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n\n%b | Sep | Month as locale’s abbreviated name. |\n%B | September | Month as locale’s full name. |\n%m | 9 | Month as a zero-padded decimal number. |\n%-m | 9 | Month as a decimal number. (Platform specific) |"
   },
   {
-    "objectID": "slides/pandas-data-types.html#dates-4",
-    "href": "slides/pandas-data-types.html#dates-4",
+    "objectID": "slides/pandas-data-types.html#table-year-and-hour",
+    "href": "slides/pandas-data-types.html#table-year-and-hour",
     "title": "Data Types and Adding Columns",
-    "section": "Dates",
-    "text": "Dates\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n\n%p | AM | Locale’s equivalent of either AM or PM. |\n%M | 6 | Minute as a zero-padded decimal number. |\n%-M | 6 | Minute as a decimal number. (Platform specific) |\n%S | 5 | Second as a zero-padded decimal number. |\n%-S | 5 | Second as a decimal number. (Platform specific) |\n%f | 0 | Microsecond as a decimal number, zero-padded on the left. |\n%z | 0 | UTC offset in the form ±HHMM[SS[.ffffff]] (empty string if the object is naive). |\n%Z | UTC | Time zone name (empty string if the object is naive). |\n%j | 251 | Day of the year as a zero-padded decimal number. |\n%-j | 251 | Day of the year as a decimal number. (Platform specific) |\n%U | 36 | Week number of the year (Sunday as the first day of the week) as a zero padded decimal number. All days in a new year preceding the first Sunday are considered to be in week 0. |\n%W | 35 | Week number of the year (Monday as the first day of the week) as a decimal number. All days in a new year preceding the first Monday are considered to be in week 0. |\n%c | Sun Sep 8 07:06:05 2013 | Locale’s appropriate date and time representation. |\n%x | 09.08.13 | Locale’s appropriate date representation. |\n%X | 07:06:05 | Locale’s appropriate time representation. |\n%% | % | A literal ‘%’ character. |\n\n\nJan Kirenz"
+    "section": "Table: Year and hour",
+    "text": "Table: Year and hour\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n\n%y | 13 | Year without century as a zero-padded decimal number. |\n%Y | 2013 | Year with century as a decimal number. |\n%H | 7 | Hour (24-hour clock) as a zero-padded decimal number. |\n%-H | 7 | Hour (24-hour clock) as a decimal number. (Platform specific) |\n%I | 7 | Hour (12-hour clock) as a zero-padded decimal number. |\n%-I | 7 | Hour (12-hour clock) as a decimal number. (Platform specific) |"
+  },
+  {
+    "objectID": "slides/pandas-data-types.html#table-minutes-etc.",
+    "href": "slides/pandas-data-types.html#table-minutes-etc.",
+    "title": "Data Types and Adding Columns",
+    "section": "Table: Minutes etc.",
+    "text": "Table: Minutes etc.\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n\n%p | AM | Locale’s equivalent of either AM or PM. |\n%M | 6 | Minute as a zero-padded decimal number. |\n%-M | 6 | Minute as a decimal number. (Platform specific) |\n%S | 5 | Second as a zero-padded decimal number. |\n%-S | 5 | Second as a decimal number. (Platform specific) |\n%f | 0 | Microsecond as a decimal number, zero-padded on the left. |\n%z | 0 | UTC offset in the form ±HHMM[SS[.ffffff]] (empty string if the object is naive). |\n%Z | UTC | Time zone name (empty string if the object is naive). |\n%j | 251 | Day of the year as a zero-padded decimal number. |\n%-j | 251 | Day of the year as a decimal number. (Platform specific) |\n%U | 36 | Week number of the year (Sunday as the first day of the week) as a zero padded decimal number. All days in a new year preceding the first Sunday are considered to be in week 0. |\n%W | 35 | Week number of the year (Monday as the first day of the week) as a decimal number. All days in a new year preceding the first Monday are considered to be in week 0. |\n%c | Sun Sep 8 07:06:05 2013 | Locale’s appropriate date and time representation. |\n%x | 09.08.13 | Locale’s appropriate date representation. |\n%X | 07:06:05 | Locale’s appropriate time representation. |\n%% | % | A literal ‘%’ character. |\n\n\nJan Kirenz"
   },
   {
     "objectID": "code/5_selection.html",

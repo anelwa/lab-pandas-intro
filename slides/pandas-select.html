@@ -413,17 +413,15 @@ Jan Kirenz
 <h2 id="toc-title">Table of contents</h2>
 <ul>
 <li class="fragment"><a href="#/setup" id="/toc-setup">Setup</a></li>
-<li class="fragment"><a href="#/getting-columns" id="/toc-getting-columns">Getting Columns</a></li>
-<li class="fragment"><a href="#/getting-columns-with" id="/toc-getting-columns-with">Getting columns with [[]]</a></li>
-<li class="fragment"><a href="#/selecting-rows" id="/toc-selecting-rows">Selecting rows</a></li>
-<li class="fragment"><a href="#/location-loc" id="/toc-location-loc">Location: loc</a></li>
+<li class="fragment"><a href="#/select-with" id="/toc-select-with">Select with []</a></li>
+<li class="fragment"><a href="#/getting-data-with-loc" id="/toc-getting-data-with-loc">Getting data with loc</a></li>
 <li class="fragment"><a href="#/integer-based-indexing-.iloc" id="/toc-integer-based-indexing-.iloc">Integer based indexing: .iloc</a></li>
 </ul>
 </nav>
 </section>
 <section id="setup" class="title-slide slide level1 center">
 <h1>Setup</h1>
-<div id="dea43a4c" class="cell" data-execution_count="1">
+<div id="dee46899" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a>df <span class="op">=</span> pd.DataFrame({</span>
@@ -440,24 +438,24 @@ Jan Kirenz
 </div>
 </section>
 
-<section id="getting-columns" class="title-slide slide level1 center">
-<h1>Getting Columns</h1>
+<section>
+<section id="select-with" class="title-slide slide level1 center">
+<h1>Select with []</h1>
 
 </section>
-
-<section id="getting-columns-with" class="title-slide slide level1 center">
-<h1>Getting columns with [[]]</h1>
+<section id="getting-columns-with" class="slide level2">
+<h2>Getting columns with [[]]</h2>
 <ul>
 <li class="fragment"><p>Selecting a single column with <code>[[]]</code>:</p></li>
 <li class="fragment"><p>Select the column <code>city</code> and save it as a new Pandas dataframe <code>df_city</code></p></li>
 </ul>
 <div class="fragment">
-<div id="988c7743" class="cell" data-execution_count="2">
+<div id="c567a8cc" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df_city <span class="op">=</span> df[[<span class="st">"city"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
-<div id="e0017472" class="cell" data-execution_count="3">
+<div id="4fd24020" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df_city</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
@@ -505,18 +503,12 @@ Jan Kirenz
 </div>
 </div>
 </section>
-
-<section>
-<section id="selecting-rows" class="title-slide slide level1 center">
-<h1>Selecting rows</h1>
-
-</section>
 <section id="selecting-rows-with" class="slide level2">
 <h2>Selecting rows with []</h2>
 <ul>
 <li class="fragment">Selecting via <code>[]</code> slices the rows (endpoint is not included) and includes all columns:</li>
 </ul>
-<div id="ced89e83" class="cell" data-execution_count="4">
+<div id="8134bfb1" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df[<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
@@ -575,18 +567,13 @@ Jan Kirenz
 </div>
 </section></section>
 <section>
-<section id="location-loc" class="title-slide slide level1 center">
-<h1>Location: loc</h1>
-
+<section id="getting-data-with-loc" class="title-slide slide level1 center">
+<h1>Getting data with loc</h1>
+<p>The <code>.loc</code> (location) attribute is the primary access method.</p>
 </section>
-<section id="location" class="slide level2">
-<h2>Location</h2>
-<ul>
-<li class="fragment"><p>The <code>.loc</code> (location) attribute is the primary access method.</p></li>
-<li class="fragment"><p>For getting only the first row:</p></li>
-</ul>
-<div class="fragment">
-<div id="7e310e6c" class="cell" data-execution_count="5">
+<section id="only-the-first-row" class="slide level2">
+<h2>Only the first row</h2>
+<div id="e66020e0" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df.loc[[<span class="dv">0</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="5">
@@ -634,15 +621,14 @@ Jan Kirenz
 </div>
 </div>
 </div>
-</div>
 </section>
-<section id="selecting-on-a-multi-axis-by-label" class="slide level2">
-<h2>Selecting on a multi-axis by label</h2>
+<section id="one-row-and-one-column" class="slide level2">
+<h2>One row and one column</h2>
 <ul>
 <li class="fragment">Only select location at row 0 for column “name”</li>
 </ul>
 <div class="fragment">
-<div id="10462f7b" class="cell" data-execution_count="6">
+<div id="626f8dc6" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df.loc[<span class="dv">0</span>, <span class="st">'name'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="6">
@@ -652,13 +638,13 @@ Jan Kirenz
 </div>
 </div>
 </section>
-<section id="selecting-on-a-multi-axis-by-label-1" class="slide level2">
-<h2>Selecting on a multi-axis by label</h2>
+<section id="multiple-rows-and-one-column" class="slide level2">
+<h2>Multiple rows and one column</h2>
 <ul>
 <li class="fragment">Select row 2 to 4 for column “name” (when using .loc endpoints are included)</li>
 </ul>
 <div class="fragment">
-<div id="6dde76a4" class="cell" data-execution_count="7">
+<div id="b741be30" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>df.loc[<span class="dv">2</span>:<span class="dv">4</span>, <span class="st">'name'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="7">
@@ -670,13 +656,13 @@ Categories (3, object): ['Lisa', 'Peter', 'Tom']</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-on-a-multi-axis-by-label-2" class="slide level2">
-<h2>Selecting on a multi-axis by label</h2>
+<section id="multiple-rows-and-multiple-columns" class="slide level2">
+<h2>Multiple rows and multiple columns</h2>
 <ul>
 <li class="fragment">Select row 2 to 4 for columns “name” and “height” (when using .loc endpoints are included)</li>
 </ul>
 <div class="fragment">
-<div id="872dddaa" class="cell" data-execution_count="8">
+<div id="f954cb5b" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df.loc[<span class="dv">2</span>:<span class="dv">4</span>, [<span class="st">'name'</span>, <span class="st">'height'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="8">
@@ -718,13 +704,13 @@ Categories (3, object): ['Lisa', 'Peter', 'Tom']</code></pre>
 </div>
 </div>
 </section>
-<section id="selecting-on-a-multi-axis-by-label-3" class="slide level2">
-<h2>Selecting on a multi-axis by label</h2>
+<section id="all-rows-and-multiple-columns" class="slide level2">
+<h2>All rows and multiple columns</h2>
 <ul>
 <li class="fragment">Select all rows for name and height</li>
 </ul>
 <div class="fragment">
-<div id="e5524d9b" class="cell" data-execution_count="9">
+<div id="f042bcfe" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df.loc[:, [<span class="st">"name"</span>, <span class="st">"height"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="9">
@@ -776,9 +762,9 @@ Categories (3, object): ['Lisa', 'Peter', 'Tom']</code></pre>
 </div>
 </div>
 </section>
-<section id="getting-a-scalar-value" class="slide level2">
-<h2>Getting a scalar value</h2>
-<div id="a4f3dc68" class="cell" data-execution_count="10">
+<section id="scalar-value" class="slide level2">
+<h2>Scalar value</h2>
+<div id="0f584832" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>df.loc[[<span class="dv">0</span>], <span class="st">"height"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>0    1.68
@@ -791,14 +777,14 @@ Name: height, dtype: float64</code></pre>
 <h1>Integer based indexing: .iloc</h1>
 
 </section>
-<section id="integer-based-indexing-.iloc-1" class="slide level2 smaller">
-<h2>Integer based indexing .iloc</h2>
+<section id="basics" class="slide level2 smaller">
+<h2>Basics</h2>
 <ul>
 <li class="fragment"><p>Pandas provides a suite of methods in order to get purely integer based indexing.</p></li>
 <li class="fragment"><p>Here, the <code>.iloc</code> attribute is the primary access method.</p></li>
 </ul>
 <div class="fragment">
-<div id="0d3365c4" class="cell" data-execution_count="11">
+<div id="81f4a7aa" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df.iloc[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="11">
@@ -814,13 +800,13 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 </section>
-<section id="by-integer-slices" class="slide level2">
-<h2>By integer slices</h2>
+<section id="multiple-rows-and-columns" class="slide level2">
+<h2>Multiple rows and columns</h2>
 <ul>
 <li class="fragment"><em>When using <code>.iloc</code>, endpoints are not included.</em></li>
 </ul>
 <div class="fragment">
-<div id="c31b418d" class="cell" data-execution_count="12">
+<div id="dded8b82" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>df.iloc[<span class="dv">0</span>:<span class="dv">2</span>, <span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="12">
@@ -867,9 +853,9 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 </section>
-<section id="by-lists-of-integer-position-locations" class="slide level2">
-<h2>By lists of integer position locations</h2>
-<div id="8b58d3c8" class="cell" data-execution_count="13">
+<section id="lists-of-integer-position-locations" class="slide level2">
+<h2>Lists of integer position locations</h2>
+<div id="b6c418f4" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df.iloc[[<span class="dv">0</span>, <span class="dv">2</span>], [<span class="dv">0</span>, <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="13">
@@ -915,9 +901,9 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 </section>
-<section id="for-slicing-rows-explicitly" class="slide level2">
-<h2>For slicing rows explicitly</h2>
-<div id="d6e638cc" class="cell" data-execution_count="14">
+<section id="slicing-rows-explicitly" class="slide level2">
+<h2>Slicing rows explicitly</h2>
+<div id="443639c7" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>df.iloc[<span class="dv">1</span>:<span class="dv">3</span>, :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="14">
@@ -975,9 +961,9 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 </section>
-<section id="for-slicing-columns-explicitly" class="slide level2">
-<h2>For slicing columns explicitly</h2>
-<div id="8df9bc09" class="cell" data-execution_count="15">
+<section id="slicing-columns-explicitly" class="slide level2">
+<h2>Slicing columns explicitly</h2>
+<div id="c577d191" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>df.iloc[:, <span class="dv">1</span>:<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="15">
@@ -1028,9 +1014,9 @@ Name: 0, dtype: object</code></pre>
 </div>
 </div>
 </section>
-<section id="for-getting-a-value-explicitly" class="slide level2">
-<h2>For getting a value explicitly</h2>
-<div id="78bd109f" class="cell" data-execution_count="16">
+<section id="getting-a-value-explicitly" class="slide level2">
+<h2>Getting a value explicitly</h2>
+<div id="a6dc1ff8" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df.iloc[<span class="dv">0</span>, <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>'Tom'</code></pre>

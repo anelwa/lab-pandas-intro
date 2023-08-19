@@ -414,8 +414,8 @@ Jan Kirenz
 <ul>
 <li class="fragment"><a href="#/import-pandas" id="/toc-import-pandas">Import pandas</a></li>
 <li class="fragment"><a href="#/create-data" id="/toc-create-data">Create Data</a></li>
-<li class="fragment"><a href="#/import-data" id="/toc-import-data">Import data</a></li>
-<li class="fragment"><a href="#/store-data" id="/toc-store-data">Store data</a></li>
+<li class="fragment"><a href="#/import-data-with-.read" id="/toc-import-data-with-.read">Import data with .read()</a></li>
+<li class="fragment"><a href="#/store-data-with-.to" id="/toc-store-data-with-.to">Store data with .to()</a></li>
 <li class="fragment"><a href="#/viewing-data" id="/toc-viewing-data">Viewing data</a></li>
 </ul>
 </nav>
@@ -427,7 +427,7 @@ Jan Kirenz
 <li class="fragment"><p>The community agreed alias for pandas is <code>pd</code></p></li>
 </ul>
 <div class="fragment">
-<div id="b6f24711" class="cell" data-execution_count="1">
+<div id="22ec3afe" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -438,12 +438,12 @@ Jan Kirenz
 <h1>Create Data</h1>
 
 </section>
-<section id="data-creation" class="slide level2">
-<h2>Data creation</h2>
+<section id="create-a-dataframe" class="slide level2">
+<h2>Create a DataFrame</h2>
 <ul>
 <li class="fragment">To manually store data in a table, create a DataFrame:</li>
 </ul>
-<div id="8b5d029e" class="cell" data-execution_count="2">
+<div id="205facbf" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2" data-code-line-numbers="|1|2|3|4|5|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb2-2"><a href="#cb2-2"></a>    <span class="st">'name'</span>: [<span class="st">"Tom"</span>, <span class="st">"Lisa"</span>, <span class="st">"Peter"</span>],</span>
 <span id="cb2-3"><a href="#cb2-3"></a>    <span class="st">'height'</span>: [<span class="fl">1.68</span>, <span class="fl">1.93</span>, <span class="fl">1.72</span>],</span>
@@ -453,9 +453,9 @@ Jan Kirenz
 <span id="cb2-7"><a href="#cb2-7"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="show-data" class="slide level2">
-<h2>Show data</h2>
-<div id="700478a6" class="cell" data-execution_count="3">
+<section id="show-data-with-head" class="slide level2">
+<h2>Show data with head()</h2>
+<div id="d9b9a48c" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
@@ -519,20 +519,20 @@ Jan Kirenz
 </div>
 </section></section>
 <section>
-<section id="import-data" class="title-slide slide level1 center">
-<h1>Import data</h1>
+<section id="import-data-with-.read" class="title-slide slide level1 center">
+<h1>Import data with .read()</h1>
 <ul>
 <li class="fragment">Import data with the prefix <code>.read_*</code></li>
 </ul>
 
 <img data-src="https://pandas.pydata.org/docs/_images/02_io_readwrite.svg" class="r-stretch"></section>
-<section id="import-data-1" class="slide level2">
-<h2>Import data</h2>
+<section id="import-data-from-github" class="slide level2">
+<h2>Import data from GitHub</h2>
 <ul>
 <li class="fragment">Import a CSV file in a GitHub repo</li>
 </ul>
 <div class="fragment">
-<div id="61abf3e1" class="cell" data-execution_count="4">
+<div id="abd7e0d5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4" data-code-line-numbers="|1|3|5|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>URL <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/kirenz/datasets/master/campaign.csv"</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
 <span id="cb4-3"><a href="#cb4-3"></a>df_github <span class="op">=</span> pd.read_csv(URL, sep<span class="op">=</span><span class="st">","</span>, decimal<span class="op">=</span><span class="st">'.'</span>)</span>
@@ -622,13 +622,13 @@ Jan Kirenz
 </div>
 </div>
 </section></section>
-<section id="store-data" class="title-slide slide level1 center">
-<h1>Store data</h1>
+<section id="store-data-with-.to" class="title-slide slide level1 center">
+<h1>Store data with .to()</h1>
 <ul>
 <li class="fragment">Store data with the prefix <code>.to_*</code></li>
 </ul>
 <div class="fragment">
-<div id="4c179cbd" class="cell" data-execution_count="5">
+<div id="f1bf5f3a" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df_github.to_csv(<span class="st">"data.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -642,9 +642,9 @@ Jan Kirenz
 <h1>Viewing data</h1>
 
 </section>
-<section id="overview" class="slide level2">
-<h2>Overview</h2>
-<div id="ae4e3bcc" class="cell" data-execution_count="6">
+<section id="data-overview" class="slide level2">
+<h2>Data overview</h2>
+<div id="226d551b" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="6">
@@ -709,7 +709,7 @@ Jan Kirenz
 </section>
 <section id="head-and-tail" class="slide level2">
 <h2>Head and tail</h2>
-<div id="6e0a7dc9" class="cell" data-execution_count="7">
+<div id="2a9523b0" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># show first 2 rows</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>df.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -765,7 +765,7 @@ Jan Kirenz
 </div>
 </div>
 <div class="fragment">
-<div id="862bed0f" class="cell" data-execution_count="8">
+<div id="01459a61" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># show last 2 rows</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a>df.tail(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -828,7 +828,7 @@ Jan Kirenz
 <li class="fragment">The <code>info()</code> method prints information about a DataFrame.</li>
 </ul>
 <div class="fragment">
-<div id="e68d3446" class="cell" data-execution_count="9">
+<div id="f450ec0a" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="9">
@@ -849,9 +849,9 @@ memory usage: 252.0+ bytes</code></pre>
 </div>
 </div>
 </section>
-<section id="column-names" class="slide level2">
-<h2>Column names</h2>
-<div id="6851b37b" class="cell" data-execution_count="10">
+<section id="show-column-names" class="slide level2">
+<h2>Show column names</h2>
+<div id="b1748d4d" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="10">
@@ -860,13 +860,13 @@ memory usage: 252.0+ bytes</code></pre>
 </div>
 </div>
 </section>
-<section id="data-type" class="slide level2">
-<h2>Data type</h2>
+<section id="show-data-types" class="slide level2">
+<h2>Show data types</h2>
 <ul>
 <li class="fragment">Show data types (<a href="https://pandas.pydata.org/docs/user_guide/basics.html#basics-dtypes">dtypes</a>).</li>
 </ul>
 <div class="fragment">
-<div id="4c6de9b7" class="cell" data-execution_count="11">
+<div id="63c2af8c" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="11">
@@ -884,9 +884,9 @@ dtype: object</code></pre>
 </ul>
 </div>
 </section>
-<section id="index" class="slide level2">
-<h2>Index</h2>
-<div id="e7bda95f" class="cell" data-execution_count="12">
+<section id="show-index" class="slide level2">
+<h2>Show index</h2>
+<div id="2fd31281" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="12">
