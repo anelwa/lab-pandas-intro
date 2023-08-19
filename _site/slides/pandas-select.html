@@ -424,21 +424,20 @@ Jan Kirenz
 </section>
 <section id="setup" class="title-slide slide level1 center">
 <h1>Setup</h1>
-<div id="8ed469b2" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="5fef461a" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="|1|2|3|4|5|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb2-2"><a href="#cb2-2"></a>    <span class="st">'name'</span>: [<span class="st">"Tom"</span>, <span class="st">"Lisa"</span>, <span class="st">"Peter"</span>],</span>
-<span id="cb2-3"><a href="#cb2-3"></a>    <span class="st">'height'</span>: [<span class="fl">1.68</span>, <span class="fl">1.93</span>, <span class="fl">1.72</span>],</span>
-<span id="cb2-4"><a href="#cb2-4"></a>    <span class="st">'weight'</span>: [<span class="fl">48.4</span>, <span class="fl">89.8</span>, <span class="fl">84.2</span>],</span>
-<span id="cb2-5"><a href="#cb2-5"></a>    <span class="st">'id'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
-<span id="cb2-6"><a href="#cb2-6"></a>    <span class="st">'city'</span>: [<span class="st">'Stuttgart'</span>, <span class="st">'Stuttgart'</span>, <span class="st">'Berlin'</span>]</span>
-<span id="cb2-7"><a href="#cb2-7"></a>})</span>
-<span id="cb2-8"><a href="#cb2-8"></a></span>
-<span id="cb2-9"><a href="#cb2-9"></a>df[<span class="st">'bmi'</span>] <span class="op">=</span> <span class="bu">round</span>(df[<span class="st">'weight'</span>] <span class="op">/</span> (df[<span class="st">'height'</span>] <span class="op">*</span> df[<span class="st">'height'</span>]), <span class="dv">2</span>)</span>
-<span id="cb2-10"><a href="#cb2-10"></a>df[<span class="st">"name"</span>] <span class="op">=</span> df[<span class="st">"name"</span>].astype(<span class="st">"category"</span>)</span>
-<span id="cb2-11"><a href="#cb2-11"></a>df[<span class="st">'id'</span>] <span class="op">=</span> df[<span class="st">'id'</span>].astype(<span class="bu">str</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="dea43a4c" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb1-4"><a href="#cb1-4"></a>    <span class="st">'name'</span>: [<span class="st">"Tom"</span>, <span class="st">"Lisa"</span>, <span class="st">"Peter"</span>],</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="st">'height'</span>: [<span class="fl">1.68</span>, <span class="fl">1.93</span>, <span class="fl">1.72</span>],</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    <span class="st">'weight'</span>: [<span class="fl">48.4</span>, <span class="fl">89.8</span>, <span class="fl">84.2</span>],</span>
+<span id="cb1-7"><a href="#cb1-7"></a>    <span class="st">'id'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb1-8"><a href="#cb1-8"></a>    <span class="st">'city'</span>: [<span class="st">'Stuttgart'</span>, <span class="st">'Stuttgart'</span>, <span class="st">'Berlin'</span>]</span>
+<span id="cb1-9"><a href="#cb1-9"></a>})</span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a>df[<span class="st">'bmi'</span>] <span class="op">=</span> <span class="bu">round</span>(df[<span class="st">'weight'</span>] <span class="op">/</span> (df[<span class="st">'height'</span>] <span class="op">*</span> df[<span class="st">'height'</span>]), <span class="dv">2</span>)</span>
+<span id="cb1-12"><a href="#cb1-12"></a>df[<span class="st">"name"</span>] <span class="op">=</span> df[<span class="st">"name"</span>].astype(<span class="st">"category"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13"></a>df[<span class="st">'id'</span>] <span class="op">=</span> df[<span class="st">'id'</span>].astype(<span class="bu">str</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
@@ -454,16 +453,16 @@ Jan Kirenz
 <li class="fragment"><p>Select the column <code>city</code> and save it as a new Pandas dataframe <code>df_city</code></p></li>
 </ul>
 <div class="fragment">
-<div id="33d1b0de" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df_city <span class="op">=</span> df[[<span class="st">"city"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="988c7743" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df_city <span class="op">=</span> df[[<span class="st">"city"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
-<div id="ecee7b33" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df_city</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e0017472" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df_city</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="4">
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell fragment" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -518,11 +517,11 @@ Jan Kirenz
 <ul>
 <li class="fragment">Selecting via <code>[]</code> slices the rows (endpoint is not included) and includes all columns:</li>
 </ul>
-<div id="3cf863d2" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df[<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ced89e83" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df[<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="5">
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell fragment" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -588,11 +587,11 @@ Jan Kirenz
 <li class="fragment"><p>For getting only the first row:</p></li>
 </ul>
 <div class="fragment">
-<div id="55ef23fb" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df.loc[[<span class="dv">0</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7e310e6c" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df.loc[[<span class="dv">0</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="6">
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell fragment" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -644,11 +643,11 @@ Jan Kirenz
 <li class="fragment">Only select location at row 0 for column “name”</li>
 </ul>
 <div class="fragment">
-<div id="abd9554d" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>df.loc[<span class="dv">0</span>, <span class="st">'name'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="10462f7b" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df.loc[<span class="dv">0</span>, <span class="st">'name'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="7">
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell fragment" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>'Tom'</code></pre>
 </div>
 </div>
@@ -660,11 +659,11 @@ Jan Kirenz
 <li class="fragment">Select row 2 to 4 for column “name” (when using .loc endpoints are included)</li>
 </ul>
 <div class="fragment">
-<div id="5fadcd8c" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df.loc[<span class="dv">2</span>:<span class="dv">4</span>, <span class="st">'name'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6dde76a4" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>df.loc[<span class="dv">2</span>:<span class="dv">4</span>, <span class="st">'name'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="8">
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell fragment" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>2    Peter
 Name: name, dtype: category
 Categories (3, object): ['Lisa', 'Peter', 'Tom']</code></pre>
@@ -678,11 +677,11 @@ Categories (3, object): ['Lisa', 'Peter', 'Tom']</code></pre>
 <li class="fragment">Select row 2 to 4 for columns “name” and “height” (when using .loc endpoints are included)</li>
 </ul>
 <div class="fragment">
-<div id="d4245655" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df.loc[<span class="dv">2</span>:<span class="dv">4</span>, [<span class="st">'name'</span>, <span class="st">'height'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="872dddaa" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df.loc[<span class="dv">2</span>:<span class="dv">4</span>, [<span class="st">'name'</span>, <span class="st">'height'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="9">
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell fragment" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -726,11 +725,11 @@ Categories (3, object): ['Lisa', 'Peter', 'Tom']</code></pre>
 <li class="fragment">Select all rows for name and height</li>
 </ul>
 <div class="fragment">
-<div id="5544ccda" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>df.loc[:, [<span class="st">"name"</span>, <span class="st">"height"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e5524d9b" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df.loc[:, [<span class="st">"name"</span>, <span class="st">"height"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="10">
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell fragment" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -780,9 +779,9 @@ Categories (3, object): ['Lisa', 'Peter', 'Tom']</code></pre>
 </section>
 <section id="getting-a-scalar-value" class="slide level2">
 <h2>Getting a scalar value</h2>
-<div id="996ba34f" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>df.loc[[<span class="dv">0</span>], <span class="st">"height"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div id="a4f3dc68" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>df.loc[[<span class="dv">0</span>], <span class="st">"height"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>0    1.68
 Name: height, dtype: float64</code></pre>
 </div>
@@ -800,11 +799,11 @@ Name: height, dtype: float64</code></pre>
 <li class="fragment"><p>Here, the <code>.iloc</code> attribute is the primary access method.</p></li>
 </ul>
 <div class="fragment">
-<div id="301ab22a" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df.iloc[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0d3365c4" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df.iloc[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="12">
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell fragment" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>name            Tom
 height         1.68
 weight         48.4
@@ -822,11 +821,11 @@ Name: 0, dtype: object</code></pre>
 <li class="fragment"><em>When using <code>.iloc</code>, endpoints are not included.</em></li>
 </ul>
 <div class="fragment">
-<div id="ad8d8578" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df.iloc[<span class="dv">0</span>:<span class="dv">2</span>, <span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c31b418d" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>df.iloc[<span class="dv">0</span>:<span class="dv">2</span>, <span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="13">
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell fragment" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -871,11 +870,11 @@ Name: 0, dtype: object</code></pre>
 </section>
 <section id="by-lists-of-integer-position-locations" class="slide level2">
 <h2>By lists of integer position locations</h2>
-<div id="c4a06953" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>df.iloc[[<span class="dv">0</span>, <span class="dv">2</span>], [<span class="dv">0</span>, <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8b58d3c8" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df.iloc[[<span class="dv">0</span>, <span class="dv">2</span>], [<span class="dv">0</span>, <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="14">
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell fragment" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -919,11 +918,11 @@ Name: 0, dtype: object</code></pre>
 </section>
 <section id="for-slicing-rows-explicitly" class="slide level2">
 <h2>For slicing rows explicitly</h2>
-<div id="3b92350e" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>df.iloc[<span class="dv">1</span>:<span class="dv">3</span>, :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d6e638cc" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>df.iloc[<span class="dv">1</span>:<span class="dv">3</span>, :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="15">
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="cell fragment" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -979,11 +978,11 @@ Name: 0, dtype: object</code></pre>
 </section>
 <section id="for-slicing-columns-explicitly" class="slide level2">
 <h2>For slicing columns explicitly</h2>
-<div id="103d4e81" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df.iloc[:, <span class="dv">1</span>:<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8df9bc09" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>df.iloc[:, <span class="dv">1</span>:<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="16">
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell fragment" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -1032,9 +1031,9 @@ Name: 0, dtype: object</code></pre>
 </section>
 <section id="for-getting-a-value-explicitly" class="slide level2">
 <h2>For getting a value explicitly</h2>
-<div id="1bc1818d" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>df.iloc[<span class="dv">0</span>, <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div id="78bd109f" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df.iloc[<span class="dv">0</span>, <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>'Tom'</code></pre>
 </div>
 </div>
