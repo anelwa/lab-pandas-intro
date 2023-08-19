@@ -431,28 +431,42 @@
     "href": "slides/slides.html#data-type",
     "title": "Pandas",
     "section": "Data type",
-    "text": "Data type\n\nShow data types (dtypes).\n\n\ndf.dtypes\n\n\n\nname       object\nheight    float64\nweight    float64\nid          int64\ndtype: object\n\n\n\nThe data types in this DataFrame are integers (int64), floats (float64) and strings (object).\n\nIndex\n\ndf.index\n\n\n\nRangeIndex(start=0, stop=3, step=1)"
+    "text": "Data type\n\nShow data types (dtypes).\n\n\ndf.dtypes\n\n\n\nname       object\nheight    float64\nweight    float64\nid          int64\ndtype: object\n\n\n\nThe data types in this DataFrame are integers (int64), floats (float64) and strings (object)."
+  },
+  {
+    "objectID": "slides/slides.html#index",
+    "href": "slides/slides.html#index",
+    "title": "Pandas",
+    "section": "Index",
+    "text": "Index\n\ndf.index\n\n\n\nRangeIndex(start=0, stop=3, step=1)"
   },
   {
     "objectID": "slides/slides.html#column-names-1",
     "href": "slides/slides.html#column-names-1",
     "title": "Pandas",
     "section": "Column names",
-    "text": "Column names\nUsually, we prefer to work with columns that have the following proporties:\n\nno leading or trailing whitespace (\"name\" instead of \" name \", \" name\" or \"name \")\nall lowercase (\"name\" instead of \"Name\")\nnow white spaces (\"my_name\" instead of \"my name\")"
+    "text": "Column names\nUsually, we prefer to work with columns that have the following proporties:\n\nno leading or trailing whitespace (\"name\" instead of \" name \", \" name\" or \"name \")\nall lowercase (\"name\" instead of \"Name\")\nno white spaces (\"my_name\" instead of \"my name\")"
   },
   {
     "objectID": "slides/slides.html#simple-rename",
     "href": "slides/slides.html#simple-rename",
     "title": "Pandas",
     "section": "Simple rename",
-    "text": "Simple rename\n\nFirst, we rename columns by simply using a mapping\nWe rename \"name\" to \" MY NEW-NAME\" (note that we include a leading whitespace)\n\n\n\ndf = df.rename(columns={\"name\": \" MY NEW-NAME\"}, errors=\"raise\")\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nMY NEW-NAME\nheight\nweight\nid\n\n\n\n\n0\nTom\n1.68\n48.4\n1\n\n\n1\nLisa\n1.93\n89.8\n2\n\n\n2\nPeter\n1.72\n84.2\n3\n\n\n\n\n\n\n\n\n\n\ndf.columns\n\n\n\nIndex([' MY NEW-NAME', 'height', 'weight', 'id'], dtype='object')"
+    "text": "Simple rename\n\nFirst, we rename columns by simply using a mapping\nWe rename \"name\" to \" MY NEW-NAME\" (note that we include a leading whitespace)\n\n\n\ndf = df.rename(columns={\"name\": \" MY NEW-NAME\"}, errors=\"raise\")"
+  },
+  {
+    "objectID": "slides/slides.html#simple-rename-1",
+    "href": "slides/slides.html#simple-rename-1",
+    "title": "Pandas",
+    "section": "Simple rename",
+    "text": "Simple rename\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nMY NEW-NAME\nheight\nweight\nid\n\n\n\n\n0\nTom\n1.68\n48.4\n1\n\n\n1\nLisa\n1.93\n89.8\n2\n\n\n2\nPeter\n1.72\n84.2\n3\n\n\n\n\n\n\n\n\n\ndf.columns\n\n\n\nIndex([' MY NEW-NAME', 'height', 'weight', 'id'], dtype='object')"
   },
   {
     "objectID": "slides/slides.html#trailing-and-leading-spaces-with-regex",
     "href": "slides/slides.html#trailing-and-leading-spaces-with-regex",
     "title": "Pandas",
     "section": "Trailing and leading spaces (with regex)",
-    "text": "Trailing and leading spaces (with regex)\n\nWe use regular expressions to deal with whitespaces\nTo change multiple column names in df at once, we use the method df.columns = df.columns.str___\nTo replace the spaces, we use .replace() with regex=True"
+    "text": "Trailing and leading spaces (with regex)\n\nWe use regular expressions to deal with whitespaces\nTo change multiple column names in df at once, we use the method df.columns = df.columns.str.replace()\nTo replace the spaces, we use .replace() with regex=True"
   },
   {
     "objectID": "slides/slides.html#regular-expressions",
@@ -480,14 +494,14 @@
     "href": "slides/slides.html#replace-special-characters",
     "title": "Pandas",
     "section": "Replace special characters",
-    "text": "Replace special characters\n\nAgain, we use regular expressions to deal with special characters (like %, &, $ etc.)\n\nReplace “-” with “_”\n\n\ndf.columns = df.columns.str.replace(r\"-\", r\"_\", regex=True)\n\n\n\n\n\n\n\ndf.columns\n\n\n\nIndex(['MY NEW_NAME', 'height', 'weight', 'id'], dtype='object')"
+    "text": "Replace special characters\n\nAgain, we use regular expressions to deal with special characters (like -, %, &, $ etc.)\nReplace “-” with “_”\n\n\n\ndf.columns = df.columns.str.replace(r\"-\", r\"_\", regex=True)\n\n\n\n\n\n\n\ndf.columns\n\n\n\nIndex(['MY NEW_NAME', 'height', 'weight', 'id'], dtype='object')"
   },
   {
     "objectID": "slides/slides.html#lowercase-and-whitespace",
     "href": "slides/slides.html#lowercase-and-whitespace",
     "title": "Pandas",
     "section": "Lowercase and whitespace",
-    "text": "Lowercase and whitespace\nWe can use two simple methods to convert all columns to lowercase and replace white spaces with underscores (“_“):\n\n.str.lower()\n.str.replace(' ', '_')\n\n\n\ndf.columns = df.columns.str.lower().str.replace(' ', '_')\n\n\n\n\n\n\n\ndf.columns\n\n\n\nIndex(['my_new_name', 'height', 'weight', 'id'], dtype='object')"
+    "text": "Lowercase and whitespace\n\nWe can use two simple methods to convert all columns to lowercase and replace white spaces with underscores (“_“):\n.str.lower()\n.str.replace(' ', '_')\n\n\n\ndf.columns = df.columns.str.lower().str.replace(' ', '_')\n\n\n\n\n\n\n\ndf.columns\n\n\n\nIndex(['my_new_name', 'height', 'weight', 'id'], dtype='object')"
   },
   {
     "objectID": "slides/slides.html#data",
@@ -501,14 +515,21 @@
     "href": "slides/slides.html#data-types-1",
     "title": "Pandas",
     "section": "Data Types",
-    "text": "Data Types\n\ndf.dtypes\n\n\n\nname       object\nheight    float64\nweight    float64\nid          int64\ndtype: object\n\n\n\n\ndf.info()\n\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 3 entries, 0 to 2\nData columns (total 4 columns):\n #   Column  Non-Null Count  Dtype  \n---  ------  --------------  -----  \n 0   name    3 non-null      object \n 1   height  3 non-null      float64\n 2   weight  3 non-null      float64\n 3   id      3 non-null      int64  \ndtypes: float64(2), int64(1), object(1)\nmemory usage: 228.0+ bytes"
+    "text": "Data Types\n\ndf.dtypes\n\n\n\nname       object\nheight    float64\nweight    float64\nid          int64\ndtype: object"
+  },
+  {
+    "objectID": "slides/slides.html#data-types-2",
+    "href": "slides/slides.html#data-types-2",
+    "title": "Pandas",
+    "section": "Data Types",
+    "text": "Data Types\n\ndf.info()\n\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 3 entries, 0 to 2\nData columns (total 4 columns):\n #   Column  Non-Null Count  Dtype  \n---  ------  --------------  -----  \n 0   name    3 non-null      object \n 1   height  3 non-null      float64\n 2   weight  3 non-null      float64\n 3   id      3 non-null      int64  \ndtypes: float64(2), int64(1), object(1)\nmemory usage: 228.0+ bytes"
   },
   {
     "objectID": "slides/slides.html#change-data-type",
     "href": "slides/slides.html#change-data-type",
     "title": "Pandas",
     "section": "Change data type",
-    "text": "Change data type\n\nThere are several methods to change data types in pandas:\n\nThe most common method to change the data type is:\n\n.astype(): Convert to a specific type (like “int32”, “float” or “catgeory”)\n.astype(str): Convert to string"
+    "text": "Change data type\n\nThere are several methods to change data types in pandas:\nThe most common method to change the data type is:\n.astype(): Convert to a specific type (like “int32”, “float” or “catgeory”)\n.astype(str): Convert to string"
   },
   {
     "objectID": "slides/slides.html#change-data-type-1",
@@ -532,6 +553,13 @@
     "text": "Categorical data\n\nConvert variable “name” to a category dtype:\n\n\n\ndf[\"name\"] = df[\"name\"].astype(\"category\")"
   },
   {
+    "objectID": "slides/slides.html#change-data-type-2",
+    "href": "slides/slides.html#change-data-type-2",
+    "title": "Pandas",
+    "section": "Change data type",
+    "text": "Change data type\n\ndf.info()\n\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 3 entries, 0 to 2\nData columns (total 4 columns):\n #   Column  Non-Null Count  Dtype   \n---  ------  --------------  -----   \n 0   name    3 non-null      category\n 1   height  3 non-null      float64 \n 2   weight  3 non-null      float64 \n 3   id      3 non-null      int64   \ndtypes: category(1), float64(2), int64(1)\nmemory usage: 339.0 bytes"
+  },
+  {
     "objectID": "slides/slides.html#string-data",
     "href": "slides/slides.html#string-data",
     "title": "Pandas",
@@ -539,8 +567,8 @@
     "text": "String data\n\nIn our example, id is not a number (we can’t perform calculations with it)\nIt is just a unique identifier so we should transform it to a simple string (object)\n\n\n\ndf['id'] = df['id'].astype(str)"
   },
   {
-    "objectID": "slides/slides.html#change-data-type-2",
-    "href": "slides/slides.html#change-data-type-2",
+    "objectID": "slides/slides.html#change-data-type-3",
+    "href": "slides/slides.html#change-data-type-3",
     "title": "Pandas",
     "section": "Change data type",
     "text": "Change data type\n\ndf.info()\n\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 3 entries, 0 to 2\nData columns (total 4 columns):\n #   Column  Non-Null Count  Dtype   \n---  ------  --------------  -----   \n 0   name    3 non-null      category\n 1   height  3 non-null      float64 \n 2   weight  3 non-null      float64 \n 3   id      3 non-null      object  \ndtypes: category(1), float64(2), object(1)\nmemory usage: 339.0+ bytes"
@@ -557,13 +585,41 @@
     "href": "slides/slides.html#from-existing-columns",
     "title": "Pandas",
     "section": "From existing columns",
-    "text": "From existing columns\n\nCreate new columns from existing columns\n\n\n\n# calculate body mass index\ndf['bmi'] = round(df['weight'] / (df['height'] * df['height']), 2)\n\n\n\n\n\ndf\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\nnumber\nbmi\n\n\n\n\n0\nTom\n1.68\n48.4\n1\n42\n17.15\n\n\n1\nLisa\n1.93\n89.8\n2\n42\n24.11\n\n\n2\nPeter\n1.72\n84.2\n3\n42\n28.46"
+    "text": "From existing columns\n\nCreate new columns from existing columns\n\n\n\n# calculate body mass index\ndf['bmi'] = round(df['weight'] / (df['height'] * df['height']), 2)\n\n\n\n\ndf\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\nnumber\nbmi\n\n\n\n\n0\nTom\n1.68\n48.4\n1\n42\n17.15\n\n\n1\nLisa\n1.93\n89.8\n2\n42\n24.11\n\n\n2\nPeter\n1.72\n84.2\n3\n42\n28.46"
   },
   {
     "objectID": "slides/slides.html#date",
     "href": "slides/slides.html#date",
     "title": "Pandas",
     "section": "Date",
-    "text": "Date\n\nTo add a date, we can use datetime and strftime (see code examples on the next slides):\n\n\n\ndf[\"date\"] = datetime.today().strftime('%Y-%m-%d')\n\ndf.head(3)\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\nnumber\nbmi\ndate\n\n\n\n\n0\nTom\n1.68\n48.4\n1\n42\n17.15\n2023-08-19\n\n\n1\nLisa\n1.93\n89.8\n2\n42\n24.11\n2023-08-19\n\n\n2\nPeter\n1.72\n84.2\n3\n42\n28.46\n2023-08-19\n\n\n\n\n\n\n\nDates\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n%a\nSun\nWeekday as locale’s abbreviated name.\n\n\n%A\nSunday\nWeekday as locale’s full name.\n\n\n%w\n0\nWeekday as a decimal number, where 0 is Sunday and 6 is Saturday.\n\n\n%d\n8\nDay of the month as a zero-padded decimal number.\n\n\n%-d\n8\nDay of the month as a decimal number. (Platform specific)\n\n\n%b\nSep\nMonth as locale’s abbreviated name.\n\n\n%B\nSeptember\nMonth as locale’s full name.\n\n\n%m\n9\nMonth as a zero-padded decimal number.\n\n\n%-m\n9\nMonth as a decimal number. (Platform specific)\n\n\n%y\n13\nYear without century as a zero-padded decimal number.\n\n\n%Y\n2013\nYear with century as a decimal number.\n\n\n%H\n7\nHour (24-hour clock) as a zero-padded decimal number.\n\n\n%-H\n7\nHour (24-hour clock) as a decimal number. (Platform specific)\n\n\n%I\n7\nHour (12-hour clock) as a zero-padded decimal number.\n\n\n%-I\n7\nHour (12-hour clock) as a decimal number. (Platform specific)\n\n\n%p\nAM\nLocale’s equivalent of either AM or PM.\n\n\n%M\n6\nMinute as a zero-padded decimal number.\n\n\n%-M\n6\nMinute as a decimal number. (Platform specific)\n\n\n%S\n5\nSecond as a zero-padded decimal number.\n\n\n%-S\n5\nSecond as a decimal number. (Platform specific)\n\n\n%f\n0\nMicrosecond as a decimal number, zero-padded on the left.\n\n\n%z\n0\nUTC offset in the form ±HHMM[SS[.ffffff]] (empty string if the object is naive).\n\n\n%Z\nUTC\nTime zone name (empty string if the object is naive).\n\n\n%j\n251\nDay of the year as a zero-padded decimal number.\n\n\n%-j\n251\nDay of the year as a decimal number. (Platform specific)\n\n\n%U\n36\nWeek number of the year (Sunday as the first day of the week) as a zero padded decimal number. All days in a new year preceding the first Sunday are considered to be in week 0.\n\n\n%W\n35\nWeek number of the year (Monday as the first day of the week) as a decimal number. All days in a new year preceding the first Monday are considered to be in week 0.\n\n\n%c\nSun Sep 8 07:06:05 2013\nLocale’s appropriate date and time representation.\n\n\n%x\n09.08.13\nLocale’s appropriate date representation.\n\n\n%X\n07:06:05\nLocale’s appropriate time representation.\n\n\n%%\n%\nA literal ‘%’ character.\n\n\n\n\n\nJan Kirenz"
+    "text": "Date\n\nTo add a date, we can use datetime and strftime (see code examples on the next slides):\n\n\n\ndf[\"date\"] = datetime.today().strftime('%Y-%m-%d')\n\n\n\n\ndf.head(3)\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\nnumber\nbmi\ndate\n\n\n\n\n0\nTom\n1.68\n48.4\n1\n42\n17.15\n2023-08-19\n\n\n1\nLisa\n1.93\n89.8\n2\n42\n24.11\n2023-08-19\n\n\n2\nPeter\n1.72\n84.2\n3\n42\n28.46\n2023-08-19"
+  },
+  {
+    "objectID": "slides/slides.html#dates",
+    "href": "slides/slides.html#dates",
+    "title": "Pandas",
+    "section": "Dates",
+    "text": "Dates\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n%a\nSun\nWeekday as locale’s abbreviated name.\n\n\n%A\nSunday\nWeekday as locale’s full name.\n\n\n%w\n0\nWeekday as a decimal number, where 0 is Sunday and 6 is Saturday.\n\n\n%d\n8\nDay of the month as a zero-padded decimal number.\n\n\n%-d\n8\nDay of the month as a decimal number. (Platform specific)"
+  },
+  {
+    "objectID": "slides/slides.html#dates-1",
+    "href": "slides/slides.html#dates-1",
+    "title": "Pandas",
+    "section": "Dates",
+    "text": "Dates\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n\n%b | Sep | Month as locale’s abbreviated name. |\n%B | September | Month as locale’s full name. |\n%m | 9 | Month as a zero-padded decimal number. |\n%-m | 9 | Month as a decimal number. (Platform specific) |"
+  },
+  {
+    "objectID": "slides/slides.html#dates-2",
+    "href": "slides/slides.html#dates-2",
+    "title": "Pandas",
+    "section": "Dates",
+    "text": "Dates\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n\n%y | 13 | Year without century as a zero-padded decimal number. |\n%Y | 2013 | Year with century as a decimal number. |\n%H | 7 | Hour (24-hour clock) as a zero-padded decimal number. |\n%-H | 7 | Hour (24-hour clock) as a decimal number. (Platform specific) |\n%I | 7 | Hour (12-hour clock) as a zero-padded decimal number. |\n%-I | 7 | Hour (12-hour clock) as a decimal number. (Platform specific) |"
+  },
+  {
+    "objectID": "slides/slides.html#dates-3",
+    "href": "slides/slides.html#dates-3",
+    "title": "Pandas",
+    "section": "Dates",
+    "text": "Dates\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n\n%p | AM | Locale’s equivalent of either AM or PM. |\n%M | 6 | Minute as a zero-padded decimal number. |\n%-M | 6 | Minute as a decimal number. (Platform specific) |\n%S | 5 | Second as a zero-padded decimal number. |\n%-S | 5 | Second as a decimal number. (Platform specific) |\n%f | 0 | Microsecond as a decimal number, zero-padded on the left. |\n%z | 0 | UTC offset in the form ±HHMM[SS[.ffffff]] (empty string if the object is naive). |\n%Z | UTC | Time zone name (empty string if the object is naive). |\n%j | 251 | Day of the year as a zero-padded decimal number. |\n%-j | 251 | Day of the year as a decimal number. (Platform specific) |\n%U | 36 | Week number of the year (Sunday as the first day of the week) as a zero padded decimal number. All days in a new year preceding the first Sunday are considered to be in week 0. |\n%W | 35 | Week number of the year (Monday as the first day of the week) as a decimal number. All days in a new year preceding the first Monday are considered to be in week 0. |\n%c | Sun Sep 8 07:06:05 2013 | Locale’s appropriate date and time representation. |\n%x | 09.08.13 | Locale’s appropriate date representation. |\n%X | 07:06:05 | Locale’s appropriate time representation. |\n%% | % | A literal ‘%’ character. |\n\n\nJan Kirenz"
   }
 ]
