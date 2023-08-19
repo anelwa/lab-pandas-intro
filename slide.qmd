@@ -2,6 +2,28 @@
 title: "Slides"
 ---
 
-## Introduction to Pandas
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSTu-81HNEUeSIlkF50vdUq2wCNbIKZN0VpH9C94N2EppOcE2Qw4-tONsHv7FlpepqwfZuGNeRhLk9b/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+[1. 🖥 Import and store data](/slides/pandas-import-store.qmd)
+
+---
+
+[2. 🖥 Change column names](/slides/pandas-column-names.qmd)
+
+---
+
+[3. 🖥 Change data types and add columns](/slides/pandas-data-types.qmd)
+
+---
+
+[4. 🖥 Calculate statistics and create plots](/slides/pandas-statistics.qmd)
+
+---
+
+[5. 🖥 Select data](/slides/pandas-select.qmd)
+
+---
+
+[6. 🖥 Filter, group and bin data](/slides/pandas-filter-group-bin.qmd)
+
+
+<!-- <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSTu-81HNEUeSIlkF50vdUq2wCNbIKZN0VpH9C94N2EppOcE2Qw4-tONsHv7FlpepqwfZuGNeRhLk9b/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe> -->
