@@ -32,15 +32,10 @@ format:
 
 # Setup
 
-
 ```{python}
 from datetime import datetime
 import pandas as pd
-```
 
-
-```{python}
-# | code-line-numbers: "|1|2|3|4|5|"
 df = pd.DataFrame({
     'name': ["Tom", "Lisa", "Peter"],
     'height': [1.68, 1.93, 1.72],
