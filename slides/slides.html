@@ -398,7 +398,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Pandas</h1>
-  <p class="subtitle">Introduction</p>
+  <p class="subtitle">Slides for Lab Pandas-Introduction</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -418,6 +418,12 @@ Jan Kirenz
 <li class="fragment"><a href="#/change-column-names" id="/toc-change-column-names">Change column names</a></li>
 <li class="fragment"><a href="#/data-types" id="/toc-data-types">Data Types</a></li>
 <li class="fragment"><a href="#/add-new-columns" id="/toc-add-new-columns">Add new columns</a></li>
+<li class="fragment"><a href="#/dates" id="/toc-dates">Dates</a></li>
+<li class="fragment"><a href="#/statistics" id="/toc-statistics">Statistics</a></li>
+<li class="fragment"><a href="#/selection-with-loc-and-iloc" id="/toc-selection-with-loc-and-iloc">Selection with [], loc and iloc</a></li>
+<li class="fragment"><a href="#/filter" id="/toc-filter">Filter</a></li>
+<li class="fragment"><a href="#/grouping" id="/toc-grouping">Grouping</a></li>
+<li class="fragment"><a href="#/segment-data-into-bins" id="/toc-segment-data-into-bins">Segment data into bins</a></li>
 </ul>
 </nav>
 </section>
@@ -433,7 +439,7 @@ Jan Kirenz
 <li class="fragment"><p>The community agreed alias for pandas is <code>pd</code></p></li>
 </ul>
 <div class="fragment">
-<div id="714dbb24" class="cell" data-execution_count="1">
+<div id="7bdce3f2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -449,18 +455,19 @@ Jan Kirenz
 <ul>
 <li class="fragment">To manually store data in a table, create a DataFrame:</li>
 </ul>
-<div id="056a9135" class="cell" data-execution_count="2">
+<div id="4d37e130" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2" data-code-line-numbers="|1|2|3|4|5|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb2-2"><a href="#cb2-2"></a>    <span class="st">'name'</span>: [<span class="st">"Tom"</span>, <span class="st">"Lisa"</span>, <span class="st">"Peter"</span>],</span>
 <span id="cb2-3"><a href="#cb2-3"></a>    <span class="st">'height'</span>: [<span class="fl">1.68</span>, <span class="fl">1.93</span>, <span class="fl">1.72</span>],</span>
 <span id="cb2-4"><a href="#cb2-4"></a>    <span class="st">'weight'</span>: [<span class="fl">48.4</span>, <span class="fl">89.8</span>, <span class="fl">84.2</span>],</span>
-<span id="cb2-5"><a href="#cb2-5"></a>    <span class="st">'id'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb2-6"><a href="#cb2-6"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a href="#cb2-5"></a>    <span class="st">'id'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="st">'city'</span>: [<span class="st">'Stuttgart'</span>, <span class="st">'Stuttgart'</span>, <span class="st">'Berlin'</span>]</span>
+<span id="cb2-7"><a href="#cb2-7"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="show-data" class="slide level2">
 <h2>Show data</h2>
-<div id="87e8959e" class="cell" data-execution_count="3">
+<div id="71775d26" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
@@ -488,6 +495,7 @@ Jan Kirenz
 <th data-quarto-table-cell-role="th">height</th>
 <th data-quarto-table-cell-role="th">weight</th>
 <th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">city</th>
 </tr>
 </thead>
 <tbody>
@@ -497,6 +505,7 @@ Jan Kirenz
 <td>1.68</td>
 <td>48.4</td>
 <td>1</td>
+<td>Stuttgart</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
@@ -504,6 +513,7 @@ Jan Kirenz
 <td>1.93</td>
 <td>89.8</td>
 <td>2</td>
+<td>Stuttgart</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
@@ -511,6 +521,7 @@ Jan Kirenz
 <td>1.72</td>
 <td>84.2</td>
 <td>3</td>
+<td>Berlin</td>
 </tr>
 </tbody>
 </table>
@@ -532,7 +543,7 @@ Jan Kirenz
 <li class="fragment">Import a CSV file in a GitHub repo</li>
 </ul>
 <div class="fragment">
-<div id="fc97c5a0" class="cell" data-execution_count="4">
+<div id="6d10a632" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4" data-code-line-numbers="|1|3|5|"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>URL <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/kirenz/datasets/master/campaign.csv"</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
 <span id="cb4-3"><a href="#cb4-3"></a>df_github <span class="op">=</span> pd.read_csv(URL, sep<span class="op">=</span><span class="st">","</span>, decimal<span class="op">=</span><span class="st">'.'</span>)</span>
@@ -628,7 +639,7 @@ Jan Kirenz
 <li class="fragment">Store data with the prefix <code>.to_*</code></li>
 </ul>
 <div class="fragment">
-<div id="b490b8cc" class="cell" data-execution_count="5">
+<div id="e04c148d" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df_github.to_csv(<span class="st">"data.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -643,7 +654,7 @@ Jan Kirenz
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
-<div id="96af30c2" class="cell" data-execution_count="6">
+<div id="0ff6cf21" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="6">
@@ -671,6 +682,7 @@ Jan Kirenz
 <th data-quarto-table-cell-role="th">height</th>
 <th data-quarto-table-cell-role="th">weight</th>
 <th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">city</th>
 </tr>
 </thead>
 <tbody>
@@ -680,6 +692,7 @@ Jan Kirenz
 <td>1.68</td>
 <td>48.4</td>
 <td>1</td>
+<td>Stuttgart</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
@@ -687,6 +700,7 @@ Jan Kirenz
 <td>1.93</td>
 <td>89.8</td>
 <td>2</td>
+<td>Stuttgart</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
@@ -694,6 +708,7 @@ Jan Kirenz
 <td>1.72</td>
 <td>84.2</td>
 <td>3</td>
+<td>Berlin</td>
 </tr>
 </tbody>
 </table>
@@ -704,7 +719,7 @@ Jan Kirenz
 </section>
 <section id="head-and-tail" class="slide level2">
 <h2>Head and tail</h2>
-<div id="c21c3e47" class="cell" data-execution_count="7">
+<div id="304fce01" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># show first 2 rows</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>df.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -733,6 +748,7 @@ Jan Kirenz
 <th data-quarto-table-cell-role="th">height</th>
 <th data-quarto-table-cell-role="th">weight</th>
 <th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">city</th>
 </tr>
 </thead>
 <tbody>
@@ -742,6 +758,7 @@ Jan Kirenz
 <td>1.68</td>
 <td>48.4</td>
 <td>1</td>
+<td>Stuttgart</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
@@ -749,6 +766,7 @@ Jan Kirenz
 <td>1.93</td>
 <td>89.8</td>
 <td>2</td>
+<td>Stuttgart</td>
 </tr>
 </tbody>
 </table>
@@ -757,7 +775,7 @@ Jan Kirenz
 </div>
 </div>
 <div class="fragment">
-<div id="8fa3188b" class="cell" data-execution_count="8">
+<div id="31436db4" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># show last 2 rows</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a>df.tail(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -786,6 +804,7 @@ Jan Kirenz
 <th data-quarto-table-cell-role="th">height</th>
 <th data-quarto-table-cell-role="th">weight</th>
 <th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">city</th>
 </tr>
 </thead>
 <tbody>
@@ -795,6 +814,7 @@ Jan Kirenz
 <td>1.93</td>
 <td>89.8</td>
 <td>2</td>
+<td>Stuttgart</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">2</td>
@@ -802,6 +822,7 @@ Jan Kirenz
 <td>1.72</td>
 <td>84.2</td>
 <td>3</td>
+<td>Berlin</td>
 </tr>
 </tbody>
 </table>
@@ -817,34 +838,35 @@ Jan Kirenz
 <li class="fragment">The <code>info()</code> method prints information about a DataFrame.</li>
 </ul>
 <div class="fragment">
-<div id="dca7f928" class="cell" data-execution_count="9">
+<div id="01628e9c" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 3 entries, 0 to 2
-Data columns (total 4 columns):
+Data columns (total 5 columns):
  #   Column  Non-Null Count  Dtype  
 ---  ------  --------------  -----  
  0   name    3 non-null      object 
  1   height  3 non-null      float64
  2   weight  3 non-null      float64
  3   id      3 non-null      int64  
-dtypes: float64(2), int64(1), object(1)
-memory usage: 228.0+ bytes</code></pre>
+ 4   city    3 non-null      object 
+dtypes: float64(2), int64(1), object(2)
+memory usage: 252.0+ bytes</code></pre>
 </div>
 </div>
 </div>
 </section>
 <section id="column-names" class="slide level2">
 <h2>Column names</h2>
-<div id="ab9e927e" class="cell" data-execution_count="10">
+<div id="6d780489" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="10">
 <div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>Index(['name', 'height', 'weight', 'id'], dtype='object')</code></pre>
+<pre><code>Index(['name', 'height', 'weight', 'id', 'city'], dtype='object')</code></pre>
 </div>
 </div>
 </section>
@@ -853,7 +875,7 @@ memory usage: 228.0+ bytes</code></pre>
 <ul>
 <li class="fragment">Show data types (<a href="https://pandas.pydata.org/docs/user_guide/basics.html#basics-dtypes">dtypes</a>).</li>
 </ul>
-<div id="8e37db44" class="cell" data-execution_count="11">
+<div id="1ca09b09" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="11">
@@ -862,6 +884,7 @@ memory usage: 228.0+ bytes</code></pre>
 height    float64
 weight    float64
 id          int64
+city       object
 dtype: object</code></pre>
 </div>
 </div>
@@ -871,7 +894,7 @@ dtype: object</code></pre>
 </section>
 <section id="index" class="slide level2">
 <h2>Index</h2>
-<div id="1798aaf4" class="cell" data-execution_count="12">
+<div id="eab34888" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="12">
@@ -901,14 +924,14 @@ dtype: object</code></pre>
 <li class="fragment">We rename <code>"name"</code> to <code>" MY NEW-NAME"</code> (note that we include a leading whitespace)</li>
 </ul>
 <div class="fragment">
-<div id="607df299" class="cell" data-execution_count="13">
+<div id="e07dbeb1" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df <span class="op">=</span> df.rename(columns<span class="op">=</span>{<span class="st">"name"</span>: <span class="st">" MY NEW-NAME"</span>}, errors<span class="op">=</span><span class="st">"raise"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="simple-rename-1" class="slide level2">
 <h2>Simple rename</h2>
-<div id="7fdba2ab" class="cell" data-execution_count="14">
+<div id="6030ff67" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="14">
@@ -936,6 +959,7 @@ dtype: object</code></pre>
 <th data-quarto-table-cell-role="th">height</th>
 <th data-quarto-table-cell-role="th">weight</th>
 <th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">city</th>
 </tr>
 </thead>
 <tbody>
@@ -945,6 +969,7 @@ dtype: object</code></pre>
 <td>1.68</td>
 <td>48.4</td>
 <td>1</td>
+<td>Stuttgart</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
@@ -952,6 +977,7 @@ dtype: object</code></pre>
 <td>1.93</td>
 <td>89.8</td>
 <td>2</td>
+<td>Stuttgart</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
@@ -959,6 +985,7 @@ dtype: object</code></pre>
 <td>1.72</td>
 <td>84.2</td>
 <td>3</td>
+<td>Berlin</td>
 </tr>
 </tbody>
 </table>
@@ -967,12 +994,12 @@ dtype: object</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div id="01d6526e" class="cell" data-execution_count="15">
+<div id="53cdd806" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="15">
 <div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>Index([' MY NEW-NAME', 'height', 'weight', 'id'], dtype='object')</code></pre>
+<pre><code>Index([' MY NEW-NAME', 'height', 'weight', 'id', 'city'], dtype='object')</code></pre>
 </div>
 </div>
 </div>
@@ -1012,7 +1039,7 @@ dtype: object</code></pre>
 <li class="fragment">In the following function, we search for leading spaces and replace them with an empty string:</li>
 </ul>
 <div class="fragment">
-<div id="8528e2eb" class="cell" data-execution_count="16">
+<div id="f0c85865" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>df.columns <span class="op">=</span> df.columns.<span class="bu">str</span>.replace(<span class="vs">r"^ "</span>, <span class="vs">r""</span>, regex<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="16">
@@ -1020,12 +1047,12 @@ dtype: object</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div id="73f8b4e1" class="cell" data-execution_count="17">
+<div id="9bcf6d18" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="17">
 <div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>Index(['MY NEW-NAME', 'height', 'weight', 'id'], dtype='object')</code></pre>
+<pre><code>Index(['MY NEW-NAME', 'height', 'weight', 'id', 'city'], dtype='object')</code></pre>
 </div>
 </div>
 </div>
@@ -1037,7 +1064,7 @@ dtype: object</code></pre>
 <li class="fragment"><p>Replace “<code>-</code>” with “<code>_</code>”</p></li>
 </ul>
 <div class="fragment">
-<div id="292f469f" class="cell" data-execution_count="18">
+<div id="361b36d6" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>df.columns <span class="op">=</span> df.columns.<span class="bu">str</span>.replace(<span class="vs">r"-"</span>, <span class="vs">r"_"</span>, regex<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="18">
@@ -1045,12 +1072,12 @@ dtype: object</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div id="650aef7a" class="cell" data-execution_count="19">
+<div id="0bf136c3" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="19">
 <div class="cell-output cell-output-display" data-execution_count="19">
-<pre><code>Index(['MY NEW_NAME', 'height', 'weight', 'id'], dtype='object')</code></pre>
+<pre><code>Index(['MY NEW_NAME', 'height', 'weight', 'id', 'city'], dtype='object')</code></pre>
 </div>
 </div>
 </div>
@@ -1063,7 +1090,7 @@ dtype: object</code></pre>
 <li class="fragment"><p><code>.str.replace(' ', '_')</code></p></li>
 </ul>
 <div class="fragment">
-<div id="333aaaa1" class="cell" data-execution_count="20">
+<div id="cc587807" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>df.columns <span class="op">=</span> df.columns.<span class="bu">str</span>.lower().<span class="bu">str</span>.replace(<span class="st">' '</span>, <span class="st">'_'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="20">
@@ -1071,12 +1098,12 @@ dtype: object</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div id="c30dff8c" class="cell" data-execution_count="21">
+<div id="d0d048d4" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="21">
 <div class="cell-output cell-output-display" data-execution_count="21">
-<pre><code>Index(['my_new_name', 'height', 'weight', 'id'], dtype='object')</code></pre>
+<pre><code>Index(['my_new_name', 'height', 'weight', 'id', 'city'], dtype='object')</code></pre>
 </div>
 </div>
 </div>
@@ -1088,18 +1115,19 @@ dtype: object</code></pre>
 </section>
 <section id="data" class="slide level2">
 <h2>Data</h2>
-<div id="3190fd53" class="cell" data-execution_count="22">
+<div id="d2301025" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb30-2"><a href="#cb30-2"></a>    <span class="st">'name'</span>: [<span class="st">"Tom"</span>, <span class="st">"Lisa"</span>, <span class="st">"Peter"</span>],</span>
 <span id="cb30-3"><a href="#cb30-3"></a>    <span class="st">'height'</span>: [<span class="fl">1.68</span>, <span class="fl">1.93</span>, <span class="fl">1.72</span>],</span>
 <span id="cb30-4"><a href="#cb30-4"></a>    <span class="st">'weight'</span>: [<span class="fl">48.4</span>, <span class="fl">89.8</span>, <span class="fl">84.2</span>],</span>
-<span id="cb30-5"><a href="#cb30-5"></a>    <span class="st">'id'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb30-6"><a href="#cb30-6"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-5"><a href="#cb30-5"></a>    <span class="st">'id'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb30-6"><a href="#cb30-6"></a>    <span class="st">'city'</span>: [<span class="st">'Stuttgart'</span>, <span class="st">'Stuttgart'</span>, <span class="st">'Berlin'</span>]</span>
+<span id="cb30-7"><a href="#cb30-7"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="data-types-1" class="slide level2">
 <h2>Data Types</h2>
-<div id="8a1a651c" class="cell" data-execution_count="23">
+<div id="c44567e1" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="23">
@@ -1108,28 +1136,30 @@ dtype: object</code></pre>
 height    float64
 weight    float64
 id          int64
+city       object
 dtype: object</code></pre>
 </div>
 </div>
 </section>
 <section id="data-types-2" class="slide level2">
 <h2>Data Types</h2>
-<div id="065b30f5" class="cell" data-execution_count="24">
+<div id="49bf31fb" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="24">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 3 entries, 0 to 2
-Data columns (total 4 columns):
+Data columns (total 5 columns):
  #   Column  Non-Null Count  Dtype  
 ---  ------  --------------  -----  
  0   name    3 non-null      object 
  1   height  3 non-null      float64
  2   weight  3 non-null      float64
  3   id      3 non-null      int64  
-dtypes: float64(2), int64(1), object(1)
-memory usage: 228.0+ bytes</code></pre>
+ 4   city    3 non-null      object 
+dtypes: float64(2), int64(1), object(2)
+memory usage: 252.0+ bytes</code></pre>
 </div>
 </div>
 </section>
@@ -1165,29 +1195,30 @@ memory usage: 228.0+ bytes</code></pre>
 <li class="fragment">Convert variable “name” to a category dtype:</li>
 </ul>
 <div class="fragment">
-<div id="140ff2a7" class="cell" data-execution_count="25">
+<div id="809c6b9b" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>df[<span class="st">"name"</span>] <span class="op">=</span> df[<span class="st">"name"</span>].astype(<span class="st">"category"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="change-data-type-2" class="slide level2">
 <h2>Change data type</h2>
-<div id="6ba3e1ce" class="cell" data-execution_count="26">
+<div id="4a44e039" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="26">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 3 entries, 0 to 2
-Data columns (total 4 columns):
+Data columns (total 5 columns):
  #   Column  Non-Null Count  Dtype   
 ---  ------  --------------  -----   
  0   name    3 non-null      category
  1   height  3 non-null      float64 
  2   weight  3 non-null      float64 
  3   id      3 non-null      int64   
-dtypes: category(1), float64(2), int64(1)
-memory usage: 339.0 bytes</code></pre>
+ 4   city    3 non-null      object  
+dtypes: category(1), float64(2), int64(1), object(1)
+memory usage: 363.0+ bytes</code></pre>
 </div>
 </div>
 </section>
@@ -1198,29 +1229,30 @@ memory usage: 339.0 bytes</code></pre>
 <li class="fragment"><p>It is just a unique identifier so we should transform it to a simple string (object)</p></li>
 </ul>
 <div class="fragment">
-<div id="24ff08c4" class="cell" data-execution_count="27">
+<div id="34d83346" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>df[<span class="st">'id'</span>] <span class="op">=</span> df[<span class="st">'id'</span>].astype(<span class="bu">str</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="change-data-type-3" class="slide level2">
 <h2>Change data type</h2>
-<div id="25f0413d" class="cell" data-execution_count="28">
+<div id="8003f03f" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="28">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 3 entries, 0 to 2
-Data columns (total 4 columns):
+Data columns (total 5 columns):
  #   Column  Non-Null Count  Dtype   
 ---  ------  --------------  -----   
  0   name    3 non-null      category
  1   height  3 non-null      float64 
  2   weight  3 non-null      float64 
  3   id      3 non-null      object  
-dtypes: category(1), float64(2), object(1)
-memory usage: 339.0+ bytes</code></pre>
+ 4   city    3 non-null      object  
+dtypes: category(1), float64(2), object(2)
+memory usage: 363.0+ bytes</code></pre>
 </div>
 </div>
 </section></section>
@@ -1236,12 +1268,12 @@ memory usage: 339.0+ bytes</code></pre>
 <li class="fragment"><p>The new variable should have the number 42 in all rows</p></li>
 </ul>
 <div class="fragment">
-<div id="599a2c12" class="cell" data-execution_count="29">
+<div id="469ec815" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>df[<span class="st">"number"</span>] <span class="op">=</span> <span class="dv">42</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
-<div id="aa274043" class="cell" data-execution_count="30">
+<div id="34e1c7fd" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="30">
@@ -1269,6 +1301,7 @@ memory usage: 339.0+ bytes</code></pre>
 <th data-quarto-table-cell-role="th">height</th>
 <th data-quarto-table-cell-role="th">weight</th>
 <th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">city</th>
 <th data-quarto-table-cell-role="th">number</th>
 </tr>
 </thead>
@@ -1279,6 +1312,7 @@ memory usage: 339.0+ bytes</code></pre>
 <td>1.68</td>
 <td>48.4</td>
 <td>1</td>
+<td>Stuttgart</td>
 <td>42</td>
 </tr>
 <tr class="even">
@@ -1287,6 +1321,7 @@ memory usage: 339.0+ bytes</code></pre>
 <td>1.93</td>
 <td>89.8</td>
 <td>2</td>
+<td>Stuttgart</td>
 <td>42</td>
 </tr>
 <tr class="odd">
@@ -1295,6 +1330,7 @@ memory usage: 339.0+ bytes</code></pre>
 <td>1.72</td>
 <td>84.2</td>
 <td>3</td>
+<td>Berlin</td>
 <td>42</td>
 </tr>
 </tbody>
@@ -1311,13 +1347,13 @@ memory usage: 339.0+ bytes</code></pre>
 <li class="fragment">Create new columns from existing columns</li>
 </ul>
 <div class="fragment">
-<div id="1a8b15fa" class="cell" data-execution_count="31">
+<div id="6dcb8907" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># calculate body mass index</span></span>
 <span id="cb43-2"><a href="#cb43-2"></a>df[<span class="st">'bmi'</span>] <span class="op">=</span> <span class="bu">round</span>(df[<span class="st">'weight'</span>] <span class="op">/</span> (df[<span class="st">'height'</span>] <span class="op">*</span> df[<span class="st">'height'</span>]), <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
-<div id="8f3a5466" class="cell" data-execution_count="32">
+<div id="add19b43" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="32">
@@ -1345,6 +1381,7 @@ memory usage: 339.0+ bytes</code></pre>
 <th data-quarto-table-cell-role="th">height</th>
 <th data-quarto-table-cell-role="th">weight</th>
 <th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">city</th>
 <th data-quarto-table-cell-role="th">number</th>
 <th data-quarto-table-cell-role="th">bmi</th>
 </tr>
@@ -1356,6 +1393,7 @@ memory usage: 339.0+ bytes</code></pre>
 <td>1.68</td>
 <td>48.4</td>
 <td>1</td>
+<td>Stuttgart</td>
 <td>42</td>
 <td>17.15</td>
 </tr>
@@ -1365,6 +1403,7 @@ memory usage: 339.0+ bytes</code></pre>
 <td>1.93</td>
 <td>89.8</td>
 <td>2</td>
+<td>Stuttgart</td>
 <td>42</td>
 <td>24.11</td>
 </tr>
@@ -1374,6 +1413,7 @@ memory usage: 339.0+ bytes</code></pre>
 <td>1.72</td>
 <td>84.2</td>
 <td>3</td>
+<td>Berlin</td>
 <td>42</td>
 <td>28.46</td>
 </tr>
@@ -1384,19 +1424,20 @@ memory usage: 339.0+ bytes</code></pre>
 </div>
 </div>
 </div>
-</section>
-<section id="date" class="slide level2">
-<h2>Date</h2>
+</section></section>
+<section>
+<section id="dates" class="title-slide slide level1 center">
+<h1>Dates</h1>
 <ul>
 <li class="fragment">To add a date, we can use datetime and <a href="https://strftime.org">strftime</a> (see code examples on the next slides):</li>
 </ul>
 <div class="fragment">
-<div id="48d76a73" class="cell" data-execution_count="33">
+<div id="8ac44c2e" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>df[<span class="st">"date"</span>] <span class="op">=</span> datetime.today().strftime(<span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
-<div id="e9e412c1" class="cell" data-execution_count="34">
+<div id="e804b675" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>df.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="34">
@@ -1424,6 +1465,7 @@ memory usage: 339.0+ bytes</code></pre>
 <th data-quarto-table-cell-role="th">height</th>
 <th data-quarto-table-cell-role="th">weight</th>
 <th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">city</th>
 <th data-quarto-table-cell-role="th">number</th>
 <th data-quarto-table-cell-role="th">bmi</th>
 <th data-quarto-table-cell-role="th">date</th>
@@ -1436,6 +1478,7 @@ memory usage: 339.0+ bytes</code></pre>
 <td>1.68</td>
 <td>48.4</td>
 <td>1</td>
+<td>Stuttgart</td>
 <td>42</td>
 <td>17.15</td>
 <td>2023-08-19</td>
@@ -1446,6 +1489,7 @@ memory usage: 339.0+ bytes</code></pre>
 <td>1.93</td>
 <td>89.8</td>
 <td>2</td>
+<td>Stuttgart</td>
 <td>42</td>
 <td>24.11</td>
 <td>2023-08-19</td>
@@ -1456,6 +1500,7 @@ memory usage: 339.0+ bytes</code></pre>
 <td>1.72</td>
 <td>84.2</td>
 <td>3</td>
+<td>Berlin</td>
 <td>42</td>
 <td>28.46</td>
 <td>2023-08-19</td>
@@ -1468,7 +1513,7 @@ memory usage: 339.0+ bytes</code></pre>
 </div>
 </div>
 </section>
-<section id="dates" class="slide level2 smaller">
+<section id="dates-1" class="slide level2 smaller">
 <h2>Dates</h2>
 <table>
 <colgroup>
@@ -1512,7 +1557,7 @@ memory usage: 339.0+ bytes</code></pre>
 </tbody>
 </table>
 </section>
-<section id="dates-1" class="slide level2 smaller">
+<section id="dates-2" class="slide level2 smaller">
 <h2>Dates</h2>
 <table>
 <colgroup>
@@ -1535,7 +1580,7 @@ memory usage: 339.0+ bytes</code></pre>
 %m | 9 | Month as a zero-padded decimal number. |<br>
 %-m | 9 | Month as a decimal number. (Platform specific) |</p>
 </section>
-<section id="dates-2" class="slide level2 smaller">
+<section id="dates-3" class="slide level2 smaller">
 <h2>Dates</h2>
 <table>
 <colgroup>
@@ -1560,7 +1605,7 @@ memory usage: 339.0+ bytes</code></pre>
 %I | 7 | Hour (12-hour clock) as a zero-padded decimal number. |<br>
 %-I | 7 | Hour (12-hour clock) as a decimal number. (Platform specific) |</p>
 </section>
-<section id="dates-3" class="slide level2 smaller">
+<section id="dates-4" class="slide level2 smaller">
 <h2>Dates</h2>
 <table>
 <colgroup>
@@ -1594,9 +1639,1694 @@ memory usage: 339.0+ bytes</code></pre>
 %x | 09.08.13 | Locale’s appropriate date representation. |<br>
 %X | 07:06:05 | Locale’s appropriate time representation. |<br>
 %% | % | A literal ‘%’ character. |</p>
+</section></section>
+<section>
+<section id="statistics" class="title-slide slide level1 center">
+<h1>Statistics</h1>
+
+</section>
+<section id="numeric-data" class="slide level2">
+<h2>Numeric data</h2>
+<ul>
+<li class="fragment">We can calculate simple statistics like mean, median, standard deviation etc.</li>
+</ul>
+<div class="fragment">
+<div id="facdeb99" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>df[<span class="st">'height'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="35">
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>1.7766666666666666</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div id="3dca7894" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>df[<span class="st">'height'</span>].mean().<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="36">
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>1.78</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="numeric-data-1" class="slide level2">
+<h2>Numeric data</h2>
+<ul>
+<li class="fragment">Print the value in nice format (<a href="https://docs.python.org/3.6/reference/lexical_analysis.html#formatted-string-literals">using formatted string literals</a> f”…“)</li>
+</ul>
+<div class="fragment">
+<div id="bd4c2893" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a><span class="bu">print</span>(<span class="ss">f"The mean of height is </span><span class="sc">{</span>df[<span class="st">'height'</span>]<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="37">
+<div class="cell-output cell-output-stdout">
+<pre><code>The mean of height is 1.78</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="numeric-data-2" class="slide level2">
+<h2>Numeric data</h2>
+<div id="4dd12fdd" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>df[<span class="st">'height'</span>].median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="38">
+<div class="cell-output cell-output-display" data-execution_count="38">
+<pre><code>1.72</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div id="fba51121" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>df[<span class="st">'height'</span>].std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="39">
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>0.13428824718989124</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="describe" class="slide level2">
+<h2>Describe</h2>
+<ul>
+<li class="fragment"><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html#pandas.DataFrame.describe">describe()</a> shows a quick statistic summary of your numerical data.</li>
+</ul>
+<div class="fragment">
+<div id="9e153ca6" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="40">
+<div class="cell-output cell-output-display" data-execution_count="40">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">height</th>
+<th data-quarto-table-cell-role="th">weight</th>
+<th data-quarto-table-cell-role="th">number</th>
+<th data-quarto-table-cell-role="th">bmi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>3.000000</td>
+<td>3.000000</td>
+<td>3.0</td>
+<td>3.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>1.776667</td>
+<td>74.133333</td>
+<td>42.0</td>
+<td>23.240000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>0.134288</td>
+<td>22.460929</td>
+<td>0.0</td>
+<td>5.704972</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>1.680000</td>
+<td>48.400000</td>
+<td>42.0</td>
+<td>17.150000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>1.700000</td>
+<td>66.300000</td>
+<td>42.0</td>
+<td>20.630000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>1.720000</td>
+<td>84.200000</td>
+<td>42.0</td>
+<td>24.110000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>1.825000</td>
+<td>87.000000</td>
+<td>42.0</td>
+<td>26.285000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>1.930000</td>
+<td>89.800000</td>
+<td>42.0</td>
+<td>28.460000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="describe-1" class="slide level2">
+<h2>Describe</h2>
+<div id="36c6ade5" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>df.describe().T.<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="41">
+<div class="cell-output cell-output-display" data-execution_count="41">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">std</th>
+<th data-quarto-table-cell-role="th">min</th>
+<th data-quarto-table-cell-role="th">25%</th>
+<th data-quarto-table-cell-role="th">50%</th>
+<th data-quarto-table-cell-role="th">75%</th>
+<th data-quarto-table-cell-role="th">max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">height</td>
+<td>3.0</td>
+<td>1.78</td>
+<td>0.13</td>
+<td>1.68</td>
+<td>1.70</td>
+<td>1.72</td>
+<td>1.82</td>
+<td>1.93</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">weight</td>
+<td>3.0</td>
+<td>74.13</td>
+<td>22.46</td>
+<td>48.40</td>
+<td>66.30</td>
+<td>84.20</td>
+<td>87.00</td>
+<td>89.80</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">number</td>
+<td>3.0</td>
+<td>42.00</td>
+<td>0.00</td>
+<td>42.00</td>
+<td>42.00</td>
+<td>42.00</td>
+<td>42.00</td>
+<td>42.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">bmi</td>
+<td>3.0</td>
+<td>23.24</td>
+<td>5.70</td>
+<td>17.15</td>
+<td>20.63</td>
+<td>24.11</td>
+<td>26.28</td>
+<td>28.46</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="describe-2" class="slide level2">
+<h2>Describe</h2>
+<ul>
+<li class="fragment">Summary statistics for numeric variables <code>height</code> and <code>bmi</code> for different levels of the categorical variable <code>city</code>:</li>
+</ul>
+<div class="fragment">
+<div id="5f9fe195" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>df[[<span class="st">'height'</span>, <span class="st">'city'</span>]].groupby([<span class="st">'city'</span>]).describe().<span class="bu">round</span>(<span class="dv">2</span>).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="42">
+<div class="cell-output cell-output-display" data-execution_count="42">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">city</th>
+<th data-quarto-table-cell-role="th">Berlin</th>
+<th data-quarto-table-cell-role="th">Stuttgart</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="8" data-quarto-table-cell-role="th" data-valign="top">height</td>
+<td data-quarto-table-cell-role="th">count</td>
+<td>1.00</td>
+<td>2.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>1.72</td>
+<td>1.80</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>NaN</td>
+<td>0.18</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>1.72</td>
+<td>1.68</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>1.72</td>
+<td>1.74</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>1.72</td>
+<td>1.80</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>1.72</td>
+<td>1.87</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>1.72</td>
+<td>1.93</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="categorical-data-2" class="slide level2">
+<h2>Categorical data</h2>
+<ul>
+<li class="fragment">we can also use <code>describe()</code> for categorical data</li>
+</ul>
+<div class="fragment">
+<div id="a876159e" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>df.describe(include<span class="op">=</span><span class="st">"category"</span>).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="43">
+<div class="cell-output cell-output-display" data-execution_count="43">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+<th data-quarto-table-cell-role="th">unique</th>
+<th data-quarto-table-cell-role="th">top</th>
+<th data-quarto-table-cell-role="th">freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">name</td>
+<td>3</td>
+<td>3</td>
+<td>Lisa</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="categorical-data-3" class="slide level2">
+<h2>Categorical data</h2>
+<ul>
+<li class="fragment">Show unique levels of a categorical variable and count with <code>value_counts()</code></li>
+</ul>
+<div class="fragment">
+<div id="2a00ceeb" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>df[<span class="st">'city'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="44">
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>Stuttgart    2
+Berlin       1
+Name: city, dtype: int64</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="categorical-data-4" class="slide level2">
+<h2>Categorical data</h2>
+<ul>
+<li class="fragment">We also can extract specific values</li>
+</ul>
+<div id="fe52e722" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>df[<span class="st">'city'</span>].value_counts().Stuttgart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="45">
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>2</code></pre>
+</div>
+</div>
+</section>
+<section id="categorical-data-5" class="slide level2">
+<h2>Categorical data</h2>
+<ul>
+<li class="fragment">Print the value in nice format (<a href="https://docs.python.org/3.6/reference/lexical_analysis.html#formatted-string-literals">using formatted string literals</a> f”…“)</li>
+</ul>
+<div class="fragment">
+<div id="f4ba65fa" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>count_stuttgart <span class="op">=</span> df[<span class="st">'city'</span>].value_counts().Stuttgart</span>
+<span id="cb65-2"><a href="#cb65-2"></a></span>
+<span id="cb65-3"><a href="#cb65-3"></a><span class="bu">print</span>(<span class="ss">f"There are </span><span class="sc">{</span>count_stuttgart<span class="sc">}</span><span class="ss"> people from Stuttgart in the data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="46">
+<div class="cell-output cell-output-stdout">
+<pre><code>There are 2 people from Stuttgart in the data</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="loop-over-list" class="slide level2">
+<h2>Loop over list</h2>
+<ul>
+<li class="fragment">Example of for loop to obtain statistics for specific numerical columns</li>
+</ul>
+<div class="fragment">
+<div id="c36b59c9" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a><span class="co"># make a list of numerical columns</span></span>
+<span id="cb67-2"><a href="#cb67-2"></a>list_num <span class="op">=</span> [<span class="st">'height'</span>, <span class="st">'weight'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div id="8d9d8c8b" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a><span class="co"># calculate median for our list and only show 4 digits, then make a new line (\n)</span></span>
+<span id="cb68-2"><a href="#cb68-2"></a><span class="cf">for</span> i <span class="kw">in</span> list_num:</span>
+<span id="cb68-3"><a href="#cb68-3"></a>    <span class="bu">print</span>(<span class="ss">f'Median of </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> equals </span><span class="sc">{</span>df[i]<span class="sc">.</span>median()<span class="sc">:.4}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="48">
+<div class="cell-output cell-output-stdout">
+<pre><code>Median of height equals 1.72 
+
+Median of weight equals 84.2 
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="loop-over-list-1" class="slide level2">
+<h2>Loop over list</h2>
+<ul>
+<li class="fragment">Calculate summary statistics for our list.</li>
+</ul>
+<div id="9e87bf9e" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_num:</span>
+<span id="cb70-2"><a href="#cb70-2"></a>    <span class="bu">print</span>(<span class="ss">f'Column: </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">  </span><span class="ch">\n</span><span class="ss">  </span><span class="sc">{</span>df[i]<span class="sc">.</span>describe()<span class="sc">.</span><span class="bu">round</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="ss">   </span><span class="ch">\n</span><span class="ss">'</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="49">
+<div class="cell-output cell-output-stdout">
+<pre><code>Column: height  
+  count    3.00
+mean     1.78
+std      0.13
+min      1.68
+25%      1.70
+50%      1.72
+75%      1.82
+max      1.93
+Name: height, dtype: float64   
+
+Column: weight  
+  count     3.00
+mean     74.13
+std      22.46
+min      48.40
+25%      66.30
+50%      84.20
+75%      87.00
+max      89.80
+Name: weight, dtype: float64   
+</code></pre>
+</div>
+</div>
+</section>
+<section id="create-plots" class="slide level2">
+<h2>Create plots</h2>
+<div id="ab6afc62" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1"></a><span class="co"># Pandas needs the module matplotlib to create plots</span></span>
+<span id="cb72-2"><a href="#cb72-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb72-3"><a href="#cb72-3"></a></span>
+<span id="cb72-4"><a href="#cb72-4"></a><span class="co"># show plot output in Jupyter Notebook</span></span>
+<span id="cb72-5"><a href="#cb72-5"></a><span class="op">%</span>matplotlib inline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="boxplot" class="slide level2">
+<h2>Boxplot</h2>
+<div id="14111cdc" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>df.boxplot(column<span class="op">=</span>[<span class="st">'weight'</span>])<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="51">
+<div class="cell-output cell-output-display">
+<p><img data-src="slides_files/figure-revealjs/cell-52-output-1.png" width="790" height="411"></p>
+</div>
+</div>
+</section>
+<section id="boxplots-with-for-loop" class="slide level2">
+<h2>Boxplots with for loop</h2>
+<div id="5131a7eb" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1"></a><span class="co"># obtain plots for our list</span></span>
+<span id="cb74-2"><a href="#cb74-2"></a><span class="cf">for</span> i <span class="kw">in</span> list_num:</span>
+<span id="cb74-3"><a href="#cb74-3"></a>    df.boxplot(column<span class="op">=</span>[i])</span>
+<span id="cb74-4"><a href="#cb74-4"></a>    plt.title(<span class="st">"Boxplot for "</span> <span class="op">+</span> i)</span>
+<span id="cb74-5"><a href="#cb74-5"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="52">
+<div class="cell-output cell-output-display">
+<p><img data-src="slides_files/figure-revealjs/cell-53-output-1.png" width="802" height="431"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img data-src="slides_files/figure-revealjs/cell-53-output-2.png" width="790" height="431"></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="selection-with-loc-and-iloc" class="title-slide slide level1 center">
+<h1>Selection with [], loc and iloc</h1>
+
+</section>
+<section id="getting-columns-with" class="slide level2">
+<h2>Getting columns with [[]]</h2>
+<ul>
+<li class="fragment"><p>Selecting a single column with <code>[[]]</code>:</p></li>
+<li class="fragment"><p>Select the column <code>city</code> and save it as a new Pandas dataframe <code>df_city</code></p></li>
+</ul>
+<div class="fragment">
+<div id="7a0d3eb9" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>df_city <span class="op">=</span> df[[<span class="st">"city"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div id="7c637933" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a>df_city</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="54">
+<div class="cell-output cell-output-display" data-execution_count="54">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">city</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Stuttgart</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Stuttgart</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Berlin</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="selecting-rows-with" class="slide level2">
+<h2>Selecting rows with []</h2>
+<ul>
+<li class="fragment">Selecting via <code>[]</code> slices the rows (endpoint is not included) and includes all columns:</li>
+</ul>
+<div id="8d7bf11c" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>df[<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="55">
+<div class="cell-output cell-output-display" data-execution_count="55">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">height</th>
+<th data-quarto-table-cell-role="th">weight</th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">city</th>
+<th data-quarto-table-cell-role="th">number</th>
+<th data-quarto-table-cell-role="th">bmi</th>
+<th data-quarto-table-cell-role="th">date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Tom</td>
+<td>1.68</td>
+<td>48.4</td>
+<td>1</td>
+<td>Stuttgart</td>
+<td>42</td>
+<td>17.15</td>
+<td>2023-08-19</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Lisa</td>
+<td>1.93</td>
+<td>89.8</td>
+<td>2</td>
+<td>Stuttgart</td>
+<td>42</td>
+<td>24.11</td>
+<td>2023-08-19</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="getting-a-cross-section" class="slide level2">
+<h2>Getting a cross section</h2>
+<ul>
+<li class="fragment"><p>The <code>.loc</code> (location) attribute is the primary access method.</p></li>
+<li class="fragment"><p>For getting a cross section using a label (select row 0):</p></li>
+</ul>
+<div class="fragment">
+<div id="ff72d5a5" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a>df.loc[[<span class="dv">0</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="56">
+<div class="cell-output cell-output-display" data-execution_count="56">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">height</th>
+<th data-quarto-table-cell-role="th">weight</th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">city</th>
+<th data-quarto-table-cell-role="th">number</th>
+<th data-quarto-table-cell-role="th">bmi</th>
+<th data-quarto-table-cell-role="th">date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Tom</td>
+<td>1.68</td>
+<td>48.4</td>
+<td>1</td>
+<td>Stuttgart</td>
+<td>42</td>
+<td>17.15</td>
+<td>2023-08-19</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="selecting-on-a-multi-axis-by-label" class="slide level2">
+<h2>Selecting on a multi-axis by label</h2>
+<ul>
+<li class="fragment">Only select location at row 0 for column “name”</li>
+</ul>
+<div class="fragment">
+<div id="e1be5ddb" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a>df.loc[<span class="dv">0</span> , <span class="st">'name'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="57">
+<div class="cell-output cell-output-display" data-execution_count="57">
+<pre><code>'Tom'</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="by-label-.loc" class="slide level2">
+<h2>By label .loc</h2>
+<ul>
+<li class="fragment">Select row 2 to 4 for column “name” (when using .loc endpoints are included)</li>
+</ul>
+<div class="fragment">
+<div id="f45c7ffc" class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1"></a>df.loc[<span class="dv">2</span>:<span class="dv">4</span> , <span class="st">'name'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="58">
+<div class="cell-output cell-output-display" data-execution_count="58">
+<pre><code>2    Peter
+Name: name, dtype: category
+Categories (3, object): ['Lisa', 'Peter', 'Tom']</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="by-label-.loc-1" class="slide level2">
+<h2>By label .loc</h2>
+<ul>
+<li class="fragment">Select row 2 to 4 for columns “name” and “height” (when using .loc endpoints are included)</li>
+</ul>
+<div class="fragment">
+<div id="f314c546" class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1"></a>df.loc[<span class="dv">2</span>:<span class="dv">4</span> , [<span class="st">'name'</span>, <span class="st">'height'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="59">
+<div class="cell-output cell-output-display" data-execution_count="59">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">height</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Peter</td>
+<td>1.72</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="by-label-.loc-2" class="slide level2">
+<h2>By label .loc</h2>
+<ul>
+<li class="fragment">Select all rows for name and height</li>
+</ul>
+<div class="fragment">
+<div id="ccf4af6d" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1"></a>df.loc[ : , [<span class="st">"name"</span>, <span class="st">"height"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="60">
+<div class="cell-output cell-output-display" data-execution_count="60">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">height</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Tom</td>
+<td>1.68</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Lisa</td>
+<td>1.93</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Peter</td>
+<td>1.72</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="by-label-.loc-3" class="slide level2">
+<h2>By label .loc</h2>
+<ul>
+<li class="fragment">For getting a scalar value:</li>
+</ul>
+<div id="b6f24df6" class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1"></a>df.loc[[<span class="dv">0</span>], <span class="st">"height"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="61">
+<pre><code>0    1.68
+Name: height, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="by-position-.iloc" class="slide level2 smaller">
+<h2>By position .iloc</h2>
+<ul>
+<li class="fragment"><p>Pandas provides a suite of methods in order to get purely integer based indexing.</p></li>
+<li class="fragment"><p>Here, the <code>.iloc</code> attribute is the primary access method.</p></li>
+</ul>
+<div class="fragment">
+<div id="b15ec447" class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1"></a>df.iloc[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="62">
+<div class="cell-output cell-output-display" data-execution_count="62">
+<pre><code>name             Tom
+height          1.68
+weight          48.4
+id                 1
+city       Stuttgart
+number            42
+bmi            17.15
+date      2023-08-19
+Name: 0, dtype: object</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="by-integer-slices" class="slide level2">
+<h2>By integer slices</h2>
+<ul>
+<li class="fragment"><em>When using <code>.iloc</code>, endpoints are not included.</em></li>
+</ul>
+<div class="fragment">
+<div id="9c75b85f" class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1"></a>df.iloc[<span class="dv">0</span>:<span class="dv">2</span>, <span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="63">
+<div class="cell-output cell-output-display" data-execution_count="63">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">height</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Tom</td>
+<td>1.68</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Lisa</td>
+<td>1.93</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="by-lists-of-integer-position-locations" class="slide level2">
+<h2>By lists of integer position locations</h2>
+<div id="9f2d8076" class="cell" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1"></a>df.iloc[[<span class="dv">0</span>, <span class="dv">2</span>], [<span class="dv">0</span>, <span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="64">
+<div class="cell-output cell-output-display" data-execution_count="64">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">height</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Tom</td>
+<td>1.68</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Peter</td>
+<td>1.72</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="for-slicing-rows-explicitly" class="slide level2">
+<h2>For slicing rows explicitly</h2>
+<div id="51ea191f" class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1"></a>df.iloc[<span class="dv">1</span>:<span class="dv">3</span>, :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="65">
+<div class="cell-output cell-output-display" data-execution_count="65">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">height</th>
+<th data-quarto-table-cell-role="th">weight</th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">city</th>
+<th data-quarto-table-cell-role="th">number</th>
+<th data-quarto-table-cell-role="th">bmi</th>
+<th data-quarto-table-cell-role="th">date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Lisa</td>
+<td>1.93</td>
+<td>89.8</td>
+<td>2</td>
+<td>Stuttgart</td>
+<td>42</td>
+<td>24.11</td>
+<td>2023-08-19</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Peter</td>
+<td>1.72</td>
+<td>84.2</td>
+<td>3</td>
+<td>Berlin</td>
+<td>42</td>
+<td>28.46</td>
+<td>2023-08-19</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="for-slicing-columns-explicitly" class="slide level2">
+<h2>For slicing columns explicitly</h2>
+<div id="e9dd47fd" class="cell" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1"></a>df.iloc[:, <span class="dv">1</span>:<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="66">
+<div class="cell-output cell-output-display" data-execution_count="66">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">height</th>
+<th data-quarto-table-cell-role="th">weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1.68</td>
+<td>48.4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1.93</td>
+<td>89.8</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1.72</td>
+<td>84.2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="for-getting-a-value-explicitly" class="slide level2">
+<h2>For getting a value explicitly</h2>
+<div id="a643bff8" class="cell" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1"></a>df.iloc[<span class="dv">0</span>, <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="67">
+<pre><code>'Tom'</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="filter" class="title-slide slide level1 center">
+<h1>Filter</h1>
+
+</section>
+<section id="filter-1" class="slide level2">
+<h2>Filter</h2>
+<ul>
+<li class="fragment">Using a single column’s values to filter data (boolean indexing).</li>
+</ul>
+<div class="fragment">
+<div id="5b8ebb66" class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1"></a>df[df[<span class="st">"height"</span>] <span class="op">&gt;=</span> <span class="fl">1.67</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="68">
+<div class="cell-output cell-output-display" data-execution_count="68">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">height</th>
+<th data-quarto-table-cell-role="th">weight</th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">city</th>
+<th data-quarto-table-cell-role="th">number</th>
+<th data-quarto-table-cell-role="th">bmi</th>
+<th data-quarto-table-cell-role="th">date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Tom</td>
+<td>1.68</td>
+<td>48.4</td>
+<td>1</td>
+<td>Stuttgart</td>
+<td>42</td>
+<td>17.15</td>
+<td>2023-08-19</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Lisa</td>
+<td>1.93</td>
+<td>89.8</td>
+<td>2</td>
+<td>Stuttgart</td>
+<td>42</td>
+<td>24.11</td>
+<td>2023-08-19</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Peter</td>
+<td>1.72</td>
+<td>84.2</td>
+<td>3</td>
+<td>Berlin</td>
+<td>42</td>
+<td>28.46</td>
+<td>2023-08-19</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="filter-on-multiple-conditions" class="slide level2">
+<h2>Filter on multiple conditions</h2>
+<ul>
+<li class="fragment">Combine filtering for two columns or more with <code>&amp;</code> (and)</li>
+</ul>
+<div class="fragment">
+<div id="9c57effb" class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1"></a>df[(df[<span class="st">"height"</span>] <span class="op">&gt;=</span> <span class="fl">1.67</span>) <span class="op">&amp;</span> (df[<span class="st">"weight"</span>] <span class="op">&lt;</span> <span class="dv">74</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="69">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">height</th>
+<th data-quarto-table-cell-role="th">weight</th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">city</th>
+<th data-quarto-table-cell-role="th">number</th>
+<th data-quarto-table-cell-role="th">bmi</th>
+<th data-quarto-table-cell-role="th">date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Tom</td>
+<td>1.68</td>
+<td>48.4</td>
+<td>1</td>
+<td>Stuttgart</td>
+<td>42</td>
+<td>17.15</td>
+<td>2023-08-19</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="filter-on-multiple-conditions-1" class="slide level2">
+<h2>Filter on multiple conditions</h2>
+<ul>
+<li class="fragment">You can also combine filtering for two columns or more with <code>|</code> (or)</li>
+</ul>
+<div class="fragment">
+<div id="bef49c53" class="cell" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1"></a>df[(df[<span class="st">"height"</span>] <span class="op">&gt;=</span> <span class="dv">167</span>) <span class="op">|</span> (df[<span class="st">"weight"</span>] <span class="op">&lt;</span> <span class="dv">74</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="70">
+<div class="cell-output cell-output-display" data-execution_count="70">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">height</th>
+<th data-quarto-table-cell-role="th">weight</th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">city</th>
+<th data-quarto-table-cell-role="th">number</th>
+<th data-quarto-table-cell-role="th">bmi</th>
+<th data-quarto-table-cell-role="th">date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Tom</td>
+<td>1.68</td>
+<td>48.4</td>
+<td>1</td>
+<td>Stuttgart</td>
+<td>42</td>
+<td>17.15</td>
+<td>2023-08-19</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="isin" class="slide level2">
+<h2>isin()</h2>
+<ul>
+<li class="fragment">Always use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.isin.html#pandas.Series.isin">isin()</a> method if you have multiple conditions within one column:</li>
+</ul>
+<div class="fragment">
+<div id="b66a8584" class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1"></a>df[df[<span class="st">"name"</span>].isin([<span class="st">"Tom"</span>, <span class="st">"Steven"</span>])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="71">
+<div class="cell-output cell-output-display" data-execution_count="71">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">height</th>
+<th data-quarto-table-cell-role="th">weight</th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">city</th>
+<th data-quarto-table-cell-role="th">number</th>
+<th data-quarto-table-cell-role="th">bmi</th>
+<th data-quarto-table-cell-role="th">date</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Tom</td>
+<td>1.68</td>
+<td>48.4</td>
+<td>1</td>
+<td>Stuttgart</td>
+<td>42</td>
+<td>17.15</td>
+<td>2023-08-19</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="grouping" class="title-slide slide level1 center">
+<h1>Grouping</h1>
+
+</section>
+<section id="grouping-1" class="slide level2">
+<h2>Grouping</h2>
+<ul>
+<li class="fragment"><p>By “group by” we are referring to a process involving one or more of the following steps:</p></li>
+<li class="fragment"><p><strong>Splitting</strong> the data into groups based on some criteria</p></li>
+<li class="fragment"><p><strong>Applying</strong> a function to each group independently</p></li>
+<li class="fragment"><p><strong>Combining</strong> the results into a data structure</p></li>
+</ul>
+</section>
+<section id="grouping-2" class="slide level2">
+<h2>Grouping</h2>
+<ul>
+<li class="fragment">Grouping and then applying the <code>mean()</code> function to the resulting groups. Furthermore, we round the results and transpose the data.</li>
+</ul>
+<div class="fragment">
+<div id="21032742" class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1"></a>df.groupby(<span class="st">"city"</span>).mean(numeric_only<span class="op">=</span><span class="va">True</span>).<span class="bu">round</span>(<span class="dv">2</span>).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="72">
+<div class="cell-output cell-output-display" data-execution_count="72">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th">city</th>
+<th data-quarto-table-cell-role="th">Berlin</th>
+<th data-quarto-table-cell-role="th">Stuttgart</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">height</td>
+<td>1.72</td>
+<td>1.80</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">weight</td>
+<td>84.20</td>
+<td>69.10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">number</td>
+<td>42.00</td>
+<td>42.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">bmi</td>
+<td>28.46</td>
+<td>20.63</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="segment-data-into-bins" class="title-slide slide level1 center">
+<h1>Segment data into bins</h1>
+
+</section>
+<section id="segment-data-into-bins-1" class="slide level2">
+<h2>Segment data into bins</h2>
+<ul>
+<li class="fragment"><p>Use the function <a href="https://pandas.pydata.org/docs/reference/api/pandas.cut.html">cut</a> when you need to segment and sort data values into bins.</p></li>
+<li class="fragment"><p>This function is also useful for going from a continuous variable to a categorical variable.</p></li>
+</ul>
+</section>
+<section id="segment-data-into-bins-2" class="slide level2 smaller">
+<h2>Segment data into bins</h2>
+<p>The standard weight status categories associated with BMI ranges for adults are shown in the following table:</p>
+<table>
+<thead>
+<tr class="header">
+<th>BMI</th>
+<th>Weight Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Below 18.5</td>
+<td>Underweight</td>
+</tr>
+<tr class="even">
+<td>18.5 - 24.9</td>
+<td>Normal or Healthy Weight</td>
+</tr>
+<tr class="odd">
+<td>25.0 - 29.9</td>
+<td>Overweight</td>
+</tr>
+<tr class="even">
+<td>30.0 and Above</td>
+<td>Obese</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html">U.S. Department of Health &amp; Human Services</a></p>
+</section>
+<section id="segment-data-into-bins-3" class="slide level2 smaller">
+<h2>Segment data into bins</h2>
+<ul>
+<li class="fragment"><p>In our function, we discretize the variable <code>bmi</code> into four bins according to the table above:</p></li>
+<li class="fragment"><p>The bins [0, 18.5, 25, 30, float(‘inf’)] indicate (0,18.5], (18.5,25], (25,30], (30, float(’inf))</p></li>
+<li class="fragment"><p><code>float('inf')</code> is used for setting variable with an infinitely large value</p></li>
+</ul>
+<div class="fragment">
+<div id="fdcf54f3" class="cell" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1"></a>df[<span class="st">'bmi_category'</span>] <span class="op">=</span> pd.cut(df[<span class="st">'bmi'</span>],</span>
+<span id="cb100-2"><a href="#cb100-2"></a>                            bins<span class="op">=</span>[<span class="dv">0</span>, <span class="fl">18.5</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="bu">float</span>(<span class="st">'inf'</span>)],</span>
+<span id="cb100-3"><a href="#cb100-3"></a>                            labels<span class="op">=</span>[<span class="st">'underweight'</span>, <span class="st">'normal'</span>, <span class="st">'overweight'</span>, <span class="st">"obese"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="segment-data-into-bins-4" class="slide level2">
+<h2>Segment data into bins</h2>
+<div id="a80c394e" class="cell" data-execution_count="74">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="74">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">height</th>
+<th data-quarto-table-cell-role="th">weight</th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">city</th>
+<th data-quarto-table-cell-role="th">number</th>
+<th data-quarto-table-cell-role="th">bmi</th>
+<th data-quarto-table-cell-role="th">date</th>
+<th data-quarto-table-cell-role="th">bmi_category</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Tom</td>
+<td>1.68</td>
+<td>48.4</td>
+<td>1</td>
+<td>Stuttgart</td>
+<td>42</td>
+<td>17.15</td>
+<td>2023-08-19</td>
+<td>underweight</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Lisa</td>
+<td>1.93</td>
+<td>89.8</td>
+<td>2</td>
+<td>Stuttgart</td>
+<td>42</td>
+<td>24.11</td>
+<td>2023-08-19</td>
+<td>normal</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Peter</td>
+<td>1.72</td>
+<td>84.2</td>
+<td>3</td>
+<td>Berlin</td>
+<td>42</td>
+<td>28.46</td>
+<td>2023-08-19</td>
+<td>overweight</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="segment-data-into-bins-5" class="slide level2">
+<h2>Segment data into bins</h2>
+<div id="9ce10d3a" class="cell" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1"></a>df[<span class="st">'bmi_category'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="75">
+<pre><code>0    underweight
+1         normal
+2     overweight
+Name: bmi_category, dtype: category
+Categories (4, object): ['underweight' &lt; 'normal' &lt; 'overweight' &lt; 'obese']</code></pre>
+</div>
+</div>
+</section>
+<section id="segment-data-into-bins-6" class="slide level2">
+<h2>Segment data into bins</h2>
+<ul>
+<li class="fragment">Example of how to discretize into four equal-sized bins:</li>
+</ul>
+<div class="fragment">
+<div id="4ae1a213" class="cell" data-execution_count="76">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1"></a>df[<span class="st">'bmi_category_2'</span>] <span class="op">=</span> pd.cut(df[<span class="st">'bmi'</span>],</span>
+<span id="cb104-2"><a href="#cb104-2"></a>                              bins<span class="op">=</span><span class="dv">4</span>,</span>
+<span id="cb104-3"><a href="#cb104-3"></a>                              labels<span class="op">=</span>[<span class="st">'group1'</span>, <span class="st">'group2'</span>, <span class="st">'group3'</span>, <span class="st">"group4"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div id="b521ec42" class="cell" data-execution_count="77">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1"></a>df[<span class="st">'bmi_category_2'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="77">
+<pre><code>0    group1
+1    group3
+2    group4
+Name: bmi_category_2, dtype: category
+Categories (4, object): ['group1' &lt; 'group2' &lt; 'group3' &lt; 'group4']</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="segment-data-into-bins-7" class="slide level2">
+<h2>Segment data into bins</h2>
+<p>Example of how to discretize into four equal-sized bins if you don’t need labels</p>
+<div id="2699b9a1" class="cell" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1"></a>df[<span class="st">'bmi_category_3'</span>] <span class="op">=</span> pd.cut(df[<span class="st">'bmi'</span>],</span>
+<span id="cb107-2"><a href="#cb107-2"></a>                              bins<span class="op">=</span><span class="dv">4</span>,</span>
+<span id="cb107-3"><a href="#cb107-3"></a>                              labels<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div id="53874b0d" class="cell" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1"></a>df[<span class="st">'bmi_category_3'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="79">
+<pre><code>0    0
+1    2
+2    3
+Name: bmi_category_3, dtype: int64</code></pre>
+</div>
+</div>
 
 <div class="footer footer-default">
 <p>Jan Kirenz</p>
+</div>
 </div>
 </section></section>
     </div>
