@@ -5,7 +5,7 @@ title: "Requirements"
 To start this lab, you'll need the following environments:
 
 - **Python**: Anaconda, Anaconda Environment `lab` and Visual Studio Code
-- **Working environment**: A folder on your machine called `pandas-intro` 
+- **Working environment**: 📁 A folder on your machine called `pandas-intro` 
 
 
 :::{.callout-important}
