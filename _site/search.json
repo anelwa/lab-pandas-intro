@@ -4,7 +4,7 @@
     "href": "slide.html",
     "title": "Slides",
     "section": "",
-    "text": "🖥 Pandas introduction"
+    "text": "1. 🖥 Import and store data\n2. 🖥 Change column names\n3. 🖥 Change data types and add columns\n4. 🖥 Calculate statistics and create plots\n5. 🖥 Select data\n6. 🖥 Filter, group and bin data"
   },
   {
     "objectID": "slides/pandas-statistics.html#mean",
@@ -634,7 +634,7 @@
     "href": "slides/pandas-import-store.html#data-type",
     "title": "Import and Store data",
     "section": "Data type",
-    "text": "Data type\n\nShow data types (dtypes).\n\n\ndf.dtypes\n\n\n\nname       object\nheight    float64\nweight    float64\nid          int64\ncity       object\ndtype: object\n\n\n\nThe data types in this DataFrame are integers (int64), floats (float64) and strings (object)."
+    "text": "Data type\n\nShow data types (dtypes).\n\n\n\ndf.dtypes\n\n\n\nname       object\nheight    float64\nweight    float64\nid          int64\ncity       object\ndtype: object\n\n\n\nThe data types in this DataFrame are integers (int64), floats (float64) and strings (object)."
   },
   {
     "objectID": "slides/pandas-import-store.html#index",
