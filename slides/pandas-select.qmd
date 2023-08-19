@@ -47,9 +47,9 @@ df["name"] = df["name"].astype("category")
 df['id'] = df['id'].astype(str)
 ```
 
-# Getting Columns
+# Select with []
 
-# Getting columns with [[]]
+## Getting columns with [[]]
 
 - Selecting a single column with `[[]]`:
 
@@ -70,7 +70,6 @@ df_city
 
 ```
 
-# Selecting rows
 
 ## Selecting rows with []
 
@@ -83,15 +82,14 @@ df[0:2]
 ```
 
 
-# Location: loc
+# Getting data with loc
 
-## Location
 
-- The `.loc` (location) attribute is the primary access method. 
+The `.loc` (location) attribute is the primary access method. 
 
-- For getting only the first row:
 
-. . .
+## Only the first row
+
 
 ```{python}
 # | output-location: fragment
@@ -99,7 +97,7 @@ df.loc[[0]]
 ```
 
 
-## Selecting on a multi-axis by label
+## One row and one column 
 
 - Only select location at row 0 for column "name"
 
@@ -110,7 +108,7 @@ df.loc[[0]]
 df.loc[0, 'name']
 ```
 
-##  Selecting on a multi-axis by label
+## Multiple rows and one column
 
 - Select row 2 to 4 for column "name" (when using .loc endpoints are included)
 
@@ -121,7 +119,7 @@ df.loc[0, 'name']
 df.loc[2:4, 'name']
 ```
 
-##  Selecting on a multi-axis by label
+## Multiple rows and multiple columns
 
 - Select row 2 to 4 for columns "name" and "height" (when using .loc endpoints are included)
 
@@ -132,7 +130,7 @@ df.loc[2:4, 'name']
 df.loc[2:4, ['name', 'height']]
 ```
 
-##  Selecting on a multi-axis by label
+## All rows and multiple columns
 
 - Select all rows for name and height
 
@@ -143,7 +141,7 @@ df.loc[2:4, ['name', 'height']]
 df.loc[:, ["name", "height"]]
 ```
 
-## Getting a scalar value
+## Scalar value
 
 ```{python}
 df.loc[[0], "height"]
@@ -152,7 +150,7 @@ df.loc[[0], "height"]
 
 # Integer based indexing: .iloc
 
-## Integer based indexing .iloc {.smaller}
+## Basics {.smaller}
 
 - Pandas provides a suite of methods in order to get purely integer based indexing. 
 
@@ -164,7 +162,7 @@ df.loc[[0], "height"]
 df.iloc[0]
 ```
 
-## By integer slices
+## Multiple rows and columns
 
 - *When using `.iloc`, endpoints are not included.*
 
@@ -176,7 +174,7 @@ df.iloc[0:2, 0:2]
 ```
 
 
-## By lists of integer position locations
+## Lists of integer position locations
 
 ```{python}
 # | output-location: fragment
@@ -184,14 +182,14 @@ df.iloc[[0, 2], [0, 1]]
 ```
 
 
-## For slicing rows explicitly
+## Slicing rows explicitly
 
 ```{python}
 # | output-location: fragment
 df.iloc[1:3, :]
 ```
 
-## For slicing columns explicitly
+## Slicing columns explicitly
 
 ```{python}
 # | output-location: fragment
@@ -200,7 +198,7 @@ df.iloc[:, 1:3]
 ```
 
 
-## For getting a value explicitly
+## Getting a value explicitly
 
 ```{python}
 df.iloc[0, 0]

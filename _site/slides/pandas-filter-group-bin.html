@@ -416,13 +416,13 @@ Jan Kirenz
 <li class="fragment"><a href="#/setup" id="/toc-setup">Setup</a></li>
 <li class="fragment"><a href="#/filter" id="/toc-filter">Filter</a></li>
 <li class="fragment"><a href="#/grouping" id="/toc-grouping">Grouping</a></li>
-<li class="fragment"><a href="#/segment-data-into-bins" id="/toc-segment-data-into-bins">Segment data into bins</a></li>
+<li class="fragment"><a href="#/segment-data-bins" id="/toc-segment-data-bins">Segment Data: Bins</a></li>
 </ul>
 </nav>
 </section>
 <section id="setup" class="title-slide slide level1 center">
 <h1>Setup</h1>
-<div id="62f4e704" class="cell" data-execution_count="1">
+<div id="c70973ec" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a>df <span class="op">=</span> pd.DataFrame({</span>
@@ -444,13 +444,13 @@ Jan Kirenz
 <h1>Filter</h1>
 
 </section>
-<section id="filter-1" class="slide level2">
-<h2>Filter</h2>
+<section id="filter-example" class="slide level2">
+<h2>Filter example</h2>
 <ul>
 <li class="fragment">Using a single column’s values to filter data (boolean indexing).</li>
 </ul>
 <div class="fragment">
-<div id="e8ad5e0d" class="cell" data-execution_count="2">
+<div id="145d4fdf" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df[df[<span class="st">"height"</span>] <span class="op">&gt;=</span> <span class="fl">1.67</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="2">
@@ -518,13 +518,13 @@ Jan Kirenz
 </div>
 </div>
 </section>
-<section id="filter-on-multiple-conditions" class="slide level2">
-<h2>Filter on multiple conditions</h2>
+<section id="filter-with-and" class="slide level2">
+<h2>Filter with AND</h2>
 <ul>
-<li class="fragment">Combine filtering for two columns or more with <code>&amp;</code> (and)</li>
+<li class="fragment">Combine filtering for two columns or more with <code>&amp;</code> (AND)</li>
 </ul>
 <div class="fragment">
-<div id="a13fc238" class="cell" data-execution_count="3">
+<div id="f0a06e91" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df[(df[<span class="st">"height"</span>] <span class="op">&gt;=</span> <span class="fl">1.67</span>) <span class="op">&amp;</span> (df[<span class="st">"weight"</span>] <span class="op">&lt;</span> <span class="dv">74</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
@@ -572,13 +572,13 @@ Jan Kirenz
 </div>
 </div>
 </section>
-<section id="filter-on-multiple-conditions-1" class="slide level2">
-<h2>Filter on multiple conditions</h2>
+<section id="filter-with-or" class="slide level2">
+<h2>Filter with OR</h2>
 <ul>
-<li class="fragment">You can also combine filtering for two columns or more with <code>|</code> (or)</li>
+<li class="fragment">You can also combine filtering for two columns or more with <code>|</code> (OR)</li>
 </ul>
 <div class="fragment">
-<div id="4aa03601" class="cell" data-execution_count="4">
+<div id="d83f191f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df[(df[<span class="st">"height"</span>] <span class="op">&gt;=</span> <span class="dv">167</span>) <span class="op">|</span> (df[<span class="st">"weight"</span>] <span class="op">&lt;</span> <span class="dv">74</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
@@ -634,7 +634,7 @@ Jan Kirenz
 <li class="fragment">Always use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.isin.html#pandas.Series.isin">isin()</a> method if you have multiple conditions within one column:</li>
 </ul>
 <div class="fragment">
-<div id="1d719220" class="cell" data-execution_count="5">
+<div id="fc166a2c" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df[df[<span class="st">"name"</span>].isin([<span class="st">"Tom"</span>, <span class="st">"Steven"</span>])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="5">
@@ -689,8 +689,8 @@ Jan Kirenz
 <h1>Grouping</h1>
 
 </section>
-<section id="grouping-1" class="slide level2">
-<h2>Grouping</h2>
+<section id="grouping-steps" class="slide level2">
+<h2>Grouping steps</h2>
 <ul>
 <li class="fragment"><p>By “group by” we are referring to a process involving one or more of the following steps:</p></li>
 <li class="fragment"><p><strong>Splitting</strong> the data into groups based on some criteria</p></li>
@@ -698,13 +698,13 @@ Jan Kirenz
 <li class="fragment"><p><strong>Combining</strong> the results into a data structure</p></li>
 </ul>
 </section>
-<section id="grouping-2" class="slide level2">
-<h2>Grouping</h2>
+<section id="grouping-example-with-mean" class="slide level2">
+<h2>Grouping example with mean()</h2>
 <ul>
 <li class="fragment">Grouping and then applying the <code>mean()</code> function to the resulting groups. Furthermore, we round the results and transpose the data.</li>
 </ul>
 <div class="fragment">
-<div id="d1562660" class="cell" data-execution_count="6">
+<div id="9eaf9640" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df.groupby(<span class="st">"city"</span>).mean(numeric_only<span class="op">=</span><span class="va">True</span>).<span class="bu">round</span>(<span class="dv">2</span>).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="6">
@@ -757,19 +757,19 @@ Jan Kirenz
 </div>
 </section></section>
 <section>
-<section id="segment-data-into-bins" class="title-slide slide level1 center">
-<h1>Segment data into bins</h1>
+<section id="segment-data-bins" class="title-slide slide level1 center">
+<h1>Segment Data: Bins</h1>
 
 </section>
-<section id="segment-data-into-bins-1" class="slide level2">
-<h2>Segment data into bins</h2>
+<section id="segment-data-with-cut" class="slide level2">
+<h2>Segment data with cut()</h2>
 <ul>
 <li class="fragment"><p>Use the function <a href="https://pandas.pydata.org/docs/reference/api/pandas.cut.html">cut</a> when you need to segment and sort data values into bins.</p></li>
 <li class="fragment"><p>This function is also useful for going from a continuous variable to a categorical variable.</p></li>
 </ul>
 </section>
-<section id="segment-data-into-bins-2" class="slide level2 smaller">
-<h2>Segment data into bins</h2>
+<section id="bmi-table" class="slide level2 smaller">
+<h2>BMI table</h2>
 <p>The standard weight status categories associated with BMI ranges for adults are shown in the following table:</p>
 <table>
 <thead>
@@ -799,25 +799,29 @@ Jan Kirenz
 </table>
 <p>Source: <a href="https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html">U.S. Department of Health &amp; Human Services</a></p>
 </section>
-<section id="segment-data-into-bins-3" class="slide level2 smaller">
-<h2>Segment data into bins</h2>
+<section id="bmi-example-1" class="slide level2">
+<h2>BMI example 1</h2>
 <ul>
 <li class="fragment"><p>In our function, we discretize the variable <code>bmi</code> into four bins according to the table above:</p></li>
 <li class="fragment"><p>The bins [0, 18.5, 25, 30, float(‘inf’)] indicate (0,18.5], (18.5,25], (25,30], (30, float(’inf))</p></li>
 <li class="fragment"><p><code>float('inf')</code> is used for setting variable with an infinitely large value</p></li>
 </ul>
-<div class="fragment">
-<div id="88f11a07" class="cell" data-execution_count="7">
+</section>
+<section id="bmi-example-code" class="slide level2">
+<h2>BMI example code</h2>
+<div id="fbda6fb0" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>df[<span class="st">'bmi_category'</span>] <span class="op">=</span> pd.cut(df[<span class="st">'bmi'</span>],</span>
 <span id="cb7-2"><a href="#cb7-2"></a>                            bins<span class="op">=</span>[<span class="dv">0</span>, <span class="fl">18.5</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="bu">float</span>(<span class="st">'inf'</span>)],</span>
 <span id="cb7-3"><a href="#cb7-3"></a>                            labels<span class="op">=</span>[<span class="st">'underweight'</span>, <span class="st">'normal'</span>, <span class="st">'overweight'</span>, <span class="st">"obese"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="fragment">
+<div id="52b43a1b" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
 </div>
 </section>
-<section id="segment-data-into-bins-4" class="slide level2">
-<h2>Segment data into bins</h2>
-<div id="a430f112" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="bmi-example-code-output" class="slide level2 output-location-slide"><h2>BMI example code</h2><div class="cell output-location-slide" data-execution_count="8">
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 <style scoped="">
@@ -883,11 +887,9 @@ Jan Kirenz
 
 </div>
 </div>
-</div>
-</section>
-<section id="segment-data-into-bins-5" class="slide level2">
-<h2>Segment data into bins</h2>
-<div id="05996b75" class="cell" data-execution_count="9">
+</div></section><section id="bmi-example-with-categories" class="slide level2">
+<h2>BMI example with categories</h2>
+<div id="e8f5914f" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df[<span class="st">'bmi_category'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>0    underweight
@@ -898,21 +900,23 @@ Categories (4, object): ['underweight' &lt; 'normal' &lt; 'overweight' &lt; 'obe
 </div>
 </div>
 </section>
-<section id="segment-data-into-bins-6" class="slide level2">
-<h2>Segment data into bins</h2>
+<section id="four-equal-sized-bins" class="slide level2">
+<h2>Four equal-sized bins</h2>
 <ul>
 <li class="fragment">Example of how to discretize into four equal-sized bins:</li>
 </ul>
 <div class="fragment">
-<div id="069c1bc7" class="cell" data-execution_count="10">
+<div id="fae76fdd" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df[<span class="st">'bmi_category_2'</span>] <span class="op">=</span> pd.cut(df[<span class="st">'bmi'</span>],</span>
 <span id="cb11-2"><a href="#cb11-2"></a>                              bins<span class="op">=</span><span class="dv">4</span>,</span>
 <span id="cb11-3"><a href="#cb11-3"></a>                              labels<span class="op">=</span>[<span class="st">'group1'</span>, <span class="st">'group2'</span>, <span class="st">'group3'</span>, <span class="st">"group4"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
-<div id="ae5917bc" class="cell" data-execution_count="11">
+<div id="9445eb7f" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>df[<span class="st">'bmi_category_2'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="11">
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>0    group1
 1    group3
@@ -923,17 +927,23 @@ Categories (4, object): ['group1' &lt; 'group2' &lt; 'group3' &lt; 'group4']</co
 </div>
 </div>
 </section>
-<section id="segment-data-into-bins-7" class="slide level2">
-<h2>Segment data into bins</h2>
-<p>Example of how to discretize into four equal-sized bins if you don’t need labels</p>
-<div id="02428dc7" class="cell" data-execution_count="12">
+<section id="four-equal-sized-bins-without-labels" class="slide level2">
+<h2>Four equal-sized bins without labels</h2>
+<ul>
+<li class="fragment">Example of how to discretize into four equal-sized bins if you don’t need labels</li>
+</ul>
+<div class="fragment">
+<div id="50163a20" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df[<span class="st">'bmi_category_3'</span>] <span class="op">=</span> pd.cut(df[<span class="st">'bmi'</span>],</span>
 <span id="cb14-2"><a href="#cb14-2"></a>                              bins<span class="op">=</span><span class="dv">4</span>,</span>
 <span id="cb14-3"><a href="#cb14-3"></a>                              labels<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div>
 <div class="fragment">
-<div id="da02f83b" class="cell" data-execution_count="13">
+<div id="8badc22f" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df[<span class="st">'bmi_category_3'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="13">
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>0    0
 1    2

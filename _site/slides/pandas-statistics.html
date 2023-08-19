@@ -423,7 +423,7 @@ Jan Kirenz
 </section>
 <section id="setup" class="title-slide slide level1 center">
 <h1>Setup</h1>
-<div id="d3ca3ed0" class="cell" data-execution_count="1">
+<div id="a7fed7c1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a>df <span class="op">=</span> pd.DataFrame({</span>
@@ -448,10 +448,10 @@ Jan Kirenz
 <section id="mean" class="slide level2">
 <h2>Mean</h2>
 <ul>
-<li class="fragment">We can calculate simple statistics like mean, median, standard deviation etc.</li>
+<li class="fragment">We can calculate simple statistics like the <em>mean</em></li>
 </ul>
 <div class="fragment">
-<div id="77f66746" class="cell" data-execution_count="2">
+<div id="c6068ade" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df[<span class="st">'height'</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="2">
@@ -461,7 +461,7 @@ Jan Kirenz
 </div>
 </div>
 <div class="fragment">
-<div id="44765603" class="cell" data-execution_count="3">
+<div id="49f87d54" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df[<span class="st">'height'</span>].mean().<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
@@ -471,13 +471,13 @@ Jan Kirenz
 </div>
 </div>
 </section>
-<section id="mean-1" class="slide level2">
-<h2>Mean</h2>
+<section id="formatted-string-literals" class="slide level2">
+<h2>Formatted string literals</h2>
 <ul>
 <li class="fragment">Print the value in nice format (<a href="https://docs.python.org/3.6/reference/lexical_analysis.html#formatted-string-literals">using formatted string literals</a> f”…“)</li>
 </ul>
 <div class="fragment">
-<div id="73a19c6e" class="cell" data-execution_count="4">
+<div id="0869cceb" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="bu">print</span>(<span class="ss">f"The mean of height is </span><span class="sc">{</span>df[<span class="st">'height'</span>]<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
@@ -489,7 +489,7 @@ Jan Kirenz
 </section>
 <section id="median-and-standard-deviation" class="slide level2">
 <h2>Median and Standard Deviation</h2>
-<div id="6aa7fc3a" class="cell" data-execution_count="5">
+<div id="d9625844" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>df[<span class="st">'height'</span>].median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="5">
@@ -498,7 +498,7 @@ Jan Kirenz
 </div>
 </div>
 <div class="fragment">
-<div id="1b852b25" class="cell" data-execution_count="6">
+<div id="ffa60c4f" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df[<span class="st">'height'</span>].std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="6">
@@ -514,7 +514,7 @@ Jan Kirenz
 <li class="fragment"><a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html#pandas.DataFrame.describe">describe()</a> shows a quick statistic summary of your numerical data.</li>
 </ul>
 <div class="fragment">
-<div id="51a30933" class="cell" data-execution_count="7">
+<div id="313aa2b7" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="7">
@@ -600,9 +600,9 @@ Jan Kirenz
 </div>
 </div>
 </section>
-<section id="describe-1" class="slide level2">
-<h2>Describe</h2>
-<div id="97a6f41b" class="cell" data-execution_count="8">
+<section id="describe-with-transpose" class="slide level2">
+<h2>Describe with transpose</h2>
+<div id="be890cc2" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>df.describe().T.<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="8">
@@ -677,13 +677,13 @@ Jan Kirenz
 </div>
 </div>
 </section>
-<section id="describe-2" class="slide level2">
-<h2>Describe</h2>
+<section id="describe-for-specific-columns-with-groupby" class="slide level2">
+<h2>Describe for specific columns with groupby</h2>
 <ul>
 <li class="fragment">Summary statistics for numeric variables <code>height</code> and <code>bmi</code> for different levels of the categorical variable <code>city</code>:</li>
 </ul>
 <div class="fragment">
-<div id="c37acf3f" class="cell" data-execution_count="9">
+<div id="3ad00fd4" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df[[<span class="st">'height'</span>, <span class="st">'city'</span>]].groupby([<span class="st">'city'</span>]).describe().<span class="bu">round</span>(<span class="dv">2</span>).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="9">
@@ -767,13 +767,13 @@ Jan Kirenz
 <h1>Categorical Data</h1>
 
 </section>
-<section id="categorical-data-1" class="slide level2">
-<h2>Categorical Data</h2>
+<section id="example" class="slide level2">
+<h2>Example</h2>
 <ul>
 <li class="fragment">we can also use <code>describe()</code> for categorical data</li>
 </ul>
 <div class="fragment">
-<div id="5ad57008" class="cell" data-execution_count="10">
+<div id="01b8befa" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df.describe(include<span class="op">=</span><span class="st">"category"</span>).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="10">
@@ -819,13 +819,13 @@ Jan Kirenz
 </div>
 </div>
 </section>
-<section id="categorical-data-2" class="slide level2">
-<h2>Categorical data</h2>
+<section id="show-unique-levels" class="slide level2">
+<h2>Show unique levels</h2>
 <ul>
 <li class="fragment">Show unique levels of a categorical variable and count with <code>value_counts()</code></li>
 </ul>
 <div class="fragment">
-<div id="17e9aa1d" class="cell" data-execution_count="11">
+<div id="d35b7bb0" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>df[<span class="st">'city'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="11">
@@ -837,12 +837,12 @@ Name: city, dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="categorical-data-3" class="slide level2">
-<h2>Categorical data</h2>
+<section id="extract-specific-values" class="slide level2">
+<h2>Extract specific values</h2>
 <ul>
 <li class="fragment">We also can extract specific values</li>
 </ul>
-<div id="de09833a" class="cell" data-execution_count="12">
+<div id="c481d6bb" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>df[<span class="st">'city'</span>].value_counts().Stuttgart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="12">
@@ -851,13 +851,13 @@ Name: city, dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="categorical-data-4" class="slide level2">
-<h2>Categorical data</h2>
+<section id="formatted-string-literals-1" class="slide level2">
+<h2>Formatted string literals</h2>
 <ul>
 <li class="fragment">Print the value in nice format (<a href="https://docs.python.org/3.6/reference/lexical_analysis.html#formatted-string-literals">using formatted string literals</a> f”…“)</li>
 </ul>
 <div class="fragment">
-<div id="4c8f6356" class="cell" data-execution_count="13">
+<div id="03d4509d" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>count_stuttgart <span class="op">=</span> df[<span class="st">'city'</span>].value_counts().Stuttgart</span>
 <span id="cb20-2"><a href="#cb20-2"></a></span>
 <span id="cb20-3"><a href="#cb20-3"></a><span class="bu">print</span>(<span class="ss">f"There are </span><span class="sc">{</span>count_stuttgart<span class="sc">}</span><span class="ss"> people from Stuttgart in the data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -874,19 +874,19 @@ Name: city, dtype: int64</code></pre>
 <h1>Loop over List</h1>
 
 </section>
-<section id="loop-over-list-1" class="slide level2">
-<h2>Loop over list</h2>
+<section id="statistics-for-specific-columns" class="slide level2">
+<h2>Statistics for specific columns</h2>
 <ul>
 <li class="fragment">Example of for loop to obtain statistics for specific numerical columns</li>
 </ul>
 <div class="fragment">
-<div id="7595a94e" class="cell" data-execution_count="14">
+<div id="c1550c5c" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># make a list of numerical columns</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a>list_num <span class="op">=</span> [<span class="st">'height'</span>, <span class="st">'weight'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
-<div id="3920a579" class="cell" data-execution_count="15">
+<div id="3c2cf8e3" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># calculate median for our list and only show 4 digits, then make a new line (\n)</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a><span class="cf">for</span> i <span class="kw">in</span> list_num:</span>
 <span id="cb23-3"><a href="#cb23-3"></a>    <span class="bu">print</span>(<span class="ss">f'Median of </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> equals </span><span class="sc">{</span>df[i]<span class="sc">.</span>median()<span class="sc">:.4}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -901,12 +901,12 @@ Median of weight equals 84.2
 </div>
 </div>
 </section>
-<section id="loop-over-list-2" class="slide level2">
-<h2>Loop over list</h2>
+<section id="summary-statistics" class="slide level2">
+<h2>Summary statistics</h2>
 <ul>
 <li class="fragment">Calculate summary statistics for our list.</li>
 </ul>
-<div id="85445d5d" class="cell" data-execution_count="16">
+<div id="58284eb4" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_num:</span>
 <span id="cb25-2"><a href="#cb25-2"></a>    <span class="bu">print</span>(<span class="ss">f'Column: </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">  </span><span class="ch">\n</span><span class="ss">  </span><span class="sc">{</span>df[i]<span class="sc">.</span>describe()<span class="sc">.</span><span class="bu">round</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="ss">   </span><span class="ch">\n</span><span class="ss">'</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -944,7 +944,7 @@ Name: weight, dtype: float64
 </section>
 <section id="setup-1" class="slide level2">
 <h2>Setup</h2>
-<div id="305a7d8b" class="cell" data-execution_count="17">
+<div id="76e1c157" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># Pandas needs the module matplotlib to create plots</span></span>
 <span id="cb27-2"><a href="#cb27-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb27-3"><a href="#cb27-3"></a></span>
@@ -952,9 +952,9 @@ Name: weight, dtype: float64
 <span id="cb27-5"><a href="#cb27-5"></a><span class="op">%</span>matplotlib inline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="boxplot" class="slide level2">
-<h2>Boxplot</h2>
-<div id="208bf576" class="cell" data-execution_count="18">
+<section id="one-boxplot" class="slide level2">
+<h2>One boxplot</h2>
+<div id="5686600e" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>df.boxplot(column<span class="op">=</span>[<span class="st">'weight'</span>])<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="18">
@@ -963,9 +963,9 @@ Name: weight, dtype: float64
 </div>
 </div>
 </section>
-<section id="boxplots-with-for-loop" class="slide level2">
-<h2>Boxplots with for loop</h2>
-<div id="e709b7e1" class="cell" data-execution_count="19">
+<section id="multiple-boxplots-with-loop" class="slide level2">
+<h2>Multiple boxplots with loop</h2>
+<div id="5ef6f001" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># obtain plots for our list</span></span>
 <span id="cb29-2"><a href="#cb29-2"></a><span class="cf">for</span> i <span class="kw">in</span> list_num:</span>
 <span id="cb29-3"><a href="#cb29-3"></a>    df.boxplot(column<span class="op">=</span>[i])</span>

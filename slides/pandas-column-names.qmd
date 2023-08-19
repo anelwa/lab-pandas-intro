@@ -48,7 +48,7 @@ df = pd.DataFrame({
 
 # Basics
 
-## Column names
+## Column names properties
 
 Usually, we prefer to work with columns that have the following proporties:
 
@@ -100,7 +100,7 @@ df.columns
 - To replace the spaces, we use `.replace()` with `regex=True`
 
 
-## Regular expressions
+## Regular expressions table
 
 Explanation for *regex* (see also [Stackoverflow](https://stackoverflow.com/a/67466222)):
 
@@ -112,7 +112,7 @@ Explanation for *regex* (see also [Stackoverflow](https://stackoverflow.com/a/67
 - "`$`": is line end
 - "": is an empty string 
 
-## Regular expressions
+## Learn more about regular expressions
 
 To learn more about regular expressions ("regex"), visit the following sites:
 

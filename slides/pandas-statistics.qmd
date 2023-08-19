@@ -52,7 +52,7 @@ df['id'] = df['id'].astype(str)
 
 ## Mean
 
-- We can calculate simple statistics like mean, median, standard deviation etc.
+- We can calculate simple statistics like the *mean*
 
 . . .
 
@@ -70,7 +70,7 @@ df['height'].mean().round(2)
 
 
 
-## Mean
+## Formatted string literals
 
 - Print the value in nice format ([using formatted string literals](https://docs.python.org/3.6/reference/lexical_analysis.html#formatted-string-literals) f"...") 
 
@@ -110,8 +110,7 @@ df['height'].std()
 df.describe()
 ```
 
-## Describe
-
+## Describe with transpose
 
 
 ```{python}
@@ -119,7 +118,7 @@ df.describe()
 df.describe().T.round(2)
 ```
 
-## Describe
+## Describe for specific columns with groupby
 
 - Summary statistics for numeric variables `height` and `bmi` for different levels of the categorical variable `city`:
 
@@ -133,7 +132,7 @@ df[['height', 'city']].groupby(['city']).describe().round(2).T
 
 # Categorical Data
 
-## Categorical Data
+## Example
 
 - we can also use `describe()` for categorical data
 
@@ -145,7 +144,7 @@ df.describe(include="category").T
 ```
 
 
-## Categorical data
+## Show unique levels
 
 
 - Show unique levels of a categorical variable and count with `value_counts()`
@@ -157,7 +156,7 @@ df.describe(include="category").T
 df['city'].value_counts()
 ```
 
-## Categorical data
+## Extract specific values
 
 
 - We also can extract specific values
@@ -168,7 +167,7 @@ df['city'].value_counts().Stuttgart
 ```
 
 
-## Categorical data
+## Formatted string literals
 
 
 - Print the value in nice format ([using formatted string literals](https://docs.python.org/3.6/reference/lexical_analysis.html#formatted-string-literals) f"...") 
@@ -185,7 +184,7 @@ print(f"There are {count_stuttgart} people from Stuttgart in the data")
 
 # Loop over List
 
-## Loop over list
+## Statistics for specific columns
 
 
 - Example of for loop to obtain statistics for specific numerical columns
@@ -207,7 +206,7 @@ for i in list_num:
     print(f'Median of {i} equals {df[i].median():.4} \n')
 ```
 
-## Loop over list
+## Summary statistics
 
 - Calculate summary statistics for our list.
 
@@ -231,7 +230,7 @@ import matplotlib.pyplot as plt
 %matplotlib inline
 ```
 
-## Boxplot
+## One boxplot
 
 
 ```{python}
@@ -239,7 +238,7 @@ import matplotlib.pyplot as plt
 df.boxplot(column=['weight']);
 ```
 
-## Boxplots with for loop
+## Multiple boxplots with loop
 
 
 ```{python}

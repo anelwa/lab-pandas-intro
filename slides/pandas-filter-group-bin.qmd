@@ -52,7 +52,7 @@ df['id'] = df['id'].astype(str)
 # Filter 
 
 
-## Filter 
+## Filter example
 
 - Using a single column’s values to filter data (boolean indexing).
 
@@ -63,10 +63,10 @@ df['id'] = df['id'].astype(str)
 df[df["height"] >= 1.67]
 ```
 
-## Filter on multiple conditions
+## Filter with AND
 
 
-- Combine filtering for two columns or more with `&` (and)
+- Combine filtering for two columns or more with `&` (AND)
 
 . . .
 
@@ -74,10 +74,10 @@ df[df["height"] >= 1.67]
 df[(df["height"] >= 1.67) & (df["weight"] < 74)]
 ```
 
-## Filter on multiple conditions
+## Filter with OR
 
 
-- You can also combine filtering for two columns or more with `|` (or)
+- You can also combine filtering for two columns or more with `|` (OR)
 
 . . .
 
@@ -99,7 +99,7 @@ df[df["name"].isin(["Tom", "Steven"])]
 
 # Grouping
 
-## Grouping
+## Grouping steps
 
 - By “group by” we are referring to a process involving one or more of the following steps:
 
@@ -109,7 +109,7 @@ df[df["name"].isin(["Tom", "Steven"])]
 
 - **Combining** the results into a data structure
 
-## Grouping
+## Grouping example with mean()
 
 - Grouping and then applying the `mean()` function to the resulting groups. Furthermore, we round the results and transpose the data.
 
@@ -120,15 +120,15 @@ df[df["name"].isin(["Tom", "Steven"])]
 df.groupby("city").mean(numeric_only=True).round(2).T
 ```
 
-# Segment data into bins
+# Segment Data: Bins
 
-## Segment data into bins
+## Segment data with cut()
 
 - Use the function [cut](https://pandas.pydata.org/docs/reference/api/pandas.cut.html) when you need to segment and sort data values into bins. 
 
 - This function is also useful for going from a continuous variable to a categorical variable. 
 
-## Segment data into bins {.smaller}
+## BMI table {.smaller}
 
 The standard weight status categories associated with BMI ranges for adults are shown in the following table:
 
@@ -142,7 +142,7 @@ Below 18.5 |	Underweight
 Source: [U.S. Department of Health & Human Services](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html)
 
 
-## Segment data into bins {.smaller}
+## BMI example 1
 
 
 - In our function, we discretize the variable `bmi` into four bins according to the table above:
@@ -151,7 +151,8 @@ Source: [U.S. Department of Health & Human Services](https://www.cdc.gov/healthy
 
 - `float('inf')` is used for setting  variable with an infinitely large value
 
-. . .
+## BMI example code 
+
 
 ```{python}
 df['bmi_category'] = pd.cut(df['bmi'],
@@ -159,21 +160,22 @@ df['bmi_category'] = pd.cut(df['bmi'],
                             labels=['underweight', 'normal', 'overweight', "obese"])
 ```
 
-## Segment data into bins
+. . .
 
 
 ```{python}
+# | output-location: slide
 df
 ```
 
-## Segment data into bins
+## BMI example with categories
 
 
 ```{python}
 df['bmi_category']
 ```
 
-## Segment data into bins
+## Four equal-sized bins
 
 
 - Example of how to discretize into four equal-sized bins:
@@ -189,14 +191,18 @@ df['bmi_category_2'] = pd.cut(df['bmi'],
 . . .
 
 ```{python}
+# | output-location: fragment
+
 df['bmi_category_2']
 ```
 
 
-## Segment data into bins 
+## Four equal-sized bins without labels
 
 
-Example of how to discretize into four equal-sized bins if you don't need labels
+- Example of how to discretize into four equal-sized bins if you don't need labels
+
+. . .
 
 ```{python}
 df['bmi_category_3'] = pd.cut(df['bmi'],
@@ -207,5 +213,7 @@ df['bmi_category_3'] = pd.cut(df['bmi'],
 . . .
 
 ```{python}
+# | output-location: fragment
+
 df['bmi_category_3']
 ```

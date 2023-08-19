@@ -45,7 +45,7 @@ import pandas as pd
 
 # Create Data
 
-## Data creation
+## Create a DataFrame
 
 - To manually store data in a table, create a DataFrame:
 
@@ -60,21 +60,21 @@ df = pd.DataFrame({
 })
 ```
 
-## Show data
+## Show data with head()
 
 ```{python}
 # | output-location: fragment
 df.head()
 ```
 
-# Import data
+# Import data with .read()
 
 - Import data with the prefix `.read_*`
 
 ![](https://pandas.pydata.org/docs/_images/02_io_readwrite.svg)
 
 
-## Import data
+## Import data from GitHub
 
 - Import a CSV file in a GitHub repo 
 
@@ -91,7 +91,7 @@ df_github.head()
 ```
 
 
-# Store data
+# Store data with .to()
 
 - Store data with the prefix `.to_*`
 
@@ -105,7 +105,7 @@ df_github.to_csv("data.csv", index=False)
 
 # Viewing data
 
-## Overview
+## Data overview 
 
 ```{python}
 # | output-location: fragment
@@ -141,14 +141,14 @@ df.info()
 ```
 
 
-## Column names
+## Show column names
 
 ```{python}
 # | output-location: fragment
 df.columns
 ```
 
-## Data type
+## Show data types
 
 - Show data types ([dtypes](https://pandas.pydata.org/docs/user_guide/basics.html#basics-dtypes)).
 
@@ -161,7 +161,7 @@ df.dtypes
 
 - The data types in this DataFrame are integers (int64), floats (float64) and strings (object).
 
-## Index
+## Show index
 
 ```{python}
 # | output-location: fragment

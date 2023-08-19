@@ -49,14 +49,14 @@ df = pd.DataFrame({
 
 # Basics
 
-## Data Types
+## Data Types with .dtypes
 
 ```{python}
 # | output-location: fragment
 df.dtypes
 ```
 
-## Data Types
+## Data Types with .info()
 
 ```{python}
 # | output-location: fragment
@@ -65,8 +65,7 @@ df.info()
 
 # Change Data Types
 
-## Change Data Types
-
+## Standard methods
 
 - There are several methods to [change data types in pandas](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.astype.html):
 
@@ -77,28 +76,24 @@ df.info()
 - `.astype(str)`: Convert to string  
   
 
-## Change data type
-
-More options:  
+## More options
   
 - `to_datetime`: Convert argument to datetime.
 - `to_timedelta`: Convert argument to timedelta.
 - `to_numeric`: Convert argument to a numeric type.
 
 
-# Categorical data and Strings
+# Categorical Data and Strings
 
-## Categorical data
-
+## What is categorical data?
 
 - Categoricals are a pandas data type corresponding to categorical variables in statistics. 
-
 
 - A categorical variable takes on a limited, and usually fixed, number of possible values (categories). 
 
 - Examples are gender, social class, blood type, country affiliation, observation time or rating via Likert scales.
 
-## Categorical data
+## Convert to categorical data
 
 
 - Convert variable "name" to a category dtype:
@@ -109,10 +104,10 @@ More options:
 df["name"] = df["name"].astype("category")
 ```
 
-## Change data type
+. . .
 
 ```{python}
-# | output-location: fragment
+# | output-location: slide
 df.info()
 ```
 
@@ -131,17 +126,17 @@ df['id'] = df['id'].astype(str)
 
 ```
 
-## Change data type
+. . .
 
 ```{python}
-# | output-location: fragment
+# | output-location: slide
 df.info()
 ```
 
 
 # Add new columns
 
-## Constant
+## Add a constant number
 
 - Add a new variable called "number" to df 
 
@@ -160,7 +155,7 @@ df["number"] = 42
 df.head()
 ```
 
-## From existing columns
+## Add from existing columns
 
  - Create new columns from existing columns
 
@@ -180,7 +175,9 @@ df
 ```
 
 
-# Dates
+# Add Dates
+
+## Add a date with strftime
 
 - To add a date, we can use datetime and [strftime](https://strftime.org) (see code examples on the next slides):
 
@@ -198,7 +195,7 @@ df.head(3)
 ```
 
 
-## Dates {.smaller}
+## Table: weekdays and day {.smaller}
 
 | Code | Example                 | Description                                                                                                                                                                      |
 | ---- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -211,7 +208,7 @@ df.head(3)
 
 
 
-## Dates {.smaller}
+## Table: Month {.smaller}
 
 | Code | Example                 | Description                                                                                                                                                                      |
 | ---- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -223,7 +220,7 @@ df.head(3)
 
 
 
-## Dates {.smaller}
+## Table: Year and hour {.smaller}
 
 | Code | Example                 | Description                                                                                                                                                                      |
 | ---- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -239,7 +236,7 @@ df.head(3)
 
 
 
-## Dates {.smaller}
+## Table: Minutes etc. {.smaller}
 
 | Code | Example                 | Description                                                                                                                                                                      |
 | ---- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
