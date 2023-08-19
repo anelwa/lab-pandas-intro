@@ -1,0 +1,260 @@
+---
+title: Statistics and Plots
+lang: en
+subtitle: Pandas Introduction
+author: Jan Kirenz
+execute:
+  eval: true
+  echo: true
+highlight-style: github
+format:
+  revealjs: 
+    toc: true
+    toc-depth: 1
+    embed-resources: false
+    theme: [dark, ../custom.scss]  
+    incremental: true
+    transition: slide
+    background-transition: fade
+    transition-speed: slow
+    code-copy: true
+    code-line-numbers: true
+    smaller: false
+    scrollable: true
+    slide-number: c
+    preview-links: auto
+    chalkboard: 
+      buttons: false
+   #logo: images/logo.png
+    footer: Jan Kirenz
+---
+
+# Setup
+
+
+```{python}
+import pandas as pd
+```
+
+
+```{python}
+# | code-line-numbers: "|1|2|3|4|5|"
+df = pd.DataFrame({
+    'name': ["Tom", "Lisa", "Peter"],
+    'height': [1.68, 1.93, 1.72],
+    'weight': [48.4, 89.8, 84.2],
+    'id': [1, 2, 3],
+    'city': ['Stuttgart', 'Stuttgart', 'Berlin']
+})
+
+df['bmi'] = round(df['weight'] / (df['height'] * df['height']), 2)
+df["name"] = df["name"].astype("category")
+df['id'] = df['id'].astype(str)
+```
+
+
+# Numeric Data
+
+## Mean
+
+- We can calculate simple statistics like mean, median, standard deviation etc.
+
+. . .
+
+```{python}
+# | output-location: fragment
+df['height'].mean()
+```
+
+. . .
+
+```{python}
+# | output-location: fragment
+df['height'].mean().round(2)
+```
+
+
+
+## Mean
+
+- Print the value in nice format ([using formatted string literals](https://docs.python.org/3.6/reference/lexical_analysis.html#formatted-string-literals) f"...") 
+
+. . .
+
+```{python}
+# | output-location: fragment
+
+print(f"The mean of height is {df['height'].mean():.2f}")
+```
+
+
+## Median and Standard Deviation
+
+```{python}
+# | output-location: fragment
+df['height'].median()
+```
+
+. . .
+
+```{python}
+# | output-location: fragment
+df['height'].std()
+```
+
+
+## Describe
+
+- [describe()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html#pandas.DataFrame.describe) shows a quick statistic summary of your numerical data.
+
+
+. . .
+
+```{python}
+# | output-location: fragment
+df.describe()
+```
+
+## Describe
+
+
+
+```{python}
+# | output-location: fragment
+df.describe().T.round(2)
+```
+
+## Describe
+
+- Summary statistics for numeric variables `height` and `bmi` for different levels of the categorical variable `city`:
+
+. . .
+
+```{python}
+# | output-location: fragment
+df[['height', 'city']].groupby(['city']).describe().round(2).T
+```
+
+
+# Categorical Data
+
+## Categorical Data
+
+- we can also use `describe()` for categorical data
+
+. . .
+
+```{python}
+# | output-location: fragment
+df.describe(include="category").T
+```
+
+
+## Categorical data
+
+
+- Show unique levels of a categorical variable and count with `value_counts()`
+
+. . .
+
+```{python}
+# | output-location: fragment
+df['city'].value_counts()
+```
+
+## Categorical data
+
+
+- We also can extract specific values
+
+```{python}
+# | output-location: fragment
+df['city'].value_counts().Stuttgart
+```
+
+
+## Categorical data
+
+
+- Print the value in nice format ([using formatted string literals](https://docs.python.org/3.6/reference/lexical_analysis.html#formatted-string-literals) f"...") 
+
+. . .
+
+```{python}
+# | output-location: fragment
+count_stuttgart = df['city'].value_counts().Stuttgart
+
+print(f"There are {count_stuttgart} people from Stuttgart in the data")
+```
+
+
+# Loop over List
+
+## Loop over list
+
+
+- Example of for loop to obtain statistics for specific numerical columns
+
+. . .
+
+```{python}
+# make a list of numerical columns
+list_num = ['height', 'weight']
+```
+
+. . .
+
+```{python}
+# | output-location: fragment
+
+# calculate median for our list and only show 4 digits, then make a new line (\n)
+for i in list_num:
+    print(f'Median of {i} equals {df[i].median():.4} \n')
+```
+
+## Loop over list
+
+- Calculate summary statistics for our list.
+
+```{python}
+# | output-location: fragment
+
+for i in list_num:
+    print(f'Column: {i}  \n  {df[i].describe().round(2)}   \n')   
+```
+
+# Create Plots
+
+## Setup
+
+
+```{python}
+# Pandas needs the module matplotlib to create plots
+import matplotlib.pyplot as plt
+
+# show plot output in Jupyter Notebook
+%matplotlib inline
+```
+
+## Boxplot
+
+
+```{python}
+# | output-location: fragment
+df.boxplot(column=['weight']);
+```
+
+## Boxplots with for loop
+
+
+```{python}
+# | output-location: fragment
+
+# obtain plots for our list
+for i in list_num:
+    df.boxplot(column=[i])
+    plt.title("Boxplot for " + i)
+    plt.show()
+```
+
+
