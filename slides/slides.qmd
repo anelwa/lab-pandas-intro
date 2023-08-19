@@ -1,7 +1,7 @@
 ---
 title: Pandas
 lang: en
-subtitle: Introduction
+subtitle: Slides for Lab Pandas-Introduction
 author: Jan Kirenz
 execute:
   eval: true
@@ -44,6 +44,7 @@ format:
 from datetime import datetime
 import pandas as pd
 ```
+
 
 # Create and Import Data
 
@@ -316,7 +317,8 @@ df = pd.DataFrame({
     'name': ["Tom", "Lisa", "Peter"],
     'height': [1.68, 1.93, 1.72],
     'weight': [48.4, 89.8, 84.2],
-    'id': [1, 2, 3]
+    'id': [1, 2, 3],
+    'city': ['Stuttgart', 'Stuttgart', 'Berlin']
 })
 ```
 
@@ -445,7 +447,7 @@ df
 ```
 
 
-## Date
+# Dates
 
 - To add a date, we can use datetime and [strftime](https://strftime.org) (see code examples on the next slides):
 
@@ -528,7 +530,6 @@ df.head(3)
 | %%   | %                       | A literal '%' character.                                                                                                                                                         |
 
 
-
 # Statistics
 
 ## Numeric data
@@ -553,7 +554,6 @@ df['height'].mean().round(2)
 
 ## Numeric data
 
-
 - Print the value in nice format ([using formatted string literals](https://docs.python.org/3.6/reference/lexical_analysis.html#formatted-string-literals) f"...") 
 
 . . .
@@ -576,7 +576,7 @@ df['height'].median()
 
 ```{python}
 # | output-location: fragment
-df['height'].std().round(2)
+df['height'].std()
 ```
 
 
@@ -692,5 +692,357 @@ for i in list_num:
 # | output-location: fragment
 
 for i in list_num:
-    print(f'Column: {i}  \n  {df[i].describe().round(2)}   \n')
+    print(f'Column: {i}  \n  {df[i].describe().round(2)}   \n')   
+```
+
+## Create plots
+
+```{python}
+# Pandas needs the module matplotlib to create plots
+import matplotlib.pyplot as plt
+
+# show plot output in Jupyter Notebook
+%matplotlib inline
+```
+
+## Boxplot
+
+
+```{python}
+# | output-location: fragment
+df.boxplot(column=['weight']);
+```
+
+## Boxplots with for loop
+
+
+```{python}
+# | output-location: fragment
+
+# obtain plots for our list
+for i in list_num:
+    df.boxplot(column=[i])
+    plt.title("Boxplot for " + i)
+    plt.show()
+```
+
+
+
+
+# Selection with [], loc and iloc
+
+## Getting columns with [[]]
+
+- Selecting a single column with `[[]]`:
+
+- Select the column `city` and save it as a new Pandas dataframe `df_city`
+
+. . .
+
+```{python}
+df_city = df[["city"]]
+
+```
+
+
+. . .
+```{python}
+# | output-location: fragment
+df_city
+
+```
+
+## Selecting rows with []
+
+- Selecting via `[]` slices the rows (endpoint is not included) and includes all columns:
+
+```{python}
+# | output-location: fragment
+df[0:2]
+```
+
+
+## Getting a cross section
+
+- The `.loc` (location) attribute is the primary access method. 
+
+- For getting a cross section using a label (select row 0):
+
+. . .
+
+```{python}
+# | output-location: fragment
+df.loc[[0]]
+```
+
+
+## Selecting on a multi-axis by label
+
+- Only select location at row 0 for column "name"
+
+. . .
+
+```{python}
+# | output-location: fragment
+df.loc[0 , 'name']
+```
+
+## By label .loc
+
+- Select row 2 to 4 for column "name" (when using .loc endpoints are included)
+
+. . .
+
+```{python}
+# | output-location: fragment
+df.loc[2:4 , 'name']
+```
+
+## By label .loc
+
+- Select row 2 to 4 for columns "name" and "height" (when using .loc endpoints are included)
+
+. . .
+
+```{python}
+# | output-location: fragment
+df.loc[2:4 , ['name', 'height']]
+```
+
+## By label .loc
+
+- Select all rows for name and height
+
+. . .
+
+```{python}
+# | output-location: fragment
+df.loc[ : , ["name", "height"]]
+```
+
+## By label .loc
+
+- For getting a scalar value:
+
+```{python}
+df.loc[[0], "height"]
+```
+
+## By position .iloc {.smaller}
+
+- Pandas provides a suite of methods in order to get purely integer based indexing. 
+
+- Here, the `.iloc` attribute is the primary access method. 
+
+. . .
+```{python}
+# | output-location: fragment
+df.iloc[0]
+```
+
+## By integer slices
+
+- *When using `.iloc`, endpoints are not included.*
+
+. . .
+
+```{python}
+# | output-location: fragment
+df.iloc[0:2, 0:2]
+```
+
+
+## By lists of integer position locations
+
+```{python}
+# | output-location: fragment
+df.iloc[[0, 2], [0, 1]]
+```
+
+
+
+## For slicing rows explicitly
+
+```{python}
+# | output-location: fragment
+df.iloc[1:3, :]
+```
+
+## For slicing columns explicitly
+
+```{python}
+# | output-location: fragment
+
+df.iloc[:, 1:3]
+```
+
+
+## For getting a value explicitly
+
+```{python}
+df.iloc[0, 0]
+```
+
+
+
+
+# Filter 
+
+
+## Filter 
+
+- Using a single column’s values to filter data (boolean indexing).
+
+. . .
+
+```{python}
+# | output-location: fragment
+df[df["height"] >= 1.67]
+```
+
+## Filter on multiple conditions
+
+
+- Combine filtering for two columns or more with `&` (and)
+
+. . .
+
+```{python}
+df[(df["height"] >= 1.67) & (df["weight"] < 74)]
+```
+
+## Filter on multiple conditions
+
+
+- You can also combine filtering for two columns or more with `|` (or)
+
+. . .
+
+```{python}
+# | output-location: fragment
+df[(df["height"] >= 167) | (df["weight"] < 74)]
+```
+
+## isin()
+
+- Always use the [isin()](https://pandas.pydata.org/docs/reference/api/pandas.Series.isin.html#pandas.Series.isin) method if you have multiple conditions within one column:
+
+. . .
+
+```{python}
+# | output-location: fragment
+df[df["name"].isin(["Tom", "Steven"])]
+```
+
+# Grouping
+
+## Grouping
+
+- By “group by” we are referring to a process involving one or more of the following steps:
+
+- **Splitting** the data into groups based on some criteria
+
+- **Applying** a function to each group independently
+
+- **Combining** the results into a data structure
+
+## Grouping
+
+- Grouping and then applying the `mean()` function to the resulting groups. Furthermore, we round the results and transpose the data.
+
+. . .
+
+```{python}
+# | output-location: fragment
+df.groupby("city").mean(numeric_only=True).round(2).T
+```
+
+# Segment data into bins
+
+## Segment data into bins
+
+- Use the function [cut](https://pandas.pydata.org/docs/reference/api/pandas.cut.html) when you need to segment and sort data values into bins. 
+
+- This function is also useful for going from a continuous variable to a categorical variable. 
+
+## Segment data into bins {.smaller}
+
+The standard weight status categories associated with BMI ranges for adults are shown in the following table:
+
+BMI	| Weight Status
+---| ---
+Below 18.5 |	Underweight
+18.5 - 24.9 |	Normal or Healthy Weight
+25.0 - 29.9 |	Overweight
+30.0 and Above |	Obese
+
+Source: [U.S. Department of Health & Human Services](https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/index.html)
+
+
+## Segment data into bins {.smaller}
+
+
+- In our function, we discretize the variable `bmi` into four bins according to the table above:
+
+- The bins [0, 18.5, 25, 30, float('inf')] indicate (0,18.5], (18.5,25], (25,30], (30, float('inf))
+
+- `float('inf')` is used for setting  variable with an infinitely large value
+
+. . .
+
+```{python}
+df['bmi_category'] = pd.cut(df['bmi'],
+                            bins=[0, 18.5, 25, 30, float('inf')],
+                            labels=['underweight', 'normal', 'overweight', "obese"])
+```
+
+## Segment data into bins
+
+
+```{python}
+df
+```
+
+## Segment data into bins
+
+
+```{python}
+df['bmi_category']
+```
+
+## Segment data into bins
+
+
+- Example of how to discretize into four equal-sized bins:
+
+. . .
+
+```{python}
+df['bmi_category_2'] = pd.cut(df['bmi'],
+                              bins=4,
+                              labels=['group1', 'group2', 'group3', "group4"])
+```
+
+. . .
+
+```{python}
+df['bmi_category_2']
+```
+
+
+## Segment data into bins 
+
+
+Example of how to discretize into four equal-sized bins if you don't need labels
+
+```{python}
+df['bmi_category_3'] = pd.cut(df['bmi'],
+                              bins=4,
+                              labels=False)
+```
+
+. . .
+
+```{python}
+df['bmi_category_3']
 ```
