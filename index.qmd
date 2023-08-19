@@ -2,7 +2,7 @@
 title: "Welcome 👋"
 ---
 
-*Lab: pandas-intro*
+*Lab: Pandas Introduction (📁 pandas-intro)*
 
 *pandas* is a powerful and easy to use open source data analysis and manipulation tool, built on top of the Python programming language.
 
