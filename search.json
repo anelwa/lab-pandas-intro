@@ -1,100 +1,569 @@
 [
   {
-    "objectID": "assignments.html",
-    "href": "assignments.html",
-    "title": "Assignments",
-    "section": "",
-    "text": "This is a Quarto slidedeck."
-  },
-  {
     "objectID": "requirements.html",
     "href": "requirements.html",
     "title": "Requirements",
     "section": "",
-    "text": "To start this lab, you’ll need the following environments:\n\nSQL: MySQL, MySQL Workbench and a database called db_data\nPython: Anaconda, Anaconda Environment lab and Visual Studio Code\nWorking environment: A folder on your machine called competitive and an environment file with your MySQL password\n\n\n\n\n\n\n\nImportant\n\n\n\nVisit the “Programming Toolkit-webpage” to learn how to set up the environments."
+    "text": "To start this lab, you’ll need the following environments:\n\nPython: Anaconda, Anaconda Environment lab and Visual Studio Code\nWorking environment: A folder on your machine called pandas-intro\n\n\n\n\n\n\n\nImportant\n\n\n\nVisit the “Programming Toolkit-webpage” to learn how to set up the environments."
+  },
+  {
+    "objectID": "code/2_columns-c.html",
+    "href": "code/2_columns-c.html",
+    "title": "Change column names",
+    "section": "",
+    "text": "Wichtige Hinweise\nNAME = \"\"\nimport IPython\nassert IPython.version_info[0] &gt;= 3, \"Your version of IPython is too old, please update it.\""
+  },
+  {
+    "objectID": "code/2_columns-c.html#import-pandas",
+    "href": "code/2_columns-c.html#import-pandas",
+    "title": "Change column names",
+    "section": "Import pandas",
+    "text": "Import pandas\n\nTo load the pandas package and start working with it, import the package.\nThe community agreed alias for pandas is pd, so loading pandas as pd is assumed standard practice for all of the pandas documentation:\n\n\nimport pandas as pd"
+  },
+  {
+    "objectID": "code/2_columns-c.html#import-data",
+    "href": "code/2_columns-c.html#import-data",
+    "title": "Change column names",
+    "section": "Import data",
+    "text": "Import data\n\n# URL of data\nURL = \"https://raw.githubusercontent.com/kirenz/datasets/master/height_unclean.csv\"\ndf = pd.read_csv(URL, sep=\";\", decimal=',')\ndf"
+  },
+  {
+    "objectID": "code/2_columns-c.html#change-column-names",
+    "href": "code/2_columns-c.html#change-column-names",
+    "title": "Change column names",
+    "section": "Change column names",
+    "text": "Change column names\nUsually, we prefer to work with columns that have the following proporties:\n\nno leading or trailing whitespace (\"name\" instead of \" name \", \" name\" or \"name \")\nall lowercase (\"name\" instead of \"Name\")\nnow white spaces (\"my_name\" instead of \"my name\")\n\n\nSimple rename\n\nFirst, we rename columns by simply using a mapping\nWe rename \"Name\" to \"name\" (we want to display errors and don’t save the changes for now).\n\nHint:\ndf = df.rename(columns={\"OLD_NAME\": \"NEW_NAME\"}, errors=\"raise\")\n\n# YOUR CODE HERE\nraise NotImplementedError()\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert df.loc[0, 'name'] == \"Stefanie\"\n\n\ndf.head(2)\n\n\nLet`s rename Gender to gender\nHere, we just want to display the result (without saving it).\nRemove the # and run the following code:\n\n\n# df.rename(columns={\"Gender\": \"gender\"}, errors=\"raise\")\n\n\nThis raises an error.\nCan you spot the problem? Take a look at the end of the error statement and describe the type of error. How could you fix the problem?\n\nYOUR ANSWER HERE\n\n\nTrailing and leading spaces (with regex)\n\nWe use regular expressions to deal with whitespaces\nTo change multiple column names in df at once, we use the method df.columns = df.columns.str___\nTo replace the spaces, we use .replace() with regex=True\nIn the following function, we search for leading (line start and spaces) and trailing (line end and spaces) spaces and replace them with an empty string:\n\nHint:\nreplace r”this pattern” with empty string r””\ndf.columns = df.columns.str.replace(r\"___ | ___\", r\"\", regex=True)\nExplanation for regex (see also Stackoverflow):\n\nwe start with r (for raw) which tells Python to treat all following input as raw text (without interpreting it)\n“^”: is line start\n” “: is a white space\n“+”: some following characters\n“|”: is or\n“$”: is line end\n““: is an empty string\n\nTo learn more about regular expressions (“regex”), visit the following sites:\n\nregular expression basics.\ninteractive regular expressions tool\n\n\n# YOUR CODE HERE\nraise NotImplementedError()\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert df.columns.tolist() == ['name', 'ID%', 'Height', 'Average Height Parents', 'Gender']\n\n\ndf.columns\n\n\n\nReplace special characters\n\nAgain, we use regular expressions to deal with special characters (like %, &, $ etc.)\n\nReplace “%” with an empty string\nHint:\ndf.___ = df.columns.str.___(r\"___\", r\"\", regex=True)\n\n# YOUR CODE HERE\nraise NotImplementedError()\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert df.columns.tolist() == ['name', 'ID', 'Height', 'Average Height Parents', 'Gender']\n\n\ndf.columns\n\n\n\nLowercase and whitespace\nWe can use two simple methods to convert all columns to lowercase and replace white spaces with underscores (“_“):\n\n.str.lower()\n.str.replace(' ', '_')\n\nHint:\n___.___ = ___.___.___.___().___.___(' ', '_')\n\n# YOUR CODE HERE\nraise NotImplementedError()\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert df.columns.tolist() == ['name', 'id', 'height', 'average_height_parents', 'gender']\n\n\ndf.columns"
+  },
+  {
+    "objectID": "code/3_data_types-c.html",
+    "href": "code/3_data_types-c.html",
+    "title": "Change data types and add columns",
+    "section": "",
+    "text": "Wichtige Hinweise\nNAME = \"\"\nimport IPython\nassert IPython.version_info[0] &gt;= 3, \"Your version of IPython is too old, please update it.\""
+  },
+  {
+    "objectID": "code/3_data_types-c.html#import-pandas",
+    "href": "code/3_data_types-c.html#import-pandas",
+    "title": "Change data types and add columns",
+    "section": "Import pandas",
+    "text": "Import pandas\n\nimport pandas as pd"
+  },
+  {
+    "objectID": "code/3_data_types-c.html#import-data",
+    "href": "code/3_data_types-c.html#import-data",
+    "title": "Change data types and add columns",
+    "section": "Import data",
+    "text": "Import data\n\n# URL of data\nURL = \"https://raw.githubusercontent.com/kirenz/datasets/master/height_clean.csv\"\ndf = pd.read_csv(URL)\n\n\ndf.dtypes"
+  },
+  {
+    "objectID": "code/3_data_types-c.html#change-data-type",
+    "href": "code/3_data_types-c.html#change-data-type",
+    "title": "Change data types and add columns",
+    "section": "Change data type",
+    "text": "Change data type\n\nThere are several methods to change data types in pandas:\n\nThe most common method to change the data type is:\n\n.astype(): Convert to a specific type (like “int32”, “float” or “catgeory”)\n.astype(str): Convert to string\n\nMore options:\n\nto_datetime: Convert argument to datetime.\nto_timedelta: Convert argument to timedelta.\nto_numeric: Convert argument to a numeric type.\nnumpy.ndarray.astype: Cast a numpy array to a specified type.\n\n\nCategorical data\n\nCategoricals are a pandas data type corresponding to categorical variables in statistics.\nA categorical variable takes on a limited, and usually fixed, number of possible values (categories). Examples are gender, social class, blood type, country affiliation, observation time or rating via Likert scales.\nConvert variable “gender” to a category dtype:\n\n\ndf[\"gender\"] = df[\"gender\"].astype(\"category\")\n\n\n\nString data\n\nIn our example, id is not a number (we can’t perform calculations with it)\nIt is just a unique identifier so we should transform it to a simple string (object)\n\nHint:\ndf['___'] = df['___'].___(___)\n\n# YOUR CODE HERE\nraise NotImplementedError()\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert df.select_dtypes(include=[\"number\"]).columns.to_list() == ['height', 'average_height_parents']\nassert df.select_dtypes(include=[\"object\"]).columns.to_list() == ['name', 'id']"
+  },
+  {
+    "objectID": "code/3_data_types-c.html#add-new-columns",
+    "href": "code/3_data_types-c.html#add-new-columns",
+    "title": "Change data types and add columns",
+    "section": "Add new columns",
+    "text": "Add new columns\n\nConstant\n\nAdd a new variable called “number” to df\nThe new variable should have the number 42 in all rows\n\nHint:\ndf[\"___\"] = ___\n\n# YOUR CODE HERE\nraise NotImplementedError()\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert df.loc[[0], \"number\"].to_list() == [42]\n\n\n\nFrom existing\n\nCreate new columns from existing columns\n\n\n# we use numpy to add some data with a nornmal distribution \nimport numpy as np\n\n# calculate height in m (from cm)\ndf['height_m'] = df.height/100 \n\n# add 20 random normal distributed numbers with a mean of 45 and standard deviation of 5\ndf['weight'] = round(np.random.normal(45, 5, 20) * df['height_m'],2)\n\n# calculate body mass index\ndf['bmi'] = round(df.weight / (df.height_m * df.height_m),2)\n\n\ndf.head()\n\n\n\nDate\n\nTo add a date, we can use datetime and strftime (see code examples below):\n\n\n# we need datetime to add a date\nfrom datetime import datetime\n\n\ndf[\"date\"] = datetime.today().strftime('%Y-%m-%d')\n\ndf.head(3)\n\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n%a\nSun\nWeekday as locale’s abbreviated name.\n\n\n%A\nSunday\nWeekday as locale’s full name.\n\n\n%w\n0\nWeekday as a decimal number, where 0 is Sunday and 6 is Saturday.\n\n\n%d\n8\nDay of the month as a zero-padded decimal number.\n\n\n%-d\n8\nDay of the month as a decimal number. (Platform specific)\n\n\n%b\nSep\nMonth as locale’s abbreviated name.\n\n\n%B\nSeptember\nMonth as locale’s full name.\n\n\n%m\n9\nMonth as a zero-padded decimal number.\n\n\n%-m\n9\nMonth as a decimal number. (Platform specific)\n\n\n%y\n13\nYear without century as a zero-padded decimal number.\n\n\n%Y\n2013\nYear with century as a decimal number.\n\n\n%H\n7\nHour (24-hour clock) as a zero-padded decimal number.\n\n\n%-H\n7\nHour (24-hour clock) as a decimal number. (Platform specific)\n\n\n%I\n7\nHour (12-hour clock) as a zero-padded decimal number.\n\n\n%-I\n7\nHour (12-hour clock) as a decimal number. (Platform specific)\n\n\n%p\nAM\nLocale’s equivalent of either AM or PM.\n\n\n%M\n6\nMinute as a zero-padded decimal number.\n\n\n%-M\n6\nMinute as a decimal number. (Platform specific)\n\n\n%S\n5\nSecond as a zero-padded decimal number.\n\n\n%-S\n5\nSecond as a decimal number. (Platform specific)\n\n\n%f\n0\nMicrosecond as a decimal number, zero-padded on the left.\n\n\n%z\n0\nUTC offset in the form ±HHMM[SS[.ffffff]] (empty string if the object is naive).\n\n\n%Z\nUTC\nTime zone name (empty string if the object is naive).\n\n\n%j\n251\nDay of the year as a zero-padded decimal number.\n\n\n%-j\n251\nDay of the year as a decimal number. (Platform specific)\n\n\n%U\n36\nWeek number of the year (Sunday as the first day of the week) as a zero padded decimal number. All days in a new year preceding the first Sunday are considered to be in week 0.\n\n\n%W\n35\nWeek number of the year (Monday as the first day of the week) as a decimal number. All days in a new year preceding the first Monday are considered to be in week 0.\n\n\n%c\nSun Sep 8 07:06:05 2013\nLocale’s appropriate date and time representation.\n\n\n%x\n09.08.13\nLocale’s appropriate date representation.\n\n\n%X\n07:06:05\nLocale’s appropriate time representation.\n\n\n%%\n%\nA literal ‘%’ character."
+  },
+  {
+    "objectID": "code/6_filter.html",
+    "href": "code/6_filter.html",
+    "title": "Filter, grouping and binning",
+    "section": "",
+    "text": "import pandas as pd"
+  },
+  {
+    "objectID": "code/6_filter.html#import-pandas",
+    "href": "code/6_filter.html#import-pandas",
+    "title": "Filter, grouping and binning",
+    "section": "",
+    "text": "import pandas as pd"
+  },
+  {
+    "objectID": "code/6_filter.html#import-data",
+    "href": "code/6_filter.html#import-data",
+    "title": "Filter, grouping and binning",
+    "section": "Import data",
+    "text": "Import data\n\nURL = \"https://raw.githubusercontent.com/kirenz/datasets/master/height_clean_cols.csv\"\ndf = pd.read_csv(URL)"
+  },
+  {
+    "objectID": "code/6_filter.html#filter",
+    "href": "code/6_filter.html#filter",
+    "title": "Filter, grouping and binning",
+    "section": "Filter",
+    "text": "Filter\nUsing a single column’s values to filter data (boolean indexing).\n\ndf[df[\"height\"] &gt;= 167]\n\n\n\n\n\n\n\n\nname\nid\nheight\naverage_height_parents\ngender\nnumber\nheight_m\nweight\nbmi\ndate\n\n\n\n\n17\nTom\n18\n167\n166.2\nmale\n42\n1.67\n63.91\n22.92\n2022-10-08\n\n\n18\nSteven\n19\n167\n167.3\nmale\n42\n1.67\n75.71\n27.15\n2022-10-08\n\n\n19\nEmanuel\n20\n168\n168.5\nmale\n42\n1.68\n79.22\n28.07\n2022-10-08\n\n\n\n\n\n\n\nCombine filtering for two columns or more with & (and)\n\ndf[(df[\"height\"] &gt;= 167) & (df[\"weight\"] &lt; 74) ]\n\n\n\n\n\n\n\n\nname\nid\nheight\naverage_height_parents\ngender\nnumber\nheight_m\nweight\nbmi\ndate\n\n\n\n\n17\nTom\n18\n167\n166.2\nmale\n42\n1.67\n63.91\n22.92\n2022-10-08\n\n\n\n\n\n\n\nYou can also combine filtering for two columns or more with | (or)\n\ndf[(df[\"height\"] &gt;= 167) | (df[\"weight\"] &lt; 74) ]\n\n\n\n\n\n\n\n\nname\nid\nheight\naverage_height_parents\ngender\nnumber\nheight_m\nweight\nbmi\ndate\n\n\n\n\n1\nPeter\n2\n163\n163.5\nmale\n42\n1.63\n70.57\n26.56\n2022-10-08\n\n\n5\nSophia\n6\n164\n164.4\nfemale\n42\n1.64\n58.06\n21.59\n2022-10-08\n\n\n11\nMila\n12\n165\n167.4\nfemale\n42\n1.65\n68.03\n24.99\n2022-10-08\n\n\n12\nFin\n13\n165\n165.5\nmale\n42\n1.65\n68.01\n24.98\n2022-10-08\n\n\n15\nMarc\n16\n166\n166.5\nmale\n42\n1.66\n63.15\n22.92\n2022-10-08\n\n\n16\nRalph\n17\n166\n166.6\nmale\n42\n1.66\n62.02\n22.51\n2022-10-08\n\n\n17\nTom\n18\n167\n166.2\nmale\n42\n1.67\n63.91\n22.92\n2022-10-08\n\n\n18\nSteven\n19\n167\n167.3\nmale\n42\n1.67\n75.71\n27.15\n2022-10-08\n\n\n19\nEmanuel\n20\n168\n168.5\nmale\n42\n1.68\n79.22\n28.07\n2022-10-08\n\n\n\n\n\n\n\n\nFilter people with a weight greater as 84 and save it as df_weight_greater_84\n\n\n### BEGIN SOLUTION\ndf_weight_greater_84 = df[df[\"weight\"] &gt; 84]\n### END SOLUTION\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert len(df_weight_greater_84) == 2\nassert df_weight_greater_84.iloc[0, 0] == \"Stefanie\"\nassert df_weight_greater_84.iloc[1, 0] == \"Eric\"\n\nAlways use the isin() method if you have multiple conditions within one column:\n\ndf[df[\"name\"].isin([\"Tom\", \"Steven\"])]\n\n\n\n\n\n\n\n\nname\nid\nheight\naverage_height_parents\ngender\nnumber\nheight_m\nweight\nbmi\ndate\n\n\n\n\n17\nTom\n18\n167\n166.2\nmale\n42\n1.67\n63.91\n22.92\n2022-10-08\n\n\n18\nSteven\n19\n167\n167.3\nmale\n42\n1.67\n75.71\n27.15\n2022-10-08"
+  },
+  {
+    "objectID": "code/6_filter.html#grouping",
+    "href": "code/6_filter.html#grouping",
+    "title": "Filter, grouping and binning",
+    "section": "Grouping",
+    "text": "Grouping\nBy “group by” we are referring to a process involving one or more of the following steps:\n\nSplitting the data into groups based on some criteria\nApplying a function to each group independently\nCombining the results into a data structure\n\nGrouping and then applying the mean() function to the resulting groups. Furthermore, we round the results and transpose the data.\n\ndf.groupby(\"gender\").mean(numeric_only=True).round(2).T\n\n\n\n\n\n\n\ngender\nfemale\nmale\n\n\n\n\nid\n7.82\n13.78\n\n\nheight\n164.36\n165.78\n\n\naverage_height_parents\n164.86\n165.94\n\n\nnumber\n42.00\n42.00\n\n\nheight_m\n1.64\n1.66\n\n\nweight\n75.34\n72.66\n\n\nbmi\n27.90\n26.45"
+  },
+  {
+    "objectID": "code/6_filter.html#segment-data-into-bins",
+    "href": "code/6_filter.html#segment-data-into-bins",
+    "title": "Filter, grouping and binning",
+    "section": "Segment data into bins",
+    "text": "Segment data into bins\nUse the function cut when you need to segment and sort data values into bins. This function is also useful for going from a continuous variable to a categorical variable.\nIn our example, we create a body mass index category. The standard weight status categories associated with BMI ranges for adults are shown in the following table:\n\n\n\nBMI\nWeight Status\n\n\n\n\nBelow 18.5\nUnderweight\n\n\n18.5 - 24.9\nNormal or Healthy Weight\n\n\n25.0 - 29.9\nOverweight\n\n\n30.0 and Above\nObese\n\n\n\nSource: U.S. Department of Health & Human Services\nIn our function, we discretize the variable bmi into four bins according to the table above:\n\nThe bins [0, 18.5, 25, 30, float(‘inf’)] indicate (0,18.5], (18.5,25], (25,30], (30, float(’inf))\nfloat('inf') is used for setting variable with an infinitely large value\n\n\ndf['bmi_category'] = pd.cut(df['bmi'], \n                            bins=[0, 18.5, 25, 30, float('inf')], \n                            labels=['underweight', 'normal', 'overweight', \"obese\"])\n\n\ndf['bmi_category'].head(7)\n\n0         obese\n1    overweight\n2    overweight\n3    overweight\n4         obese\n5        normal\n6    overweight\nName: bmi_category, dtype: category\nCategories (4, object): ['underweight' &lt; 'normal' &lt; 'overweight' &lt; 'obese']\n\n\nExample of how to discretize into four equal-sized bins:\n\ndf['bmi_category_2'] = pd.cut(df['bmi'], \n                            bins=4, \n                            labels=['group1', 'group2', 'group3', \"group4\"])\n\n\ndf['bmi_category_2'].head(7)\n\n0    group4\n1    group2\n2    group3\n3    group3\n4    group4\n5    group1\n6    group3\nName: bmi_category_2, dtype: category\nCategories (4, object): ['group1' &lt; 'group2' &lt; 'group3' &lt; 'group4']\n\n\nExample of how to discretize into four equal-sized bins if you don’t need labels\n\ndf['bmi_category_3'] = pd.cut(df['bmi'], \n                            bins=4, \n                            labels=False)\n\n\ndf['bmi_category_3'].head(7)\n\n0    3\n1    1\n2    2\n3    2\n4    3\n5    0\n6    2\nName: bmi_category_3, dtype: int64\n\n\n\nUse the variable height to create a new variable called height_category with three bins and labels:\n\n0 to 165 (label it group1)\n166 to 167 (label it group2)\n168 and taller (label it group3)\n\n\n\n### BEGIN SOLUTION\ndf['height_category'] = pd.cut(df['height'], \n                            bins=[0, 165, 167, float('inf')], \n                            labels=['group1', 'group2', 'group3'])\n### END SOLUTION\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert df['height_category'].value_counts().group1 == 13\nassert df['height_category'].value_counts().group2 == 6\nassert df['height_category'].value_counts().group3 == 1"
+  },
+  {
+    "objectID": "code/5_selection-c.html",
+    "href": "code/5_selection-c.html",
+    "title": "Selection",
+    "section": "",
+    "text": "Wichtige Hinweise\nNAME = \"\"\nimport IPython\nassert IPython.version_info[0] &gt;= 3, \"Your version of IPython is too old, please update it.\""
+  },
+  {
+    "objectID": "code/5_selection-c.html#import-pandas",
+    "href": "code/5_selection-c.html#import-pandas",
+    "title": "Selection",
+    "section": "Import pandas",
+    "text": "Import pandas\n\nimport pandas as pd"
+  },
+  {
+    "objectID": "code/5_selection-c.html#import-data",
+    "href": "code/5_selection-c.html#import-data",
+    "title": "Selection",
+    "section": "Import data",
+    "text": "Import data\n\n# URL of data\nURL = \"https://raw.githubusercontent.com/kirenz/datasets/master/height_clean_cols.csv\"\n\n\n# YOUR CODE HERE\nraise NotImplementedError()"
+  },
+  {
+    "objectID": "code/5_selection-c.html#selection",
+    "href": "code/5_selection-c.html#selection",
+    "title": "Selection",
+    "section": "Selection",
+    "text": "Selection\n\nGetting [[]]\nSelecting a single column with [[]]:\n\nSelect the column height and save it as a new Pandas dataframe df_height\n\nHint:\ndf_height = df[[___]]\n\n# YOUR CODE HERE\nraise NotImplementedError()\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert  df_height.columns.to_list() == ['height']\n\nSelecting via [], which slices the rows (endpoint is not included) and includes all columns:\n\ndf[0:1]\n\n\nSelect rows 1, 2 and 3 and save it as df_sr\n\n\n# YOUR CODE HERE\nraise NotImplementedError()\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert df_sr.iloc[0,0] == 'Peter'\nassert df_sr.iloc[2,0] == 'Manuela'\nassert len(df_sr) == 3\n\n\n\nBy label .loc\nThe .loc (location) attribute is the primary access method. The following are valid inputs:\nFor getting a cross section using a label:\n\n# select row 0\ndf.loc[[0]]\n\nSelecting on a multi-axis by label:\n\n# only select location at row 0 for column \"name\"\ndf.loc[0 , 'name']\n\n\n# select row 2 to 4 for column \"name\" (when using .loc endpoints are included)\ndf.loc[2:4 , 'name']\n\n\n# select row 2 to 4 for columns \"name\" and \"height\" (when using .loc endpoints are included)\ndf.loc[2:4 , ['name', 'height']]\n\n\n# select all rows for \ndf.loc[ : , [\"name\", \"height\"]]\n\n\nSelect row 0 and 1 for columns ‘name’ and ‘height’ and save it as df_loc1\n\n\n# YOUR CODE HERE\nraise NotImplementedError()\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert  df_loc1.columns.to_list() == ['name', 'height']\nassert  len(df_loc1) == 2\nassert  df_loc1.iloc[0,0] == \"Stefanie\"\n\nReduction in the dimensions of the returned object:\n\ndf.loc[0, [\"name\", \"height\"]]\n\nFor getting a scalar value:\n\ndf.loc[[0], \"height\"]\n\n\n\nBy position .iloc\nPandas provides a suite of methods in order to get purely integer based indexing.\nHere, the .iloc attribute is the primary access method.\nWhen using .iloc, endpoints are not included.\n\ndf.iloc[0]\n\nBy integer slices:\n\ndf.iloc[0:2, 0:2]\n\nBy lists of integer position locations:\n\ndf.iloc[[0, 2], [0, 2]]\n\nFor slicing rows explicitly:\n\ndf.iloc[1:3, :]\n\nFor slicing columns explicitly:\n\ndf.iloc[:, 1:3]\n\nFor getting a value explicitly:\n\ndf.iloc[0, 0]\n\nUse .iloc to obtain rows 4 to 6 and columns 3 and 4. Save the result as df_iloc1\n\n# YOUR CODE HERE\nraise NotImplementedError()\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert  df_iloc1.columns.to_list() == ['average_height_parents', 'gender']\nassert  len(df_iloc1) == 3\nassert  df_iloc1.iloc[0,1] == \"male\""
+  },
+  {
+    "objectID": "code/4_statistics.html",
+    "href": "code/4_statistics.html",
+    "title": "Statistics and plots",
+    "section": "",
+    "text": "import pandas as pd"
+  },
+  {
+    "objectID": "code/4_statistics.html#import-pandas",
+    "href": "code/4_statistics.html#import-pandas",
+    "title": "Statistics and plots",
+    "section": "",
+    "text": "import pandas as pd"
+  },
+  {
+    "objectID": "code/4_statistics.html#import-data",
+    "href": "code/4_statistics.html#import-data",
+    "title": "Statistics and plots",
+    "section": "Import data",
+    "text": "Import data\n\nURL = \"https://raw.githubusercontent.com/kirenz/datasets/master/height_clean_cols.csv\"\n\ndf = pd.read_csv(URL)\ndf[\"gender\"] = df[\"gender\"].astype(\"category\")\ndf['id'] = df['id'].astype(str)\n\ndf.head()\n\n\n\n\n\n\n\n\nname\nid\nheight\naverage_height_parents\ngender\nnumber\nheight_m\nweight\nbmi\ndate\n\n\n\n\n0\nStefanie\n1\n162\n161.5\nfemale\n42\n1.62\n84.58\n32.23\n2022-10-08\n\n\n1\nPeter\n2\n163\n163.5\nmale\n42\n1.63\n70.57\n26.56\n2022-10-08\n\n\n2\nStefanie\n3\n163\n163.2\nfemale\n42\n1.63\n75.48\n28.41\n2022-10-08\n\n\n3\nManuela\n4\n164\n165.1\nfemale\n42\n1.64\n75.46\n28.06\n2022-10-08\n\n\n4\nSimon\n5\n164\n163.2\nmale\n42\n1.64\n83.24\n30.95\n2022-10-08\n\n\n\n\n\n\n\n\ndf.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 20 entries, 0 to 19\nData columns (total 10 columns):\n #   Column                  Non-Null Count  Dtype   \n---  ------                  --------------  -----   \n 0   name                    20 non-null     object  \n 1   id                      20 non-null     object  \n 2   height                  20 non-null     int64   \n 3   average_height_parents  20 non-null     float64 \n 4   gender                  20 non-null     category\n 5   number                  20 non-null     int64   \n 6   height_m                20 non-null     float64 \n 7   weight                  20 non-null     float64 \n 8   bmi                     20 non-null     float64 \n 9   date                    20 non-null     object  \ndtypes: category(1), float64(4), int64(2), object(3)\nmemory usage: 1.7+ KB"
+  },
+  {
+    "objectID": "code/4_statistics.html#statistics",
+    "href": "code/4_statistics.html#statistics",
+    "title": "Statistics and plots",
+    "section": "Statistics",
+    "text": "Statistics\n\nNumeric data\n\nWe can calculate simple statistics like mean, median, standard deviation etc.\n\n\ndf['height'].mean()\n\n165.0\n\n\n\nPrint the value in nice format (using formatted string literals f”…“)\n\n\nprint(f\"The mean of height is {df['height'].mean()}\")\n\nThe mean of height is 165.0\n\n\n\ndf['height'].median()\n\n165.0\n\n\n\ndf['height'].std()\n\n1.4867838833500564\n\n\n\n# round the value\ndf['height'].std().round(2)\n\n1.49\n\n\n\ndescribe() shows a quick statistic summary of your numerical data.\nWe transpose the data (with .T) to make it more readable:\n\n\ndf.describe().T.round(2)\n\n\n\n\n\n\n\n\ncount\nmean\nstd\nmin\n25%\n50%\n75%\nmax\n\n\n\n\nheight\n20.0\n165.00\n1.49\n162.00\n164.00\n165.00\n166.00\n168.00\n\n\naverage_height_parents\n20.0\n165.35\n1.69\n161.50\n164.30\n165.35\n166.35\n168.50\n\n\nnumber\n20.0\n42.00\n0.00\n42.00\n42.00\n42.00\n42.00\n42.00\n\n\nheight_m\n20.0\n1.65\n0.01\n1.62\n1.64\n1.65\n1.66\n1.68\n\n\nweight\n20.0\n74.13\n8.15\n58.06\n68.03\n75.60\n78.48\n88.07\n\n\nbmi\n20.0\n27.24\n3.10\n21.59\n24.99\n28.04\n28.58\n32.23\n\n\n\n\n\n\n\nSummary statistics for numeric variables height and bmi for different levels of the categorical variable gender:\n\ndf[['height', 'bmi', 'gender']].groupby(['gender']).describe().round(2).T\n\n\n\n\n\n\n\n\ngender\nfemale\nmale\n\n\n\n\nheight\ncount\n11.00\n9.00\n\n\nmean\n164.36\n165.78\n\n\nstd\n1.12\n1.56\n\n\nmin\n162.00\n163.00\n\n\n25%\n164.00\n165.00\n\n\n50%\n165.00\n166.00\n\n\n75%\n165.00\n167.00\n\n\nmax\n166.00\n168.00\n\n\nbmi\ncount\n11.00\n9.00\n\n\nmean\n27.90\n26.45\n\n\nstd\n2.76\n3.47\n\n\nmin\n21.59\n22.51\n\n\n25%\n27.73\n22.92\n\n\n50%\n28.28\n26.56\n\n\n75%\n28.63\n28.07\n\n\nmax\n32.23\n31.96\n\n\n\n\n\n\n\n\nObtain summary statistics for average_height_parents grouped by the categorical variable gender and save the result as stats. Transpose the data.\n\nHint:\nstats = ___[['___', '___']].groupby(['___']).___().round(2).T\n\n### BEGIN SOLUTION\nstats = df[['average_height_parents', 'gender']].groupby(['gender']).describe().round(2).T\n### END SOLUTION\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert len(stats) == 8\nassert stats.columns.to_list() == ['female', 'male']\n\n\n\nCategorical data\n\nwe can also use describe() for categorical data\n\n\ndf.describe(include=\"category\").T\n\n\n\n\n\n\n\n\ncount\nunique\ntop\nfreq\n\n\n\n\ngender\n20\n2\nfemale\n11\n\n\n\n\n\n\n\n\nShow unique levels of a categorical variable and count with value_counts()\n\n\ndf['gender'].value_counts()\n\nfemale    11\nmale       9\nName: gender, dtype: int64\n\n\n\nWe also can extract specific values\n\n\nmen = df['gender'].value_counts().male\nmen\n\n9\n\n\n\nPrint the value in nice format (using formatted string literals f”…“)\n\n\nprint(f\"There are {men} men in the data\")\n\nThere are 9 men in the data\n\n\n\nUse the same method as above to calculate and print the value for women (create a variable called women)\n\nHint:\n___ = ___['___'].___().___\nprint(___\"There are {___} women in the data\")\n\n### BEGIN SOLUTION\nwomen = df['gender'].value_counts().female\nprint(f\"There are {women} women in the data\")\n### END SOLUTION\n\nThere are 11 women in the data\n\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert women == 11\n\n\n\nLoop over list\n\nExample of for loop to obtain statistics for specific numerical columns\n\n\n# make a list of numerical columns\nlist_num = ['height', 'weight']\n\n\n# calculate median for our list and only show 4 digits, then make a new line (\\n)\nfor i in list_num:\n    print(f'Median of {i} equals {df[i].median():.4} \\n')\n\nMedian of height equals 165.0 \n\nMedian of weight equals 75.59 \n\n\n\n\nCalculate summary statistics for our list.\n\n\nfor i in list_num:\n    print(f'Column: {i}  \\n  {df[i].describe().T.round(2)}   \\n')   \n\nColumn: height  \n  count     20.00\nmean     165.00\nstd        1.49\nmin      162.00\n25%      164.00\n50%      165.00\n75%      166.00\nmax      168.00\nName: height, dtype: float64   \n\nColumn: weight  \n  count    20.00\nmean     74.13\nstd       8.15\nmin      58.06\n25%      68.03\n50%      75.60\n75%      78.48\nmax      88.07\nName: weight, dtype: float64   \n\n\n\n\n\nCreate plots\n\n# Pandas needs the module matplotlib to create plots\nimport matplotlib.pyplot as plt\n\n# show plot output in Jupyter Notebook\n%matplotlib inline\n\n\ndf.boxplot(column=['weight']);\n\n\n\n\n\n# obtain plots for our list\nfor i in list_num:\n    df.boxplot(column=[i])\n    plt.title(\"Boxplot for \" + i)\n    plt.show()"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Welcome 👋",
     "section": "",
-    "text": "Lab “Name”\nIn this lab you will …\n\n\n\n\n\n\nImportant\n\n\n\nMake sure you meet all the requirements and have read the lecture slides before you start with the assignments\n\n\nWhat you will learn in this lab:\n\nHow to set up a MySQL database\nUse SQL for data analysis\nMake use of Pandas for data analysis in Python\nUse Altair for data visualization in Python"
+    "text": "Lab: pandas-intro\nIn this lab you will learn some basic pandas functions for data analysis and manipulation.\npandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language.\n\n\n\n\n\n\nImportant\n\n\n\nMake sure you meet all the requirements and have read the lecture slides before you start with the assignments\n\n\nIn this lab you will learn how to use pandas to:\n\nImport and store data\nChange column names\nChange data types and add columns\nCalculate statistics and create plots\nSelect data\nFilter, grouping and binning data"
   },
   {
-    "objectID": "slide.html",
-    "href": "slide.html",
-    "title": "Slides",
+    "objectID": "assignments.html",
+    "href": "assignments.html",
+    "title": "Assignments",
     "section": "",
-    "text": "This is a Quarto slidedeck."
+    "text": "Download the Jupyter Notebooks in your local folder pandas-intro.\n\nTask 1: Import and store data\nTask 2: Change column names\nTask 3: Change data types and add columns\nTask 4: Calculate statistics and create plots\nTask 5: Select data\nTask 6: Filter, grouping and binning"
   },
   {
-    "objectID": "slides/slides.html#text",
-    "href": "slides/slides.html#text",
-    "title": "Title",
-    "section": "Text",
-    "text": "Text\n\na 🤖\n\nabc\n\n\n\n\nb\nc1\n\n📚 Required reading: A & B (2023)\nhttps://arxiv.org/pdf/2303.12712.pdf\n\nRussell & Norvig, 2009"
-  },
-  {
-    "objectID": "slides/slides.html#image",
-    "href": "slides/slides.html#image",
-    "title": "Title",
-    "section": "Image",
-    "text": "Image"
-  },
-  {
-    "objectID": "slides/slides.html#video",
-    "href": "slides/slides.html#video",
-    "title": "Title",
-    "section": "Video",
-    "text": "Video"
-  },
-  {
-    "objectID": "slides/slides.html#a-lot-of-text",
-    "href": "slides/slides.html#a-lot-of-text",
-    "title": "Title",
-    "section": "A lot of text",
-    "text": "A lot of text\nSmaller heading"
-  },
-  {
-    "objectID": "slides/slides.html#background-image",
-    "href": "slides/slides.html#background-image",
-    "title": "Title",
-    "section": "Background image",
-    "text": "Background image\nabc"
-  },
-  {
-    "objectID": "slides/slides.html#code",
-    "href": "slides/slides.html#code",
-    "title": "Title",
-    "section": "Code",
-    "text": "Code\n1print('Hello World')\n2for i in LIST:\n  df[i] = df[i].astype('cat')\n\n1\n\nPrint Hello World, and then,\n\n2\n\ntransform all columns in the LIST element to categorical variables"
-  },
-  {
-    "objectID": "slides/slides.html#end",
-    "href": "slides/slides.html#end",
-    "title": "Title",
-    "section": "End",
-    "text": "End\n\n\nJan Kirenz"
-  },
-  {
-    "objectID": "code/notebook.html",
-    "href": "code/notebook.html",
-    "title": "Notebook",
+    "objectID": "code/6_filter-c.html",
+    "href": "code/6_filter-c.html",
+    "title": "Filter, grouping and binning",
     "section": "",
-    "text": "Load Python libaries and API keys.\n\nimport os\nimport openai\nimport pandas as pd\nimport altair as alt\nfrom dotenv import load_dotenv, find_dotenv\n\n\n_ = load_dotenv(find_dotenv()) # read local .env file\nopenai.api_key  = os.environ['OPENAI_API_KEY']"
+    "text": "Wichtige Hinweise\nNAME = \"\"\nimport IPython\nassert IPython.version_info[0] &gt;= 3, \"Your version of IPython is too old, please update it.\""
   },
   {
-    "objectID": "code/notebook.html#setup",
-    "href": "code/notebook.html#setup",
-    "title": "Notebook",
+    "objectID": "code/6_filter-c.html#import-pandas",
+    "href": "code/6_filter-c.html#import-pandas",
+    "title": "Filter, grouping and binning",
+    "section": "Import pandas",
+    "text": "Import pandas\n\nimport pandas as pd"
+  },
+  {
+    "objectID": "code/6_filter-c.html#import-data",
+    "href": "code/6_filter-c.html#import-data",
+    "title": "Filter, grouping and binning",
+    "section": "Import data",
+    "text": "Import data\n\nURL = \"https://raw.githubusercontent.com/kirenz/datasets/master/height_clean_cols.csv\"\ndf = pd.read_csv(URL)"
+  },
+  {
+    "objectID": "code/6_filter-c.html#filter",
+    "href": "code/6_filter-c.html#filter",
+    "title": "Filter, grouping and binning",
+    "section": "Filter",
+    "text": "Filter\nUsing a single column’s values to filter data (boolean indexing).\n\ndf[df[\"height\"] &gt;= 167]\n\nCombine filtering for two columns or more with & (and)\n\ndf[(df[\"height\"] &gt;= 167) & (df[\"weight\"] &lt; 74) ]\n\nYou can also combine filtering for two columns or more with | (or)\n\ndf[(df[\"height\"] &gt;= 167) | (df[\"weight\"] &lt; 74) ]\n\n\nFilter people with a weight greater as 84 and save it as df_weight_greater_84\n\n\n# YOUR CODE HERE\nraise NotImplementedError()\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert len(df_weight_greater_84) == 2\nassert df_weight_greater_84.iloc[0, 0] == \"Stefanie\"\nassert df_weight_greater_84.iloc[1, 0] == \"Eric\"\n\nAlways use the isin() method if you have multiple conditions within one column:\n\ndf[df[\"name\"].isin([\"Tom\", \"Steven\"])]"
+  },
+  {
+    "objectID": "code/6_filter-c.html#grouping",
+    "href": "code/6_filter-c.html#grouping",
+    "title": "Filter, grouping and binning",
+    "section": "Grouping",
+    "text": "Grouping\nBy “group by” we are referring to a process involving one or more of the following steps:\n\nSplitting the data into groups based on some criteria\nApplying a function to each group independently\nCombining the results into a data structure\n\nGrouping and then applying the mean() function to the resulting groups. Furthermore, we round the results and transpose the data.\n\ndf.groupby(\"gender\").mean(numeric_only=True).round(2).T"
+  },
+  {
+    "objectID": "code/6_filter-c.html#segment-data-into-bins",
+    "href": "code/6_filter-c.html#segment-data-into-bins",
+    "title": "Filter, grouping and binning",
+    "section": "Segment data into bins",
+    "text": "Segment data into bins\nUse the function cut when you need to segment and sort data values into bins. This function is also useful for going from a continuous variable to a categorical variable.\nIn our example, we create a body mass index category. The standard weight status categories associated with BMI ranges for adults are shown in the following table:\n\n\n\nBMI\nWeight Status\n\n\n\n\nBelow 18.5\nUnderweight\n\n\n18.5 - 24.9\nNormal or Healthy Weight\n\n\n25.0 - 29.9\nOverweight\n\n\n30.0 and Above\nObese\n\n\n\nSource: U.S. Department of Health & Human Services\nIn our function, we discretize the variable bmi into four bins according to the table above:\n\nThe bins [0, 18.5, 25, 30, float(‘inf’)] indicate (0,18.5], (18.5,25], (25,30], (30, float(’inf))\nfloat('inf') is used for setting variable with an infinitely large value\n\n\ndf['bmi_category'] = pd.cut(df['bmi'], \n                            bins=[0, 18.5, 25, 30, float('inf')], \n                            labels=['underweight', 'normal', 'overweight', \"obese\"])\n\n\ndf['bmi_category'].head(7)\n\nExample of how to discretize into four equal-sized bins:\n\ndf['bmi_category_2'] = pd.cut(df['bmi'], \n                            bins=4, \n                            labels=['group1', 'group2', 'group3', \"group4\"])\n\n\ndf['bmi_category_2'].head(7)\n\nExample of how to discretize into four equal-sized bins if you don’t need labels\n\ndf['bmi_category_3'] = pd.cut(df['bmi'], \n                            bins=4, \n                            labels=False)\n\n\ndf['bmi_category_3'].head(7)\n\n\nUse the variable height to create a new variable called height_category with three bins and labels:\n\n0 to 165 (label it group1)\n166 to 167 (label it group2)\n168 and taller (label it group3)\n\n\n\n# YOUR CODE HERE\nraise NotImplementedError()\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert df['height_category'].value_counts().group1 == 13\nassert df['height_category'].value_counts().group2 == 6\nassert df['height_category'].value_counts().group3 == 1"
+  },
+  {
+    "objectID": "code/5_selection.html",
+    "href": "code/5_selection.html",
+    "title": "Selection",
     "section": "",
-    "text": "Load Python libaries and API keys.\n\nimport os\nimport openai\nimport pandas as pd\nimport altair as alt\nfrom dotenv import load_dotenv, find_dotenv\n\n\n_ = load_dotenv(find_dotenv()) # read local .env file\nopenai.api_key  = os.environ['OPENAI_API_KEY']"
+    "text": "import pandas as pd"
   },
   {
-    "objectID": "code/notebook.html#data",
-    "href": "code/notebook.html#data",
-    "title": "Notebook",
+    "objectID": "code/5_selection.html#import-pandas",
+    "href": "code/5_selection.html#import-pandas",
+    "title": "Selection",
+    "section": "",
+    "text": "import pandas as pd"
+  },
+  {
+    "objectID": "code/5_selection.html#import-data",
+    "href": "code/5_selection.html#import-data",
+    "title": "Selection",
+    "section": "Import data",
+    "text": "Import data\n\n# URL of data\nURL = \"https://raw.githubusercontent.com/kirenz/datasets/master/height_clean_cols.csv\"\n\n\ndf = pd.read_csv(URL)\n\ndf[\"gender\"] = df[\"gender\"].astype(\"category\")\ndf['id'] = df['id'].astype(str)"
+  },
+  {
+    "objectID": "code/5_selection.html#selection",
+    "href": "code/5_selection.html#selection",
+    "title": "Selection",
+    "section": "Selection",
+    "text": "Selection\n\nGetting [[]]\nSelecting a single column with [[]]:\n\nSelect the column height and save it as a new Pandas dataframe df_height\n\nHint:\ndf_height = df[[___]]\n\n### BEGIN SOLUTION\ndf_height = df[[\"height\"]]\n### END SOLUTION\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert  df_height.columns.to_list() == ['height']\n\nSelecting via [], which slices the rows (endpoint is not included) and includes all columns:\n\ndf[0:1]\n\n\n\n\n\n\n\n\nname\nid\nheight\naverage_height_parents\ngender\nnumber\nheight_m\nweight\nbmi\ndate\n\n\n\n\n0\nStefanie\n1\n162\n161.5\nfemale\n42\n1.62\n84.58\n32.23\n2022-10-08\n\n\n\n\n\n\n\n\nSelect rows 1, 2 and 3 and save it as df_sr\n\n\n### BEGIN SOLUTION\ndf_sr = df[1:4]\n### END SOLUTION\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert df_sr.iloc[0,0] == 'Peter'\nassert df_sr.iloc[2,0] == 'Manuela'\nassert len(df_sr) == 3\n\n\n\nBy label .loc\nThe .loc (location) attribute is the primary access method. The following are valid inputs:\nFor getting a cross section using a label:\n\n# select row 0\ndf.loc[[0]]\n\n\n\n\n\n\n\n\nname\nid\nheight\naverage_height_parents\ngender\nnumber\nheight_m\nweight\nbmi\ndate\n\n\n\n\n0\nStefanie\n1\n162\n161.5\nfemale\n42\n1.62\n84.58\n32.23\n2022-10-08\n\n\n\n\n\n\n\nSelecting on a multi-axis by label:\n\n# only select location at row 0 for column \"name\"\ndf.loc[0 , 'name']\n\n'Stefanie'\n\n\n\n# select row 2 to 4 for column \"name\" (when using .loc endpoints are included)\ndf.loc[2:4 , 'name']\n\n2    Stefanie\n3     Manuela\n4       Simon\nName: name, dtype: object\n\n\n\n# select row 2 to 4 for columns \"name\" and \"height\" (when using .loc endpoints are included)\ndf.loc[2:4 , ['name', 'height']]\n\n\n\n\n\n\n\n\nname\nheight\n\n\n\n\n2\nStefanie\n163\n\n\n3\nManuela\n164\n\n\n4\nSimon\n164\n\n\n\n\n\n\n\n\n# select all rows for \ndf.loc[ : , [\"name\", \"height\"]]\n\n\n\n\n\n\n\n\nname\nheight\n\n\n\n\n0\nStefanie\n162\n\n\n1\nPeter\n163\n\n\n2\nStefanie\n163\n\n\n3\nManuela\n164\n\n\n4\nSimon\n164\n\n\n5\nSophia\n164\n\n\n6\nEllen\n164\n\n\n7\nEmilia\n165\n\n\n8\nLina\n165\n\n\n9\nMarie\n165\n\n\n10\nLena\n165\n\n\n11\nMila\n165\n\n\n12\nFin\n165\n\n\n13\nEric\n166\n\n\n14\nPia\n166\n\n\n15\nMarc\n166\n\n\n16\nRalph\n166\n\n\n17\nTom\n167\n\n\n18\nSteven\n167\n\n\n19\nEmanuel\n168\n\n\n\n\n\n\n\n\nSelect row 0 and 1 for columns ‘name’ and ‘height’ and save it as df_loc1\n\n\n### BEGIN SOLUTION\ndf_loc1 = df.loc[0:1, [\"name\", \"height\"]]\n### END SOLUTION\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert  df_loc1.columns.to_list() == ['name', 'height']\nassert  len(df_loc1) == 2\nassert  df_loc1.iloc[0,0] == \"Stefanie\"\n\nReduction in the dimensions of the returned object:\n\ndf.loc[0, [\"name\", \"height\"]]\n\nname      Stefanie\nheight         162\nName: 0, dtype: object\n\n\nFor getting a scalar value:\n\ndf.loc[[0], \"height\"]\n\n0    162\nName: height, dtype: int64\n\n\n\n\nBy position .iloc\nPandas provides a suite of methods in order to get purely integer based indexing.\nHere, the .iloc attribute is the primary access method.\nWhen using .iloc, endpoints are not included.\n\ndf.iloc[0]\n\nname                        Stefanie\nid                                 1\nheight                           162\naverage_height_parents         161.5\ngender                        female\nnumber                            42\nheight_m                        1.62\nweight                         84.58\nbmi                            32.23\ndate                      2022-10-08\nName: 0, dtype: object\n\n\nBy integer slices:\n\ndf.iloc[0:2, 0:2]\n\n\n\n\n\n\n\n\nname\nid\n\n\n\n\n0\nStefanie\n1\n\n\n1\nPeter\n2\n\n\n\n\n\n\n\nBy lists of integer position locations:\n\ndf.iloc[[0, 2], [0, 2]]\n\n\n\n\n\n\n\n\nname\nheight\n\n\n\n\n0\nStefanie\n162\n\n\n2\nStefanie\n163\n\n\n\n\n\n\n\nFor slicing rows explicitly:\n\ndf.iloc[1:3, :]\n\n\n\n\n\n\n\n\nname\nid\nheight\naverage_height_parents\ngender\nnumber\nheight_m\nweight\nbmi\ndate\n\n\n\n\n1\nPeter\n2\n163\n163.5\nmale\n42\n1.63\n70.57\n26.56\n2022-10-08\n\n\n2\nStefanie\n3\n163\n163.2\nfemale\n42\n1.63\n75.48\n28.41\n2022-10-08\n\n\n\n\n\n\n\nFor slicing columns explicitly:\n\ndf.iloc[:, 1:3]\n\n\n\n\n\n\n\n\nid\nheight\n\n\n\n\n0\n1\n162\n\n\n1\n2\n163\n\n\n2\n3\n163\n\n\n3\n4\n164\n\n\n4\n5\n164\n\n\n5\n6\n164\n\n\n6\n7\n164\n\n\n7\n8\n165\n\n\n8\n9\n165\n\n\n9\n10\n165\n\n\n10\n11\n165\n\n\n11\n12\n165\n\n\n12\n13\n165\n\n\n13\n14\n166\n\n\n14\n15\n166\n\n\n15\n16\n166\n\n\n16\n17\n166\n\n\n17\n18\n167\n\n\n18\n19\n167\n\n\n19\n20\n168\n\n\n\n\n\n\n\nFor getting a value explicitly:\n\ndf.iloc[0, 0]\n\n'Stefanie'\n\n\nUse .iloc to obtain rows 4 to 6 and columns 3 and 4. Save the result as df_iloc1\n\n### BEGIN SOLUTION\ndf_iloc1 = df.iloc[4:7, 3:5]\n### END SOLUTION\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert  df_iloc1.columns.to_list() == ['average_height_parents', 'gender']\nassert  len(df_iloc1) == 3\nassert  df_iloc1.iloc[0,1] == \"male\""
+  },
+  {
+    "objectID": "code/4_statistics-c.html",
+    "href": "code/4_statistics-c.html",
+    "title": "Statistics and plots",
+    "section": "",
+    "text": "Wichtige Hinweise\nNAME = \"\"\nimport IPython\nassert IPython.version_info[0] &gt;= 3, \"Your version of IPython is too old, please update it.\""
+  },
+  {
+    "objectID": "code/4_statistics-c.html#import-pandas",
+    "href": "code/4_statistics-c.html#import-pandas",
+    "title": "Statistics and plots",
+    "section": "Import pandas",
+    "text": "Import pandas\n\nimport pandas as pd"
+  },
+  {
+    "objectID": "code/4_statistics-c.html#import-data",
+    "href": "code/4_statistics-c.html#import-data",
+    "title": "Statistics and plots",
+    "section": "Import data",
+    "text": "Import data\n\nURL = \"https://raw.githubusercontent.com/kirenz/datasets/master/height_clean_cols.csv\"\n\ndf = pd.read_csv(URL)\ndf[\"gender\"] = df[\"gender\"].astype(\"category\")\ndf['id'] = df['id'].astype(str)\n\ndf.head()\n\n\ndf.info()"
+  },
+  {
+    "objectID": "code/4_statistics-c.html#statistics",
+    "href": "code/4_statistics-c.html#statistics",
+    "title": "Statistics and plots",
+    "section": "Statistics",
+    "text": "Statistics\n\nNumeric data\n\nWe can calculate simple statistics like mean, median, standard deviation etc.\n\n\ndf['height'].mean()\n\n\nPrint the value in nice format (using formatted string literals f”…“)\n\n\nprint(f\"The mean of height is {df['height'].mean()}\")\n\n\ndf['height'].median()\n\n\ndf['height'].std()\n\n\n# round the value\ndf['height'].std().round(2)\n\n\ndescribe() shows a quick statistic summary of your numerical data.\nWe transpose the data (with .T) to make it more readable:\n\n\ndf.describe().T.round(2)\n\nSummary statistics for numeric variables height and bmi for different levels of the categorical variable gender:\n\ndf[['height', 'bmi', 'gender']].groupby(['gender']).describe().round(2).T\n\n\nObtain summary statistics for average_height_parents grouped by the categorical variable gender and save the result as stats. Transpose the data.\n\nHint:\nstats = ___[['___', '___']].groupby(['___']).___().round(2).T\n\n# YOUR CODE HERE\nraise NotImplementedError()\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert len(stats) == 8\nassert stats.columns.to_list() == ['female', 'male']\n\n\n\nCategorical data\n\nwe can also use describe() for categorical data\n\n\ndf.describe(include=\"category\").T\n\n\nShow unique levels of a categorical variable and count with value_counts()\n\n\ndf['gender'].value_counts()\n\n\nWe also can extract specific values\n\n\nmen = df['gender'].value_counts().male\nmen\n\n\nPrint the value in nice format (using formatted string literals f”…“)\n\n\nprint(f\"There are {men} men in the data\")\n\n\nUse the same method as above to calculate and print the value for women (create a variable called women)\n\nHint:\n___ = ___['___'].___().___\nprint(___\"There are {___} women in the data\")\n\n# YOUR CODE HERE\nraise NotImplementedError()\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert women == 11\n\n\n\nLoop over list\n\nExample of for loop to obtain statistics for specific numerical columns\n\n\n# make a list of numerical columns\nlist_num = ['height', 'weight']\n\n\n# calculate median for our list and only show 4 digits, then make a new line (\\n)\nfor i in list_num:\n    print(f'Median of {i} equals {df[i].median():.4} \\n')\n\n\nCalculate summary statistics for our list.\n\n\nfor i in list_num:\n    print(f'Column: {i}  \\n  {df[i].describe().T.round(2)}   \\n')   \n\n\n\nCreate plots\n\n# Pandas needs the module matplotlib to create plots\nimport matplotlib.pyplot as plt\n\n# show plot output in Jupyter Notebook\n%matplotlib inline\n\n\ndf.boxplot(column=['weight']);\n\n\n# obtain plots for our list\nfor i in list_num:\n    df.boxplot(column=[i])\n    plt.title(\"Boxplot for \" + i)\n    plt.show()"
+  },
+  {
+    "objectID": "code/1_import_store-c.html",
+    "href": "code/1_import_store-c.html",
+    "title": "Import and store data",
+    "section": "",
+    "text": "Wichtige Hinweise\nNAME = \"\"\nimport IPython\nassert IPython.version_info[0] &gt;= 3, \"Your version of IPython is too old, please update it.\""
+  },
+  {
+    "objectID": "code/1_import_store-c.html#import-pandas",
+    "href": "code/1_import_store-c.html#import-pandas",
+    "title": "Import and store data",
+    "section": "Import pandas",
+    "text": "Import pandas\n\nTo load the pandas package and start working with it, import the package.\nThe community agreed alias for pandas is pd, so loading pandas as pd is assumed standard practice for all of the pandas documentation:\n\n\nimport pandas as pd"
+  },
+  {
+    "objectID": "code/1_import_store-c.html#data-creation",
+    "href": "code/1_import_store-c.html#data-creation",
+    "title": "Import and store data",
+    "section": "Data creation",
+    "text": "Data creation\n\nTo manually store data in a table, create a DataFrame:\ncreate the DataFrame and name it my_df\nadd the variable “gender” with the following observations: male, female and male\n\nHint:\nmy_df = pd.DataFrame(\n    { \n        'name': [ \"Tom\", \"Lisa\", \"Peter\"],\n        'height': [1.68, 1.93, 1.72],\n        'weight': [48.4, 89.8, 84.2]\n         ______     ________\n        }\n)\n\n# YOUR CODE HERE\nraise NotImplementedError()\n\n\n\"\"\"Check that your code returns the correct output\"\"\"\nassert my_df.iloc[0, 0] == \"Tom\"\nassert my_df.iloc[0, 3] == \"male\"\nassert my_df.iloc[1, 3] == \"female\""
+  },
+  {
+    "objectID": "code/1_import_store-c.html#import-data",
+    "href": "code/1_import_store-c.html#import-data",
+    "title": "Import and store data",
+    "section": "Import data",
+    "text": "Import data\n\nPandas supports many different file formats or data sources out of the box (csv, excel, sql, json, parquet, …). Each of them import data with the prefix read_*\n\nNext, we import data, available as a CSV file in a GitHub repo\n\nImportant notes: The CSV file has a typical european format with\n\n; as seperators between cells (instead of the Pandas default ,)\n, as number decimal seperator (instead of the Pandas default .)\n\nWe need to take care of this issues.\nHint\ndf = pd.___(sep=';', decimal=',')\n\n# URL of data\nURL = \"https://raw.githubusercontent.com/kirenz/datasets/master/height_unclean.csv\"\n\n\n# YOUR CODE HERE\nraise NotImplementedError()\n\n\n\"\"\"Check that your code returns the correct output\"\"\"\nassert df.iloc[0, 0] == 'Stefanie'\nassert df.iloc[0, 3] == 161.5\n\nNow we do the same import with a different approach. Use the name df2\nHint:\nROOT = \"https://raw.githubusercontent.com/kirenz/datasets/master/\"\nDATA = \"___\"\n\ndf2 = pd.read_csv(___ + ___, sep=\";\", decimal=',' )\n\n# show head of the data\ndf2.head()\n\n# YOUR CODE HERE\nraise NotImplementedError()\n\n\n\"\"\"Check that your code returns the correct output\"\"\"\nassert df2.iloc[0, 0] == 'Stefanie'\nassert df2.iloc[0, 3] == 161.5"
+  },
+  {
+    "objectID": "code/1_import_store-c.html#store-data",
+    "href": "code/1_import_store-c.html#store-data",
+    "title": "Import and store data",
+    "section": "Store data",
+    "text": "Store data\nPandas supports many different file formats (csv, excel, sql, json, parquet, …). Each of them stores data with the prefix to_*\n\nThe following code should save the data df as an Excel file in your current directory.\nIn the example here, the sheet_name is named people_height instead of the default Sheet1.\nBy setting index=False the row index labels are not saved in the spreadsheet:\n\n\ndf.to_excel(\"height.xlsx\", sheet_name=\"people_height\", index=False)\n\n\nThe equivalent read function read_excel() would reload the data to a DataFrame:\n\n\n# load excel file\ndf_xlsx = pd.read_excel(\"height.xlsx\", sheet_name=\"people_height\")"
+  },
+  {
+    "objectID": "code/1_import_store-c.html#viewing-data",
+    "href": "code/1_import_store-c.html#viewing-data",
+    "title": "Import and store data",
+    "section": "Viewing data",
+    "text": "Viewing data\n\nOverview\n\n# show df\ndf\n\n\n# show first 2 rows\ndf.head(2)\n\n\n# show last 2 rows\ndf.tail(2)\n\n\nThe info() method prints information about a DataFrame including the index dtype and columns, non-null values and memory usage:\n\n\ndf.info()\n\n\n\nColumn names\n\n# Show columns\ndf.columns\n\n\n\nData type\n\nShow data types (dtypes).\n\n\ndf.dtypes\n\n\nThe data types in this DataFrame are integers (int64), floats (float64) and strings (object).\n\n\n\nIndex\n\n# Only show index\ndf.index"
+  },
+  {
+    "objectID": "code/3_data_types.html",
+    "href": "code/3_data_types.html",
+    "title": "Change data types and add columns",
+    "section": "",
+    "text": "import pandas as pd"
+  },
+  {
+    "objectID": "code/3_data_types.html#import-pandas",
+    "href": "code/3_data_types.html#import-pandas",
+    "title": "Change data types and add columns",
+    "section": "",
+    "text": "import pandas as pd"
+  },
+  {
+    "objectID": "code/3_data_types.html#import-data",
+    "href": "code/3_data_types.html#import-data",
+    "title": "Change data types and add columns",
+    "section": "Import data",
+    "text": "Import data\n\n# URL of data\nURL = \"https://raw.githubusercontent.com/kirenz/datasets/master/height_clean.csv\"\ndf = pd.read_csv(URL)\n\n\ndf.dtypes\n\nname                       object\nid                          int64\nheight                      int64\naverage_height_parents    float64\ngender                     object\ndtype: object"
+  },
+  {
+    "objectID": "code/3_data_types.html#change-data-type",
+    "href": "code/3_data_types.html#change-data-type",
+    "title": "Change data types and add columns",
+    "section": "Change data type",
+    "text": "Change data type\n\nThere are several methods to change data types in pandas:\n\nThe most common method to change the data type is:\n\n.astype(): Convert to a specific type (like “int32”, “float” or “catgeory”)\n.astype(str): Convert to string\n\nMore options:\n\nto_datetime: Convert argument to datetime.\nto_timedelta: Convert argument to timedelta.\nto_numeric: Convert argument to a numeric type.\nnumpy.ndarray.astype: Cast a numpy array to a specified type.\n\n\nCategorical data\n\nCategoricals are a pandas data type corresponding to categorical variables in statistics.\nA categorical variable takes on a limited, and usually fixed, number of possible values (categories). Examples are gender, social class, blood type, country affiliation, observation time or rating via Likert scales.\nConvert variable “gender” to a category dtype:\n\n\ndf[\"gender\"] = df[\"gender\"].astype(\"category\")\n\n\n\nString data\n\nIn our example, id is not a number (we can’t perform calculations with it)\nIt is just a unique identifier so we should transform it to a simple string (object)\n\nHint:\ndf['___'] = df['___'].___(___)\n\n### BEGIN SOLUTION\ndf['id'] = df['id'].astype(str)\n### END SOLUTION\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert df.select_dtypes(include=[\"number\"]).columns.to_list() == ['height', 'average_height_parents']\nassert df.select_dtypes(include=[\"object\"]).columns.to_list() == ['name', 'id']"
+  },
+  {
+    "objectID": "code/3_data_types.html#add-new-columns",
+    "href": "code/3_data_types.html#add-new-columns",
+    "title": "Change data types and add columns",
+    "section": "Add new columns",
+    "text": "Add new columns\n\nConstant\n\nAdd a new variable called “number” to df\nThe new variable should have the number 42 in all rows\n\nHint:\ndf[\"___\"] = ___\n\n### BEGIN SOLUTION\ndf[\"number\"] = 42\n### END SOLUTION\n\n\n\"\"\"Check if your code returns the correct output\"\"\"\nassert df.loc[[0], \"number\"].to_list() == [42]\n\n\n\nFrom existing\n\nCreate new columns from existing columns\n\n\n# we use numpy to add some data with a nornmal distribution \nimport numpy as np\n\n# calculate height in m (from cm)\ndf['height_m'] = df.height/100 \n\n# add 20 random normal distributed numbers with a mean of 45 and standard deviation of 5\ndf['weight'] = round(np.random.normal(45, 5, 20) * df['height_m'],2)\n\n# calculate body mass index\ndf['bmi'] = round(df.weight / (df.height_m * df.height_m),2)\n\n\ndf.head()\n\n\n\n\n\n\n\n\nname\nid\nheight\naverage_height_parents\ngender\nnumber\nheight_m\nweight\nbmi\n\n\n\n\n0\nStefanie\n1\n162\n161.5\nfemale\n42\n1.62\n69.40\n26.44\n\n\n1\nPeter\n2\n163\n163.5\nmale\n42\n1.63\n73.26\n27.57\n\n\n2\nStefanie\n3\n163\n163.2\nfemale\n42\n1.63\n82.44\n31.03\n\n\n3\nManuela\n4\n164\n165.1\nfemale\n42\n1.64\n72.59\n26.99\n\n\n4\nSimon\n5\n164\n163.2\nmale\n42\n1.64\n75.77\n28.17\n\n\n\n\n\n\n\n\n\nDate\n\nTo add a date, we can use datetime and strftime (see code examples below):\n\n\n# we need datetime to add a date\nfrom datetime import datetime\n\n\ndf[\"date\"] = datetime.today().strftime('%Y-%m-%d')\n\ndf.head(3)\n\n\n\n\n\n\n\n\nname\nid\nheight\naverage_height_parents\ngender\nnumber\nheight_m\nweight\nbmi\ndate\n\n\n\n\n0\nStefanie\n1\n162\n161.5\nfemale\n42\n1.62\n69.40\n26.44\n2023-08-19\n\n\n1\nPeter\n2\n163\n163.5\nmale\n42\n1.63\n73.26\n27.57\n2023-08-19\n\n\n2\nStefanie\n3\n163\n163.2\nfemale\n42\n1.63\n82.44\n31.03\n2023-08-19\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n%a\nSun\nWeekday as locale’s abbreviated name.\n\n\n%A\nSunday\nWeekday as locale’s full name.\n\n\n%w\n0\nWeekday as a decimal number, where 0 is Sunday and 6 is Saturday.\n\n\n%d\n8\nDay of the month as a zero-padded decimal number.\n\n\n%-d\n8\nDay of the month as a decimal number. (Platform specific)\n\n\n%b\nSep\nMonth as locale’s abbreviated name.\n\n\n%B\nSeptember\nMonth as locale’s full name.\n\n\n%m\n9\nMonth as a zero-padded decimal number.\n\n\n%-m\n9\nMonth as a decimal number. (Platform specific)\n\n\n%y\n13\nYear without century as a zero-padded decimal number.\n\n\n%Y\n2013\nYear with century as a decimal number.\n\n\n%H\n7\nHour (24-hour clock) as a zero-padded decimal number.\n\n\n%-H\n7\nHour (24-hour clock) as a decimal number. (Platform specific)\n\n\n%I\n7\nHour (12-hour clock) as a zero-padded decimal number.\n\n\n%-I\n7\nHour (12-hour clock) as a decimal number. (Platform specific)\n\n\n%p\nAM\nLocale’s equivalent of either AM or PM.\n\n\n%M\n6\nMinute as a zero-padded decimal number.\n\n\n%-M\n6\nMinute as a decimal number. (Platform specific)\n\n\n%S\n5\nSecond as a zero-padded decimal number.\n\n\n%-S\n5\nSecond as a decimal number. (Platform specific)\n\n\n%f\n0\nMicrosecond as a decimal number, zero-padded on the left.\n\n\n%z\n0\nUTC offset in the form ±HHMM[SS[.ffffff]] (empty string if the object is naive).\n\n\n%Z\nUTC\nTime zone name (empty string if the object is naive).\n\n\n%j\n251\nDay of the year as a zero-padded decimal number.\n\n\n%-j\n251\nDay of the year as a decimal number. (Platform specific)\n\n\n%U\n36\nWeek number of the year (Sunday as the first day of the week) as a zero padded decimal number. All days in a new year preceding the first Sunday are considered to be in week 0.\n\n\n%W\n35\nWeek number of the year (Monday as the first day of the week) as a decimal number. All days in a new year preceding the first Monday are considered to be in week 0.\n\n\n%c\nSun Sep 8 07:06:05 2013\nLocale’s appropriate date and time representation.\n\n\n%x\n09.08.13\nLocale’s appropriate date representation.\n\n\n%X\n07:06:05\nLocale’s appropriate time representation.\n\n\n%%\n%\nA literal ‘%’ character."
+  },
+  {
+    "objectID": "slides/slides.html#import-pandas",
+    "href": "slides/slides.html#import-pandas",
+    "title": "Pandas",
+    "section": "Import pandas",
+    "text": "Import pandas\n\nTo load the pandas package and start working with it, import the package.\nThe community agreed alias for pandas is pd\n\n\n\nfrom datetime import datetime\nimport pandas as pd"
+  },
+  {
+    "objectID": "slides/slides.html#data-creation",
+    "href": "slides/slides.html#data-creation",
+    "title": "Pandas",
+    "section": "Data creation",
+    "text": "Data creation\n\nTo manually store data in a table, create a DataFrame:\n\n\ndf = pd.DataFrame({\n    'name': [\"Tom\", \"Lisa\", \"Peter\"],\n    'height': [1.68, 1.93, 1.72],\n    'weight': [48.4, 89.8, 84.2],\n    'id': [1, 2, 3]\n})"
+  },
+  {
+    "objectID": "slides/slides.html#show-data",
+    "href": "slides/slides.html#show-data",
+    "title": "Pandas",
+    "section": "Show data",
+    "text": "Show data\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\n\n\n\n\n0\nTom\n1.68\n48.4\n1\n\n\n1\nLisa\n1.93\n89.8\n2\n\n\n2\nPeter\n1.72\n84.2\n3"
+  },
+  {
+    "objectID": "slides/slides.html#import-data",
+    "href": "slides/slides.html#import-data",
+    "title": "Pandas",
+    "section": "Import data",
+    "text": "Import data\n\nImport data with the prefix .read_*"
+  },
+  {
+    "objectID": "slides/slides.html#import-data-1",
+    "href": "slides/slides.html#import-data-1",
+    "title": "Pandas",
+    "section": "Import data",
+    "text": "Import data\n\nImport a CSV file in a GitHub repo\n\n\n\nURL = \"https://raw.githubusercontent.com/kirenz/datasets/master/campaign.csv\"\n\ndf_github = pd.read_csv(URL, sep=\",\", decimal='.')\n\ndf_github.head()\n\n\n\n\n\n\n\n\n\n\nage\ncity\nincome\nmembership_days\ncampaign_engagement\ntarget\n\n\n\n\n0\n56\nBerlin\n136748\n837\n3\n1\n\n\n1\n46\nStuttgart\n25287\n615\n8\n0\n\n\n2\n32\nBerlin\n146593\n2100\n3\n0\n\n\n3\n60\nBerlin\n54387\n2544\n0\n0\n\n\n4\n25\nBerlin\n28512\n138\n6\n0"
+  },
+  {
+    "objectID": "slides/slides.html#store-data",
+    "href": "slides/slides.html#store-data",
+    "title": "Pandas",
+    "section": "Store data",
+    "text": "Store data\n\nStore data with the prefix .to_*\n\n\n\ndf_github.to_csv(\"data.csv\", index=False)\n\n\nBy setting index=False the row index labels are not saved in the spreadsheet"
+  },
+  {
+    "objectID": "slides/slides.html#overview",
+    "href": "slides/slides.html#overview",
+    "title": "Pandas",
+    "section": "Overview",
+    "text": "Overview\n\ndf\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\n\n\n\n\n0\nTom\n1.68\n48.4\n1\n\n\n1\nLisa\n1.93\n89.8\n2\n\n\n2\nPeter\n1.72\n84.2\n3"
+  },
+  {
+    "objectID": "slides/slides.html#head-and-tail",
+    "href": "slides/slides.html#head-and-tail",
+    "title": "Pandas",
+    "section": "Head and tail",
+    "text": "Head and tail\n\n# show first 2 rows\ndf.head(2)\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\n\n\n\n\n0\nTom\n1.68\n48.4\n1\n\n\n1\nLisa\n1.93\n89.8\n2\n\n\n\n\n\n\n\n\n\n# show last 2 rows\ndf.tail(2)\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\n\n\n\n\n1\nLisa\n1.93\n89.8\n2\n\n\n2\nPeter\n1.72\n84.2\n3"
+  },
+  {
+    "objectID": "slides/slides.html#info",
+    "href": "slides/slides.html#info",
+    "title": "Pandas",
+    "section": "Info",
+    "text": "Info\n\nThe info() method prints information about a DataFrame.\n\n\n\ndf.info()\n\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 3 entries, 0 to 2\nData columns (total 4 columns):\n #   Column  Non-Null Count  Dtype  \n---  ------  --------------  -----  \n 0   name    3 non-null      object \n 1   height  3 non-null      float64\n 2   weight  3 non-null      float64\n 3   id      3 non-null      int64  \ndtypes: float64(2), int64(1), object(1)\nmemory usage: 228.0+ bytes"
+  },
+  {
+    "objectID": "slides/slides.html#column-names",
+    "href": "slides/slides.html#column-names",
+    "title": "Pandas",
+    "section": "Column names",
+    "text": "Column names\n\ndf.columns\n\n\n\nIndex(['name', 'height', 'weight', 'id'], dtype='object')"
+  },
+  {
+    "objectID": "slides/slides.html#data-type",
+    "href": "slides/slides.html#data-type",
+    "title": "Pandas",
+    "section": "Data type",
+    "text": "Data type\n\nShow data types (dtypes).\n\n\ndf.dtypes\n\n\n\nname       object\nheight    float64\nweight    float64\nid          int64\ndtype: object\n\n\n\nThe data types in this DataFrame are integers (int64), floats (float64) and strings (object).\n\nIndex\n\ndf.index\n\n\n\nRangeIndex(start=0, stop=3, step=1)"
+  },
+  {
+    "objectID": "slides/slides.html#column-names-1",
+    "href": "slides/slides.html#column-names-1",
+    "title": "Pandas",
+    "section": "Column names",
+    "text": "Column names\nUsually, we prefer to work with columns that have the following proporties:\n\nno leading or trailing whitespace (\"name\" instead of \" name \", \" name\" or \"name \")\nall lowercase (\"name\" instead of \"Name\")\nnow white spaces (\"my_name\" instead of \"my name\")"
+  },
+  {
+    "objectID": "slides/slides.html#simple-rename",
+    "href": "slides/slides.html#simple-rename",
+    "title": "Pandas",
+    "section": "Simple rename",
+    "text": "Simple rename\n\nFirst, we rename columns by simply using a mapping\nWe rename \"name\" to \" MY NEW-NAME\" (note that we include a leading whitespace)\n\n\n\ndf = df.rename(columns={\"name\": \" MY NEW-NAME\"}, errors=\"raise\")\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nMY NEW-NAME\nheight\nweight\nid\n\n\n\n\n0\nTom\n1.68\n48.4\n1\n\n\n1\nLisa\n1.93\n89.8\n2\n\n\n2\nPeter\n1.72\n84.2\n3\n\n\n\n\n\n\n\n\n\n\ndf.columns\n\n\n\nIndex([' MY NEW-NAME', 'height', 'weight', 'id'], dtype='object')"
+  },
+  {
+    "objectID": "slides/slides.html#trailing-and-leading-spaces-with-regex",
+    "href": "slides/slides.html#trailing-and-leading-spaces-with-regex",
+    "title": "Pandas",
+    "section": "Trailing and leading spaces (with regex)",
+    "text": "Trailing and leading spaces (with regex)\n\nWe use regular expressions to deal with whitespaces\nTo change multiple column names in df at once, we use the method df.columns = df.columns.str___\nTo replace the spaces, we use .replace() with regex=True"
+  },
+  {
+    "objectID": "slides/slides.html#regular-expressions",
+    "href": "slides/slides.html#regular-expressions",
+    "title": "Pandas",
+    "section": "Regular expressions",
+    "text": "Regular expressions\nExplanation for regex (see also Stackoverflow):\n\nwe start with r (for raw) which tells Python to treat all following input as raw text (without interpreting it)\n“^”: is line start\n” “: is a white space\n“+”: some following characters\n“|”: is or\n“$”: is line end\n““: is an empty string"
+  },
+  {
+    "objectID": "slides/slides.html#regular-expressions-1",
+    "href": "slides/slides.html#regular-expressions-1",
+    "title": "Pandas",
+    "section": "Regular expressions",
+    "text": "Regular expressions\nTo learn more about regular expressions (“regex”), visit the following sites:\n\nregular expression basics.\ninteractive regular expressions tool"
+  },
+  {
+    "objectID": "slides/slides.html#trailing-and-leading-spaces-with-regex-1",
+    "href": "slides/slides.html#trailing-and-leading-spaces-with-regex-1",
+    "title": "Pandas",
+    "section": "Trailing and leading spaces (with regex)",
+    "text": "Trailing and leading spaces (with regex)\n\nIn the following function, we search for leading spaces and replace them with an empty string:\n\n\n\ndf.columns = df.columns.str.replace(r\"^ \", r\"\", regex=True)\n\n\n\n\n\n\n\ndf.columns\n\n\n\nIndex(['MY NEW-NAME', 'height', 'weight', 'id'], dtype='object')"
+  },
+  {
+    "objectID": "slides/slides.html#replace-special-characters",
+    "href": "slides/slides.html#replace-special-characters",
+    "title": "Pandas",
+    "section": "Replace special characters",
+    "text": "Replace special characters\n\nAgain, we use regular expressions to deal with special characters (like %, &, $ etc.)\n\nReplace “-” with “_”\n\n\ndf.columns = df.columns.str.replace(r\"-\", r\"_\", regex=True)\n\n\n\n\n\n\n\ndf.columns\n\n\n\nIndex(['MY NEW_NAME', 'height', 'weight', 'id'], dtype='object')"
+  },
+  {
+    "objectID": "slides/slides.html#lowercase-and-whitespace",
+    "href": "slides/slides.html#lowercase-and-whitespace",
+    "title": "Pandas",
+    "section": "Lowercase and whitespace",
+    "text": "Lowercase and whitespace\nWe can use two simple methods to convert all columns to lowercase and replace white spaces with underscores (“_“):\n\n.str.lower()\n.str.replace(' ', '_')\n\n\n\ndf.columns = df.columns.str.lower().str.replace(' ', '_')\n\n\n\n\n\n\n\ndf.columns\n\n\n\nIndex(['my_new_name', 'height', 'weight', 'id'], dtype='object')"
+  },
+  {
+    "objectID": "slides/slides.html#data",
+    "href": "slides/slides.html#data",
+    "title": "Pandas",
     "section": "Data",
-    "text": "Data"
+    "text": "Data\n\ndf = pd.DataFrame({\n    'name': [\"Tom\", \"Lisa\", \"Peter\"],\n    'height': [1.68, 1.93, 1.72],\n    'weight': [48.4, 89.8, 84.2],\n    'id': [1, 2, 3]\n})"
+  },
+  {
+    "objectID": "slides/slides.html#data-types-1",
+    "href": "slides/slides.html#data-types-1",
+    "title": "Pandas",
+    "section": "Data Types",
+    "text": "Data Types\n\ndf.dtypes\n\n\n\nname       object\nheight    float64\nweight    float64\nid          int64\ndtype: object\n\n\n\n\ndf.info()\n\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 3 entries, 0 to 2\nData columns (total 4 columns):\n #   Column  Non-Null Count  Dtype  \n---  ------  --------------  -----  \n 0   name    3 non-null      object \n 1   height  3 non-null      float64\n 2   weight  3 non-null      float64\n 3   id      3 non-null      int64  \ndtypes: float64(2), int64(1), object(1)\nmemory usage: 228.0+ bytes"
+  },
+  {
+    "objectID": "slides/slides.html#change-data-type",
+    "href": "slides/slides.html#change-data-type",
+    "title": "Pandas",
+    "section": "Change data type",
+    "text": "Change data type\n\nThere are several methods to change data types in pandas:\n\nThe most common method to change the data type is:\n\n.astype(): Convert to a specific type (like “int32”, “float” or “catgeory”)\n.astype(str): Convert to string"
+  },
+  {
+    "objectID": "slides/slides.html#change-data-type-1",
+    "href": "slides/slides.html#change-data-type-1",
+    "title": "Pandas",
+    "section": "Change data type",
+    "text": "Change data type\nMore options:\n\nto_datetime: Convert argument to datetime.\nto_timedelta: Convert argument to timedelta.\nto_numeric: Convert argument to a numeric type."
+  },
+  {
+    "objectID": "slides/slides.html#categorical-data",
+    "href": "slides/slides.html#categorical-data",
+    "title": "Pandas",
+    "section": "Categorical data",
+    "text": "Categorical data\n\nCategoricals are a pandas data type corresponding to categorical variables in statistics.\nA categorical variable takes on a limited, and usually fixed, number of possible values (categories).\nExamples are gender, social class, blood type, country affiliation, observation time or rating via Likert scales."
+  },
+  {
+    "objectID": "slides/slides.html#categorical-data-1",
+    "href": "slides/slides.html#categorical-data-1",
+    "title": "Pandas",
+    "section": "Categorical data",
+    "text": "Categorical data\n\nConvert variable “name” to a category dtype:\n\n\n\ndf[\"name\"] = df[\"name\"].astype(\"category\")"
+  },
+  {
+    "objectID": "slides/slides.html#string-data",
+    "href": "slides/slides.html#string-data",
+    "title": "Pandas",
+    "section": "String data",
+    "text": "String data\n\nIn our example, id is not a number (we can’t perform calculations with it)\nIt is just a unique identifier so we should transform it to a simple string (object)\n\n\n\ndf['id'] = df['id'].astype(str)"
+  },
+  {
+    "objectID": "slides/slides.html#change-data-type-2",
+    "href": "slides/slides.html#change-data-type-2",
+    "title": "Pandas",
+    "section": "Change data type",
+    "text": "Change data type\n\ndf.info()\n\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 3 entries, 0 to 2\nData columns (total 4 columns):\n #   Column  Non-Null Count  Dtype   \n---  ------  --------------  -----   \n 0   name    3 non-null      category\n 1   height  3 non-null      float64 \n 2   weight  3 non-null      float64 \n 3   id      3 non-null      object  \ndtypes: category(1), float64(2), object(1)\nmemory usage: 339.0+ bytes"
+  },
+  {
+    "objectID": "slides/slides.html#constant",
+    "href": "slides/slides.html#constant",
+    "title": "Pandas",
+    "section": "Constant",
+    "text": "Constant\n\nAdd a new variable called “number” to df\nThe new variable should have the number 42 in all rows\n\n\n\ndf[\"number\"] = 42\n\n\n\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\nnumber\n\n\n\n\n0\nTom\n1.68\n48.4\n1\n42\n\n\n1\nLisa\n1.93\n89.8\n2\n42\n\n\n2\nPeter\n1.72\n84.2\n3\n42"
+  },
+  {
+    "objectID": "slides/slides.html#from-existing-columns",
+    "href": "slides/slides.html#from-existing-columns",
+    "title": "Pandas",
+    "section": "From existing columns",
+    "text": "From existing columns\n\nCreate new columns from existing columns\n\n\n\n# calculate body mass index\ndf['bmi'] = round(df['weight'] / (df['height'] * df['height']), 2)\n\n\n\n\n\ndf\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\nnumber\nbmi\n\n\n\n\n0\nTom\n1.68\n48.4\n1\n42\n17.15\n\n\n1\nLisa\n1.93\n89.8\n2\n42\n24.11\n\n\n2\nPeter\n1.72\n84.2\n3\n42\n28.46"
+  },
+  {
+    "objectID": "slides/slides.html#date",
+    "href": "slides/slides.html#date",
+    "title": "Pandas",
+    "section": "Date",
+    "text": "Date\n\nTo add a date, we can use datetime and strftime (see code examples on the next slides):\n\n\n\ndf[\"date\"] = datetime.today().strftime('%Y-%m-%d')\n\ndf.head(3)\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\nnumber\nbmi\ndate\n\n\n\n\n0\nTom\n1.68\n48.4\n1\n42\n17.15\n2023-08-19\n\n\n1\nLisa\n1.93\n89.8\n2\n42\n24.11\n2023-08-19\n\n\n2\nPeter\n1.72\n84.2\n3\n42\n28.46\n2023-08-19\n\n\n\n\n\n\n\nDates\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n%a\nSun\nWeekday as locale’s abbreviated name.\n\n\n%A\nSunday\nWeekday as locale’s full name.\n\n\n%w\n0\nWeekday as a decimal number, where 0 is Sunday and 6 is Saturday.\n\n\n%d\n8\nDay of the month as a zero-padded decimal number.\n\n\n%-d\n8\nDay of the month as a decimal number. (Platform specific)\n\n\n%b\nSep\nMonth as locale’s abbreviated name.\n\n\n%B\nSeptember\nMonth as locale’s full name.\n\n\n%m\n9\nMonth as a zero-padded decimal number.\n\n\n%-m\n9\nMonth as a decimal number. (Platform specific)\n\n\n%y\n13\nYear without century as a zero-padded decimal number.\n\n\n%Y\n2013\nYear with century as a decimal number.\n\n\n%H\n7\nHour (24-hour clock) as a zero-padded decimal number.\n\n\n%-H\n7\nHour (24-hour clock) as a decimal number. (Platform specific)\n\n\n%I\n7\nHour (12-hour clock) as a zero-padded decimal number.\n\n\n%-I\n7\nHour (12-hour clock) as a decimal number. (Platform specific)\n\n\n%p\nAM\nLocale’s equivalent of either AM or PM.\n\n\n%M\n6\nMinute as a zero-padded decimal number.\n\n\n%-M\n6\nMinute as a decimal number. (Platform specific)\n\n\n%S\n5\nSecond as a zero-padded decimal number.\n\n\n%-S\n5\nSecond as a decimal number. (Platform specific)\n\n\n%f\n0\nMicrosecond as a decimal number, zero-padded on the left.\n\n\n%z\n0\nUTC offset in the form ±HHMM[SS[.ffffff]] (empty string if the object is naive).\n\n\n%Z\nUTC\nTime zone name (empty string if the object is naive).\n\n\n%j\n251\nDay of the year as a zero-padded decimal number.\n\n\n%-j\n251\nDay of the year as a decimal number. (Platform specific)\n\n\n%U\n36\nWeek number of the year (Sunday as the first day of the week) as a zero padded decimal number. All days in a new year preceding the first Sunday are considered to be in week 0.\n\n\n%W\n35\nWeek number of the year (Monday as the first day of the week) as a decimal number. All days in a new year preceding the first Monday are considered to be in week 0.\n\n\n%c\nSun Sep 8 07:06:05 2013\nLocale’s appropriate date and time representation.\n\n\n%x\n09.08.13\nLocale’s appropriate date representation.\n\n\n%X\n07:06:05\nLocale’s appropriate time representation.\n\n\n%%\n%\nA literal ‘%’ character.\n\n\n\n\n\nJan Kirenz"
   }
 ]
