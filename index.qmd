@@ -4,9 +4,7 @@ title: "Welcome 👋"
 
 *Lab: pandas-intro*
 
-In this lab you will learn some basic *pandas* functions for data analysis and manipulation. 
-
-*pandas* is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language.
+*pandas* is a powerful and easy to use open source data analysis and manipulation tool, built on top of the Python programming language.
 
 ::: {.callout-important}
 Make sure you meet all the [requirements](/requirements.qmd) and have read the lecture [slides](/slide.qmd) before you start with the [assignments](/assignments.qmd) 
@@ -14,9 +12,9 @@ Make sure you meet all the [requirements](/requirements.qmd) and have read the l
 
 In this lab you will learn how to use *pandas* to:
 
-- Import and store data
-- Change column names
-- Change data types and add columns
-- Calculate statistics and create plots
-- Select data
-- Filter, grouping and binning data
+1. Import and store data
+2. Change column names
+3. Change data types and add columns
+4. Calculate statistics and create plots
+5. Select data
+6. Filter, group and bin data
