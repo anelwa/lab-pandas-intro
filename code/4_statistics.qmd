@@ -1,0 +1,189 @@
+---
+title: Statistics and plots
+jupyter: python3
+---
+
+
+
+## Import pandas
+
+```{python}
+import pandas as pd
+```
+
+## Import data
+
+```{python}
+URL = "https://raw.githubusercontent.com/kirenz/datasets/master/height_clean_cols.csv"
+
+df = pd.read_csv(URL)
+df["gender"] = df["gender"].astype("category")
+df['id'] = df['id'].astype(str)
+
+df.head()
+```
+
+```{python}
+df.info()
+```
+
+## Statistics
+
+### Numeric data
+
+- We can calculate simple statistics like mean, median, standard deviation etc.
+
+```{python}
+df['height'].mean()
+```
+
+- Print the value in nice format ([using formatted string literals](https://docs.python.org/3.6/reference/lexical_analysis.html#formatted-string-literals) f"...") 
+
+```{python}
+print(f"The mean of height is {df['height'].mean()}")
+```
+
+```{python}
+df['height'].median()
+```
+
+```{python}
+df['height'].std()
+```
+
+```{python}
+# round the value
+df['height'].std().round(2)
+```
+
+- [describe()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html#pandas.DataFrame.describe) shows a quick statistic summary of your numerical data.
+- We transpose the data (with `.T`) to make it more readable: 
+
+```{python}
+df.describe().T.round(2)
+```
+
+Summary statistics for numeric variables `height` and `bmi` for different levels of the categorical variable `gender`:
+
+```{python}
+df[['height', 'bmi', 'gender']].groupby(['gender']).describe().round(2).T
+```
+
+- Obtain summary statistics for `average_height_parents` grouped by the categorical variable `gender` and save the result as `stats`. Transpose the data.
+
+Hint:
+    
+```python    
+stats = ___[['___', '___']].groupby(['___']).___().round(2).T
+````
+
+```{python}
+#| nbgrader: {grade: false, grade_id: stats, locked: false, schema_version: 3, solution: true, task: false}
+### BEGIN SOLUTION
+stats = df[['average_height_parents', 'gender']].groupby(['gender']).describe().round(2).T
+### END SOLUTION
+```
+
+```{python}
+#| nbgrader: {grade: true, grade_id: c_stats, locked: true, points: 2, schema_version: 3, solution: false, task: false}
+"""Check if your code returns the correct output"""
+assert len(stats) == 8
+assert stats.columns.to_list() == ['female', 'male']
+```
+
+### Categorical data
+
+- we can also use `describe()` for categorical data
+
+```{python}
+df.describe(include="category").T
+```
+
+- Show unique levels of a categorical variable and count with `value_counts()`
+
+```{python}
+#| scrolled: true
+df['gender'].value_counts()
+```
+
+- We also 
+can extract specific values
+
+```{python}
+men = df['gender'].value_counts().male
+men
+```
+
+- Print the value in nice format ([using formatted string literals](https://docs.python.org/3.6/reference/lexical_analysis.html#formatted-string-literals) f"...") 
+
+```{python}
+print(f"There are {men} men in the data")
+```
+
+- Use the same method as above to calculate and print the value for women (create a variable called women)
+
+Hint:
+  
+
+```python
+___ = ___['___'].___().___
+print(___"There are {___} women in the data")
+```
+
+```{python}
+#| nbgrader: {grade: true, grade_id: cell-f7d1b37b640ff3d3, locked: false, points: 1, schema_version: 3, solution: true, task: false}
+### BEGIN SOLUTION
+women = df['gender'].value_counts().female
+print(f"There are {women} women in the data")
+### END SOLUTION
+```
+
+```{python}
+"""Check if your code returns the correct output"""
+assert women == 11
+```
+
+### Loop over list
+
+- Example of for loop to obtain statistics for specific numerical columns
+
+```{python}
+# make a list of numerical columns
+list_num = ['height', 'weight']
+```
+
+```{python}
+# calculate median for our list and only show 4 digits, then make a new line (\n)
+for i in list_num:
+    print(f'Median of {i} equals {df[i].median():.4} \n')
+```
+
+- Calculate summary statistics for our list.
+
+```{python}
+for i in list_num:
+    print(f'Column: {i}  \n  {df[i].describe().T.round(2)}   \n')   
+```
+
+### Create plots
+
+```{python}
+# Pandas needs the module matplotlib to create plots
+import matplotlib.pyplot as plt
+
+# show plot output in Jupyter Notebook
+%matplotlib inline
+```
+
+```{python}
+df.boxplot(column=['weight']);
+```
+
+```{python}
+# obtain plots for our list
+for i in list_num:
+    df.boxplot(column=[i])
+    plt.title("Boxplot for " + i)
+    plt.show()
+```
+
