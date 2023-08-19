@@ -152,6 +152,8 @@ df.columns
 
 - Show data types ([dtypes](https://pandas.pydata.org/docs/user_guide/basics.html#basics-dtypes)).
 
+. . .
+
 ```{python}
 # | output-location: fragment
 df.dtypes
