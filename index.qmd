@@ -4,7 +4,7 @@ title: "Welcome 👋"
 
 *Lab: Pandas Introduction (📁 pandas-intro)*
 
-*pandas* is a powerful and easy to use open source data analysis and manipulation tool, built on top of the Python programming language.
+[*pandas*](https://pandas.pydata.org/) is a powerful and easy to use open source data analysis and manipulation tool, built on top of the Python programming language.
 
 ::: {.callout-important}
 Make sure you meet all the [requirements](/requirements.qmd) and have read the lecture [slides](/slide.qmd) before you start with the [assignments](/assignments.qmd) 
