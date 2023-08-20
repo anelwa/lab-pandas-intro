@@ -22,3 +22,10 @@ title: "Slides"
 
 
 <!-- <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSTu-81HNEUeSIlkF50vdUq2wCNbIKZN0VpH9C94N2EppOcE2Qw4-tONsHv7FlpepqwfZuGNeRhLk9b/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe> -->
+
+---
+
+::: {.callout-note appearance="simple"}
+Take a look at the [slide instructions](https://kirenz.github.io/lab-toolkit/slides/slides.html#/title-slide) to learn how to use all slide options 
+
+:::
