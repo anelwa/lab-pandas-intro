@@ -396,7 +396,7 @@
     "href": "slide.html",
     "title": "Slides",
     "section": "",
-    "text": "1. 🖥 Import and store data\n2. 🖥 Change column names\n3. 🖥 Change data types and add columns\n4. 🖥 Calculate statistics and create plots\n5. 🖥 Select data\n6. 🖥 Filter, group and bin data\n\n\n\n\n\n\n\n\nTake a look at the slide instructions to learn how to use all slide options"
+    "text": "1. 🖥 Import and store data\n2. 🖥 Change column names\n3. 🖥 Change data types and add columns\n4. 🖥 Calculate statistics and create plots\n5. 🖥 Select data\n6. 🖥 Filter, group and bin data\n\n\n\n\n\n\n\n\nTake a look at the slides tutorial to learn how to use all slide options."
   },
   {
     "objectID": "slides/pandas-import-store.html#create-a-dataframe",
