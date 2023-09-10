@@ -5,14 +5,14 @@ title: "Assignments"
 Download the Jupyter Notebooks in your local folder `pandas-intro`. 
 
 
-- [Task 1: Import and store data](/code/1_import_store.ipynb)
+- [Task 1: Import and store data](https://colab.research.google.com/github/kirenz/lab-pandas-intro/blob/main/code/1_import_store.ipynb)
 
-- [Task 2: Change column names](/code/2_columns.ipynb)
+- [Task 2: Change column names](https://colab.research.google.com/github/kirenz/lab-pandas-intro/blob/main/code/2_columns.ipynb)
 
-- [Task 3: Change data types and add columns](/code/3_data_types.ipynb)
+- [Task 3: Change data types and add columns](https://colab.research.google.com/github/kirenz/lab-pandas-intro/blob/main/code/3_data_types.ipynb)
 
-- [Task 4: Calculate statistics and create plots](/code/4_statistics.ipynb)
+- [Task 4: Calculate statistics and create plots](https://colab.research.google.com/github/kirenz/lab-pandas-intro/blob/main/code/4_statistics.ipynb)
 
-- [Task 5: Select data](/code/5_selection.ipynb)
+- [Task 5: Select data](https://colab.research.google.com/github/kirenz/lab-pandas-intro/blob/main/code/5_selection.ipynb)
 
-- [Task 6: Filter, grouping and binning ](/code/6_filter.ipynb)
+- [Task 6: Filter, grouping and binning ](/https://colab.research.google.com/github/kirenz/lab-pandas-intro/blob/main/code/6_filter.ipynb)
