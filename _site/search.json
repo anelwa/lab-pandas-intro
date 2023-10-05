@@ -732,7 +732,7 @@
     "href": "slides/pandas-data-types.html#add-a-date-with-strftime",
     "title": "Data Types and Adding Columns",
     "section": "Add a date with strftime",
-    "text": "Add a date with strftime\n\nTo add a date, we can use datetime and strftime (see code examples on the next slides):\n\n\n\ndf[\"date\"] = datetime.today().strftime('%Y-%m-%d')\n\n\n\n\ndf.head(3)\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nnumber\nbmi\ndate\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n42\n17.15\n2023-08-19\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n42\n24.11\n2023-08-19\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin\n42\n28.46\n2023-08-19"
+    "text": "Add a date with strftime\n\nTo add a date, we can use datetime and strftime (see code examples on the next slides):\n\n\n\ndf[\"date\"] = datetime.today().strftime('%Y-%m-%d')\n\n\n\n\ndf.head(3)\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nnumber\nbmi\ndate\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n42\n17.15\n2023-10-05\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n42\n24.11\n2023-10-05\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin\n42\n28.46\n2023-10-05"
   },
   {
     "objectID": "slides/pandas-data-types.html#table-weekdays-and-day",
@@ -746,21 +746,21 @@
     "href": "slides/pandas-data-types.html#table-month",
     "title": "Data Types and Adding Columns",
     "section": "Table: Month",
-    "text": "Table: Month\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n\n%b | Sep | Month as locale’s abbreviated name. |\n%B | September | Month as locale’s full name. |\n%m | 9 | Month as a zero-padded decimal number. |\n%-m | 9 | Month as a decimal number. (Platform specific) |"
+    "text": "Table: Month\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n%b\nSep\nMonth as locale’s abbreviated name.\n\n\n%B\nSeptember\nMonth as locale’s full name.\n\n\n%m\n9\nMonth as a zero-padded decimal number.\n\n\n%-m\n9\nMonth as a decimal number. (Platform specific)"
   },
   {
     "objectID": "slides/pandas-data-types.html#table-year-and-hour",
     "href": "slides/pandas-data-types.html#table-year-and-hour",
     "title": "Data Types and Adding Columns",
     "section": "Table: Year and hour",
-    "text": "Table: Year and hour\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n\n%y | 13 | Year without century as a zero-padded decimal number. |\n%Y | 2013 | Year with century as a decimal number. |\n%H | 7 | Hour (24-hour clock) as a zero-padded decimal number. |\n%-H | 7 | Hour (24-hour clock) as a decimal number. (Platform specific) |\n%I | 7 | Hour (12-hour clock) as a zero-padded decimal number. |\n%-I | 7 | Hour (12-hour clock) as a decimal number. (Platform specific) |"
+    "text": "Table: Year and hour\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n%y\n13\nYear without century as a zero-padded decimal number.\n\n\n%Y\n2013\nYear with century as a decimal number.\n\n\n%H\n7\nHour (24-hour clock) as a zero-padded decimal number.\n\n\n%-H\n7\nHour (24-hour clock) as a decimal number. (Platform specific)\n\n\n%I\n7\nHour (12-hour clock) as a zero-padded decimal number.\n\n\n%-I\n7\nHour (12-hour clock) as a decimal number. (Platform specific)"
   },
   {
     "objectID": "slides/pandas-data-types.html#table-minutes-etc.",
     "href": "slides/pandas-data-types.html#table-minutes-etc.",
     "title": "Data Types and Adding Columns",
     "section": "Table: Minutes etc.",
-    "text": "Table: Minutes etc.\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n\n%p | AM | Locale’s equivalent of either AM or PM. |\n%M | 6 | Minute as a zero-padded decimal number. |\n%-M | 6 | Minute as a decimal number. (Platform specific) |\n%S | 5 | Second as a zero-padded decimal number. |\n%-S | 5 | Second as a decimal number. (Platform specific) |\n%f | 0 | Microsecond as a decimal number, zero-padded on the left. |\n%z | 0 | UTC offset in the form ±HHMM[SS[.ffffff]] (empty string if the object is naive). |\n%Z | UTC | Time zone name (empty string if the object is naive). |\n%j | 251 | Day of the year as a zero-padded decimal number. |\n%-j | 251 | Day of the year as a decimal number. (Platform specific) |\n%U | 36 | Week number of the year (Sunday as the first day of the week) as a zero padded decimal number. All days in a new year preceding the first Sunday are considered to be in week 0. |\n%W | 35 | Week number of the year (Monday as the first day of the week) as a decimal number. All days in a new year preceding the first Monday are considered to be in week 0. |\n%c | Sun Sep 8 07:06:05 2013 | Locale’s appropriate date and time representation. |\n%x | 09.08.13 | Locale’s appropriate date representation. |\n%X | 07:06:05 | Locale’s appropriate time representation. |\n%% | % | A literal ‘%’ character. |\n\n\nJan Kirenz"
+    "text": "Table: Minutes etc.\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n%p\nAM\nLocale’s equivalent of either AM or PM.\n\n\n%M\n6\nMinute as a zero-padded decimal number.\n\n\n%-M\n6\nMinute as a decimal number. (Platform specific)\n\n\n%S\n5\nSecond as a zero-padded decimal number.\n\n\n%-S\n5\nSecond as a decimal number. (Platform specific)\n\n\n%f\n0\nMicrosecond as a decimal number, zero-padded on the left.\n\n\n%z\n0\nUTC offset in the form ±HHMM[SS[.ffffff]] (empty string if the object is naive).\n\n\n%Z\nUTC\nTime zone name (empty string if the object is naive).\n\n\n%j\n251\nDay of the year as a zero-padded decimal number.\n\n\n%-j\n251\nDay of the year as a decimal number. (Platform specific)\n\n\n%U\n36\nWeek number of the year (Sunday as the first day of the week) as a zero padded decimal number. All days in a new year preceding the first Sunday are considered to be in week 0.\n\n\n%W\n35\nWeek number of the year (Monday as the first day of the week) as a decimal number. All days in a new year preceding the first Monday are considered to be in week 0.\n\n\n%c\nSun Sep 8 07:06:05 2013\nLocale’s appropriate date and time representation.\n\n\n%x\n09.08.13\nLocale’s appropriate date representation.\n\n\n%X\n07:06:05\nLocale’s appropriate time representation.\n\n\n%%\n%\nA literal ‘%’ character.\n\n\n\n\n\nJan Kirenz"
   },
   {
     "objectID": "slides/pandas-filter-group-bin.html#filter-example",

@@ -212,7 +212,6 @@ df.head(3)
 
 | Code | Example                 | Description                                                                                                                                                                      |
 | ---- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-
 | %b   | Sep                     | Month as locale’s abbreviated name.                                                                                                                                              |
 | %B   | September               | Month as locale’s full name.                                                                                                                                                     |
 | %m   | 9                       | Month as a zero-padded decimal number.                                                                                                                                           |
@@ -224,8 +223,6 @@ df.head(3)
 
 | Code | Example                 | Description                                                                                                                                                                      |
 | ---- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-
-
 | %y   | 13                      | Year without century as a zero-padded decimal number.                                                                                                                            |
 | %Y   | 2013                    | Year with century as a decimal number.                                                                                                                                           |
 | %H   | 7                       | Hour (24-hour clock) as a zero-padded decimal number.                                                                                                                            |
@@ -240,8 +237,6 @@ df.head(3)
 
 | Code | Example                 | Description                                                                                                                                                                      |
 | ---- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-
-
 | %p   | AM                      | Locale’s equivalent of either AM or PM.                                                                                                                                          |
 | %M   | 6                       | Minute as a zero-padded decimal number.                                                                                                                                          |
 | %-M  | 6                       | Minute as a decimal number. (Platform specific)                                                                                                                                  |
