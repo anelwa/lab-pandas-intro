@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Pandas intro - Change data types and add columns</title>
+<title>Pandas intro - Import pandas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -148,18 +148,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#import-pandas" id="toc-import-pandas" class="nav-link active" data-scroll-target="#import-pandas">Import pandas</a></li>
-  <li><a href="#import-data" id="toc-import-data" class="nav-link" data-scroll-target="#import-data">Import data</a></li>
-  <li><a href="#change-data-type" id="toc-change-data-type" class="nav-link" data-scroll-target="#change-data-type">Change data type</a>
+  <li><a href="#create-data" id="toc-create-data" class="nav-link active" data-scroll-target="#create-data">Create Data</a>
   <ul class="collapse">
-  <li><a href="#categorical-data" id="toc-categorical-data" class="nav-link" data-scroll-target="#categorical-data">Categorical data</a></li>
-  <li><a href="#string-data" id="toc-string-data" class="nav-link" data-scroll-target="#string-data">String data</a></li>
+  <li><a href="#create-a-dataframe" id="toc-create-a-dataframe" class="nav-link" data-scroll-target="#create-a-dataframe">Create a DataFrame</a></li>
+  <li><a href="#show-data-with-head" id="toc-show-data-with-head" class="nav-link" data-scroll-target="#show-data-with-head">Show data with head()</a></li>
   </ul></li>
-  <li><a href="#add-new-columns" id="toc-add-new-columns" class="nav-link" data-scroll-target="#add-new-columns">Add new columns</a>
+  <li><a href="#import-data-with-.read" id="toc-import-data-with-.read" class="nav-link" data-scroll-target="#import-data-with-.read">Import data with .read()</a>
   <ul class="collapse">
-  <li><a href="#constant" id="toc-constant" class="nav-link" data-scroll-target="#constant">Constant</a></li>
-  <li><a href="#from-existing" id="toc-from-existing" class="nav-link" data-scroll-target="#from-existing">From existing</a></li>
-  <li><a href="#date" id="toc-date" class="nav-link" data-scroll-target="#date">Date</a></li>
+  <li><a href="#import-data-from-github" id="toc-import-data-from-github" class="nav-link" data-scroll-target="#import-data-from-github">Import data from GitHub</a></li>
+  </ul></li>
+  <li><a href="#store-data-with-.to" id="toc-store-data-with-.to" class="nav-link" data-scroll-target="#store-data-with-.to">Store data with .to()</a></li>
+  <li><a href="#viewing-data" id="toc-viewing-data" class="nav-link" data-scroll-target="#viewing-data">Viewing data</a>
+  <ul class="collapse">
+  <li><a href="#data-overview" id="toc-data-overview" class="nav-link" data-scroll-target="#data-overview">Data overview</a></li>
+  <li><a href="#head-and-tail" id="toc-head-and-tail" class="nav-link" data-scroll-target="#head-and-tail">Head and tail</a></li>
+  <li><a href="#info" id="toc-info" class="nav-link" data-scroll-target="#info">Info</a></li>
+  <li><a href="#show-column-names" id="toc-show-column-names" class="nav-link" data-scroll-target="#show-column-names">Show column names</a></li>
+  <li><a href="#show-data-types" id="toc-show-data-types" class="nav-link" data-scroll-target="#show-data-types">Show data types</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -169,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Change data types and add columns</h1>
+<h1 class="title">Import pandas</h1>
 </div>
 
 
@@ -184,141 +189,113 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><strong>Wichtige Hinweise</strong></p>
 <ul>
-<li><p>Aktivieren Sie die entsprechende Conda-Umgebung bevor Sie beginnen.</p></li>
-<li><p>Geben Sie als <code>NAME</code> ihr HdM-Kürzel an.</p></li>
-<li><p>Ändern Sie <strong>nicht</strong> den Namen der Datei und löschen Sie keine Zellen.</p></li>
-<li><p>Bearbeiten Sie alle Zellen mit dem Hinweis <font color="green"> # YOUR CODE HERE </font></p></li>
-<li><p>Die Funktion <strong>NotImplementedError()</strong> soll die Abgabe von leeren Zellen verhindern. Löschen Sie die Funktion, sobald Sie in einer dieser Zellen arbeiten.</p></li>
-<li><p>Stellen Sie sicher, dass alles wie erwartet läuft, bevor Sie die Prüfung abgeben: Starten Sie den Kernel neu und führen Sie alle Zellen aus: wählen Sie “Restart” und dann “Run All”</p></li>
+<li><p>To load the pandas package and start working with it, import the package.</p></li>
+<li><p>The community agreed alias for pandas is <code>pd</code></p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>NAME <span class="op">=</span> <span class="st">""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="create-data" class="level1">
+<h1>Create Data</h1>
+<section id="create-a-dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-dataframe">Create a DataFrame</h2>
+<ul>
+<li>To manually store data in a table, create a DataFrame:</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> IPython</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> IPython.version_info[<span class="dv">0</span>] <span class="op">&gt;=</span> <span class="dv">3</span>, <span class="st">"Your version of IPython is too old, please update it."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<hr>
-<section id="import-pandas" class="level2">
-<h2 class="anchored" data-anchor-id="import-pandas">Import pandas</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="st">'name'</span>: [<span class="st">"Tom"</span>, <span class="st">"Lisa"</span>, <span class="st">"Peter"</span>],</span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="st">'height'</span>: [<span class="fl">1.68</span>, <span class="fl">1.93</span>, <span class="fl">1.72</span>],</span>
+<span id="cb2-4"><a href="#cb2-4"></a>    <span class="st">'weight'</span>: [<span class="fl">48.4</span>, <span class="fl">89.8</span>, <span class="fl">84.2</span>],</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    <span class="st">'id'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="st">'city'</span>: [<span class="st">'Stuttgart'</span>, <span class="st">'Stuttgart'</span>, <span class="st">'Berlin'</span>]</span>
+<span id="cb2-7"><a href="#cb2-7"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="import-data" class="level2">
-<h2 class="anchored" data-anchor-id="import-data">Import data</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># URL of data</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>URL <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/kirenz/datasets/master/height_clean.csv"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(URL)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="change-data-type" class="level2">
-<h2 class="anchored" data-anchor-id="change-data-type">Change data type</h2>
-<ul>
-<li>There are several methods to <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.astype.html">change data types in pandas</a>:</li>
-</ul>
-<p>The most common method to change the data type is:</p>
-<ul>
-<li><code>.astype()</code>: Convert to a specific type (like “int32”, “float” or “catgeory”)</li>
-<li><code>.astype(str)</code>: Convert to string</li>
-</ul>
-<p>More options:</p>
-<ul>
-<li><code>to_datetime</code>: Convert argument to datetime.</li>
-<li><code>to_timedelta</code>: Convert argument to timedelta.</li>
-<li><code>to_numeric</code>: Convert argument to a numeric type.</li>
-<li><code>numpy.ndarray.astype</code>: Cast a numpy array to a specified type.</li>
-</ul>
-<section id="categorical-data" class="level3">
-<h3 class="anchored" data-anchor-id="categorical-data">Categorical data</h3>
-<ul>
-<li><p>Categoricals are a pandas data type corresponding to categorical variables in statistics.</p></li>
-<li><p>A categorical variable takes on a limited, and usually fixed, number of possible values (categories). Examples are gender, social class, blood type, country affiliation, observation time or rating via Likert scales.</p></li>
-<li><p>Convert variable “gender” to a category dtype:</p></li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"gender"</span>] <span class="op">=</span> df[<span class="st">"gender"</span>].astype(<span class="st">"category"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="string-data" class="level3">
-<h3 class="anchored" data-anchor-id="string-data">String data</h3>
-<ul>
-<li>In our example, <code>id</code> is not a number (we can’t perform calculations with it)</li>
-<li>It is just a unique identifier so we should transform it to a simple string (object)</li>
-</ul>
-<p>Hint:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'___'</span>] <span class="op">=</span> df[<span class="st">'___'</span>].___(___)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-nbgrader="{&quot;cell_type&quot;:&quot;code&quot;,&quot;checksum&quot;:&quot;7443ce18a50ac379feae1d134f3934cb&quot;,&quot;grade&quot;:false,&quot;grade_id&quot;:&quot;id&quot;,&quot;locked&quot;:false,&quot;schema_version&quot;:3,&quot;solution&quot;:true,&quot;task&quot;:false}">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">raise</span> <span class="pp">NotImplementedError</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-nbgrader="{&quot;cell_type&quot;:&quot;code&quot;,&quot;checksum&quot;:&quot;9a91504a3562a5bfc3a310b9ea67a86e&quot;,&quot;grade&quot;:true,&quot;grade_id&quot;:&quot;c_id&quot;,&quot;locked&quot;:true,&quot;points&quot;:2,&quot;schema_version&quot;:3,&quot;solution&quot;:false,&quot;task&quot;:false}">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""Check if your code returns the correct output"""</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">"number"</span>]).columns.to_list() <span class="op">==</span> [<span class="st">'height'</span>, <span class="st">'average_height_parents'</span>]</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> df.select_dtypes(include<span class="op">=</span>[<span class="st">"object"</span>]).columns.to_list() <span class="op">==</span> [<span class="st">'name'</span>, <span class="st">'id'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="show-data-with-head" class="level2">
+<h2 class="anchored" data-anchor-id="show-data-with-head">Show data with head()</h2>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="add-new-columns" class="level2">
-<h2 class="anchored" data-anchor-id="add-new-columns">Add new columns</h2>
-<section id="constant" class="level3">
-<h3 class="anchored" data-anchor-id="constant">Constant</h3>
+<section id="import-data-with-.read" class="level1">
+<h1>Import data with .read()</h1>
 <ul>
-<li>Add a new variable called “number” to df</li>
-<li>The new variable should have the number 42 in all rows</li>
+<li>Import data with the prefix <code>.read_*</code></li>
 </ul>
-<p>Hint:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"___"</span>] <span class="op">=</span> ___</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-nbgrader="{&quot;cell_type&quot;:&quot;code&quot;,&quot;checksum&quot;:&quot;3ba2e4fd9417b73e552b09f74ed0416a&quot;,&quot;grade&quot;:false,&quot;grade_id&quot;:&quot;add&quot;,&quot;locked&quot;:false,&quot;schema_version&quot;:3,&quot;solution&quot;:true,&quot;task&quot;:false}">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">raise</span> <span class="pp">NotImplementedError</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-nbgrader="{&quot;cell_type&quot;:&quot;code&quot;,&quot;checksum&quot;:&quot;3606895c7e71bce55a1cfc582d250b02&quot;,&quot;grade&quot;:true,&quot;grade_id&quot;:&quot;c_add&quot;,&quot;locked&quot;:true,&quot;points&quot;:2,&quot;schema_version&quot;:3,&quot;solution&quot;:false,&quot;task&quot;:false}">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">"""Check if your code returns the correct output"""</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> df.loc[[<span class="dv">0</span>], <span class="st">"number"</span>].to_list() <span class="op">==</span> [<span class="dv">42</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="https://pandas.pydata.org/docs/_images/02_io_readwrite.svg" class="img-fluid"></p>
+<section id="import-data-from-github" class="level2">
+<h2 class="anchored" data-anchor-id="import-data-from-github">Import data from GitHub</h2>
+<ul>
+<li>Import a CSV file in a GitHub repo</li>
+</ul>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>URL <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/kirenz/datasets/master/campaign.csv"</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>df_github <span class="op">=</span> pd.read_csv(URL, sep<span class="op">=</span><span class="st">","</span>, decimal<span class="op">=</span><span class="st">'.'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a>df_github.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="from-existing" class="level3">
-<h3 class="anchored" data-anchor-id="from-existing">From existing</h3>
+</section>
+<section id="store-data-with-.to" class="level1">
+<h1>Store data with .to()</h1>
 <ul>
-<li>Create new columns from existing columns</li>
+<li>Store data with the prefix <code>.to_*</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we use numpy to add some data with a nornmal distribution </span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate height in m (from cm)</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'height_m'</span>] <span class="op">=</span> df.height<span class="op">/</span><span class="dv">100</span> </span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># add 20 random normal distributed numbers with a mean of 45 and standard deviation of 5</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'weight'</span>] <span class="op">=</span> <span class="bu">round</span>(np.random.normal(<span class="dv">45</span>, <span class="dv">5</span>, <span class="dv">20</span>) <span class="op">*</span> df[<span class="st">'height_m'</span>],<span class="dv">2</span>)</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate body mass index</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'bmi'</span>] <span class="op">=</span> <span class="bu">round</span>(df.weight <span class="op">/</span> (df.height_m <span class="op">*</span> df.height_m),<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_github.to_csv(<span class="st">"data.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>By setting <code>index=False</code> the row index labels are not saved in the spreadsheet</li>
+</ul>
+</section>
+<section id="viewing-data" class="level1">
+<h1>Viewing data</h1>
+<section id="data-overview" class="level2">
+<h2 class="anchored" data-anchor-id="data-overview">Data overview</h2>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="date" class="level3">
-<h3 class="anchored" data-anchor-id="date">Date</h3>
-<ul>
-<li>To add a date, we can use datetime and <a href="https://strftime.org">strftime</a> (see code examples below):</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we need datetime to add a date</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="head-and-tail" class="level2">
+<h2 class="anchored" data-anchor-id="head-and-tail">Head and tail</h2>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show first 2 rows</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"date"</span>] <span class="op">=</span> datetime.today().strftime(<span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st">'</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show last 2 rows</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df.tail(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="info" class="level2">
+<h2 class="anchored" data-anchor-id="info">Info</h2>
+<ul>
+<li>The <code>info()</code> method prints information about a DataFrame.</li>
+</ul>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="show-column-names" class="level2">
+<h2 class="anchored" data-anchor-id="show-column-names">Show column names</h2>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="show-data-types" class="level2">
+<h2 class="anchored" data-anchor-id="show-data-types">Show data types</h2>
+<ul>
+<li>Show data types (<a href="https://pandas.pydata.org/docs/user_guide/basics.html#basics-dtypes">dtypes</a>).</li>
+</ul>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

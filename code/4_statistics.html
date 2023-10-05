@@ -155,7 +155,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#numeric-data" id="toc-numeric-data" class="nav-link" data-scroll-target="#numeric-data">Numeric data</a></li>
   <li><a href="#categorical-data" id="toc-categorical-data" class="nav-link" data-scroll-target="#categorical-data">Categorical data</a></li>
   <li><a href="#loop-over-list" id="toc-loop-over-list" class="nav-link" data-scroll-target="#loop-over-list">Loop over list</a></li>
-  <li><a href="#create-plots" id="toc-create-plots" class="nav-link" data-scroll-target="#create-plots">Create plots</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -333,9 +332,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_num:</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Column: </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">  </span><span class="ch">\n</span><span class="ss">  </span><span class="sc">{</span>df[i]<span class="sc">.</span>describe()<span class="sc">.</span>T<span class="sc">.</span><span class="bu">round</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="ss">   </span><span class="ch">\n</span><span class="ss">'</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="create-plots" class="level3">
-<h3 class="anchored" data-anchor-id="create-plots">Create plots</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pandas needs the module matplotlib to create plots</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
