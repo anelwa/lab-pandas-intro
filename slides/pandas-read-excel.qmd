@@ -1,0 +1,131 @@
+---
+title: Read Unclean Excel Data 
+lang: en
+subtitle: Pandas Introduction
+author: Jan Kirenz
+execute:
+  eval: true
+  echo: true
+highlight-style: github
+format:
+  revealjs: 
+    toc: true
+    toc-depth: 1
+    embed-resources: false
+    theme: [dark, ../custom.scss]  
+    incremental: true
+    transition: slide
+    background-transition: fade
+    transition-speed: slow
+    code-copy: true
+    code-line-numbers: true
+    smaller: false
+    scrollable: true
+    slide-number: c
+    preview-links: auto
+    chalkboard: 
+      buttons: false
+   #logo: images/logo.png
+    footer: Jan Kirenz
+---
+
+# Read unclean Excel data
+
+# Setup
+
+```{python}
+import pandas as pd
+```
+
+
+# Data
+
+
+## Simple data import
+
+```{python}
+df_unclean = pd.read_excel('../data/12211-9014_de.xlsx')
+```
+
+```{python}
+df_unclean
+```
+
+
+## Adjusted data import
+
+```{python}
+
+df = pd.read_excel('../data/12211-9014_de.xlsx', sheet_name='12211-9014', skiprows=[0,1,2,3], skipfooter=20, na_values='/', thousands='.', decimal=',')
+```
+
+
+## View data
+
+```{python}
+df.head()
+```
+
+```{python}
+df.tail()
+```
+
+
+## Rename columns
+
+```{python}
+df = df.rename(columns={
+  'Unnamed: 0': 'Jahr',
+  'Unnamed: 1': 'Geschlecht',
+  'Unnamed: 2': 'Bundesland' }
+  )
+
+df.head()
+
+```
+
+## Fill up columns
+
+
+```{python}
+df['Jahr'] = 2019
+
+```
+
+```{python}
+df['Geschlecht'] = df['Geschlecht'].fillna(method='ffill')
+
+df.head()
+```
+
+## Data format
+
+```{python}
+df.info()
+```
+
+## Change data format
+
+
+```{python}
+LIST_CAT = df.columns[1:3].tolist()
+LIST_CAT
+```
+
+```{python}
+for i in LIST_CAT:
+  df[i] = df[i].astype('category')
+```
+
+
+```{python}
+LIST_INT = df.columns[3:].tolist()
+
+LIST_INT
+```
+
+
+```{python}
+for i in LIST_INT:
+  df[i] = df[i].astype('Int64')
+```
