@@ -18,3 +18,4 @@ In this lab you will learn how to use *pandas* to:
 4. Calculate statistics and create plots
 5. Select data
 6. Filter, group and bin data
+7. Import and prepare unclean Excel data
