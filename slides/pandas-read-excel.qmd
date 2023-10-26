@@ -1,5 +1,5 @@
 ---
-title: Read Unclean Excel Data 
+title: Import Unclean Excel Data 
 lang: en
 subtitle: Pandas Introduction
 author: Jan Kirenz
@@ -29,7 +29,25 @@ format:
     footer: Jan Kirenz
 ---
 
-# Read unclean Excel data
+# Import unclean Excel data
+
+
+## Data from GENESIS-Online
+
+![](/images/genesis.png)
+
+- [GENESIS-Online](https://www-genesis.destatis.de/genesis/online) is the main database of the Federal Statistical Office 
+
+
+## GENESIS-Online
+
+- Contains deeply structured results of official statistics. 
+
+- You can use the database without registration. 
+
+- All data are available free of charge.
+
+- We use [this dataset](https://www-genesis.destatis.de/datenbank/beta/statistic/12211/table/12211-9014) as an example 
 
 # Setup
 
@@ -37,36 +55,57 @@ format:
 import pandas as pd
 ```
 
-
 # Data
 
+## First data import
 
-## Simple data import
+[Data source](https://www-genesis.destatis.de/datenbank/beta/statistic/12211/table/12211-9014)
 
 ```{python}
-df_unclean = pd.read_excel('../data/12211-9014_de.xlsx')
+df_unclean = pd.read_excel('12211-9014_de.xlsx', sheet_name='12211-9014')
 ```
 
+. . .
+
+- Take a look at the data
+
 ```{python}
+# | output-location: slide 
 df_unclean
+```
+
+## Inspect footer
+
+```{python}
+# | output-location: fragment
+df_unclean.tail(25)
+
 ```
 
 
 ## Adjusted data import
 
 ```{python}
-
-df = pd.read_excel('../data/12211-9014_de.xlsx', sheet_name='12211-9014', skiprows=[0,1,2,3], skipfooter=20, na_values='/', thousands='.', decimal=',')
+df = pd.read_excel('12211-9014_de.xlsx', 
+  sheet_name='12211-9014', 
+  skiprows=[0,1,2,3], 
+  skipfooter=20, 
+  na_values='/', 
+  thousands='.', 
+  decimal=','
+  )
 ```
 
 
 ## View data
 
 ```{python}
+# | output-location: fragment
 df.head()
 ```
 
 ```{python}
+# | output-location: fragment
 df.tail()
 ```
 
@@ -74,6 +113,8 @@ df.tail()
 ## Rename columns
 
 ```{python}
+# | output-location: fragment
+
 df = df.rename(columns={
   'Unnamed: 0': 'Jahr',
   'Unnamed: 1': 'Geschlecht',
@@ -89,43 +130,108 @@ df.head()
 
 ```{python}
 df['Jahr'] = 2019
-
 ```
 
+. . .
+
 ```{python}
+# | output-location: fragment
+
 df['Geschlecht'] = df['Geschlecht'].fillna(method='ffill')
 
 df.head()
 ```
 
+
 ## Data format
 
 ```{python}
+# | output-location: fragment
 df.info()
 ```
 
-## Change data format
+## Convert categorical data
 
 
 ```{python}
+# | output-location: fragment
 LIST_CAT = df.columns[1:3].tolist()
 LIST_CAT
 ```
+
+. . .
 
 ```{python}
 for i in LIST_CAT:
   df[i] = df[i].astype('category')
 ```
 
+## Convert numerical data
 
 ```{python}
 LIST_INT = df.columns[3:].tolist()
-
 LIST_INT
 ```
 
+. . .
 
 ```{python}
 for i in LIST_INT:
   df[i] = df[i].astype('Int64')
 ```
+
+
+## Take a look at the data
+
+
+```{python}
+# | output-location: fragment
+df
+```
+
+
+# Create new dataframe with subgroub
+
+## Create new dataframe
+
+- Let's assume we only want to keep the total number and don't need to differentiate between sex
+
+. . .
+
+```{python}
+# | output-location: fragment
+df_total = df[df['Geschlecht'] == 'Insgesamt']
+df_total.head()
+
+```
+
+
+
+## Save new dataframe
+
+- We can drop the variable "Geschlecht"
+
+. . .
+
+```{python}
+df_total = df_total.drop(columns=['Geschlecht'])
+
+```
+
+- Save data
+
+. . .
+
+```{python}
+
+df_total.to_excel('12211-9014_de_clean.xlsx', index=False)
+
+```
+
+
+# What's next? {background-image="../images/logo.png" background-opacity="0.5"}
+
+**Congratulations! You have completed this tutorial** 👍
+
+
+**Next, you may want to go back to the [lab's website](https://kirenz.github.io/lab-pandas-intro/)**
