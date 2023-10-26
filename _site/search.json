@@ -109,7 +109,7 @@
     "href": "slides/pandas-statistics.html#multiple-boxplots-with-loop",
     "title": "Statistics and Plots",
     "section": "Multiple boxplots with loop",
-    "text": "Multiple boxplots with loop\n\n# obtain plots for our list\nfor i in list_num:\n    df.boxplot(column=[i])\n    plt.title(\"Boxplot for \" + i)\n    plt.show()\n\n\n\n\n\n\n\n\n\n\n\nJan Kirenz"
+    "text": "Multiple boxplots with loop\n\n# obtain plots for our list\nfor i in list_num:\n    df.boxplot(column=[i])\n    plt.title(\"Boxplot for \" + i)\n    plt.show()"
   },
   {
     "objectID": "slides/pandas-column-names.html#column-names-properties",
@@ -165,7 +165,7 @@
     "href": "slides/pandas-column-names.html#lowercase-and-whitespace-1",
     "title": "Change Column Names",
     "section": "Lowercase and whitespace",
-    "text": "Lowercase and whitespace\n\nWe can use two simple methods to convert all columns to lowercase and replace white spaces with underscores (“_“):\n.str.lower()\n.str.replace(' ', '_')\n\n\n\ndf.columns = df.columns.str.lower().str.replace(' ', '_')\n\n\n\n\n\n\n\ndf.columns\n\n\n\nIndex(['my_new_name', 'height', 'weight', 'id', 'city'], dtype='object')\n\n\n\n\nJan Kirenz"
+    "text": "Lowercase and whitespace\n\nWe can use two simple methods to convert all columns to lowercase and replace white spaces with underscores (“_“):\n.str.lower()\n.str.replace(' ', '_')\n\n\n\ndf.columns = df.columns.str.lower().str.replace(' ', '_')\n\n\n\n\n\n\n\ndf.columns\n\n\n\nIndex(['my_new_name', 'height', 'weight', 'id', 'city'], dtype='object')"
   },
   {
     "objectID": "slides/pandas-select.html#getting-columns-with",
@@ -263,7 +263,7 @@
     "href": "slides/pandas-select.html#getting-a-value-explicitly",
     "title": "Selection",
     "section": "Getting a value explicitly",
-    "text": "Getting a value explicitly\n\ndf.iloc[0, 0]\n\n'Tom'\n\n\n\n\nJan Kirenz"
+    "text": "Getting a value explicitly\n\ndf.iloc[0, 0]\n\n'Tom'"
   },
   {
     "objectID": "code/5_selection.html",
@@ -648,7 +648,7 @@
     "href": "slides/pandas-import-store.html#show-index",
     "title": "Import and Store data",
     "section": "Show index",
-    "text": "Show index\n\ndf.index\n\n\n\nRangeIndex(start=0, stop=3, step=1)\n\n\n\n\nJan Kirenz"
+    "text": "Show index\n\ndf.index\n\n\n\nRangeIndex(start=0, stop=3, step=1)"
   },
   {
     "objectID": "slides/pandas-data-types.html#data-types-with-.dtypes",
@@ -732,7 +732,7 @@
     "href": "slides/pandas-data-types.html#add-a-date-with-strftime",
     "title": "Data Types and Adding Columns",
     "section": "Add a date with strftime",
-    "text": "Add a date with strftime\n\nTo add a date, we can use datetime and strftime (see code examples on the next slides):\n\n\n\ndf[\"date\"] = datetime.today().strftime('%Y-%m-%d')\n\n\n\n\ndf.head(3)\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nnumber\nbmi\ndate\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n42\n17.15\n2023-10-05\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n42\n24.11\n2023-10-05\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin\n42\n28.46\n2023-10-05"
+    "text": "Add a date with strftime\n\nTo add a date, we can use datetime and strftime (see code examples on the next slides):\n\n\n\ndf[\"date\"] = datetime.today().strftime('%Y-%m-%d')\n\n\n\n\ndf.head(3)\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nnumber\nbmi\ndate\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n42\n17.15\n2023-10-26\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n42\n24.11\n2023-10-26\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin\n42\n28.46\n2023-10-26"
   },
   {
     "objectID": "slides/pandas-data-types.html#table-weekdays-and-day",
@@ -760,7 +760,7 @@
     "href": "slides/pandas-data-types.html#table-minutes-etc.",
     "title": "Data Types and Adding Columns",
     "section": "Table: Minutes etc.",
-    "text": "Table: Minutes etc.\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n%p\nAM\nLocale’s equivalent of either AM or PM.\n\n\n%M\n6\nMinute as a zero-padded decimal number.\n\n\n%-M\n6\nMinute as a decimal number. (Platform specific)\n\n\n%S\n5\nSecond as a zero-padded decimal number.\n\n\n%-S\n5\nSecond as a decimal number. (Platform specific)\n\n\n%f\n0\nMicrosecond as a decimal number, zero-padded on the left.\n\n\n%z\n0\nUTC offset in the form ±HHMM[SS[.ffffff]] (empty string if the object is naive).\n\n\n%Z\nUTC\nTime zone name (empty string if the object is naive).\n\n\n%j\n251\nDay of the year as a zero-padded decimal number.\n\n\n%-j\n251\nDay of the year as a decimal number. (Platform specific)\n\n\n%U\n36\nWeek number of the year (Sunday as the first day of the week) as a zero padded decimal number. All days in a new year preceding the first Sunday are considered to be in week 0.\n\n\n%W\n35\nWeek number of the year (Monday as the first day of the week) as a decimal number. All days in a new year preceding the first Monday are considered to be in week 0.\n\n\n%c\nSun Sep 8 07:06:05 2013\nLocale’s appropriate date and time representation.\n\n\n%x\n09.08.13\nLocale’s appropriate date representation.\n\n\n%X\n07:06:05\nLocale’s appropriate time representation.\n\n\n%%\n%\nA literal ‘%’ character.\n\n\n\n\n\nJan Kirenz"
+    "text": "Table: Minutes etc.\n\n\n\n\n\n\n\n\nCode\nExample\nDescription\n\n\n\n\n%p\nAM\nLocale’s equivalent of either AM or PM.\n\n\n%M\n6\nMinute as a zero-padded decimal number.\n\n\n%-M\n6\nMinute as a decimal number. (Platform specific)\n\n\n%S\n5\nSecond as a zero-padded decimal number.\n\n\n%-S\n5\nSecond as a decimal number. (Platform specific)\n\n\n%f\n0\nMicrosecond as a decimal number, zero-padded on the left.\n\n\n%z\n0\nUTC offset in the form ±HHMM[SS[.ffffff]] (empty string if the object is naive).\n\n\n%Z\nUTC\nTime zone name (empty string if the object is naive).\n\n\n%j\n251\nDay of the year as a zero-padded decimal number.\n\n\n%-j\n251\nDay of the year as a decimal number. (Platform specific)\n\n\n%U\n36\nWeek number of the year (Sunday as the first day of the week) as a zero padded decimal number. All days in a new year preceding the first Sunday are considered to be in week 0.\n\n\n%W\n35\nWeek number of the year (Monday as the first day of the week) as a decimal number. All days in a new year preceding the first Monday are considered to be in week 0.\n\n\n%c\nSun Sep 8 07:06:05 2013\nLocale’s appropriate date and time representation.\n\n\n%x\n09.08.13\nLocale’s appropriate date representation.\n\n\n%X\n07:06:05\nLocale’s appropriate time representation.\n\n\n%%\n%\nA literal ‘%’ character."
   },
   {
     "objectID": "slides/pandas-filter-group-bin.html#filter-example",
@@ -858,6 +858,111 @@
     "href": "slides/pandas-filter-group-bin.html#four-equal-sized-bins-without-labels",
     "title": "Filter, Group and Bin Data",
     "section": "Four equal-sized bins without labels",
-    "text": "Four equal-sized bins without labels\n\nExample of how to discretize into four equal-sized bins if you don’t need labels\n\n\n\ndf['bmi_category_3'] = pd.cut(df['bmi'],\n                              bins=4,\n                              labels=False)\n\n\n\n\ndf['bmi_category_3']\n\n\n\n0    0\n1    2\n2    3\nName: bmi_category_3, dtype: int64\n\n\n\n\nJan Kirenz"
+    "text": "Four equal-sized bins without labels\n\nExample of how to discretize into four equal-sized bins if you don’t need labels\n\n\n\ndf['bmi_category_3'] = pd.cut(df['bmi'],\n                              bins=4,\n                              labels=False)\n\n\n\n\ndf['bmi_category_3']\n\n\n\n0    0\n1    2\n2    3\nName: bmi_category_3, dtype: int64"
+  },
+  {
+    "objectID": "slides/pandas-read-excel.html#data-from-genesis-online",
+    "href": "slides/pandas-read-excel.html#data-from-genesis-online",
+    "title": "Import Unclean Excel Data",
+    "section": "Data from GENESIS-Online",
+    "text": "Data from GENESIS-Online\n\n\nGENESIS-Online is the main database of the Federal Statistical Office"
+  },
+  {
+    "objectID": "slides/pandas-read-excel.html#genesis-online",
+    "href": "slides/pandas-read-excel.html#genesis-online",
+    "title": "Import Unclean Excel Data",
+    "section": "GENESIS-Online",
+    "text": "GENESIS-Online\n\nContains deeply structured results of official statistics.\nYou can use the database without registration.\nAll data are available free of charge.\nWe use this dataset as an example"
+  },
+  {
+    "objectID": "slides/pandas-read-excel.html#first-data-import",
+    "href": "slides/pandas-read-excel.html#first-data-import",
+    "title": "Import Unclean Excel Data",
+    "section": "First data import",
+    "text": "First data import\nData source\n\ndf_unclean = pd.read_excel('12211-9014_de.xlsx', sheet_name='12211-9014')\n\n\n\nTake a look at the data\n\n\ndf_unclean"
+  },
+  {
+    "objectID": "slides/pandas-read-excel.html#first-data-import-output",
+    "href": "slides/pandas-read-excel.html#first-data-import-output",
+    "title": "Import Unclean Excel Data",
+    "section": "First data import",
+    "text": "First data import\n\n\n\n\n\n\n\n\nBevölkerung (ab 15 Jahren): Bundesländer, Jahre (bis 2019),\\nGeschlecht, Allgemeine Schulausbildung\nUnnamed: 1\nUnnamed: 2\nUnnamed: 3\nUnnamed: 4\nUnnamed: 5\nUnnamed: 6\nUnnamed: 7\nUnnamed: 8\nUnnamed: 9\nUnnamed: 10\n\n\n\n\n0\nMikrozensus\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n1\nBevölkerung (ab 15 Jahren) (1000)\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n2\nJahr\\nGeschlecht\\nBundesländer\nNaN\nNaN\nAllgemeine Schulausbildung\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n3\nNaN\nNaN\nNaN\nNoch in schulischer Ausbildung\nHaupt- (Volks-)schulabschluss\nAbschluss der polytechnischen Oberschule\nRealschule oder gleichwertiger Abschluss\nFachhochschul- oder Hochschulreife\nOhne Angabe zur Art des Abschlusses\nOhne allgemeinen Schulabschluss\nInsgesamt\n\n\n4\n2019\nmännlich\nBaden-Württemberg\n168\n1512\n37\n1023\n1723\n11\n191\n4674\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n67\nZensus 2011.\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n68\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n69\nAb 2017:\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n70\nOhne Bevölkerung in Gemeinschaftsunterkünften.\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n71\n© Statistisches Bundesamt (Destatis), 2023 | S...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n\n\n72 rows × 11 columns"
+  },
+  {
+    "objectID": "slides/pandas-read-excel.html#inspect-footer",
+    "href": "slides/pandas-read-excel.html#inspect-footer",
+    "title": "Import Unclean Excel Data",
+    "section": "Inspect footer",
+    "text": "Inspect footer\n\ndf_unclean.tail(25)\n\n\n\n\n\n\n\n\n\n\nBevölkerung (ab 15 Jahren): Bundesländer, Jahre (bis 2019),\\nGeschlecht, Allgemeine Schulausbildung\nUnnamed: 1\nUnnamed: 2\nUnnamed: 3\nUnnamed: 4\nUnnamed: 5\nUnnamed: 6\nUnnamed: 7\nUnnamed: 8\nUnnamed: 9\nUnnamed: 10\n\n\n\n\n47\nNaN\nNaN\nSaarland\n26\n337\n/\n185\n264\n/\n35\n853\n\n\n48\nNaN\nNaN\nSachsen\n96\n589\n1090\n658\n968\n/\n67\n3470\n\n\n49\nNaN\nNaN\nSachsen-Anhalt\n53\n273\n760\n316\n427\n5\n50\n1892\n\n\n50\nNaN\nNaN\nSchleswig-Holstein\n93\n741\n21\n736\n772\n8\n86\n2471\n\n\n51\nNaN\nNaN\nThüringen\n52\n283\n723\n282\n463\n/\n28\n1833\n\n\n52\n______________\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n53\nOhne allgemeinen Schulabschluss:\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n54\nEinschließlich Personen mit Abschluss nach höc...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n55\nJahren Schulbesuch.\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n56\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n57\nAllgemeine Schulausbildung \"Insgesamt\":\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n58\nEinschließlich Personen, die keine Angaben zur\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n59\nallgemeinen Schulausbildung gemacht haben.\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n60\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n61\nAb 2013:\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n62\nHochrechnung anhand der Bevölkerungsfortschrei...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n63\nBasis des Zensus 2011.\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n64\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n65\nAb 2016:\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n66\nAktualisierte Auswahlgrundlage der Stichprobe ...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n67\nZensus 2011.\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n68\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n69\nAb 2017:\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n70\nOhne Bevölkerung in Gemeinschaftsunterkünften.\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n71\n© Statistisches Bundesamt (Destatis), 2023 | S...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN"
+  },
+  {
+    "objectID": "slides/pandas-read-excel.html#adjusted-data-import",
+    "href": "slides/pandas-read-excel.html#adjusted-data-import",
+    "title": "Import Unclean Excel Data",
+    "section": "Adjusted data import",
+    "text": "Adjusted data import\n\ndf = pd.read_excel('12211-9014_de.xlsx', \n  sheet_name='12211-9014', \n  skiprows=[0,1,2,3], \n  skipfooter=20, \n  na_values='/', \n  thousands='.', \n  decimal=','\n  )"
+  },
+  {
+    "objectID": "slides/pandas-read-excel.html#view-data",
+    "href": "slides/pandas-read-excel.html#view-data",
+    "title": "Import Unclean Excel Data",
+    "section": "View data",
+    "text": "View data\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nUnnamed: 0\nUnnamed: 1\nUnnamed: 2\nNoch in schulischer Ausbildung\nHaupt- (Volks-)schulabschluss\nAbschluss der polytechnischen Oberschule\nRealschule oder gleichwertiger Abschluss\nFachhochschul- oder Hochschulreife\nOhne Angabe zur Art des Abschlusses\nOhne allgemeinen Schulabschluss\nInsgesamt\n\n\n\n\n0\n2019.0\nmännlich\nBaden-Württemberg\n168\n1512\n37.0\n1023\n1723\n11.0\n191\n4674\n\n\n1\nNaN\nNaN\nBayern\n175\n2142\n49.0\n1129\n1828\n16.0\n153\n5507\n\n\n2\nNaN\nNaN\nBerlin\n55\n205\n130.0\n284\n765\nNaN\n72\n1511\n\n\n3\nNaN\nNaN\nBrandenburg\n35\n118\n349.0\n193\n325\nNaN\n31\n1052\n\n\n4\nNaN\nNaN\nBremen\n11\n74\nNaN\n67\n115\nNaN\n20\n290\n\n\n\n\n\n\n\n\ndf.tail()\n\n\n\n\n\n\n\n\n\n\nUnnamed: 0\nUnnamed: 1\nUnnamed: 2\nNoch in schulischer Ausbildung\nHaupt- (Volks-)schulabschluss\nAbschluss der polytechnischen Oberschule\nRealschule oder gleichwertiger Abschluss\nFachhochschul- oder Hochschulreife\nOhne Angabe zur Art des Abschlusses\nOhne allgemeinen Schulabschluss\nInsgesamt\n\n\n\n\n43\nNaN\nNaN\nSaarland\n26\n337\nNaN\n185\n264\nNaN\n35\n853\n\n\n44\nNaN\nNaN\nSachsen\n96\n589\n1090.0\n658\n968\nNaN\n67\n3470\n\n\n45\nNaN\nNaN\nSachsen-Anhalt\n53\n273\n760.0\n316\n427\n5.0\n50\n1892\n\n\n46\nNaN\nNaN\nSchleswig-Holstein\n93\n741\n21.0\n736\n772\n8.0\n86\n2471\n\n\n47\nNaN\nNaN\nThüringen\n52\n283\n723.0\n282\n463\nNaN\n28\n1833"
+  },
+  {
+    "objectID": "slides/pandas-read-excel.html#rename-columns",
+    "href": "slides/pandas-read-excel.html#rename-columns",
+    "title": "Import Unclean Excel Data",
+    "section": "Rename columns",
+    "text": "Rename columns\n\ndf = df.rename(columns={\n  'Unnamed: 0': 'Jahr',\n  'Unnamed: 1': 'Geschlecht',\n  'Unnamed: 2': 'Bundesland' }\n  )\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nJahr\nGeschlecht\nBundesland\nNoch in schulischer Ausbildung\nHaupt- (Volks-)schulabschluss\nAbschluss der polytechnischen Oberschule\nRealschule oder gleichwertiger Abschluss\nFachhochschul- oder Hochschulreife\nOhne Angabe zur Art des Abschlusses\nOhne allgemeinen Schulabschluss\nInsgesamt\n\n\n\n\n0\n2019.0\nmännlich\nBaden-Württemberg\n168\n1512\n37.0\n1023\n1723\n11.0\n191\n4674\n\n\n1\nNaN\nNaN\nBayern\n175\n2142\n49.0\n1129\n1828\n16.0\n153\n5507\n\n\n2\nNaN\nNaN\nBerlin\n55\n205\n130.0\n284\n765\nNaN\n72\n1511\n\n\n3\nNaN\nNaN\nBrandenburg\n35\n118\n349.0\n193\n325\nNaN\n31\n1052\n\n\n4\nNaN\nNaN\nBremen\n11\n74\nNaN\n67\n115\nNaN\n20\n290"
+  },
+  {
+    "objectID": "slides/pandas-read-excel.html#fill-up-columns",
+    "href": "slides/pandas-read-excel.html#fill-up-columns",
+    "title": "Import Unclean Excel Data",
+    "section": "Fill up columns",
+    "text": "Fill up columns\n\ndf['Jahr'] = 2019\n\n\n\ndf['Geschlecht'] = df['Geschlecht'].fillna(method='ffill')\n\ndf.head()\n\n\n\n\n\n\n\n\n\n\nJahr\nGeschlecht\nBundesland\nNoch in schulischer Ausbildung\nHaupt- (Volks-)schulabschluss\nAbschluss der polytechnischen Oberschule\nRealschule oder gleichwertiger Abschluss\nFachhochschul- oder Hochschulreife\nOhne Angabe zur Art des Abschlusses\nOhne allgemeinen Schulabschluss\nInsgesamt\n\n\n\n\n0\n2019\nmännlich\nBaden-Württemberg\n168\n1512\n37.0\n1023\n1723\n11.0\n191\n4674\n\n\n1\n2019\nmännlich\nBayern\n175\n2142\n49.0\n1129\n1828\n16.0\n153\n5507\n\n\n2\n2019\nmännlich\nBerlin\n55\n205\n130.0\n284\n765\nNaN\n72\n1511\n\n\n3\n2019\nmännlich\nBrandenburg\n35\n118\n349.0\n193\n325\nNaN\n31\n1052\n\n\n4\n2019\nmännlich\nBremen\n11\n74\nNaN\n67\n115\nNaN\n20\n290"
+  },
+  {
+    "objectID": "slides/pandas-read-excel.html#data-format",
+    "href": "slides/pandas-read-excel.html#data-format",
+    "title": "Import Unclean Excel Data",
+    "section": "Data format",
+    "text": "Data format\n\ndf.info()\n\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 48 entries, 0 to 47\nData columns (total 11 columns):\n #   Column                                    Non-Null Count  Dtype  \n---  ------                                    --------------  -----  \n 0   Jahr                                      48 non-null     int64  \n 1   Geschlecht                                48 non-null     object \n 2   Bundesland                                48 non-null     object \n 3   Noch in schulischer Ausbildung            48 non-null     int64  \n 4   Haupt- (Volks-)schulabschluss             48 non-null     int64  \n 5   Abschluss der polytechnischen Oberschule  42 non-null     float64\n 6   Realschule oder gleichwertiger Abschluss  48 non-null     int64  \n 7   Fachhochschul- oder Hochschulreife        48 non-null     int64  \n 8   Ohne Angabe zur Art des Abschlusses       16 non-null     float64\n 9   Ohne allgemeinen Schulabschluss           48 non-null     int64  \n 10  Insgesamt                                 48 non-null     int64  \ndtypes: float64(2), int64(7), object(2)\nmemory usage: 4.3+ KB"
+  },
+  {
+    "objectID": "slides/pandas-read-excel.html#convert-categorical-data",
+    "href": "slides/pandas-read-excel.html#convert-categorical-data",
+    "title": "Import Unclean Excel Data",
+    "section": "Convert categorical data",
+    "text": "Convert categorical data\n\nLIST_CAT = df.columns[1:3].tolist()\nLIST_CAT\n\n\n\n['Geschlecht', 'Bundesland']\n\n\n\n\nfor i in LIST_CAT:\n  df[i] = df[i].astype('category')"
+  },
+  {
+    "objectID": "slides/pandas-read-excel.html#convert-numerical-data",
+    "href": "slides/pandas-read-excel.html#convert-numerical-data",
+    "title": "Import Unclean Excel Data",
+    "section": "Convert numerical data",
+    "text": "Convert numerical data\n\nLIST_INT = df.columns[3:].tolist()\nLIST_INT\n\n['Noch in schulischer Ausbildung',\n 'Haupt- (Volks-)schulabschluss',\n 'Abschluss der polytechnischen Oberschule',\n 'Realschule oder gleichwertiger Abschluss',\n 'Fachhochschul- oder Hochschulreife',\n 'Ohne Angabe zur Art des Abschlusses',\n 'Ohne allgemeinen Schulabschluss',\n 'Insgesamt']\n\n\n\n\nfor i in LIST_INT:\n  df[i] = df[i].astype('Int64')"
+  },
+  {
+    "objectID": "slides/pandas-read-excel.html#take-a-look-at-the-data",
+    "href": "slides/pandas-read-excel.html#take-a-look-at-the-data",
+    "title": "Import Unclean Excel Data",
+    "section": "Take a look at the data",
+    "text": "Take a look at the data\n\ndf\n\n\n\n\n\n\n\n\n\n\nJahr\nGeschlecht\nBundesland\nNoch in schulischer Ausbildung\nHaupt- (Volks-)schulabschluss\nAbschluss der polytechnischen Oberschule\nRealschule oder gleichwertiger Abschluss\nFachhochschul- oder Hochschulreife\nOhne Angabe zur Art des Abschlusses\nOhne allgemeinen Schulabschluss\nInsgesamt\n\n\n\n\n0\n2019\nmännlich\nBaden-Württemberg\n168\n1512\n37\n1023\n1723\n11\n191\n4674\n\n\n1\n2019\nmännlich\nBayern\n175\n2142\n49\n1129\n1828\n16\n153\n5507\n\n\n2\n2019\nmännlich\nBerlin\n55\n205\n130\n284\n765\n&lt;NA&gt;\n72\n1511\n\n\n3\n2019\nmännlich\nBrandenburg\n35\n118\n349\n193\n325\n&lt;NA&gt;\n31\n1052\n\n\n4\n2019\nmännlich\nBremen\n11\n74\n&lt;NA&gt;\n67\n115\n&lt;NA&gt;\n20\n290\n\n\n5\n2019\nmännlich\nHamburg\n32\n149\n6\n153\n361\n5\n49\n763\n\n\n6\n2019\nmännlich\nHessen\n103\n722\n24\n621\n1029\n&lt;NA&gt;\n118\n2623\n\n\n7\n2019\nmännlich\nMecklenburg-Vorpommern\n19\n93\n248\n123\n172\n&lt;NA&gt;\n21\n677\n\n\n8\n2019\nmännlich\nNiedersachsen\n120\n1022\n35\n949\n1073\n7\n126\n3338\n\n\n9\n2019\nmännlich\nNordrhein-Westfalen\n311\n2389\n42\n1515\n2752\n12\n405\n7430\n\n\n10\n2019\nmännlich\nRheinland-Pfalz\n61\n626\n11\n374\n569\n&lt;NA&gt;\n68\n1713\n\n\n11\n2019\nmännlich\nSaarland\n13\n166\n&lt;NA&gt;\n85\n136\n&lt;NA&gt;\n17\n420\n\n\n12\n2019\nmännlich\nSachsen\n47\n257\n528\n334\n499\n&lt;NA&gt;\n37\n1703\n\n\n13\n2019\nmännlich\nSachsen-Anhalt\n28\n126\n364\n163\n214\n&lt;NA&gt;\n26\n928\n\n\n14\n2019\nmännlich\nSchleswig-Holstein\n46\n373\n9\n326\n394\n&lt;NA&gt;\n45\n1205\n\n\n15\n2019\nmännlich\nThüringen\n26\n130\n352\n150\n232\n&lt;NA&gt;\n16\n907\n\n\n16\n2019\nweiblich\nBaden-Württemberg\n171\n1431\n41\n1356\n1531\n7\n205\n4757\n\n\n17\n2019\nweiblich\nBayern\n166\n2070\n60\n1545\n1614\n10\n157\n5638\n\n\n18\n2019\nweiblich\nBerlin\n48\n210\n151\n323\n778\n&lt;NA&gt;\n76\n1587\n\n\n19\n2019\nweiblich\nBrandenburg\n35\n139\n380\n185\n328\n&lt;NA&gt;\n25\n1092\n\n\n20\n2019\nweiblich\nBremen\n11\n70\n&lt;NA&gt;\n83\n109\n&lt;NA&gt;\n20\n295\n\n\n21\n2019\nweiblich\nHamburg\n27\n154\n6\n192\n362\n&lt;NA&gt;\n49\n804\n\n\n22\n2019\nweiblich\nHessen\n105\n716\n25\n794\n941\n&lt;NA&gt;\n128\n2714\n\n\n23\n2019\nweiblich\nMecklenburg-Vorpommern\n19\n93\n275\n123\n170\n&lt;NA&gt;\n19\n700\n\n\n24\n2019\nweiblich\nNiedersachsen\n125\n1019\n43\n1109\n986\n&lt;NA&gt;\n137\n3428\n\n\n25\n2019\nweiblich\nNordrhein-Westfalen\n318\n2413\n56\n1839\n2704\n5\n453\n7791\n\n\n26\n2019\nweiblich\nRheinland-Pfalz\n66\n609\n13\n477\n527\n&lt;NA&gt;\n67\n1763\n\n\n27\n2019\nweiblich\nSaarland\n13\n171\n&lt;NA&gt;\n100\n128\n&lt;NA&gt;\n18\n434\n\n\n28\n2019\nweiblich\nSachsen\n49\n333\n562\n324\n468\n&lt;NA&gt;\n30\n1767\n\n\n29\n2019\nweiblich\nSachsen-Anhalt\n25\n147\n395\n153\n214\n&lt;NA&gt;\n24\n964\n\n\n30\n2019\nweiblich\nSchleswig-Holstein\n48\n367\n11\n409\n379\n&lt;NA&gt;\n41\n1267\n\n\n31\n2019\nweiblich\nThüringen\n26\n153\n371\n132\n231\n&lt;NA&gt;\n13\n927\n\n\n32\n2019\nInsgesamt\nBaden-Württemberg\n339\n2943\n79\n2379\n3254\n17\n395\n9431\n\n\n33\n2019\nInsgesamt\nBayern\n342\n4212\n109\n2674\n3442\n26\n310\n11146\n\n\n34\n2019\nInsgesamt\nBerlin\n103\n415\n281\n607\n1543\n&lt;NA&gt;\n147\n3098\n\n\n35\n2019\nInsgesamt\nBrandenburg\n70\n258\n728\n378\n653\n&lt;NA&gt;\n55\n2144\n\n\n36\n2019\nInsgesamt\nBremen\n21\n145\n&lt;NA&gt;\n150\n224\n&lt;NA&gt;\n40\n585\n\n\n37\n2019\nInsgesamt\nHamburg\n58\n302\n12\n345\n724\n9\n98\n1567\n\n\n38\n2019\nInsgesamt\nHessen\n208\n1438\n50\n1415\n1969\n6\n247\n5337\n\n\n39\n2019\nInsgesamt\nMecklenburg-Vorpommern\n38\n186\n523\n246\n342\n&lt;NA&gt;\n41\n1377\n\n\n40\n2019\nInsgesamt\nNiedersachsen\n245\n2041\n78\n2058\n2059\n11\n263\n6766\n\n\n41\n2019\nInsgesamt\nNordrhein-Westfalen\n629\n4802\n98\n3354\n5456\n17\n858\n15221\n\n\n42\n2019\nInsgesamt\nRheinland-Pfalz\n127\n1235\n24\n851\n1097\n&lt;NA&gt;\n135\n3476\n\n\n43\n2019\nInsgesamt\nSaarland\n26\n337\n&lt;NA&gt;\n185\n264\n&lt;NA&gt;\n35\n853\n\n\n44\n2019\nInsgesamt\nSachsen\n96\n589\n1090\n658\n968\n&lt;NA&gt;\n67\n3470\n\n\n45\n2019\nInsgesamt\nSachsen-Anhalt\n53\n273\n760\n316\n427\n5\n50\n1892\n\n\n46\n2019\nInsgesamt\nSchleswig-Holstein\n93\n741\n21\n736\n772\n8\n86\n2471\n\n\n47\n2019\nInsgesamt\nThüringen\n52\n283\n723\n282\n463\n&lt;NA&gt;\n28\n1833"
+  },
+  {
+    "objectID": "slides/pandas-read-excel.html#create-new-dataframe",
+    "href": "slides/pandas-read-excel.html#create-new-dataframe",
+    "title": "Import Unclean Excel Data",
+    "section": "Create new dataframe",
+    "text": "Create new dataframe\n\nLet’s assume we only want to keep the total number and don’t need to differentiate between sex\n\n\n\ndf_total = df[df['Geschlecht'] == 'Insgesamt']\ndf_total.head()\n\n\n\n\n\n\n\n\n\n\nJahr\nGeschlecht\nBundesland\nNoch in schulischer Ausbildung\nHaupt- (Volks-)schulabschluss\nAbschluss der polytechnischen Oberschule\nRealschule oder gleichwertiger Abschluss\nFachhochschul- oder Hochschulreife\nOhne Angabe zur Art des Abschlusses\nOhne allgemeinen Schulabschluss\nInsgesamt\n\n\n\n\n32\n2019\nInsgesamt\nBaden-Württemberg\n339\n2943\n79\n2379\n3254\n17\n395\n9431\n\n\n33\n2019\nInsgesamt\nBayern\n342\n4212\n109\n2674\n3442\n26\n310\n11146\n\n\n34\n2019\nInsgesamt\nBerlin\n103\n415\n281\n607\n1543\n&lt;NA&gt;\n147\n3098\n\n\n35\n2019\nInsgesamt\nBrandenburg\n70\n258\n728\n378\n653\n&lt;NA&gt;\n55\n2144\n\n\n36\n2019\nInsgesamt\nBremen\n21\n145\n&lt;NA&gt;\n150\n224\n&lt;NA&gt;\n40\n585"
+  },
+  {
+    "objectID": "slides/pandas-read-excel.html#save-new-dataframe",
+    "href": "slides/pandas-read-excel.html#save-new-dataframe",
+    "title": "Import Unclean Excel Data",
+    "section": "Save new dataframe",
+    "text": "Save new dataframe\n\nWe can drop the variable “Geschlecht”\n\n\n\ndf_total = df_total.drop(columns=['Geschlecht'])\n\n\nSave data\n\n\n\n\ndf_total.to_excel('12211-9014_de_clean.xlsx', index=False)"
   }
 ]
