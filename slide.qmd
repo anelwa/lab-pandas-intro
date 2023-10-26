@@ -60,3 +60,15 @@ To download Jupyter Notebooks: Go to the Colab menu and choose "File" > "Downloa
 
 
 <!-- <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSTu-81HNEUeSIlkF50vdUq2wCNbIKZN0VpH9C94N2EppOcE2Qw4-tONsHv7FlpepqwfZuGNeRhLk9b/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe> -->
+
+
+## Import and prepare unclean Excel data
+
+
+- Download [this dataset](https://www-genesis.destatis.de/datenbank/beta/statistic/12211/table/12211-9014) from [GENESIS-Online](https://www-genesis.destatis.de/genesis/online) (the main database of the Federal Statistical Office) 
+
+
+::: {.callout-tip appearance="simple" icon=false}
+- [🖥️ Presentation](/slides/pandas-read-excel.qmd)
+- [💻 Jupyter Notebook](https://colab.research.google.com/github/kirenz/lab-pandas-intro/blob/main/code/pandas-read-excel.ipynb)
+:::
