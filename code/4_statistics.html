@@ -325,9 +325,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_num:</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Median of </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> equals </span><span class="sc">{</span>df[i]<span class="sc">.</span>median()<span class="sc">:.4}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ul>
-<li>Calculate summary statistics for our list.</li>
-</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> list_num:</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Column: </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">  </span><span class="ch">\n</span><span class="ss">  </span><span class="sc">{</span>df[i]<span class="sc">.</span>describe()<span class="sc">.</span>T<span class="sc">.</span><span class="bu">round</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="ss">   </span><span class="ch">\n</span><span class="ss">'</span>)   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

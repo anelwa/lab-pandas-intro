@@ -418,12 +418,13 @@ Jan Kirenz
 <li class="fragment"><a href="#/regular-expressions" id="/toc-regular-expressions">Regular expressions</a></li>
 <li class="fragment"><a href="#/replace-special-characters-with-regex" id="/toc-replace-special-characters-with-regex">Replace special characters with REGEX</a></li>
 <li class="fragment"><a href="#/lowercase-and-whitespace" id="/toc-lowercase-and-whitespace">Lowercase and whitespace</a></li>
+<li class="fragment"><a href="#/whats-next" id="/toc-whats-next">What’s next?</a></li>
 </ul>
 </nav>
 </section>
 <section id="setup" class="title-slide slide level1 center">
 <h1>Setup</h1>
-<div id="5322ef5d" class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a>df <span class="op">=</span> pd.DataFrame({</span>
@@ -458,14 +459,14 @@ Jan Kirenz
 <li class="fragment">We rename <code>"name"</code> to <code>" MY NEW-NAME"</code> (note that we include a leading whitespace)</li>
 </ul>
 <div class="fragment">
-<div id="e46ce3bc" class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df <span class="op">=</span> df.rename(columns<span class="op">=</span>{<span class="st">"name"</span>: <span class="st">" MY NEW-NAME"</span>}, errors<span class="op">=</span><span class="st">"raise"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="simple-rename-1" class="slide level2">
 <h2>Simple rename</h2>
-<div id="796ed0d1" class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="3">
@@ -528,7 +529,7 @@ Jan Kirenz
 </div>
 </div>
 <div class="fragment">
-<div id="6a372975" class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="4">
@@ -578,7 +579,7 @@ Jan Kirenz
 <li class="fragment">In the following function, we search for leading spaces and replace them with an empty string:</li>
 </ul>
 <div class="fragment">
-<div id="e586944c" class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df.columns <span class="op">=</span> df.columns.<span class="bu">str</span>.replace(<span class="vs">r"^ "</span>, <span class="vs">r""</span>, regex<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="5">
@@ -586,7 +587,7 @@ Jan Kirenz
 </div>
 </div>
 <div class="fragment">
-<div id="ad5cb01a" class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="6">
@@ -608,7 +609,7 @@ Jan Kirenz
 <li class="fragment"><p>Replace “<code>-</code>” with “<code>_</code>”</p></li>
 </ul>
 <div class="fragment">
-<div id="d72eb806" class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df.columns <span class="op">=</span> df.columns.<span class="bu">str</span>.replace(<span class="vs">r"-"</span>, <span class="vs">r"_"</span>, regex<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="7">
@@ -616,7 +617,7 @@ Jan Kirenz
 </div>
 </div>
 <div class="fragment">
-<div id="63e18304" class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="8">
@@ -639,7 +640,7 @@ Jan Kirenz
 <li class="fragment"><p><code>.str.replace(' ', '_')</code></p></li>
 </ul>
 <div class="fragment">
-<div id="58cb590b" class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>df.columns <span class="op">=</span> df.columns.<span class="bu">str</span>.lower().<span class="bu">str</span>.replace(<span class="st">' '</span>, <span class="st">'_'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="9">
@@ -647,7 +648,7 @@ Jan Kirenz
 </div>
 </div>
 <div class="fragment">
-<div id="66446d59" class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment" data-execution_count="10">
@@ -655,12 +656,17 @@ Jan Kirenz
 <pre><code>Index(['my_new_name', 'height', 'weight', 'id', 'city'], dtype='object')</code></pre>
 </div>
 </div>
+</div>
+</section></section>
+<section id="whats-next" class="title-slide slide level1 center" data-background-image="../images/logo.png" data-background-opacity="0.5">
+<h1>What’s next?</h1>
+<p><strong>Congratulations! You have completed this tutorial</strong> 👍</p>
+<p><strong>Next, you may want to go back to the <a href="https://kirenz.github.io/lab-pandas-intro/">lab’s website</a></strong></p>
 
 <div class="footer footer-default">
 <p>Jan Kirenz</p>
 </div>
-</div>
-</section></section>
+</section>
     </div>
   </div>
 

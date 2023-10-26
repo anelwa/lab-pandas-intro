@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Pandas intro - Import pandas</title>
+<title>Pandas intro - Import unclean Excel data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -148,24 +148,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#create-data" id="toc-create-data" class="nav-link active" data-scroll-target="#create-data">Create Data</a>
+  <li><a href="#data-from-genesis-online" id="toc-data-from-genesis-online" class="nav-link active" data-scroll-target="#data-from-genesis-online">Data from GENESIS-Online</a></li>
+  <li><a href="#genesis-online" id="toc-genesis-online" class="nav-link" data-scroll-target="#genesis-online">GENESIS-Online</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a>
   <ul class="collapse">
-  <li><a href="#create-a-dataframe" id="toc-create-a-dataframe" class="nav-link" data-scroll-target="#create-a-dataframe">Create a DataFrame</a></li>
-  <li><a href="#show-data-with-head" id="toc-show-data-with-head" class="nav-link" data-scroll-target="#show-data-with-head">Show data with head()</a></li>
+  <li><a href="#first-data-import" id="toc-first-data-import" class="nav-link" data-scroll-target="#first-data-import">First data import</a></li>
+  <li><a href="#inspect-footer" id="toc-inspect-footer" class="nav-link" data-scroll-target="#inspect-footer">Inspect footer</a></li>
+  <li><a href="#adjusted-data-import" id="toc-adjusted-data-import" class="nav-link" data-scroll-target="#adjusted-data-import">Adjusted data import</a></li>
+  <li><a href="#view-data" id="toc-view-data" class="nav-link" data-scroll-target="#view-data">View data</a></li>
+  <li><a href="#rename-columns" id="toc-rename-columns" class="nav-link" data-scroll-target="#rename-columns">Rename columns</a></li>
+  <li><a href="#fill-up-columns" id="toc-fill-up-columns" class="nav-link" data-scroll-target="#fill-up-columns">Fill up columns</a></li>
+  <li><a href="#data-format" id="toc-data-format" class="nav-link" data-scroll-target="#data-format">Data format</a></li>
+  <li><a href="#convert-categorical-data" id="toc-convert-categorical-data" class="nav-link" data-scroll-target="#convert-categorical-data">Convert categorical data</a></li>
+  <li><a href="#convert-numerical-data" id="toc-convert-numerical-data" class="nav-link" data-scroll-target="#convert-numerical-data">Convert numerical data</a></li>
+  <li><a href="#take-a-look-at-the-data" id="toc-take-a-look-at-the-data" class="nav-link" data-scroll-target="#take-a-look-at-the-data">Take a look at the data</a></li>
   </ul></li>
-  <li><a href="#import-data-with-.read" id="toc-import-data-with-.read" class="nav-link" data-scroll-target="#import-data-with-.read">Import data with .read()</a>
+  <li><a href="#create-new-dataframe-with-subgroub" id="toc-create-new-dataframe-with-subgroub" class="nav-link" data-scroll-target="#create-new-dataframe-with-subgroub">Create new dataframe with subgroub</a>
   <ul class="collapse">
-  <li><a href="#import-data-from-github" id="toc-import-data-from-github" class="nav-link" data-scroll-target="#import-data-from-github">Import data from GitHub</a></li>
-  </ul></li>
-  <li><a href="#store-data-with-.to" id="toc-store-data-with-.to" class="nav-link" data-scroll-target="#store-data-with-.to">Store data with .to()</a></li>
-  <li><a href="#viewing-data" id="toc-viewing-data" class="nav-link" data-scroll-target="#viewing-data">Viewing data</a>
-  <ul class="collapse">
-  <li><a href="#data-overview" id="toc-data-overview" class="nav-link" data-scroll-target="#data-overview">Data overview</a></li>
-  <li><a href="#head-and-tail" id="toc-head-and-tail" class="nav-link" data-scroll-target="#head-and-tail">Head and tail</a></li>
-  <li><a href="#info" id="toc-info" class="nav-link" data-scroll-target="#info">Info</a></li>
-  <li><a href="#show-column-names" id="toc-show-column-names" class="nav-link" data-scroll-target="#show-column-names">Show column names</a></li>
-  <li><a href="#show-data-types" id="toc-show-data-types" class="nav-link" data-scroll-target="#show-data-types">Show data types</a></li>
-  <li><a href="#show-index" id="toc-show-index" class="nav-link" data-scroll-target="#show-index">Show index</a></li>
+  <li><a href="#create-new-dataframe" id="toc-create-new-dataframe" class="nav-link" data-scroll-target="#create-new-dataframe">Create new dataframe</a></li>
+  <li><a href="#save-new-dataframe" id="toc-save-new-dataframe" class="nav-link" data-scroll-target="#save-new-dataframe">Save new dataframe</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -175,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Import pandas</h1>
+<h1 class="title">Import unclean Excel data</h1>
 </div>
 
 
@@ -190,119 +192,154 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<section id="data-from-genesis-online" class="level2">
+<h2 class="anchored" data-anchor-id="data-from-genesis-online">Data from GENESIS-Online</h2>
+<p><img src="../images/genesis.png" class="img-fluid"></p>
 <ul>
-<li><p>To load the pandas package and start working with it, import the package.</p></li>
-<li><p>The community agreed alias for pandas is <code>pd</code></p></li>
+<li><a href="https://www-genesis.destatis.de/genesis/online">GENESIS-Online</a> is the main database of the Federal Statistical Office</li>
 </ul>
+</section>
+<section id="genesis-online" class="level2">
+<h2 class="anchored" data-anchor-id="genesis-online">GENESIS-Online</h2>
+<ul>
+<li><p>Contains deeply structured results of official statistics.</p></li>
+<li><p>You can use the database without registration.</p></li>
+<li><p>All data are available free of charge.</p></li>
+<li><p>We use <a href="https://www-genesis.destatis.de/datenbank/beta/statistic/12211/table/12211-9014">this dataset</a> as an example</p></li>
+</ul>
+</section>
+<section id="setup" class="level1">
+<h1>Setup</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="create-data" class="level1">
-<h1>Create Data</h1>
-<section id="create-a-dataframe" class="level2">
-<h2 class="anchored" data-anchor-id="create-a-dataframe">Create a DataFrame</h2>
+</section>
+<section id="data" class="level1">
+<h1>Data</h1>
+<section id="first-data-import" class="level2">
+<h2 class="anchored" data-anchor-id="first-data-import">First data import</h2>
+<p><a href="https://www-genesis.destatis.de/datenbank/beta/statistic/12211/table/12211-9014">Data source</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df_unclean <span class="op">=</span> pd.read_excel(<span class="st">'12211-9014_de.xlsx'</span>, sheet_name<span class="op">=</span><span class="st">'12211-9014'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
-<li>To manually store data in a table, create a DataFrame:</li>
+<li>Take a look at the data</li>
+</ul>
+<div class="cell" data-output-location="slide">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_unclean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="inspect-footer" class="level2">
+<h2 class="anchored" data-anchor-id="inspect-footer">Inspect footer</h2>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_unclean.tail(<span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="adjusted-data-import" class="level2">
+<h2 class="anchored" data-anchor-id="adjusted-data-import">Adjusted data import</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">'12211-9014_de.xlsx'</span>, </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  sheet_name<span class="op">=</span><span class="st">'12211-9014'</span>, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  skiprows<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  skipfooter<span class="op">=</span><span class="dv">20</span>, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  na_values<span class="op">=</span><span class="st">'/'</span>, </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  thousands<span class="op">=</span><span class="st">'.'</span>, </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  decimal<span class="op">=</span><span class="st">','</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="view-data" class="level2">
+<h2 class="anchored" data-anchor-id="view-data">View data</h2>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="rename-columns" class="level2">
+<h2 class="anchored" data-anchor-id="rename-columns">Rename columns</h2>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.rename(columns<span class="op">=</span>{</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Unnamed: 0'</span>: <span class="st">'Jahr'</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Unnamed: 1'</span>: <span class="st">'Geschlecht'</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'Unnamed: 2'</span>: <span class="st">'Bundesland'</span> }</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="fill-up-columns" class="level2">
+<h2 class="anchored" data-anchor-id="fill-up-columns">Fill up columns</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Jahr'</span>] <span class="op">=</span> <span class="dv">2019</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Geschlecht'</span>] <span class="op">=</span> df[<span class="st">'Geschlecht'</span>].fillna(method<span class="op">=</span><span class="st">'ffill'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-format" class="level2">
+<h2 class="anchored" data-anchor-id="data-format">Data format</h2>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="convert-categorical-data" class="level2">
+<h2 class="anchored" data-anchor-id="convert-categorical-data">Convert categorical data</h2>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>LIST_CAT <span class="op">=</span> df.columns[<span class="dv">1</span>:<span class="dv">3</span>].tolist()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>LIST_CAT</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> LIST_CAT:</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  df[i] <span class="op">=</span> df[i].astype(<span class="st">'category'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="convert-numerical-data" class="level2">
+<h2 class="anchored" data-anchor-id="convert-numerical-data">Convert numerical data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>LIST_INT <span class="op">=</span> df.columns[<span class="dv">3</span>:].tolist()</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>LIST_INT</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> LIST_INT:</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  df[i] <span class="op">=</span> df[i].astype(<span class="st">'Int64'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="take-a-look-at-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="take-a-look-at-the-data">Take a look at the data</h2>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="create-new-dataframe-with-subgroub" class="level1">
+<h1>Create new dataframe with subgroub</h1>
+<section id="create-new-dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="create-new-dataframe">Create new dataframe</h2>
+<ul>
+<li>Let’s assume we only want to keep the total number and don’t need to differentiate between sex</li>
+</ul>
+<div class="cell" data-output-location="fragment">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_total <span class="op">=</span> df[df[<span class="st">'Geschlecht'</span>] <span class="op">==</span> <span class="st">'Insgesamt'</span>]</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>df_total.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="save-new-dataframe" class="level2">
+<h2 class="anchored" data-anchor-id="save-new-dataframe">Save new dataframe</h2>
+<ul>
+<li>We can drop the variable “Geschlecht”</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'name'</span>: [<span class="st">"Tom"</span>, <span class="st">"Lisa"</span>, <span class="st">"Peter"</span>],</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'height'</span>: [<span class="fl">1.68</span>, <span class="fl">1.93</span>, <span class="fl">1.72</span>],</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'weight'</span>: [<span class="fl">48.4</span>, <span class="fl">89.8</span>, <span class="fl">84.2</span>],</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'id'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'city'</span>: [<span class="st">'Stuttgart'</span>, <span class="st">'Stuttgart'</span>, <span class="st">'Berlin'</span>]</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_total <span class="op">=</span> df_total.drop(columns<span class="op">=</span>[<span class="st">'Geschlecht'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="show-data-with-head" class="level2">
-<h2 class="anchored" data-anchor-id="show-data-with-head">Show data with head()</h2>
-<div class="cell" data-output-location="fragment">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="import-data-with-.read" class="level1">
-<h1>Import data with .read()</h1>
 <ul>
-<li>Import data with the prefix <code>.read_*</code></li>
-</ul>
-<p><img src="https://pandas.pydata.org/docs/_images/02_io_readwrite.svg" class="img-fluid"></p>
-<section id="import-data-from-github" class="level2">
-<h2 class="anchored" data-anchor-id="import-data-from-github">Import data from GitHub</h2>
-<ul>
-<li>Import a CSV file in a GitHub repo</li>
-</ul>
-<div class="cell" data-output-location="fragment">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>URL <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/kirenz/datasets/master/campaign.csv"</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a>df_github <span class="op">=</span> pd.read_csv(URL, sep<span class="op">=</span><span class="st">","</span>, decimal<span class="op">=</span><span class="st">'.'</span>)</span>
-<span id="cb4-4"><a href="#cb4-4"></a></span>
-<span id="cb4-5"><a href="#cb4-5"></a>df_github.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="store-data-with-.to" class="level1">
-<h1>Store data with .to()</h1>
-<ul>
-<li>Store data with the prefix <code>.to_*</code></li>
+<li>Save data</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_github.to_csv(<span class="st">"data.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>By setting <code>index=False</code> the row index labels are not saved in the spreadsheet</li>
-</ul>
-</section>
-<section id="viewing-data" class="level1">
-<h1>Viewing data</h1>
-<section id="data-overview" class="level2">
-<h2 class="anchored" data-anchor-id="data-overview">Data overview</h2>
-<div class="cell" data-output-location="fragment">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="head-and-tail" class="level2">
-<h2 class="anchored" data-anchor-id="head-and-tail">Head and tail</h2>
-<div class="cell" data-output-location="fragment">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show first 2 rows</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-output-location="fragment">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show last 2 rows</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df.tail(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="info" class="level2">
-<h2 class="anchored" data-anchor-id="info">Info</h2>
-<ul>
-<li>The <code>info()</code> method prints information about a DataFrame.</li>
-</ul>
-<div class="cell" data-output-location="fragment">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="show-column-names" class="level2">
-<h2 class="anchored" data-anchor-id="show-column-names">Show column names</h2>
-<div class="cell" data-output-location="fragment">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="show-data-types" class="level2">
-<h2 class="anchored" data-anchor-id="show-data-types">Show data types</h2>
-<ul>
-<li>Show data types (<a href="https://pandas.pydata.org/docs/user_guide/basics.html#basics-dtypes">dtypes</a>).</li>
-</ul>
-<div class="cell" data-output-location="fragment">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>The data types in this DataFrame are integers (int64), floats (float64) and strings (object).</li>
-</ul>
-</section>
-<section id="show-index" class="level2">
-<h2 class="anchored" data-anchor-id="show-index">Show index</h2>
-<div class="cell" data-output-location="fragment">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_total.to_excel(<span class="st">'12211-9014_de_clean.xlsx'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
