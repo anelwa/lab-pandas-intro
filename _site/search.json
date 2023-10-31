@@ -732,7 +732,7 @@
     "href": "slides/pandas-data-types.html#add-a-date-with-strftime",
     "title": "Data Types and Adding Columns",
     "section": "Add a date with strftime",
-    "text": "Add a date with strftime\n\nTo add a date, we can use datetime and strftime (see code examples on the next slides):\n\n\n\ndf[\"date\"] = datetime.today().strftime('%Y-%m-%d')\n\n\n\n\ndf.head(3)\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nnumber\nbmi\ndate\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n42\n17.15\n2023-10-26\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n42\n24.11\n2023-10-26\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin\n42\n28.46\n2023-10-26"
+    "text": "Add a date with strftime\n\nTo add a date, we can use datetime and strftime (see code examples on the next slides):\n\n\n\ndf[\"date\"] = datetime.today().strftime('%Y-%m-%d')\n\n\n\n\ndf.head(3)\n\n\n\n\n\n\n\n\n\n\nname\nheight\nweight\nid\ncity\nnumber\nbmi\ndate\n\n\n\n\n0\nTom\n1.68\n48.4\n1\nStuttgart\n42\n17.15\n2023-10-31\n\n\n1\nLisa\n1.93\n89.8\n2\nStuttgart\n42\n24.11\n2023-10-31\n\n\n2\nPeter\n1.72\n84.2\n3\nBerlin\n42\n28.46\n2023-10-31"
   },
   {
     "objectID": "slides/pandas-data-types.html#table-weekdays-and-day",
