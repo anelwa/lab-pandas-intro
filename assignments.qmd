@@ -16,3 +16,5 @@ Download the Jupyter Notebooks in your local folder `pandas-intro`.
 - [Task 5: Select data](https://colab.research.google.com/github/kirenz/lab-pandas-intro/blob/main/code/5_selection.ipynb)
 
 - [Task 6: Filter, grouping and binning ](https://colab.research.google.com/github/kirenz/lab-pandas-intro/blob/main/code/6_filter.ipynb)
+
+- Task 7: You should be able to prepare unclean Excel provided from GENESIS-Online.
