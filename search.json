@@ -4,7 +4,7 @@
     "href": "assignments.html",
     "title": "Assignments",
     "section": "",
-    "text": "Download the Jupyter Notebooks in your local folder pandas-intro.\n\nTask 1: Import and store data\nTask 2: Change column names\nTask 3: Change data types and add columns\nTask 4: Calculate statistics and create plots\nTask 5: Select data\nTask 6: Filter, grouping and binning"
+    "text": "Download the Jupyter Notebooks in your local folder pandas-intro.\n\nTask 1: Import and store data\nTask 2: Change column names\nTask 3: Change data types and add columns\nTask 4: Calculate statistics and create plots\nTask 5: Select data\nTask 6: Filter, grouping and binning\nTask 7: You should be able to prepare unclean Excel provided from GENESIS-Online."
   },
   {
     "objectID": "index.html",
@@ -1544,6 +1544,6 @@
     "href": "slide.html#import-and-prepare-unclean-excel-data",
     "title": "Slides",
     "section": "7 Import and prepare unclean Excel data",
-    "text": "7 Import and prepare unclean Excel data\n\nDownload this dataset from GENESIS-Online (the main database of the Federal Statistical Office)\n\n\n\n\n\n\n\n\n🖥️ Presentation\n💻 Jupyter Notebook"
+    "text": "7 Import and prepare unclean Excel data\n\nDownload this dataset as Excel-file from GENESIS-Online (the main database of the Federal Statistical Office). Note: Usually it would make more sense to download the file as flat CSV file. We use the (unclean) Excel file here only for demonstration purposes.\n\n\n\n\n\n\n\n\n🖥️ Presentation\n💻 Jupyter Notebook"
   }
 ]

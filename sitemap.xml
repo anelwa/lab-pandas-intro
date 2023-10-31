@@ -2,98 +2,98 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/assignments.html</loc>
-    <lastmod>2023-10-29T11:07:55.241Z</lastmod>
+    <lastmod>2023-10-31T07:51:45.475Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/index.html</loc>
-    <lastmod>2023-10-29T11:07:54.225Z</lastmod>
+    <lastmod>2023-10-31T07:51:44.139Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/slides/pandas-statistics.html</loc>
-    <lastmod>2023-10-29T11:07:53.221Z</lastmod>
+    <lastmod>2023-10-31T07:51:42.907Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/slides/pandas-column-names.html</loc>
-    <lastmod>2023-10-29T11:07:51.889Z</lastmod>
+    <lastmod>2023-10-31T07:51:41.239Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/slides/pandas-import-store.html</loc>
-    <lastmod>2023-10-29T11:07:50.605Z</lastmod>
+    <lastmod>2023-10-31T07:51:39.607Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/slides/pandas-read-excel.html</loc>
-    <lastmod>2023-10-29T11:07:48.233Z</lastmod>
+    <lastmod>2023-10-31T07:51:37.935Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/code/6_filter.html</loc>
-    <lastmod>2023-10-29T11:07:44.797Z</lastmod>
+    <lastmod>2023-10-31T07:51:33.547Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/code/4_statistics.html</loc>
-    <lastmod>2023-10-29T11:07:43.969Z</lastmod>
+    <lastmod>2023-10-31T07:51:32.495Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/code/pandas-column-names.html</loc>
-    <lastmod>2023-10-29T11:07:43.097Z</lastmod>
+    <lastmod>2023-10-31T07:51:31.379Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/code/1_import_store.html</loc>
-    <lastmod>2023-10-29T11:07:42.253Z</lastmod>
+    <lastmod>2023-10-31T07:51:30.303Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/code/pandas-read-excel.html</loc>
-    <lastmod>2023-10-29T11:07:41.433Z</lastmod>
+    <lastmod>2023-10-31T07:51:29.251Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/code/pandas-statistics.html</loc>
-    <lastmod>2023-10-29T11:07:40.569Z</lastmod>
+    <lastmod>2023-10-31T07:51:28.263Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/code/2_columns.html</loc>
-    <lastmod>2023-10-29T11:07:39.761Z</lastmod>
+    <lastmod>2023-10-31T07:51:27.275Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/code/pandas-data-types.html</loc>
-    <lastmod>2023-10-29T11:07:41.045Z</lastmod>
+    <lastmod>2023-10-31T07:51:28.767Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/code/pandas-select.html</loc>
-    <lastmod>2023-10-29T11:07:41.813Z</lastmod>
+    <lastmod>2023-10-31T07:51:29.739Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/code/5_selection.html</loc>
-    <lastmod>2023-10-29T11:07:42.681Z</lastmod>
+    <lastmod>2023-10-31T07:51:30.839Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/code/pandas-filter-group-bin.html</loc>
-    <lastmod>2023-10-29T11:07:43.533Z</lastmod>
+    <lastmod>2023-10-31T07:51:31.931Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/code/pandas-import-store.html</loc>
-    <lastmod>2023-10-29T11:07:44.333Z</lastmod>
+    <lastmod>2023-10-31T07:51:32.951Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/code/3_data_types.html</loc>
-    <lastmod>2023-10-29T11:07:45.217Z</lastmod>
+    <lastmod>2023-10-31T07:51:34.075Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/slides/pandas-select.html</loc>
-    <lastmod>2023-10-29T11:07:49.957Z</lastmod>
+    <lastmod>2023-10-31T07:51:38.839Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/slides/pandas-data-types.html</loc>
-    <lastmod>2023-10-29T11:07:51.409Z</lastmod>
+    <lastmod>2023-10-31T07:51:40.611Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/slides/pandas-filter-group-bin.html</loc>
-    <lastmod>2023-10-29T11:07:52.553Z</lastmod>
+    <lastmod>2023-10-31T07:51:42.083Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/requirements.html</loc>
-    <lastmod>2023-10-29T11:07:53.913Z</lastmod>
+    <lastmod>2023-10-31T07:51:43.751Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/kirenz/lab-pandas-intro/slide.html</loc>
-    <lastmod>2023-10-29T11:07:54.953Z</lastmod>
+    <lastmod>2023-10-31T07:51:45.111Z</lastmod>
   </url>
 </urlset>
