@@ -54,7 +54,7 @@ To download Jupyter Notebooks: Go to the Colab menu and choose "File" > "Downloa
 ## Filter, group and bin data
 
 ::: {.callout-tip appearance="simple" icon=false}
-- [🖥️ Presentation](/slides/pandas-filter-group-bins.qmd)
+- [🖥️ Presentation](/slides/pandas-filter-group-bin.qmd)
 - [💻 Jupyter Notebook](https://colab.research.google.com/github/kirenz/lab-pandas-intro/blob/main/code/pandas-filter-group-bin.ipynb)
 :::
 
